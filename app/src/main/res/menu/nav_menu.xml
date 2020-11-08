@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home"
+            android:title="Home" />
+
+        <item
+            android:id="@+id/nav_login"
+            android:icon="@drawable/ic_person_login"
+            android:title="Login" />
+
+        <item
+            android:id="@+id/nav_profile"
+            android:icon="@drawable/ic_person_profile"
+            android:title="Profile" />
+
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/ic_person_login"
+            android:title="Logout" />
+
+<!--        <item-->
+<!--            android:id="@+id/nav_cycle"-->
+<!--            android:icon="@drawable/caricon"-->
+<!--            android:title="Policies" />-->
+
+<!--        <item-->
+<!--            android:id="@+id/nav_bus"-->
+<!--            android:icon="@drawable/caricon"-->
+<!--            android:title="Help And Support" />-->
+
+<!--        <item-->
+<!--            android:id="@+id/nav_plane"-->
+<!--            android:icon="@drawable/caricon"-->
+<!--            android:title="Plane" />-->
+
+    </group>
+    <item android:title="About">
+
+        <menu>
+
+            <group android:checkableBehavior="single">
+
+                <item
+
+                    android:id="@+id/nav_policy"
+                    android:icon="@drawable/ic_policies"
+                    android:title="Policies" />
+
+                <item
+                    android:id="@+id/nav_help"
+                    android:icon="@drawable/ic_help"
+                    android:title="Help And Support" />
+
+<!--                <item-->
+<!--                    android:id="@+id/nav_login"-->
+<!--                    android:icon="@drawable/caricon"-->
+<!--                    android:title="Login" />-->
+
+<!--                <item-->
+<!--                    android:id="@+id/nav_profile"-->
+<!--                    android:icon="@drawable/caricon"-->
+<!--                    android:title="Profile" />-->
+
+<!--                <item-->
+<!--                    android:id="@+id/nav_logout"-->
+<!--                    android:icon="@drawable/caricon"-->
+<!--                    android:title="Logout" />-->
+            </group>
+        </menu>
+    </item>
+
+<!--    <item android:title="Communicate">-->
+
+<!--        <menu>-->
+
+<!--            <item-->
+<!--                android:id="@+id/nav_share"-->
+<!--                android:icon="@drawable/caricon"-->
+<!--                android:title="Share" />-->
+
+<!--            <item-->
+<!--                android:id="@+id/nav_rate"-->
+<!--                android:icon="@drawable/caricon"-->
+<!--                android:title="Rate Us" />-->
+<!--        </menu>-->
+<!--    </item>-->
+
+</menu>

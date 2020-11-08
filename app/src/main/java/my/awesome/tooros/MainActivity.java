@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
     WebView web;
     AlertDialog.Builder alert;
-   // @SuppressLint("JavascriptInterface")
+
     @SuppressLint("JavascriptInterface")
     @Override
     protected void onCreate(Bundle savedInstanceState) {

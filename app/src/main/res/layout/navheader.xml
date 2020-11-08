@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+   android:background="#272727">
+
+    <LinearLayout
+        android:padding="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/splashbg"
+        android:gravity="bottom"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="80dp"
+            android:src="@drawable/splashlogo" />
+
+        <TextView
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Welcome !!"
+            android:textSize="24sp"
+            android:fontFamily="monospace" />
+
+        <TextView
+            android:textColor="#F8F7F7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Aman Mishra"
+            android:textSize="17sp"
+            app:fontFamily="monospace" />
+
+
+
+    </LinearLayout>
+
+
+
+
+
+
+</LinearLayout>

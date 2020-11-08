@@ -11,8 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="my.awesome.tooros.SplashActivity"
-          android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity android:name=".PolicyActivity"></activity>
+        <activity android:name=".CitySelectionActivity" />
+        <activity
+            android:name=".SplashActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,11 +23,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="my.awesome.tooros.MainActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-
-
-        </activity>
+            android:name=".MainActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
     </application>
 
 </manifest>
