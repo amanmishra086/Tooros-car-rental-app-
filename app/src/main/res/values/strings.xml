@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">Tooros</string>
+
+
+    <array name="City">
+
+        <item>Select City</item>
+        <item>Bhubaneshwar</item>
+        <item>Cuttack</item>
+        <item>Sambalpur</item>
+        <item>Jharsuguda</item>
+
+    </array>
+
 </resources>

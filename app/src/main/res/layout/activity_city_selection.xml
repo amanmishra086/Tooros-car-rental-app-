@@ -6,16 +6,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:openDrawer="start"
-    tools:context=".CitySelectionActivity">
 
+    tools:context=".CitySelectionActivity">
+<!--    tools:openDrawer="start"-->
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
         android:layout_gravity="start"
         android:layout_height="match_parent"
         android:layout_width="wrap_content"
         app:headerLayout="@layout/navheader"
-        app:menu="@menu/nav_menu" />
+        app:menu="@menu/nav_menu"
+        app:navigationIcon="@drawable/navicon2"/>
 
 
     <ScrollView
@@ -32,13 +33,13 @@
                 android:id="@+id/toolbar"
                 android:layout_width="0dp"
                 android:layout_height="60dp"
-                android:background="#EEE8E8"
+                android:background="#3D3D3D"
                 android:minHeight="?attr/actionBarSize"
                 android:theme="?attr/actionBarTheme"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                >
+                app:navigationIcon="@drawable/navicon2">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -62,10 +63,142 @@
 
             </androidx.appcompat.widget.Toolbar>
 
+            <LinearLayout
+
+                android:id="@+id/linear"
+                android:layout_width="match_parent"
+                android:layout_height="230dp"
+                android:background="@drawable/backgroung"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    android:drawableStart="@drawable/cariconsmall"
+                    android:drawablePadding="10dp"
+                    android:text="Search Your Best Vehicle"
+                    android:textColor="@android:color/white"
+                    android:textSize="20dp" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="30dp"
+                    android:background="@drawable/shapewhitebackground">
+
+
+                    <ImageView
+                        android:layout_marginLeft="8dp"
+                       android:layout_centerVertical="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/location" />
+
+                    <Spinner
+                        android:id="@+id/Class"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="30dp"
+                        android:entries="@array/City"
+                        android:spinnerMode="dropdown"
+                        android:textAlignment="viewStart" />
+
+
+                </RelativeLayout>
+
+
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="30dp">
+
+                    <LinearLayout
+                        android:onClick="onClickStartDate"
+                        android:layout_marginEnd="10dp"
+                        android:gravity="center_vertical"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="40dp"
+                        android:orientation="horizontal"
+                        android:background="@drawable/shapewhitebackground">
+
+
+                        <ImageView
+                            android:layout_marginLeft="8dp"
+                            android:layout_centerVertical="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/calender" />
+
+                        <TextView
+                            android:id="@+id/startDate"
+                            android:layout_marginLeft="5dp"
+                            android:gravity="center_vertical"
+                           android:text="Select Start Date"
+                            android:textColor="@android:color/black"
+
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"/>
+
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:onClick="onClickEndDate"
+                        android:layout_marginStart="10dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="40dp"
+                        android:background="@drawable/shapewhitebackground">
 
 
 
+                        <ImageView
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="8dp"
+                            android:layout_centerVertical="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/calender" />
 
+                        <TextView
+                            android:id="@+id/endDate"
+                            android:layout_marginLeft="5dp"
+                            android:gravity="center_vertical"
+                            android:text="Select End Date"
+                            android:textColor="@android:color/black"
+
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"/>
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <ImageButton
+                    android:onClick="onClickFindCarButton"
+                    android:background="@drawable/shapewhitebackground"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginStart="90dp"
+                    android:layout_marginEnd="90dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="43dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/findcarbutton"/>
+
+
+            </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
