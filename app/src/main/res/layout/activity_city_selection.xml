@@ -26,7 +26,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/colorAccent">
+            android:background="#030303">
 
 
             <androidx.appcompat.widget.Toolbar
@@ -45,18 +45,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-<!--                    <ImageView-->
-<!--                        android:layout_width="30dp"-->
-<!--                        android:layout_height="match_parent"-->
-<!--                        android:src="@drawable/navicon2"/>-->
+                    <!--                    <ImageView-->
+                    <!--                        android:layout_width="30dp"-->
+                    <!--                        android:layout_height="match_parent"-->
+                    <!--                        android:src="@drawable/navicon2"/>-->
 
                     <ImageView
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="3dp"
-                        android:layout_marginLeft="10dp"
                         android:layout_width="200dp"
                         android:layout_height="match_parent"
-                        android:src="@drawable/splashlogo"/>
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="3dp"
+                        android:src="@drawable/splashlogo" />
 
                 </RelativeLayout>
 
@@ -95,10 +95,10 @@
 
 
                     <ImageView
-                        android:layout_marginLeft="8dp"
-                       android:layout_centerVertical="true"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="8dp"
                         android:src="@drawable/location" />
 
                     <Spinner
@@ -118,68 +118,67 @@
 
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
                     android:layout_marginLeft="30dp"
                     android:layout_marginTop="8dp"
-                    android:layout_marginRight="30dp">
+                    android:layout_marginRight="30dp"
+                    android:orientation="horizontal">
 
                     <LinearLayout
-                        android:onClick="onClickStartDate"
-                        android:layout_marginEnd="10dp"
-                        android:gravity="center_vertical"
                         android:layout_width="0dp"
-                        android:layout_weight="1"
                         android:layout_height="40dp"
-                        android:orientation="horizontal"
-                        android:background="@drawable/shapewhitebackground">
+                        android:layout_marginEnd="10dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/shapewhitebackground"
+                        android:gravity="center_vertical"
+                        android:onClick="onClickStartDate"
+                        android:orientation="horizontal">
 
 
                         <ImageView
-                            android:layout_marginLeft="8dp"
-                            android:layout_centerVertical="true"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="8dp"
                             android:src="@drawable/calender" />
 
                         <TextView
                             android:id="@+id/startDate"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
                             android:layout_marginLeft="5dp"
                             android:gravity="center_vertical"
-                           android:text="Select Start Date"
-                            android:textColor="@android:color/black"
-
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"/>
+                            android:text="Select Start Date"
+                            android:textColor="@android:color/black" />
 
 
                     </LinearLayout>
-                    <LinearLayout
-                        android:onClick="onClickEndDate"
-                        android:layout_marginStart="10dp"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="40dp"
-                        android:background="@drawable/shapewhitebackground">
 
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/shapewhitebackground"
+                        android:onClick="onClickEndDate">
 
 
                         <ImageView
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginLeft="8dp"
-                            android:layout_centerVertical="true"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="8dp"
                             android:src="@drawable/calender" />
 
                         <TextView
                             android:id="@+id/endDate"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
                             android:layout_marginLeft="5dp"
                             android:gravity="center_vertical"
-                            android:text="Select End Date"
-                            android:textColor="@android:color/black"
 
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"/>
+                            android:text="Select End Date"
+                            android:textColor="@android:color/black" />
 
                     </LinearLayout>
 
@@ -187,17 +186,95 @@
                 </LinearLayout>
 
                 <ImageButton
-                    android:onClick="onClickFindCarButton"
-                    android:background="@drawable/shapewhitebackground"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginStart="90dp"
-                    android:layout_marginEnd="90dp"
                     android:layout_width="match_parent"
                     android:layout_height="43dp"
+                    android:layout_marginStart="90dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="90dp"
+                    android:background="@drawable/shapewhitebackground"
+                    android:onClick="onClickFindCarButton"
                     android:scaleType="fitXY"
-                    android:src="@drawable/findcarbutton"/>
+                    android:src="@drawable/findcarbutton" />
 
 
+            </LinearLayout>
+
+            <LinearLayout
+
+                android:id="@+id/linear1"
+                android:layout_width="match_parent"
+                android:layout_height="230dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/backgroung"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linear">
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="BOOKING STATUS"
+                    android:textColor="#0C0C0C"
+                    android:textSize="20sp" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/carimage"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/hundaiimage" />
+
+                    <ImageView
+                    android:id="@+id/carimage2"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/hundaiimage" />
+                </LinearLayout>
+
+            </LinearLayout>
+            <LinearLayout
+
+                android:id="@+id/linear2"
+                android:layout_width="match_parent"
+                android:layout_height="230dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/backgroung"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linear1">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/senitization_recycler"
+                    tools:listitem="@layout/list_of_guidlines"
+                    android:layout_margin="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/linear3"
+                android:layout_width="match_parent"
+                android:layout_height="230dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/backgroung"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linear2">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/offer_recycler"
+                    tools:listitem="@layout/offer"
+                    android:layout_margin="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
             </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
