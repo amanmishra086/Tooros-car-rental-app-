@@ -58,14 +58,16 @@ public class CitySelectionActivity extends AppCompatActivity implements Navigati
 Guidlines_adapter guidlines_adapter;
 //
 RecyclerView offer_recycler;
-    ArrayList<Guidlines_model> offer_model = new ArrayList<Guidlines_model>();
+    ArrayList<Guidlines_model> offer_model_arraylist = new ArrayList<Guidlines_model>();
     Offer_adapter offer_adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_city_selection);
-        senitization_recycler=findViewById(R.id.senitization_recycler);
+
+//        senitization_recycler=findViewById(R.id.senitization_recycler);
         offer_recycler=findViewById(R.id.offer_recycler);
+
         drawerLayout=findViewById(R.id.drawer_layout);
         navigationView=findViewById(R.id.nav_view);
         toolbar=findViewById(R.id.toolbar);
@@ -144,18 +146,29 @@ RecyclerView offer_recycler;
 
         };
         //we have to fetch image here and set on guidline models
-        guidlines_adapter=new Guidlines_adapter(guidlines_models,CitySelectionActivity.this);
-        LinearLayoutManager linearLayoutManager=new LinearLayoutManager(CitySelectionActivity.this,RecyclerView.HORIZONTAL,false);
-        senitization_recycler.setLayoutManager(linearLayoutManager);
-        Guidlines_model senitization=new Guidlines_model(R.drawable.senitization);
-        guidlines_models.add(senitization);
-        //  ServicesFunction("getAllService");//add service name
-//all for offer recycler
-        offer_adapter=new Offer_adapter(offer_model,CitySelectionActivity.this);
+
+
+
+//
+//        guidlines_adapter=new Guidlines_adapter(guidlines_models,CitySelectionActivity.this);
+//        LinearLayoutManager linearLayoutManager=new LinearLayoutManager(CitySelectionActivity.this,RecyclerView.HORIZONTAL,false);
+//        senitization_recycler.setLayoutManager(linearLayoutManager);
+//        Guidlines_model senitizationmodel=new Guidlines_model(R.drawable.senitization);
+//        guidlines_models.add(senitizationmodel);
+//        //  ServicesFunction("getAllService");//add service name
+////all for offer recycler
+        offer_adapter=new Offer_adapter(offer_model_arraylist,CitySelectionActivity.this);
+        offer_recycler.setAdapter(offer_adapter);
+
         LinearLayoutManager linearLayoutManager1=new LinearLayoutManager(CitySelectionActivity.this,RecyclerView.HORIZONTAL,false);
         offer_recycler.setLayoutManager(linearLayoutManager1);
-        Guidlines_model offer=new Guidlines_model(R.drawable.group);
-        offer_model.add(offer);
+        Guidlines_model offer=new Guidlines_model(R.drawable.offertooros);
+        offer_model_arraylist.add(offer);
+        Guidlines_model offer2=new Guidlines_model(R.drawable.offertooros);
+        offer_model_arraylist.add(offer2);
+
+
+
      //   gettingOffersFunction("getAllOffers");//add service name
 
     }
