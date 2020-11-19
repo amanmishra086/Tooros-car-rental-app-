@@ -147,16 +147,20 @@ RecyclerView offer_recycler;
         guidlines_adapter=new Guidlines_adapter(guidlines_models,CitySelectionActivity.this);
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(CitySelectionActivity.this,RecyclerView.HORIZONTAL,false);
         senitization_recycler.setLayoutManager(linearLayoutManager);
-        ServicesFunction("getAllService");//add service name
+        Guidlines_model senitization=new Guidlines_model(R.drawable.senitization);
+        guidlines_models.add(senitization);
+        //  ServicesFunction("getAllService");//add service name
 //all for offer recycler
         offer_adapter=new Offer_adapter(offer_model,CitySelectionActivity.this);
         LinearLayoutManager linearLayoutManager1=new LinearLayoutManager(CitySelectionActivity.this,RecyclerView.HORIZONTAL,false);
-        offer_recycler.setLayoutManager(linearLayoutManager);
-        gettingOffersFunction("getAllOffers");//add service name
+        offer_recycler.setLayoutManager(linearLayoutManager1);
+        Guidlines_model offer=new Guidlines_model(R.drawable.group);
+        offer_model.add(offer);
+     //   gettingOffersFunction("getAllOffers");//add service name
 
     }
 //add service name accordingly
-    public void ServicesFunction(String getAllService) {
+   /* public void ServicesFunction(String getAllService) {
 //we have to fetch here
         class UserLoginClass extends AsyncTask<String,Void,String> {
 
@@ -317,7 +321,7 @@ RecyclerView offer_recycler;
         offerClass.execute(getAllOffers);
 
     }
-
+*/
 
 
     private void updateLabel() {

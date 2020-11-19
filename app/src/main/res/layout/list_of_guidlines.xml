@@ -19,11 +19,11 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:scaleType="centerInside"
+                android:scaleType="fitXY"
                 android:id="@+id/senitizationimage"
-                android:src="@drawable/hundaiimage"
+                android:src="@drawable/senitization"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"/>
+                android:layout_height="200dp"/>
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
