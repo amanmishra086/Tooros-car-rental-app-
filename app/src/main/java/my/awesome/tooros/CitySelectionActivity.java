@@ -11,16 +11,20 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -42,7 +46,9 @@ public class CitySelectionActivity extends AppCompatActivity implements Navigati
     String finalResult ;
     ProgressDialog progressDialog;
     JsonHttpParse jsonhttpParse = new JsonHttpParse();
-//
+
+    TextView username;
+
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     androidx.appcompat.widget.Toolbar toolbar;
@@ -65,7 +71,21 @@ RecyclerView offer_recycler;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_city_selection);
 
+//         sharedpreference to store info if user is logged in or not
+//        SharedPreferences sharedPreferences = this.getSharedPreferences("loginOrNot", MODE_PRIVATE);
+//        final SharedPreferences.Editor myEdit = sharedPreferences.edit();
+//        myEdit.putString("info","no");
+//        myEdit.putString("username","");
+//        myEdit.apply();
+
 //        senitization_recycler=findViewById(R.id.senitization_recycler);
+
+        LayoutInflater inflater = (LayoutInflater)this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+        View view = inflater.inflate(R.layout.navheader, null); //log.xml is your file.
+         username = view.findViewById(R.id.user_name);
+
+
         offer_recycler=findViewById(R.id.offer_recycler);
 
         drawerLayout=findViewById(R.id.drawer_layout);
@@ -78,8 +98,24 @@ RecyclerView offer_recycler;
         setSupportActionBar(toolbar);
 
         //hide or show items
-      Menu menu = navigationView.getMenu();
-      menu.findItem(R.id.nav_logout).setVisible(false);
+        SharedPreferences shared = getSharedPreferences("loginOrNot", MODE_PRIVATE);
+        String info = (shared.getString("info", ""));
+        String name = (shared.getString("username", ""));
+        Menu menu = navigationView.getMenu();
+        if(info.equals("yes")){
+            username.setText(name);
+            menu.findItem(R.id.nav_login).setVisible(false);
+            menu.findItem(R.id.nav_SignUp).setVisible(false);
+            menu.findItem(R.id.nav_logout).setVisible(true);
+            menu.findItem(R.id.nav_profile).setVisible(true);
+        }else{
+            username.setText(name);
+            menu.findItem(R.id.nav_logout).setVisible(false);
+            menu.findItem(R.id.nav_profile).setVisible(false);
+        }
+
+
+
 
 
         navigationView.setItemIconTintList(null);
@@ -391,6 +427,20 @@ RecyclerView offer_recycler;
             case R.id.nav_profile:
                 Toast.makeText(this, "Not created till now", Toast.LENGTH_SHORT).show();
                 break;
+            case R.id.nav_login:
+                startActivity(new Intent(this,Login.class));
+                break;
+            case R.id.nav_SignUp:
+                startActivity(new Intent(this,Signup.class));
+                break;
+            case R.id.nav_logout:
+                Toast.makeText(this, "Logged Out Successfully", Toast.LENGTH_SHORT).show();
+                SharedPreferences sharedPreferences = this.getSharedPreferences("loginOrNot", MODE_PRIVATE);
+                final SharedPreferences.Editor myEdit = sharedPreferences.edit();
+                myEdit.putString("info","no");
+                myEdit.putString("username","Guest_User");
+                myEdit.apply();
+                startActivity(new Intent(this,CitySelectionActivity.class));
         }
 
         drawerLayout.closeDrawer(GravityCompat.START);

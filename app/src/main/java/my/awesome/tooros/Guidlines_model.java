@@ -6,6 +6,9 @@ public class Guidlines_model {
 int image;
 String imgurl;
 
+    public Guidlines_model() {
+    }
+
     public Guidlines_model(int image) {
         this.image = image;
     }

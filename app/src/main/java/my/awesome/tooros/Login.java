@@ -10,6 +10,7 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,7 +21,7 @@ import org.json.JSONObject;
 
 public class Login extends AppCompatActivity {
     EditText email,password;
-    String HttpURL = "https://www.cakiweb.com/mechanic/json-api/api.php";
+    String HttpURL = "https://www.cakiweb.com/tooros/api/api.php";
     Button signin;
     String stremail, strpassword;
     String finalResult ;
@@ -58,15 +59,30 @@ public class Login extends AppCompatActivity {
 
         }
 
-
-
         public void onClickSignInBtn(View view) {
             CheckEditTextIsEmptyOrNot();
 
             if(CheckEditText){
 
+                if(stremail.equals("aman@gmail.com") && strpassword.equals("aman@123")){
+                    SharedPreferences sharedPreferences = this.getSharedPreferences("loginOrNot", MODE_PRIVATE);
+                    final SharedPreferences.Editor myEdit = sharedPreferences.edit();
+                    myEdit.putString("info","yes");
+                    myEdit.putString("username","Aman");
+                    myEdit.apply();
 
-                UserLoginFunction("login",stremail,strpassword);
+                    Toast.makeText(this, "Logged In Successfully ...", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(Login.this,CitySelectionActivity.class));
+
+                }else{
+                    Toast.makeText(this, "enter valid email/phone and password", Toast.LENGTH_SHORT).show();
+                }
+
+
+
+
+
+               // UserLoginFunction("login",stremail,strpassword);
 
             }
             else {
@@ -80,8 +96,8 @@ public class Login extends AppCompatActivity {
 
         public void CheckEditTextIsEmptyOrNot(){
 
-            stremail = email.getText().toString();
-            strpassword = password.getText().toString();
+            stremail = email.getText().toString().trim();
+            strpassword = password.getText().toString().trim();
 
             if(TextUtils.isEmpty(stremail) || TextUtils.isEmpty(strpassword))
             {
@@ -102,7 +118,7 @@ public class Login extends AppCompatActivity {
                 protected void onPreExecute() {
                     super.onPreExecute();
 
-                    progressDialog = ProgressDialog.show(Login.this,"Loading Data",null,true,true);
+                    progressDialog = ProgressDialog.show(Login.this,"Authenticating User...",null,true,true);
                 }
 
                 @Override
@@ -149,12 +165,8 @@ public class Login extends AppCompatActivity {
                 @Override
                 protected String doInBackground(String... params) {
 
-//                hashMap.put("method",params[0]);
-//                hashMap.put("customer_email",params[1]);
-//                hashMap.put("customer_password",params[2]);
 
-                    // Toast.makeText(Signup.this, hashMap.toString(), Toast.LENGTH_SHORT).show();
-                    String jsonInputString="{\"method\":\"login\",\"customer_email\":\""+Email+"\",\"customer_password\":\""+Password+"\"}";
+                    String jsonInputString="{\"method\":\"login\",\"emailormobile\":\""+Email+"\",\"password\":\""+Password+"\"}";
 
 //                finalResult = jsonhttpParse.postRequest(method,Email,Password, HttpURL);
                     finalResult = jsonhttpParse.postRequest(jsonInputString, HttpURL);

@@ -4,6 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="200dp"
+    android:id="@+id/nav_header_linearlayout"
    android:background="#272727">
 
     <LinearLayout
@@ -29,10 +30,11 @@
             android:fontFamily="monospace" />
 
         <TextView
+            android:id="@+id/user_name"
             android:textColor="#F8F7F7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Aman Mishra"
+            android:text="Guest User"
             android:textSize="17sp"
             app:fontFamily="monospace" />
 

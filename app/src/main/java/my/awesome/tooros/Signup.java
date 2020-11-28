@@ -151,14 +151,14 @@ public class Signup extends AppCompatActivity {
                     JSONObject jsonObject = null;
                     try {
                         jsonObject = new JSONObject(httpResponseMsg);
-                      //  String messege= jsonObject.getString("otp");
+                      //  String otp= jsonObject.getString("otp");
 
                        Intent intent=new Intent(Signup.this,Login.class);
                       //  intent.putExtra("phone",strphone);
                       //  intent.putExtra("otp",messege);
                         startActivity(intent);
 
-                        //Toast.makeText(Custom19.this, messege, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Signup.this, "user registered successfull !!", Toast.LENGTH_SHORT).show();
 
 
                     } catch (JSONException e) {

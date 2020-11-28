@@ -17,6 +17,9 @@ public class Guidlines_adapter extends RecyclerView.Adapter<Guidlines_adapter.vi
 ArrayList<Guidlines_model> guidlines_models;
 Context context;
 
+    public Guidlines_adapter() {
+    }
+
     public Guidlines_adapter(ArrayList<Guidlines_model> guidlines_models, Context context) {
         this.guidlines_models = guidlines_models;
         this.context = context;
