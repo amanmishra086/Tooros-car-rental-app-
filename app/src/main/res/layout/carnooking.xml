@@ -122,6 +122,8 @@
             android:layout_height="29dp"
             android:layout_marginStart="19dp"
             android:layout_marginTop="11dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toStartOf="@+id/baggage"
             app:layout_constraintStart_toEndOf="@+id/totalseat"
             app:layout_constraintTop_toBottomOf="@+id/imageView5"
             app:srcCompat="@drawable/gear" />
@@ -193,37 +195,22 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView14" />
 
-        <Button
-            android:id="@+id/bookbtn"
-            android:layout_width="188dp"
-            android:layout_height="47dp"
-            android:layout_marginStart="60dp"
-            android:layout_marginTop="26dp"
-            android:layout_marginEnd="27dp"
-            android:layout_marginBottom="28dp"
-            android:background="@drawable/redbutton"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/price"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <TextView
             android:id="@+id/status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="13dp"
+            android:background=" @drawable/redbutton"
+            android:foregroundGravity="center"
             android:gravity="center"
             android:text="BOOK NOW"
             android:textColor="#fff"
             android:textSize="25sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/bookbtn"
-            app:layout_constraintEnd_toEndOf="@+id/bookbtn"
-            app:layout_constraintHorizontal_bias="0.482"
-            app:layout_constraintStart_toStartOf="@+id/bookbtn"
-            app:layout_constraintTop_toTopOf="@+id/bookbtn"
-            app:layout_constraintVertical_bias="0.466" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.822"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
