@@ -64,25 +64,25 @@ public class Login extends AppCompatActivity {
 
             if(CheckEditText){
 
-                if(stremail.equals("aman@gmail.com") && strpassword.equals("aman@123")){
-                    SharedPreferences sharedPreferences = this.getSharedPreferences("loginOrNot", MODE_PRIVATE);
-                    final SharedPreferences.Editor myEdit = sharedPreferences.edit();
-                    myEdit.putString("info","yes");
-                    myEdit.putString("username","Aman");
-                    myEdit.apply();
-
-                    Toast.makeText(this, "Logged In Successfully ...", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(Login.this,CitySelectionActivity.class));
-
-                }else{
-                    Toast.makeText(this, "enter valid email/phone and password", Toast.LENGTH_SHORT).show();
-                }
-
-
+//                if(stremail.equals("aman@gmail.com") && strpassword.equals("aman@123")){
+//                    SharedPreferences sharedPreferences = this.getSharedPreferences("loginOrNot", MODE_PRIVATE);
+//                    final SharedPreferences.Editor myEdit = sharedPreferences.edit();
+//                    myEdit.putString("info","yes");
+//                    myEdit.putString("username","Aman");
+//                    myEdit.apply();
+//
+//                    Toast.makeText(this, "Logged In Successfully ...", Toast.LENGTH_SHORT).show();
+//                    startActivity(new Intent(Login.this,CitySelectionActivity.class));
+//
+//                }else{
+//                    Toast.makeText(this, "enter valid email/phone and password", Toast.LENGTH_SHORT).show();
+//                }
 
 
 
-               // UserLoginFunction("login",stremail,strpassword);
+
+
+                UserLoginFunction("login",stremail,strpassword);
 
             }
             else {
@@ -137,6 +137,14 @@ public class Login extends AppCompatActivity {
                         final SharedPreferences.Editor myEdit = sharedPreferences2.edit();
                         myEdit.putString("login",httpResponseMsg);
                         myEdit.apply();
+
+
+                        //no need now,,will do this later,,for now just don,t remove this sharedprefernce;
+                        SharedPreferences sharedPreferencesForLoginOrNot = Login.this.getSharedPreferences("loginOrNot", MODE_PRIVATE);
+                        final SharedPreferences.Editor loginedit = sharedPreferencesForLoginOrNot.edit();
+                        loginedit.putString("info","yes");
+                        loginedit.putString("username","Aman");
+                        loginedit.apply();
 
                         startActivity(new Intent(Login.this,CitySelectionActivity.class));
 

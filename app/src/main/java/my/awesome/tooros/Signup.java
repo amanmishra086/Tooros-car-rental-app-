@@ -1,24 +1,30 @@
 package my.awesome.tooros;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -27,14 +33,20 @@ import java.util.Locale;
 public class Signup extends AppCompatActivity {
     EditText name , email , phone, password,confirmpassword,aadharcardno,dlno;
     TextView Dob;
+
+    TextView aadharSnap,dlSnap;
+    Uri imageuri;
+    ImageView aadharpic,dlpic;
+
     String strname, stremail, strphone, strpassword,strconfirmpassword,straadharcardno,strdlno,strdob;
     Button Register;
     String finalResult ;
-    String HttpURL = "https://www.cakiweb.com/mechanic/request-api/api.php";
+    String HttpURL = "https://www.cakiweb.com/tooros/api/api.php";
     Boolean CheckEditText ;
     ProgressDialog progressDialog;
-    HashMap<String,String> hashMap = new HashMap<>();
-    HttpParse httpParse = new HttpParse();
+    //HashMap<String,String> hashMap = new HashMap<>();
+    //HttpParse httpParse = new HttpParse();
+    JsonHttpParse jsonhttpParse = new JsonHttpParse();
     Calendar myEndCalendar;
     DatePickerDialog.OnDateSetListener enddatelistener;
     @Override
@@ -50,6 +62,13 @@ public class Signup extends AppCompatActivity {
         aadharcardno=findViewById(R.id.aadharcontainer);
         dlno=findViewById(R.id.dlnocontainer);
         Dob=findViewById(R.id.dobv);
+
+        aadharSnap=findViewById(R.id.aadharsnapcontainer);
+        dlSnap=findViewById(R.id.dlsnapcontainer);
+        aadharpic=findViewById(R.id.aadharpic);
+        dlpic=findViewById(R.id.dlpic);
+
+
         myEndCalendar = Calendar.getInstance();
         enddatelistener = new DatePickerDialog.OnDateSetListener() {
 
@@ -61,7 +80,7 @@ public class Signup extends AppCompatActivity {
                 myEndCalendar.set(Calendar.MONTH, monthOfYear);
                 myEndCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
 
-                String myFormat = "dd/MM/yy"; //In which you need put here
+                String myFormat = "dd-MM-yy"; //In which you need put here
                 SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
 
                 String dateSelected=sdf.format(myEndCalendar.getTime());
@@ -73,9 +92,59 @@ public class Signup extends AppCompatActivity {
 
         };
 
+        aadharSnap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent gallery=new Intent();
+                gallery.setType("image/*");
+                gallery.setAction(Intent.ACTION_GET_CONTENT);
+
+                startActivityForResult(Intent.createChooser(gallery,"select picture"),0);
+            }
+        });
+        dlSnap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent gallery=new Intent();
+                gallery.setType("image/*");
+                gallery.setAction(Intent.ACTION_GET_CONTENT);
+
+                startActivityForResult(Intent.createChooser(gallery,"select picture"),1);
+            }
+        });
+
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
 
+        if(requestCode==0 && resultCode==RESULT_OK){
+            imageuri=data.getData();
+            String path=imageuri.getPath();
+            aadharSnap.setText(path);
+            try{
+                Bitmap bitmap= MediaStore.Images.Media.getBitmap(getContentResolver(),imageuri);
+                aadharpic.setImageBitmap(bitmap);
+            }catch (IOException e){
+                e.printStackTrace();
+            }
+
+        }
+        if(requestCode==1 && resultCode==RESULT_OK){
+            imageuri=data.getData();
+            String path=imageuri.getPath();
+            dlSnap.setText(path);
+
+            try{
+                Bitmap bitmap= MediaStore.Images.Media.getBitmap(getContentResolver(),imageuri);
+                dlpic.setImageBitmap(bitmap);
+            }catch (IOException e){
+                e.printStackTrace();
+            }
+        }
+
+    }
 
     public void onClickSubmit(View view) {
         //startActivity(new Intent(Custom19.this,MobileVerification.class));
@@ -151,14 +220,16 @@ public class Signup extends AppCompatActivity {
                     JSONObject jsonObject = null;
                     try {
                         jsonObject = new JSONObject(httpResponseMsg);
-                      //  String otp= jsonObject.getString("otp");
+                      //  String messege= jsonObject.getString("otp");
+                        String messege= jsonObject.getString("msg");
 
-                       Intent intent=new Intent(Signup.this,Login.class);
-                      //  intent.putExtra("phone",strphone);
-                      //  intent.putExtra("otp",messege);
-                        startActivity(intent);
+//                       Intent intent=new Intent(Signup.this,Login.class);
+//                      //  intent.putExtra("phone",strphone);
+//                      //  intent.putExtra("otp",messege);
+//                        startActivity(intent);
 
-                        Toast.makeText(Signup.this, "user registered successfull !!", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(Signup.this, messege, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Signup.this, "User Registered successfully !!", Toast.LENGTH_SHORT).show();
 
 
                     } catch (JSONException e) {
@@ -182,20 +253,25 @@ public class Signup extends AppCompatActivity {
             @Override
             protected String doInBackground(String... params) {
 
-                hashMap.put("method",params[0]);
+//                hashMap.put("method",params[0]);
+//
+//                hashMap.put("customer_name",params[1]);
+//
+//                hashMap.put("customer_email",params[2]);
+//
+//                hashMap.put("customer_mobile",params[3]);
+//
+//                hashMap.put("customer_password",params[4]);
+//                hashMap.put("customer_dob",params[5]);
+//                hashMap.put("customer_aadharno",params[6]);
+//                hashMap.put("customer_dlno",params[7]);
+//
+//                finalResult = httpParse.postRequest(hashMap, HttpURL);
 
-                hashMap.put("customer_name",params[1]);
+                String jsonInputString="{\"method\":\"registerUser\",\"name\":\""+strname+"\",\"email\":\""+stremail+"\",\"mobile\":\""+strphone+"\",\"password\":\""+strpassword+"\",\"dl_no\":\""+strdlno+"\",\"aadhar_no\":\""+straadharcardno+"\",\"dob\":\""+strdob+"\"}";
 
-                hashMap.put("customer_email",params[2]);
-
-                hashMap.put("customer_mobile",params[3]);
-
-                hashMap.put("customer_password",params[4]);
-                hashMap.put("customer_dob",params[5]);
-                hashMap.put("customer_aadharno",params[6]);
-                hashMap.put("customer_dlno",params[7]);
-
-                finalResult = httpParse.postRequest(hashMap, HttpURL);
+//                finalResult = jsonhttpParse.postRequest(method,Email,Password, HttpURL);
+                finalResult = jsonhttpParse.postRequest(jsonInputString, HttpURL);
 
                 return finalResult;
             }
