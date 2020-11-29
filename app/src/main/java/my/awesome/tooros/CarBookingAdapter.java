@@ -32,6 +32,7 @@ public class CarBookingAdapter extends RecyclerView.Adapter<CarBookingAdapter.vi
     @Override
     public void onBindViewHolder(@NonNull viewHolder holder, int position) {
         CarBookingModel carBookingModel=carBookingModels.get(position);
+       int pos1=carBookingModels.indexOf(carBookingModel);
         holder.carimage.setImageResource(carBookingModel.getCarimage());
         holder.fueltype.setText(carBookingModel.getFueltype());
         holder.price.setText(carBookingModel.getPrice());
@@ -40,6 +41,12 @@ public class CarBookingAdapter extends RecyclerView.Adapter<CarBookingAdapter.vi
         holder.baggage.setText(carBookingModel.getBaggage());
         holder.status.setText(carBookingModel.getStatus());
         holder.carname.setText(carBookingModel.getCarname());
+        holder.status.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //do whatever require to do
+            }
+        });
     }
 
     @Override
@@ -67,7 +74,7 @@ ImageView carimage;
             geartype=itemView.findViewById(R.id.geartype);
             baggage=itemView.findViewById(R.id.baggage);
             status=itemView.findViewById(R.id.status);
-            book=itemView.findViewById(R.id.bookbtn);
+
 
         }
     }
