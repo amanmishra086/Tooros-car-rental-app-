@@ -396,6 +396,9 @@ RecyclerView offer_recycler;
 
     }
     public void onClickFindCarButton(View view) {
+        Intent intent=new Intent(CitySelectionActivity.this,CarBooking.class);
+        startActivity(intent);
+
         Toast.makeText(this, "No Car Found !!", Toast.LENGTH_SHORT).show();
 
     }

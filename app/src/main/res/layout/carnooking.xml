@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_marginBottom="15dp"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="190dp"
+        android:background="@drawable/backgroung">
+
+        <ImageView
+            android:id="@+id/carimage"
+            android:layout_width="180dp"
+            android:layout_height="171dp"
+            android:layout_margin="10dp"
+            android:layout_marginStart="4dp"
+            android:scaleType="centerInside"
+
+            android:src="@drawable/hundaiimage"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.526" />
+
+        <TextView
+            android:id="@+id/carname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+
+            android:layout_toRightOf="@+id/carimage"
+            android:text="RENAULT KWID"
+            android:textColor="#fff"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.48"
+            app:layout_constraintStart_toEndOf="@+id/carimage"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.1" />
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/carimage"
+            app:layout_constraintTop_toBottomOf="@+id/carname"
+            app:layout_constraintVertical_bias="0.401"
+            app:srcCompat="@drawable/petrol" />
+
+        <TextView
+            android:id="@+id/fueltype"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Petrol"
+            android:textColor="#97C761"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView4"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.57" />
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="96dp"
+            android:layout_marginTop="48dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="69dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/geartype"
+            app:layout_constraintStart_toEndOf="@+id/carimage"
+            app:layout_constraintTop_toBottomOf="@+id/carname"
+            app:srcCompat="@drawable/luggage" />
+
+        <TextView
+            android:id="@+id/geartype"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="52dp"
+            android:text="Automatic"
+            android:textColor="#97C761"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView5"
+            app:layout_constraintTop_toBottomOf="@+id/carname" />
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toEndOf="@+id/carimage"
+            app:layout_constraintTop_toBottomOf="@+id/imageView4"
+            app:srcCompat="@drawable/seat" />
+
+        <TextView
+            android:id="@+id/totalseat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="35dp"
+            android:text="5 Seat"
+            android:textColor="#97C761"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView6"
+            app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+
+        <ImageView
+            android:id="@+id/imageView7"
+            android:layout_width="28dp"
+            android:layout_height="29dp"
+            android:layout_marginStart="19dp"
+            android:layout_marginTop="11dp"
+            app:layout_constraintStart_toEndOf="@+id/totalseat"
+            app:layout_constraintTop_toBottomOf="@+id/imageView5"
+            app:srcCompat="@drawable/gear" />
+
+        <TextView
+            android:id="@+id/baggage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="21dp"
+            android:layout_marginBottom="32dp"
+            android:text="3 Baggage"
+            android:textColor="#97C761"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView7"
+            app:layout_constraintTop_toBottomOf="@+id/geartype" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:layout_marginBottom="2dp"
+        android:layout_marginTop="2dp"
+        android:id="@+id/textView13"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:layout_marginLeft="10dp"
+        android:textColor="#97C761"
+        android:text="Unlimited Kilometers/Free Airport Delivery" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:background="@drawable/backgroung">
+
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="304dp"
+            android:layout_marginBottom="57dp"
+            android:text="RENTAL"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/price"
+            android:layout_width="wrap_content"
+            android:layout_height="41dp"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginEnd="275dp"
+            android:layout_marginBottom="15dp"
+            android:text="₹1500"
+            android:textColor="#fff"
+            android:textSize="35sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView14" />
+
+        <Button
+            android:id="@+id/bookbtn"
+            android:layout_width="188dp"
+            android:layout_height="47dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="26dp"
+            android:layout_marginEnd="27dp"
+            android:layout_marginBottom="28dp"
+            android:background="@drawable/redbutton"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/price"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="13dp"
+            android:gravity="center"
+            android:text="BOOK NOW"
+            android:textColor="#fff"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/bookbtn"
+            app:layout_constraintEnd_toEndOf="@+id/bookbtn"
+            app:layout_constraintHorizontal_bias="0.482"
+            app:layout_constraintStart_toStartOf="@+id/bookbtn"
+            app:layout_constraintTop_toTopOf="@+id/bookbtn"
+            app:layout_constraintVertical_bias="0.466" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>
