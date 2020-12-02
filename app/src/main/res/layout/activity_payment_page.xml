@@ -643,19 +643,20 @@
 
     </LinearLayout>
 
-    <Button
-        android:layout_width="173dp"
-        android:layout_height="45dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/redbutton"
+        <Button
+            android:id="@+id/book"
+            android:layout_width="173dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
 
-        android:paddingLeft="4dp"
-        android:paddingTop="2dp"
-        android:paddingRight="4dp"
-        android:paddingBottom="2dp"
-        android:text="BOOK NOW"
-        android:textSize="25sp" />
+            android:background="@drawable/redbutton"
+            android:paddingLeft="4dp"
+            android:paddingTop="2dp"
+            android:paddingRight="4dp"
+            android:paddingBottom="2dp"
+            android:text="BOOK NOW"
+            android:textSize="25sp" />
     </LinearLayout>
 
 </ScrollView>
