@@ -22,9 +22,11 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -53,6 +55,7 @@ public class CitySelectionActivity extends AppCompatActivity implements Navigati
     NavigationView navigationView;
     androidx.appcompat.widget.Toolbar toolbar;
 //
+    Spinner spinner;
     Calendar myEndCalendar;
     Calendar myStartCalendar;
     TextView startdate,enddate;
@@ -66,6 +69,7 @@ Guidlines_adapter guidlines_adapter;
 RecyclerView offer_recycler;
     ArrayList<Guidlines_model> offer_model_arraylist = new ArrayList<Guidlines_model>();
     Offer_adapter offer_adapter;
+  //  ArrayAdapter<String> adapter=new ArrayAdapter<>(this,android.R.layout.simple_spinner_item,City);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,7 +98,14 @@ RecyclerView offer_recycler;
 
         startdate=findViewById(R.id.startDate);
         enddate=findViewById(R.id.endDate);
-
+        spinner=findViewById(R.id.Class);
+        //spinner.setOnItemSelectedListener(onContextItemSelected());
+        String city=spinner.getSelectedItem().toString();
+        Toast.makeText(this, ""+city, Toast.LENGTH_SHORT).show();
+        SharedPreferences sharedPreferences = CitySelectionActivity.this.getSharedPreferences("Date", MODE_PRIVATE);
+        SharedPreferences.Editor myEdit = sharedPreferences.edit();
+        myEdit.putString("city",""+city);
+        myEdit.apply();
         setSupportActionBar(toolbar);
 
         //hide or show items
@@ -155,6 +166,12 @@ RecyclerView offer_recycler;
 
                 startdate.setText(dateSelected);
 
+            //  Toast.makeText(CitySelectionActivity.this, ""+dateSelected, Toast.LENGTH_SHORT).show();
+                SharedPreferences sharedPreferences = CitySelectionActivity.this.getSharedPreferences("Date", MODE_PRIVATE);
+                SharedPreferences.Editor myEdit = sharedPreferences.edit();
+                myEdit.putString("startdate",""+dateSelected);
+                myEdit.apply();
+
 
                // Toast.makeText(CitySelectionActivity.this,sdf.format(myStartCalendar.getTime()) , Toast.LENGTH_SHORT).show();
             }
@@ -173,15 +190,21 @@ RecyclerView offer_recycler;
                 String myFormat = "dd/MM/yy"; //In which you need put here
                 SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
 
-                String dateSelected=sdf.format(myStartCalendar.getTime());
+                String dateSelected=sdf.format(myEndCalendar.getTime());
 
                 enddate.setText(dateSelected);
+                SharedPreferences sharedPreferences = CitySelectionActivity.this.getSharedPreferences("Date", MODE_PRIVATE);
+                SharedPreferences.Editor myEdit = sharedPreferences.edit();
+                myEdit.putString("Enddate",""+dateSelected);
+                myEdit.apply();
 
                 //Toast.makeText(CitySelectionActivity.this,sdf.format(myEndCalendar.getTime()) , Toast.LENGTH_SHORT).show();
             }
 
         };
+
         //we have to fetch image here and set on guidline models
+
 
 
 

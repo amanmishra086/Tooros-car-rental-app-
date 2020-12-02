@@ -1,6 +1,7 @@
 package my.awesome.tooros;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +16,7 @@ import java.util.ArrayList;
 
 public class CarBookingAdapter extends RecyclerView.Adapter<CarBookingAdapter.viewHolder> {
     ArrayList<CarBookingModel>carBookingModels;
-    Context context;
+   final Context context;
 
     public CarBookingAdapter(ArrayList<CarBookingModel> carBookingModels, Context context) {
         this.carBookingModels = carBookingModels;
@@ -44,6 +45,8 @@ public class CarBookingAdapter extends RecyclerView.Adapter<CarBookingAdapter.vi
         holder.status.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent=new Intent(context,PaymentPage.class);
+                context.startActivity(intent);
                 //do whatever require to do
             }
         });
