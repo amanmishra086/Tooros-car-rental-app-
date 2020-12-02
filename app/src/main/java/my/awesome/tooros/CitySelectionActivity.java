@@ -22,6 +22,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -40,7 +41,9 @@ import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Locale;
 
 public class CitySelectionActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -56,6 +59,7 @@ public class CitySelectionActivity extends AppCompatActivity implements Navigati
     androidx.appcompat.widget.Toolbar toolbar;
 //
     Spinner spinner;
+    String city;
     Calendar myEndCalendar;
     Calendar myStartCalendar;
     TextView startdate,enddate;
@@ -69,11 +73,39 @@ Guidlines_adapter guidlines_adapter;
 RecyclerView offer_recycler;
     ArrayList<Guidlines_model> offer_model_arraylist = new ArrayList<Guidlines_model>();
     Offer_adapter offer_adapter;
-  //  ArrayAdapter<String> adapter=new ArrayAdapter<>(this,android.R.layout.simple_spinner_item,City);
+ // String[] Cityname=getResources().getStringArray(R.array.City);
+//List<String> City=Arrays.asList(Cityname);
+ //
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_city_selection);
+        spinner=findViewById(R.id.Class);
+       // ArrayAdapter<String> adapter=new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,City);
+       // adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+      //  spinner.setAdapter(adapter);
+                spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        city=parent.getItemAtPosition(position).toString();
+                      //  city=spinner.getSelectedItem().toString();
+                        SharedPreferences sharedPreferences = CitySelectionActivity.this.getSharedPreferences("Date", MODE_PRIVATE);
+                        SharedPreferences.Editor myEdit = sharedPreferences.edit();
+                        myEdit.putString("city",""+city);
+                        myEdit.apply();
+                       // Toast.makeText(CitySelectionActivity.this, ""+city, Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+
+                    }
+                });
+
+
+
+
 
 //         sharedpreference to store info if user is logged in or not
 //        SharedPreferences sharedPreferences = this.getSharedPreferences("loginOrNot", MODE_PRIVATE);
@@ -98,9 +130,9 @@ RecyclerView offer_recycler;
 
         startdate=findViewById(R.id.startDate);
         enddate=findViewById(R.id.endDate);
-        spinner=findViewById(R.id.Class);
+
         //spinner.setOnItemSelectedListener(onContextItemSelected());
-        String city=spinner.getSelectedItem().toString();
+
         Toast.makeText(this, ""+city, Toast.LENGTH_SHORT).show();
         SharedPreferences sharedPreferences = CitySelectionActivity.this.getSharedPreferences("Date", MODE_PRIVATE);
         SharedPreferences.Editor myEdit = sharedPreferences.edit();
