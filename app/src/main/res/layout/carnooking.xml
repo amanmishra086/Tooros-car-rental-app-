@@ -15,7 +15,7 @@
 
         <ImageView
             android:id="@+id/carimage"
-            android:layout_width="180dp"
+            android:layout_width="150dp"
             android:layout_height="171dp"
             android:layout_margin="10dp"
             android:layout_marginStart="4dp"
@@ -29,7 +29,7 @@
 
         <TextView
             android:id="@+id/carname"
-            android:layout_width="wrap_content"
+            android:layout_width="220dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
 
@@ -88,8 +88,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:layout_marginTop="52dp"
+            android:layout_marginEnd="8dp"
             android:text="Automatic"
             android:textColor="#97C761"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView5"
             app:layout_constraintTop_toBottomOf="@+id/carname" />
 
@@ -132,13 +134,14 @@
             android:id="@+id/baggage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="6dp"
             android:layout_marginTop="21dp"
+            android:layout_marginEnd="8dp"
             android:layout_marginBottom="32dp"
             android:text="3 Baggage"
             android:textColor="#97C761"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView7"
             app:layout_constraintTop_toBottomOf="@+id/geartype"
             app:layout_constraintVertical_bias="1.0" />
@@ -151,7 +154,7 @@
         android:id="@+id/textView13"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
+        android:textSize="14sp"
         android:layout_marginLeft="10dp"
         android:textColor="#97C761"
         android:text="Unlimited Kilometers/Free Airport Delivery" />
@@ -159,7 +162,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="90dp"
-        android:background="@drawable/backgroung">
+        android:background="@drawable/backgroung"
+        tools:layout_editor_absoluteY="213dp">
 
         <TextView
             android:id="@+id/textView14"
@@ -182,20 +186,18 @@
             android:id="@+id/price"
             android:layout_width="wrap_content"
             android:layout_height="41dp"
-            android:layout_marginStart="35dp"
-            android:layout_marginTop="1dp"
-            android:layout_marginEnd="275dp"
-            android:layout_marginBottom="15dp"
             android:text="₹1500"
             android:textColor="#fff"
             android:textSize="35sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/linearLayout"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView14" />
+            tools:layout_editor_absoluteY="38dp" />
 
         <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/redbutton"
@@ -209,11 +211,11 @@
                 android:id="@+id/status"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="BOOK NOW"
-                android:paddingTop="5dp"
-                android:paddingBottom="4dp"
-                android:paddingRight="12dp"
                 android:paddingLeft="12dp"
+                android:paddingTop="5dp"
+                android:paddingRight="12dp"
+                android:paddingBottom="4dp"
+                android:text="BOOK NOW"
                 android:textColor="#fff"
                 android:textSize="28sp"
                 android:textStyle="bold" />

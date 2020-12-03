@@ -25,6 +25,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -48,14 +49,14 @@ public class CitySelectionActivity extends AppCompatActivity implements Navigati
     JsonHttpParse jsonhttpParse = new JsonHttpParse();
 
     TextView username;
-
+    Spinner select_city;String citySelected;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     androidx.appcompat.widget.Toolbar toolbar;
 //
     Calendar myEndCalendar;
     Calendar myStartCalendar;
-    TextView startdate,enddate;
+    TextView startdate,enddate;String startdateSelected="",enddateSelected="";
     DatePickerDialog.OnDateSetListener startdatelistener;
     DatePickerDialog.OnDateSetListener enddatelistener;
     //
@@ -91,6 +92,9 @@ RecyclerView offer_recycler;
         drawerLayout=findViewById(R.id.drawer_layout);
         navigationView=findViewById(R.id.nav_view);
         toolbar=findViewById(R.id.toolbar);
+        select_city=findViewById(R.id.select_city);
+
+
 
         startdate=findViewById(R.id.startDate);
         enddate=findViewById(R.id.endDate);
@@ -148,12 +152,12 @@ RecyclerView offer_recycler;
                 myStartCalendar.set(Calendar.MONTH, monthOfYear);
                 myStartCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
 
-                String myFormat = "dd/MM/yy"; //In which you need put here
+                String myFormat = "yyyy-MM-dd";//In which you need put here
                 SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
 
-                String dateSelected=sdf.format(myStartCalendar.getTime());
+                 startdateSelected=sdf.format(myStartCalendar.getTime());
 
-                startdate.setText(dateSelected);
+                startdate.setText(startdateSelected);
 
 
                // Toast.makeText(CitySelectionActivity.this,sdf.format(myStartCalendar.getTime()) , Toast.LENGTH_SHORT).show();
@@ -170,12 +174,13 @@ RecyclerView offer_recycler;
                 myEndCalendar.set(Calendar.MONTH, monthOfYear);
                 myEndCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
 
-                String myFormat = "dd/MM/yy"; //In which you need put here
+               // String myFormat = "dd/MM/yy"; //In which you need put here
+                String myFormat = "yyyy-MM-dd"; //In which you need put here
                 SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
 
-                String dateSelected=sdf.format(myStartCalendar.getTime());
+                 enddateSelected=sdf.format(myEndCalendar.getTime());
 
-                enddate.setText(dateSelected);
+                enddate.setText(enddateSelected);
 
                 //Toast.makeText(CitySelectionActivity.this,sdf.format(myEndCalendar.getTime()) , Toast.LENGTH_SHORT).show();
             }
@@ -396,10 +401,23 @@ RecyclerView offer_recycler;
 
     }
     public void onClickFindCarButton(View view) {
-        Intent intent=new Intent(CitySelectionActivity.this,CarBooking.class);
-        startActivity(intent);
+        citySelected=select_city.getSelectedItem().toString();
 
-        Toast.makeText(this, "No Car Found !!", Toast.LENGTH_SHORT).show();
+//        if(citySelected.equals("Select City") || startdateSelected=="" || enddateSelected=="")
+//        {
+//            Toast.makeText(this, "Select required input !!", Toast.LENGTH_SHORT).show();
+//        }
+//        else{
+            Intent intent=new Intent(CitySelectionActivity.this,CarBooking.class);
+            intent.putExtra("city",citySelected);
+            intent.putExtra("startdate",startdateSelected);
+            intent.putExtra("enddate",enddateSelected);
+            startActivity(intent);
+//        }
+
+
+//
+//        Toast.makeText(this, "No Car Found !!", Toast.LENGTH_SHORT).show();
 
     }
 

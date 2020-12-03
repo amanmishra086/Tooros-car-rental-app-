@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -25,7 +26,7 @@ public class CarBookingAdapter extends RecyclerView.Adapter<CarBookingAdapter.vi
     @NonNull
     @Override
     public viewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.carnooking, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.carbooking_layout, parent, false);
         return new CarBookingAdapter.viewHolder(view);
     }
 
@@ -35,8 +36,8 @@ public class CarBookingAdapter extends RecyclerView.Adapter<CarBookingAdapter.vi
        int pos1=carBookingModels.indexOf(carBookingModel);
         holder.carimage.setImageResource(carBookingModel.getCarimage());
         holder.fueltype.setText(carBookingModel.getFueltype());
-        holder.price.setText(carBookingModel.getPrice());
-        holder.seat.setText(carBookingModel.getSeat());
+        holder.price.setText("₹"+carBookingModel.getPrice());
+        holder.seat.setText(carBookingModel.getSeat()+" seat");
         holder.geartype.setText(carBookingModel.getGeartype());
         holder.baggage.setText(carBookingModel.getBaggage());
         holder.status.setText(carBookingModel.getStatus());
@@ -45,6 +46,7 @@ public class CarBookingAdapter extends RecyclerView.Adapter<CarBookingAdapter.vi
             @Override
             public void onClick(View v) {
                 //do whatever require to do
+
             }
         });
     }

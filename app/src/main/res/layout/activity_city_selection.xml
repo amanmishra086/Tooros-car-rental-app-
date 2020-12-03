@@ -102,7 +102,7 @@
                         android:src="@drawable/location" />
 
                     <Spinner
-                        android:id="@+id/Class"
+                        android:id="@+id/select_city"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="30dp"
@@ -186,6 +186,7 @@
                 </LinearLayout>
 
                 <ImageButton
+
                     android:layout_width="match_parent"
                     android:layout_height="43dp"
                     android:layout_marginStart="90dp"

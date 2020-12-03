@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#5F5353">
+
+    <LinearLayout
+        android:background="@drawable/backgroung"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/carimage"
+            android:paddingRight="20dp"
+            android:layout_marginStart="10dp"
+            android:layout_width="180dp"
+            android:layout_height="200dp"
+            android:src="@drawable/hundaiimage"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/carname"
+                android:textStyle="bold"
+                android:layout_marginTop="12dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="car name"
+                android:textColor="#ffffff"
+                android:textSize="25sp"/>
+
+            <LinearLayout
+                android:layout_marginEnd="5dp"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/fueltype"
+                    android:layout_weight="1"
+                    android:drawablePadding="5dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Petrol"
+                    android:textColor="#ffffff"
+                    android:textSize="20sp"
+                    android:drawableLeft="@drawable/petrol"/>
+
+                <TextView
+                    android:id="@+id/geartype"
+                    android:drawablePadding="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Automatic"
+                    android:textColor="#ffffff"
+                    android:textSize="20sp"
+                    android:drawableLeft="@drawable/luggage"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginEnd="5dp"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/totalseat"
+                    android:layout_marginEnd="20dp"
+                    android:layout_weight="1"
+                    android:drawablePadding="10dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="4 seat"
+                    android:textColor="#ffffff"
+                    android:textSize="20sp"
+                    android:drawableLeft="@drawable/seat"/>
+
+                <TextView
+                    android:id="@+id/baggage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/gear2"
+                    android:drawablePadding="5dp"
+                    android:text="5 baggage"
+                    android:textColor="#ffffff"
+                    android:textSize="20sp" />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+<TextView
+    android:textColor="#ffffff"
+    android:padding="5dp"
+    android:layout_marginStart="10dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Unlimited Kilometers/Free Airport Delivery"/>
+
+
+    <RelativeLayout
+        android:layout_marginBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@drawable/backgroung">
+
+        <LinearLayout
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="RENTAL"/>
+
+            <TextView
+                android:id="@+id/price"
+                android:text="₹1500"
+                android:textColor="#fff"
+                android:textSize="35sp"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/status"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="18dp"
+            android:layout_alignParentEnd="true"
+            android:padding="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="BOOK NOW"
+            android:textColor="#fff"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:background="@drawable/redbutton"/>
+
+    </RelativeLayout>
+
+</LinearLayout>
