@@ -5,24 +5,35 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Build;
+
+import android.content.SharedPreferences;
+
 import android.os.Bundle;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 
 import java.util.ArrayList;
 
 public class CarBooking extends AppCompatActivity {
 
+
     RecyclerView recyclerView;
+
+
+    TextView startdate,enddate,city;
+
     ArrayList<CarBookingModel> carBookingModels = new ArrayList<CarBookingModel>();
     CarBookingAdapter carBookingAdapter;
 
@@ -38,16 +49,35 @@ public class CarBooking extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_car_booking);
         recyclerView=findViewById(R.id.bookingrecycler);
+
         recyclerView.setHasFixedSize(true);
 
-        Intent intent=getIntent();
-       String city= intent.getStringExtra("city");
-       String startdate= intent.getStringExtra("startdate");
-       String enddate= intent.getStringExtra("enddate");
+        startdate=findViewById(R.id.textView4);
+        enddate=findViewById(R.id.textView7);
+        city=findViewById(R.id.cityname);
+//        recyclerView.setAdapter(carBookingAdapter);
+        SharedPreferences sharedPreferences = CarBooking.this.getSharedPreferences("Date", MODE_PRIVATE);
+        String stdate= sharedPreferences.getString("startdate",null);
+        String end= sharedPreferences.getString("Enddate",null);
+        String City= sharedPreferences.getString("city",null);
+        if(stdate!=" "&& end !=" "&& City!=" "){
+            startdate.setText(stdate);
+            enddate.setText(end);
+            city.setText(City);
+        }
 
-       cityname=findViewById(R.id.cityname);cityname.setText(city);
-       start=findViewById(R.id.textView4);start.setText(startdate);
-       end=findViewById(R.id.textView7);end.setText(enddate);
+//        Intent intent=getIntent();
+//       String city= intent.getStringExtra("city");
+//       String startdate= intent.getStringExtra("startdate");
+//       String enddate= intent.getStringExtra("enddate");
+
+
+//       cityname=findViewById(R.id.cityname);cityname.setText(city);
+//       start=findViewById(R.id.textView4);start.setText(startdate);
+//       end=findViewById(R.id.textView7);end.setText(enddate);
+
+
+
 
         carBookingAdapter=new CarBookingAdapter(carBookingModels,CarBooking.this);
         recyclerView.setAdapter(carBookingAdapter);
@@ -55,11 +85,13 @@ public class CarBooking extends AppCompatActivity {
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(CarBooking.this,LinearLayoutManager.VERTICAL,false);
         recyclerView.setLayoutManager(linearLayoutManager);
 
-        getSubSerivices("getAllavailCabs",city,startdate,enddate);
+
+        getSubSerivices("getAllavailCabs",City,stdate,end);
 
 //        CarBookingModel carBookingModel=new CarBookingModel(R.drawable.hundaiimage,"Renault Kwid","Petrol","₹1500","5 seat","Automatic","5 baggage","BOOKED");
 //        carBookingModels.add(carBookingModel);
-//
+
+
 //        CarBookingModel carBookingModel1=new CarBookingModel(R.drawable.hundaiimage,"Renault Kwid","Petrol","₹1500","5 seat","Automatic","5 baggage","BOOKED");
 //       carBookingModels.add(carBookingModel1);
 
@@ -99,11 +131,11 @@ public class CarBooking extends AppCompatActivity {
 //                            CarBookingModel history1=new CarBookingModel(R.drawable.hundaii,ob.getString("sub_service"),
 //                                    ob.getString("sch_servie_id"),ob.getString("service_id"),ob.getString("service_price"),
 //                                    ob.getString("img"));
-                            CarBookingModel carBookingModel=new CarBookingModel(R.drawable.hundaiimage,"Renault Kwid","Petrol",ob.getString("id"),"5 seat","Automatic","5 baggage","BOOKED");
-                            carBookingModels.add(carBookingModel);
-
-//                            CarBookingModel carBookingModel=new CarBookingModel(R.drawable.hundaiimage,ob.getString("car_nme"),ob.getString("fuelType"),ob.getString("cost"),ob.getString("no_of_seat"),ob.getString("gearType"),ob.getString("no_of_baggage"),ob.getString("status"));
+//                            CarBookingModel carBookingModel=new CarBookingModel(R.drawable.hundaiimage,"Renault Kwid","Petrol",ob.getString("id"),"5 seat","Automatic","5 baggage","BOOKED");
 //                            carBookingModels.add(carBookingModel);
+
+                            CarBookingModel carBookingModel=new CarBookingModel(R.drawable.hundaiimage,ob.getString("car_nme"),ob.getString("fuelType"),ob.getString("cost"),ob.getString("no_of_seat"),ob.getString("gearType"),ob.getString("no_of_baggage"),ob.getString("status"));
+                            carBookingModels.add(carBookingModel);
                         }
 
 
@@ -152,6 +184,10 @@ public class CarBooking extends AppCompatActivity {
 
         offerClass.execute(method);
 
+
+
+
+       // Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
 
     }
 

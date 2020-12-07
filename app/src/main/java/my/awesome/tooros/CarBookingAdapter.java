@@ -1,6 +1,7 @@
 package my.awesome.tooros;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +17,7 @@ import java.util.ArrayList;
 
 public class CarBookingAdapter extends RecyclerView.Adapter<CarBookingAdapter.viewHolder> {
     ArrayList<CarBookingModel>carBookingModels;
-    Context context;
+   final Context context;
 
     public CarBookingAdapter(ArrayList<CarBookingModel> carBookingModels, Context context) {
         this.carBookingModels = carBookingModels;
@@ -26,7 +27,7 @@ public class CarBookingAdapter extends RecyclerView.Adapter<CarBookingAdapter.vi
     @NonNull
     @Override
     public viewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.carbooking_layout, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.carnooking, parent, false);
         return new CarBookingAdapter.viewHolder(view);
     }
 
@@ -35,16 +36,55 @@ public class CarBookingAdapter extends RecyclerView.Adapter<CarBookingAdapter.vi
         CarBookingModel carBookingModel=carBookingModels.get(position);
        int pos1=carBookingModels.indexOf(carBookingModel);
         holder.carimage.setImageResource(carBookingModel.getCarimage());
-        holder.fueltype.setText(carBookingModel.getFueltype());
+
+        String fuel="";
+        switch (Integer.parseInt(carBookingModel.getFueltype())){
+
+            case 1:
+                fuel="Petrol";
+                break;
+            case 2:
+                fuel="Diesel";
+                break;
+            case 3:
+                fuel="Electric";
+                break;
+            case 4:
+                fuel="CNG";
+                break;
+            case 5:
+                fuel="LPG";
+                break;
+
+        }
+
+
+        holder.fueltype.setText(fuel);
         holder.price.setText("₹"+carBookingModel.getPrice());
         holder.seat.setText(carBookingModel.getSeat()+" seat");
-        holder.geartype.setText(carBookingModel.getGeartype());
-        holder.baggage.setText(carBookingModel.getBaggage());
-        holder.status.setText(carBookingModel.getStatus());
+
+        String gear="";
+        switch (Integer.parseInt(carBookingModel.getGeartype())) {
+
+            case 1:
+                gear = "Automatic";
+                break;
+            case 2:
+                gear = "Manual";
+                break;
+
+        }
+        holder.geartype.setText(gear);
+
+        holder.baggage.setText(carBookingModel.getBaggage()+" Baggage");
+       // holder.status.setText(carBookingModel.getStatus());
+        holder.status.setText("Book Now");
         holder.carname.setText(carBookingModel.getCarname());
         holder.status.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+//                Intent intent=new Intent(context,PaymentPage.class);
+//                context.startActivity(intent);
                 //do whatever require to do
 
             }

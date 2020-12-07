@@ -22,6 +22,8 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.LinearLayout;
@@ -39,7 +41,9 @@ import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Locale;
 
 public class CitySelectionActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -49,11 +53,13 @@ public class CitySelectionActivity extends AppCompatActivity implements Navigati
     JsonHttpParse jsonhttpParse = new JsonHttpParse();
 
     TextView username;
-    Spinner select_city;String citySelected;
+//    Spinner select_city;String citySelected;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     androidx.appcompat.widget.Toolbar toolbar;
 //
+    Spinner spinner;
+    String city;
     Calendar myEndCalendar;
     Calendar myStartCalendar;
     TextView startdate,enddate;String startdateSelected="",enddateSelected="";
@@ -67,10 +73,41 @@ Guidlines_adapter guidlines_adapter;
 RecyclerView offer_recycler;
     ArrayList<Guidlines_model> offer_model_arraylist = new ArrayList<Guidlines_model>();
     Offer_adapter offer_adapter;
+ // String[] Cityname=getResources().getStringArray(R.array.City);
+//List<String> City=Arrays.asList(Cityname);
+ //
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_city_selection);
+
+        spinner=findViewById(R.id.select_city);
+       // ArrayAdapter<String> adapter=new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,City);
+       // adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+      //  spinner.setAdapter(adapter);
+                spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        city=parent.getItemAtPosition(position).toString();
+                       // Toast.makeText(CitySelectionActivity.this, ""+city, Toast.LENGTH_SHORT).show();
+                      //  city=spinner.getSelectedItem().toString();
+                        SharedPreferences sharedPreferences = CitySelectionActivity.this.getSharedPreferences("Date", MODE_PRIVATE);
+                        SharedPreferences.Editor myEdit = sharedPreferences.edit();
+                        myEdit.putString("city",""+city);
+                        myEdit.apply();
+                       // Toast.makeText(CitySelectionActivity.this, ""+city, Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+
+                    }
+                });
+
+
+
+
 
 //         sharedpreference to store info if user is logged in or not
 //        SharedPreferences sharedPreferences = this.getSharedPreferences("loginOrNot", MODE_PRIVATE);
@@ -79,7 +116,7 @@ RecyclerView offer_recycler;
 //        myEdit.putString("username","");
 //        myEdit.apply();
 
-//        senitization_recycler=findViewById(R.id.senitization_recycler);
+
 
         LayoutInflater inflater = (LayoutInflater)this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
@@ -92,12 +129,21 @@ RecyclerView offer_recycler;
         drawerLayout=findViewById(R.id.drawer_layout);
         navigationView=findViewById(R.id.nav_view);
         toolbar=findViewById(R.id.toolbar);
-        select_city=findViewById(R.id.select_city);
+
+        //select_city=findViewById(R.id.select_city);
 
 
 
         startdate=findViewById(R.id.startDate);
         enddate=findViewById(R.id.endDate);
+
+        //spinner.setOnItemSelectedListener(onContextItemSelected());
+
+
+//        SharedPreferences sharedPreferences = CitySelectionActivity.this.getSharedPreferences("Date", MODE_PRIVATE);
+//        SharedPreferences.Editor myEdit = sharedPreferences.edit();
+//        myEdit.putString("city",""+city);
+//        myEdit.apply();
 
         setSupportActionBar(toolbar);
 
@@ -159,6 +205,12 @@ RecyclerView offer_recycler;
 
                 startdate.setText(startdateSelected);
 
+            //  Toast.makeText(CitySelectionActivity.this, ""+dateSelected, Toast.LENGTH_SHORT).show();
+                SharedPreferences sharedPreferences = CitySelectionActivity.this.getSharedPreferences("Date", MODE_PRIVATE);
+                SharedPreferences.Editor myEdit = sharedPreferences.edit();
+                myEdit.putString("startdate",""+startdateSelected);
+                myEdit.apply();
+
 
                // Toast.makeText(CitySelectionActivity.this,sdf.format(myStartCalendar.getTime()) , Toast.LENGTH_SHORT).show();
             }
@@ -178,15 +230,27 @@ RecyclerView offer_recycler;
                 String myFormat = "yyyy-MM-dd"; //In which you need put here
                 SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
 
+
                  enddateSelected=sdf.format(myEndCalendar.getTime());
 
                 enddate.setText(enddateSelected);
+
+                //String dateSelected=sdf.format(myEndCalendar.getTime());
+
+                enddate.setText(enddateSelected);
+                SharedPreferences sharedPreferences = CitySelectionActivity.this.getSharedPreferences("Date", MODE_PRIVATE);
+                SharedPreferences.Editor myEdit = sharedPreferences.edit();
+                myEdit.putString("Enddate",""+enddateSelected);
+                myEdit.apply();
+
 
                 //Toast.makeText(CitySelectionActivity.this,sdf.format(myEndCalendar.getTime()) , Toast.LENGTH_SHORT).show();
             }
 
         };
+
         //we have to fetch image here and set on guidline models
+
 
 
 
@@ -390,8 +454,6 @@ RecyclerView offer_recycler;
         new DatePickerDialog(CitySelectionActivity.this, startdatelistener, myStartCalendar
                 .get(Calendar.YEAR), myStartCalendar.get(Calendar.MONTH),
                 myStartCalendar.get(Calendar.DAY_OF_MONTH)).show();
-
-
     }
 
     public void onClickEndDate(View view) {
@@ -401,19 +463,19 @@ RecyclerView offer_recycler;
 
     }
     public void onClickFindCarButton(View view) {
-        citySelected=select_city.getSelectedItem().toString();
+       // citySelected=select_city.getSelectedItem().toString();
 
-//        if(citySelected.equals("Select City") || startdateSelected=="" || enddateSelected=="")
-//        {
-//            Toast.makeText(this, "Select required input !!", Toast.LENGTH_SHORT).show();
-//        }
-//        else{
+        if(city.equals("Select City") || startdateSelected=="" || enddateSelected=="")
+        {
+            Toast.makeText(this, "Select required input !!", Toast.LENGTH_SHORT).show();
+        }
+        else{
             Intent intent=new Intent(CitySelectionActivity.this,CarBooking.class);
-            intent.putExtra("city",citySelected);
-            intent.putExtra("startdate",startdateSelected);
-            intent.putExtra("enddate",enddateSelected);
+//            intent.putExtra("city",citySelected);
+//            intent.putExtra("startdate",startdateSelected);
+//            intent.putExtra("enddate",enddateSelected);
             startActivity(intent);
-//        }
+        }
 
 
 //
