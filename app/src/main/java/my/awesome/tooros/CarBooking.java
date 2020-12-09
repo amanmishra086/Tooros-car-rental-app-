@@ -7,15 +7,20 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import android.app.ProgressDialog;
+import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Build;
 
 import android.content.SharedPreferences;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 
@@ -24,7 +29,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class CarBooking extends AppCompatActivity {
 
@@ -32,7 +40,7 @@ public class CarBooking extends AppCompatActivity {
     RecyclerView recyclerView;
 
 
-    TextView startdate,enddate,city;
+    TextView startdate,enddate,city,startime,endtime;
 
     ArrayList<CarBookingModel> carBookingModels = new ArrayList<CarBookingModel>();
     CarBookingAdapter carBookingAdapter;
@@ -43,7 +51,7 @@ public class CarBooking extends AppCompatActivity {
     JsonHttpParse jsonhttpParse = new JsonHttpParse();
 
     TextView cityname,start,end;
-
+  int hour,min,hour1,min1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +59,8 @@ public class CarBooking extends AppCompatActivity {
         recyclerView=findViewById(R.id.bookingrecycler);
 
         recyclerView.setHasFixedSize(true);
-
+       startime=findViewById(R.id.startt);
+       endtime=findViewById(R.id.endt);
         startdate=findViewById(R.id.textView4);
         enddate=findViewById(R.id.textView7);
         city=findViewById(R.id.cityname);
@@ -65,6 +74,7 @@ public class CarBooking extends AppCompatActivity {
             enddate.setText(end);
             city.setText(City);
         }
+
 
 //        Intent intent=getIntent();
 //       String city= intent.getStringExtra("city");
@@ -87,6 +97,7 @@ public class CarBooking extends AppCompatActivity {
 
 
         getSubSerivices("getAllavailCabs",City,stdate,end);
+
 
 //        CarBookingModel carBookingModel=new CarBookingModel(R.drawable.hundaiimage,"Renault Kwid","Petrol","₹1500","5 seat","Automatic","5 baggage","BOOKED");
 //        carBookingModels.add(carBookingModel);
@@ -191,6 +202,76 @@ public class CarBooking extends AppCompatActivity {
 
     }
 
+
+    public void endTime(View view) {
+        TimePickerDialog timePickerDialog=new TimePickerDialog(CarBooking.this, android.R.style.Theme_Holo_Light_Dialog_MinWidth, new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                hour1=hourOfDay;
+                min1=minute;
+                String time1=hour1+":"+min1;
+                SimpleDateFormat f24hours1=new SimpleDateFormat("HH:mm");
+                try {
+                    Date date1=f24hours1.parse(time1);
+                    SimpleDateFormat f12hour1=new SimpleDateFormat("hh:mm aa");
+                    endtime.setText(f12hour1.format(date1));
+                    String et=endtime.getText().toString();
+                    SharedPreferences sharedPreferences1 = CarBooking.this.getSharedPreferences("Date", MODE_PRIVATE);
+                    final SharedPreferences.Editor myEdit = sharedPreferences1.edit();
+                    myEdit.putString("endtime",""+et);
+                    myEdit.apply();
+                    // Toast.makeText(CarBooking.this, ""+sd, Toast.LENGTH_SHORT).show();
+                    int dif=hour1-hour;
+                    Toast.makeText(CarBooking.this, ""+dif, Toast.LENGTH_SHORT).show();
+                    SharedPreferences sharedPreferences2 = CarBooking.this.getSharedPreferences("Date", MODE_PRIVATE);
+                    final SharedPreferences.Editor myEdit2 = sharedPreferences2.edit();
+                    myEdit2.putInt("dif",dif);
+                    myEdit2.apply();
+                } catch (ParseException e) {
+                    // Toast.makeText(CarBooking.this, "hi", Toast.LENGTH_SHORT).show();
+                    e.printStackTrace();
+                }
+            }
+        },12,0,false
+        );
+        timePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        timePickerDialog.updateTime(hour1,min1);
+        timePickerDialog.show();
+
+    }
+
+
+    public void starttime(View view) {
+        TimePickerDialog timePickerDialog=new TimePickerDialog(CarBooking.this, android.R.style.Theme_Holo_Light_Dialog_MinWidth, new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                hour=hourOfDay;
+                min=minute;
+
+                String time1=hour+":"+min;
+                SimpleDateFormat f24hours=new SimpleDateFormat("HH:mm");
+                try {
+                    Date date=f24hours.parse(time1);
+                    SimpleDateFormat f12hour=new SimpleDateFormat("hh:mm aa");
+                    startime.setText(f12hour.format(date));
+                    String st=startime.getText().toString();
+                    SharedPreferences sharedPreferences1 = CarBooking.this.getSharedPreferences("Date", MODE_PRIVATE);
+                    final SharedPreferences.Editor myEdit = sharedPreferences1.edit();
+                    myEdit.putString("starttime",""+st);
+                    myEdit.apply();
+                    //Toast.makeText(CarBooking.this, ""+startime, Toast.LENGTH_SHORT).show();
+                } catch (ParseException e) {
+                   // Toast.makeText(CarBooking.this, "hi", Toast.LENGTH_SHORT).show();
+                    e.printStackTrace();
+                }
+            }
+        },12,0,false
+        );
+        timePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        timePickerDialog.updateTime(hour,min);
+        timePickerDialog.show();
+
+    }
 
 
 

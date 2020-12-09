@@ -32,8 +32,8 @@ public class CarBookingAdapter extends RecyclerView.Adapter<CarBookingAdapter.vi
     }
 
     @Override
-    public void onBindViewHolder(@NonNull viewHolder holder, int position) {
-        CarBookingModel carBookingModel=carBookingModels.get(position);
+    public void onBindViewHolder(@NonNull final viewHolder holder, int position) {
+        final CarBookingModel carBookingModel=carBookingModels.get(position);
        int pos1=carBookingModels.indexOf(carBookingModel);
         holder.carimage.setImageResource(carBookingModel.getCarimage());
 
@@ -83,8 +83,14 @@ public class CarBookingAdapter extends RecyclerView.Adapter<CarBookingAdapter.vi
         holder.status.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent=new Intent(context,PaymentPage.class);
-//                context.startActivity(intent);
+               Intent intent=new Intent(context,PaymentPage.class);
+               intent.putExtra("carimage",carBookingModel.getCarimage());
+               intent.putExtra("carname",carBookingModel.getCarname());
+                intent.putExtra("geartype",carBookingModel.getGeartype());
+                intent.putExtra("fuel",carBookingModel.getFueltype());
+                intent.putExtra("totalprice",carBookingModel.getCarname());
+
+              context.startActivity(intent);
                 //do whatever require to do
 
             }

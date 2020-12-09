@@ -8,145 +8,130 @@
     android:layout_marginBottom="15dp"
     android:layout_height="wrap_content">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="190dp"
+
         android:background="@drawable/backgroung">
 
         <ImageView
             android:id="@+id/carimage"
-            android:layout_width="150dp"
-            android:layout_height="171dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_margin="10dp"
-            android:layout_marginStart="4dp"
+            android:layout_height="171dp"
             android:scaleType="centerInside"
+            android:src="@drawable/hundaiimage" />
 
-            android:src="@drawable/hundaiimage"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.526" />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="2dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/carname"
-            android:layout_width="220dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
+            <TextView
+                android:id="@+id/carname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
-            android:layout_toRightOf="@+id/carimage"
-            android:text="RENAULT KWID"
-            android:textColor="#fff"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.48"
-            app:layout_constraintStart_toEndOf="@+id/carimage"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.1" />
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="15dp"
+                android:text="RENAULT KWID"
+                android:textColor="#fff"
+                android:textSize="22sp"
+                android:textStyle="bold" />
 
-        <ImageView
-            android:id="@+id/imageView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/carimage"
-            app:layout_constraintTop_toBottomOf="@+id/carname"
-            app:layout_constraintVertical_bias="0.401"
-            app:srcCompat="@drawable/petrol" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
 
-        <TextView
-            android:id="@+id/fueltype"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="Petrol"
-            android:textColor="#97C761"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView4"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.57" />
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
 
-        <ImageView
-            android:id="@+id/imageView5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="96dp"
-            android:layout_marginTop="48dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginBottom="69dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/geartype"
-            app:layout_constraintStart_toEndOf="@+id/carimage"
-            app:layout_constraintTop_toBottomOf="@+id/carname"
-            app:srcCompat="@drawable/luggage" />
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="2dp"
+                    android:scaleType="centerInside"
+                    app:srcCompat="@drawable/petrol" />
 
-        <TextView
-            android:id="@+id/geartype"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="52dp"
-            android:layout_marginEnd="8dp"
-            android:text="Automatic"
-            android:textColor="#97C761"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView5"
-            app:layout_constraintTop_toBottomOf="@+id/carname" />
+                <TextView
+                    android:id="@+id/fueltype"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="2dp"
+                    android:text="Petrol"
+                    android:textColor="#97C761" />
 
-        <ImageView
-            android:id="@+id/imageView6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintStart_toEndOf="@+id/carimage"
-            app:layout_constraintTop_toBottomOf="@+id/imageView4"
-            app:srcCompat="@drawable/seat" />
+                <ImageView
+                    android:id="@+id/imageView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="3dp"
+                    app:srcCompat="@drawable/luggage" />
 
-        <TextView
-            android:id="@+id/totalseat"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="35dp"
-            android:text="5 Seat"
-            android:textColor="#97C761"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView6"
-            app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+                <TextView
+                    android:id="@+id/geartype"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="2dp"
+                    android:text="Automatic"
+                    android:textColor="#97C761" />
+            </LinearLayout>
 
-        <ImageView
-            android:id="@+id/imageView7"
-            android:layout_width="28dp"
-            android:layout_height="29dp"
-            android:layout_marginStart="14dp"
-            android:layout_marginTop="11dp"
-            android:layout_marginEnd="15dp"
-            app:layout_constraintEnd_toStartOf="@+id/baggage"
-            app:layout_constraintStart_toEndOf="@+id/totalseat"
-            app:layout_constraintTop_toBottomOf="@+id/imageView5"
-            app:srcCompat="@drawable/gear" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/baggage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="21dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="32dp"
-            android:text="3 Baggage"
-            android:textColor="#97C761"
-            android:textSize="14sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView7"
-            app:layout_constraintTop_toBottomOf="@+id/geartype"
-            app:layout_constraintVertical_bias="1.0" />
+                <ImageView
+                    android:id="@+id/imageView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="2dp"
+                    android:scaleType="centerInside"
+                    app:srcCompat="@drawable/seat" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                <TextView
+                    android:id="@+id/totalseat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="3dp"
+                    android:text="5 Seat"
+                    android:textColor="#97C761" />
+
+                <ImageView
+                    android:id="@+id/imageView7"
+                    android:layout_width="28dp"
+                    android:layout_height="29dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="5dp"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/gear" />
+
+                <TextView
+                    android:id="@+id/baggage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="2dp"
+                    android:text="3 Baggage"
+                    android:textColor="#97C761"
+                    android:textSize="14sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
 
     <TextView
         android:layout_marginBottom="2dp"
