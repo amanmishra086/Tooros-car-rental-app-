@@ -8,11 +8,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class PaymentPage extends AppCompatActivity {
-TextView gst,total,basefair,coupondiscount,picupcharges,weekdaychages,totalcharges,startdate,enddate,timeduration,carname,startt,endt;
+TextView gst,total,basefair,coupondiscount,picupcharges,weekdaychages,totalcharges,startdate,enddate,timeduration,carname,startt,endt,geartype,fuel;
+ImageView carimage;
 EditText Couponcode;
 Button book,apply;
     @Override
@@ -21,6 +23,7 @@ Button book,apply;
         setContentView(R.layout.activity_payment_page);
         startdate=findViewById(R.id.startdate);
         enddate=findViewById(R.id.enddate);
+        carimage=findViewById(R.id.carimage);
         weekdaychages=findViewById(R.id.textView21);
         totalcharges=findViewById(R.id.textView22);
         timeduration=findViewById(R.id.textView12);
@@ -34,8 +37,23 @@ Button book,apply;
         Couponcode=findViewById(R.id.couponcode);
         carname=findViewById(R.id.carname);
         book=findViewById(R.id.book);
+        geartype=findViewById(R.id.textView9);
+        fuel=findViewById(R.id.textView10);
         apply=findViewById(R.id.apply);
-       // Intent intent=getIntent();
+       Intent intent=getIntent();
+       Bundle bundle=getIntent().getExtras();
+       if(bundle!=null){
+           int resid=bundle.getInt("carimage");
+           carimage.setImageResource(resid);
+       }
+       String carn=intent.getExtras().getString("carname");
+       String  geart=intent.getExtras().getString("geartype");
+       String fuelt=intent.getExtras().getString("fuel");
+       carname.setText(""+carn);
+       geartype.setText(""+geart);
+       fuel.setText(""+fuelt);
+
+        Toast.makeText(PaymentPage.this, ""+carn, Toast.LENGTH_SHORT).show();
         SharedPreferences sharedPreferences = PaymentPage.this.getSharedPreferences("Date", MODE_PRIVATE);
         String stdate= sharedPreferences.getString("startdate",null);
         String end= sharedPreferences.getString("Enddate",null);

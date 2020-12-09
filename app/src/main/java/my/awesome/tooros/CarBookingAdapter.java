@@ -80,15 +80,17 @@ public class CarBookingAdapter extends RecyclerView.Adapter<CarBookingAdapter.vi
        // holder.status.setText(carBookingModel.getStatus());
         holder.status.setText("Book Now");
         holder.carname.setText(carBookingModel.getCarname());
+        final String finalFuel = fuel;
+        final String finalGear = gear;
         holder.status.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                Intent intent=new Intent(context,PaymentPage.class);
                intent.putExtra("carimage",carBookingModel.getCarimage());
-               intent.putExtra("carname",carBookingModel.getCarname());
-                intent.putExtra("geartype",carBookingModel.getGeartype());
-                intent.putExtra("fuel",carBookingModel.getFueltype());
-                intent.putExtra("totalprice",carBookingModel.getCarname());
+               intent.putExtra("carname",""+carBookingModel.getCarname().toString());
+                intent.putExtra("geartype",""+ finalGear);
+                intent.putExtra("fuel",""+finalFuel);
+                intent.putExtra("totalprice",""+carBookingModel.getCarname().toString());
 
               context.startActivity(intent);
                 //do whatever require to do

@@ -12,17 +12,18 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="310dp"
+        android:layout_height="330dp"
         android:background="@drawable/backgroung"
         android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="220dp"
+            android:layout_height="250dp"
             android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="220dp"
+                android:layout_height="250dp"
                 android:layout_weight="1.8"
                 android:orientation="vertical">
 
@@ -185,19 +186,21 @@
 
                 </LinearLayout>
             </LinearLayout>
+
             <LinearLayout
-                android:orientation="vertical"
                 android:layout_width="0dp"
+                android:layout_height="250dp"
                 android:layout_weight="1.2"
-                android:layout_height="220dp">
+                android:orientation="vertical">
+
                 <ImageView
                     android:id="@+id/carimage"
-                    android:src="@drawable/hundaiimage"
-                    android:scaleType="centerInside"
+
+                    android:layout_width="150dp"
+                    android:layout_height="110dp"
                     android:layout_marginTop="30dp"
                     android:layout_marginRight="3dp"
-                    android:layout_width="150dp"
-                    android:layout_height="110dp"/>
+                    android:scaleType="centerInside" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -219,8 +222,6 @@
                     android:hint="49 hrs"
                     android:textColor="#000000"
                     android:textSize="16sp" />
-
-
 
 
             </LinearLayout>
