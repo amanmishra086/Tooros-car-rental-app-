@@ -2,8 +2,10 @@ package my.awesome.tooros;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -16,6 +18,7 @@ import android.widget.Toast;
 import com.razorpay.Checkout;
 import com.razorpay.PaymentResultListener;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class PaymentPage extends AppCompatActivity implements PaymentResultListener {
@@ -23,6 +26,11 @@ TextView gst,total,basefair,coupondiscount,picupcharges,weekdaychages,totalcharg
 ImageView carimage;
 EditText Couponcode;
 Button book,apply;
+    ProgressDialog progressDialog;
+
+    JsonHttpParse jsonhttpParse = new JsonHttpParse();
+    String finalResult ;
+    String HttpURL = "https://www.cakiweb.com/tooros/api/api.php";
 
     private static final String TAG = PaymentPage.class.getSimpleName();
     @Override
@@ -110,12 +118,95 @@ Button book,apply;
             public void onClick(View v) {
                 //take all input send to api and proceed for payment
 
+                bookCab("bookCab");
                 startPayment(Float.parseFloat(total.getText().toString()));
+
+
 
             }
         });
 
     }
+
+    public void bookCab(final String method){
+
+        class BookCabClass extends AsyncTask<String,Void,String> {
+
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+
+                progressDialog = ProgressDialog.show(PaymentPage.this,"Loading Data",null,true,true);
+            }
+
+            @Override
+            protected void onPostExecute(String httpResponseMsg) {
+
+                super.onPostExecute(httpResponseMsg);
+
+                progressDialog.dismiss();
+                boolean msg=httpResponseMsg.contains("200");
+
+                Toast.makeText(PaymentPage.this, ""+httpResponseMsg, Toast.LENGTH_SHORT).show();
+
+                if(msg){
+
+                   // Toast.makeText(PaymentPage.this, "helloooooo", Toast.LENGTH_SHORT).show();
+
+                    JSONObject jsonObject = null;
+                    try {
+                        jsonObject = new JSONObject(httpResponseMsg);
+                        //  String messege= jsonObject.getString("otp");
+                        String booking_id= jsonObject.getString("booking_id");
+                        String payment_id= jsonObject.getString("payment_id");
+
+//                       Intent intent=new Intent(Signup.this,Login.class);
+//                      //  intent.putExtra("phone",strphone);
+//                      //  intent.putExtra("otp",messege);
+//                        startActivity(intent);
+
+                        Toast.makeText(PaymentPage.this, booking_id, Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(PaymentPage.this, "Bookcab method done", Toast.LENGTH_SHORT).show();
+
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }else {
+
+                    JSONObject jsonObject = null;
+                    try {
+                        jsonObject = new JSONObject(httpResponseMsg);
+                        String messege = jsonObject.getString("msg");
+                        Toast.makeText(PaymentPage.this, messege, Toast.LENGTH_SHORT).show();
+
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+            @Override
+            protected String doInBackground(String... params) {
+
+
+
+                //String jsonInputString="{\"method\":\"registerUser\",\"name\":\""+strname+"\",\"email\":\""+stremail+"\",\"mobile\":\""+strphone+"\",\"password\":\""+strpassword+"\",\"dl_no\":\""+strdlno+"\",\"aadhar_no\":\""+straadharcardno+"\",\"dob\":\""+strdob+"\"}";
+
+                String jsonInputString="{\"method\":\"bookCab\",\"car_id\":\"6\",\"city\":\"1\",\"pickup_date\":\"2021-01-15\",\"pickup_time\":\"09:00 AM\",\"2021-01-16\":\"2021-10-28\",\"dropup_time\":\"21:00 PM\",\"booking_amount\":\"5026.67\",\"name\":\"Aman\",\"mobile\":\"9636730565\",\"email\":\"abc@gmail.com\",\"message\":\"api testing\",\"coupon\":\"\",\"dlno\":\"DL123456\",\"dob\":\"25-03-2000\",\"security\":\"Online\"}";
+//                finalResult = jsonhttpParse.postRequest(method,Email,Password, HttpURL);
+                finalResult = jsonhttpParse.postRequest(jsonInputString, HttpURL);
+
+                return finalResult;
+            }
+        }
+
+        BookCabClass bookCabClass = new BookCabClass();
+
+        bookCabClass.execute(method);
+    }
+
     public void startPayment(Float total) {
 
         /**
