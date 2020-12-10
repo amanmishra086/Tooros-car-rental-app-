@@ -145,7 +145,9 @@ public class CarBooking extends AppCompatActivity {
 //                            CarBookingModel carBookingModel=new CarBookingModel(R.drawable.hundaiimage,"Renault Kwid","Petrol",ob.getString("id"),"5 seat","Automatic","5 baggage","BOOKED");
 //                            carBookingModels.add(carBookingModel);
 
-                            CarBookingModel carBookingModel=new CarBookingModel(R.drawable.hundaiimage,ob.getString("car_nme"),ob.getString("fuelType"),ob.getString("cost"),ob.getString("no_of_seat"),ob.getString("gearType"),ob.getString("no_of_baggage"),ob.getString("status"));
+                            CarBookingModel carBookingModel=new CarBookingModel(R.drawable.hundaiimage,ob.getString("car_nme")
+                                    ,ob.getString("fuelType"),ob.getString("cost"),ob.getString("no_of_seat"),
+                                    ob.getString("gearType"),ob.getString("no_of_baggage"),ob.getString("status"),ob.getString("weekendcost"),ob.getString("security"));
                             carBookingModels.add(carBookingModel);
                         }
 

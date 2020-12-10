@@ -33,6 +33,10 @@
         <activity
             android:name=".MainActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
+        <meta-data
+            android:name="com.razorpay.ApiKey"
+            android:value="rzp_test_YZ0rZv8DFWccCl" />
     </application>
 
 </manifest>
