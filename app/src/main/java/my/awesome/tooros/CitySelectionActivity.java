@@ -202,11 +202,11 @@ RecyclerView offer_recycler;
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear,
                                   int dayOfMonth) {
+
                 // TODO Auto-generated method stub
                 myStartCalendar.set(Calendar.YEAR, year);
                 myStartCalendar.set(Calendar.MONTH, monthOfYear);
                 myStartCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-
                 String myFormat = "yyyy-MM-dd";//In which you need put here
                 SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
 
@@ -220,12 +220,17 @@ RecyclerView offer_recycler;
                 myEdit.putString("startdate",""+startdateSelected);
                 myEdit.apply();
 
-
                // Toast.makeText(CitySelectionActivity.this,sdf.format(myStartCalendar.getTime()) , Toast.LENGTH_SHORT).show();
             }
 
-        };
-        enddatelistener = new DatePickerDialog.OnDateSetListener() {
+
+        }
+        ;
+
+
+
+
+                enddatelistener = new DatePickerDialog.OnDateSetListener() {
 
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear,
@@ -234,7 +239,7 @@ RecyclerView offer_recycler;
                 myEndCalendar.set(Calendar.YEAR, year);
                 myEndCalendar.set(Calendar.MONTH, monthOfYear);
                 myEndCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-
+                myEndCalendar.setTimeInMillis(System.currentTimeMillis()-1000);
                // String myFormat = "dd/MM/yy"; //In which you need put here
                 String myFormat = "yyyy-MM-dd"; //In which you need put here
                 SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
@@ -255,6 +260,7 @@ RecyclerView offer_recycler;
 
                 //Toast.makeText(CitySelectionActivity.this,sdf.format(myEndCalendar.getTime()) , Toast.LENGTH_SHORT).show();
             }
+
 
         };
 
@@ -460,15 +466,24 @@ RecyclerView offer_recycler;
     }
     public void onClickStartDate(View view) {
 
-        new DatePickerDialog(CitySelectionActivity.this, startdatelistener, myStartCalendar
+       DatePickerDialog datePickerDialog= new DatePickerDialog(CitySelectionActivity.this, startdatelistener, myStartCalendar
                 .get(Calendar.YEAR), myStartCalendar.get(Calendar.MONTH),
-                myStartCalendar.get(Calendar.DAY_OF_MONTH)).show();
+                myStartCalendar.get(Calendar.DAY_OF_MONTH));
+       datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis()-1000);
+       datePickerDialog.show();
+
+
+
+
     }
 
     public void onClickEndDate(View view) {
-        new DatePickerDialog(CitySelectionActivity.this, enddatelistener, myEndCalendar
+        DatePickerDialog datePickerDialog= new DatePickerDialog(CitySelectionActivity.this, enddatelistener, myEndCalendar
                 .get(Calendar.YEAR), myEndCalendar.get(Calendar.MONTH),
-                myEndCalendar.get(Calendar.DAY_OF_MONTH)).show();
+                myEndCalendar.get(Calendar.DAY_OF_MONTH));
+        datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis()-1000);
+        datePickerDialog.show();
+
 
     }
     public void onClickFindCarButton(View view) {
