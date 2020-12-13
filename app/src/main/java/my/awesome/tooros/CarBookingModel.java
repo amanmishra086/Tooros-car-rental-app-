@@ -13,8 +13,9 @@ public class CarBookingModel {
     String status;
     String weekendcost;
     String security;
+    String car_id;
 
-    public CarBookingModel(int carimage, String carname, String fueltype, String price, String seat, String geartype, String baggage, String status, String weekendcost, String security) {
+    public CarBookingModel(int carimage, String carname, String fueltype, String price, String seat, String geartype, String baggage, String status, String weekendcost, String security,String car_id) {
         this.carimage = carimage;
         this.carname = carname;
         this.fueltype = fueltype;
@@ -25,6 +26,15 @@ public class CarBookingModel {
         this.status = status;
         this.weekendcost = weekendcost;
         this.security = security;
+        this.car_id=car_id;
+    }
+
+    public String getCar_id() {
+        return car_id;
+    }
+
+    public void setCar_id(String car_id) {
+        this.car_id = car_id;
     }
 
     public int getCarimage() {

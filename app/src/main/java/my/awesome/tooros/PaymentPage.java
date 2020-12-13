@@ -67,6 +67,7 @@ Button book,apply;
        String fuelt=intent.getExtras().getString("fuel");
        String base_fare=intent.getExtras().getString("cost");
        String weekendcost=intent.getExtras().getString("weekendcost");
+       final String car_id=intent.getExtras().getString("car_id");
        carname.setText(""+carn);
        geartype.setText(""+geart);
        fuel.setText(""+fuelt);
@@ -80,10 +81,10 @@ Button book,apply;
 
         Toast.makeText(PaymentPage.this, ""+carn, Toast.LENGTH_SHORT).show();
         SharedPreferences sharedPreferences = PaymentPage.this.getSharedPreferences("Date", MODE_PRIVATE);
-        String stdate= sharedPreferences.getString("startdate",null);
-        String end= sharedPreferences.getString("Enddate",null);
-        String startime=sharedPreferences.getString("starttime",null);
-        String endtime=sharedPreferences.getString("endtime",null);
+        final String stdate= sharedPreferences.getString("startdate",null);
+        final String end= sharedPreferences.getString("Enddate",null);
+        final String startime=sharedPreferences.getString("starttime",null);
+        final String endtime=sharedPreferences.getString("endtime",null);
         int duration=sharedPreferences.getInt("dif",0);
         String dur=String.valueOf(duration);
       //  timeduration.append(" hrs");
@@ -118,7 +119,7 @@ Button book,apply;
             public void onClick(View v) {
                 //take all input send to api and proceed for payment
 
-                bookCab("bookCab");
+                bookCab("bookCab",stdate,end,startime,endtime,car_id,total.getText().toString());
                 startPayment(Float.parseFloat(total.getText().toString()));
 
 
@@ -128,7 +129,7 @@ Button book,apply;
 
     }
 
-    public void bookCab(final String method){
+    public void bookCab(String method, final String stdate, final String end, String startime, String endtime, final String car_id, final String price){
 
         class BookCabClass extends AsyncTask<String,Void,String> {
 
@@ -147,7 +148,7 @@ Button book,apply;
                 progressDialog.dismiss();
                 boolean msg=httpResponseMsg.contains("200");
 
-                Toast.makeText(PaymentPage.this, ""+httpResponseMsg, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(PaymentPage.this, ""+httpResponseMsg, Toast.LENGTH_SHORT).show();
 
                 if(msg){
 
@@ -165,7 +166,7 @@ Button book,apply;
 //                      //  intent.putExtra("otp",messege);
 //                        startActivity(intent);
 
-                        Toast.makeText(PaymentPage.this, booking_id, Toast.LENGTH_SHORT).show();
+                       // Toast.makeText(PaymentPage.this, booking_id, Toast.LENGTH_SHORT).show();
                         //Toast.makeText(PaymentPage.this, "Bookcab method done", Toast.LENGTH_SHORT).show();
 
 
@@ -194,7 +195,9 @@ Button book,apply;
 
                 //String jsonInputString="{\"method\":\"registerUser\",\"name\":\""+strname+"\",\"email\":\""+stremail+"\",\"mobile\":\""+strphone+"\",\"password\":\""+strpassword+"\",\"dl_no\":\""+strdlno+"\",\"aadhar_no\":\""+straadharcardno+"\",\"dob\":\""+strdob+"\"}";
 
-                String jsonInputString="{\"method\":\"bookCab\",\"car_id\":\"6\",\"city\":\"1\",\"pickup_date\":\"2021-01-15\",\"pickup_time\":\"09:00 AM\",\"2021-01-16\":\"2021-10-28\",\"dropup_time\":\"21:00 PM\",\"booking_amount\":\"5026.67\",\"name\":\"Aman\",\"mobile\":\"9636730565\",\"email\":\"abc@gmail.com\",\"message\":\"api testing\",\"coupon\":\"\",\"dlno\":\"DL123456\",\"dob\":\"25-03-2000\",\"security\":\"Online\"}";
+
+
+                String jsonInputString="{\"method\":\"bookCab\",\"car_id\":\""+car_id+"\",\"city\":\"1\",\"pickup_date\":\""+stdate+"\",\"pickup_time\":\"09:00 AM\",\"dropup_date\":\""+end+"\",\"dropup_time\":\"21:00 PM\",\"booking_amount\":\""+price+"\",\"name\":\"Aman_Mishra\",\"mobile\":\"9636730565\",\"email\":\"abc@gmail.com\",\"message\":\"api testing\",\"coupon\":\"\",\"dlno\":\"DL123456\",\"dob\":\"25-03-2000\",\"security\":\"Online\"}";
 //                finalResult = jsonhttpParse.postRequest(method,Email,Password, HttpURL);
                 finalResult = jsonhttpParse.postRequest(jsonInputString, HttpURL);
 

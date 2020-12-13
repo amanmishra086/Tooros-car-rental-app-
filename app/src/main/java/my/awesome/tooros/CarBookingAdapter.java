@@ -93,6 +93,7 @@ public class CarBookingAdapter extends RecyclerView.Adapter<CarBookingAdapter.vi
                 intent.putExtra("totalprice",""+carBookingModel.getCarname().toString());
                 intent.putExtra("cost",carBookingModel.getPrice().toString());
                 intent.putExtra("weekendcost",carBookingModel.getWeekendcost());
+                intent.putExtra("car_id",carBookingModel.getCar_id());
 
               context.startActivity(intent);
                 //do whatever require to do

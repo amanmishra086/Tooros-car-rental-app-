@@ -108,7 +108,7 @@ public class CarBooking extends AppCompatActivity {
 
     }
 
-    private void getSubSerivices(final String method, String city,  String startdate,  String enddate) {
+    private void getSubSerivices(final String method, String city, final String startdate, final String enddate) {
 
         class OfferClass extends AsyncTask<String,Void,String> {
 
@@ -147,7 +147,8 @@ public class CarBooking extends AppCompatActivity {
 
                             CarBookingModel carBookingModel=new CarBookingModel(R.drawable.hundaiimage,ob.getString("car_nme")
                                     ,ob.getString("fuelType"),ob.getString("cost"),ob.getString("no_of_seat"),
-                                    ob.getString("gearType"),ob.getString("no_of_baggage"),ob.getString("status"),ob.getString("weekendcost"),ob.getString("security"));
+                                    ob.getString("gearType"),ob.getString("no_of_baggage"),ob.getString("status"),
+                                    ob.getString("weekendcost"),ob.getString("security"),ob.getString("id"));
                             carBookingModels.add(carBookingModel);
                         }
 
@@ -181,9 +182,11 @@ public class CarBooking extends AppCompatActivity {
             @Override
             protected String doInBackground(String... params) {
 
+                String concatPdate=""+startdate+" 09:00";
+                String concatDdate=""+enddate+" 21:00";
 
                 //String jsonInputString="{\"method\":\"getAllavailCabs\",\"concatPdate\":\""+startdate+" 09:00"+"\",\"concatDdate\":\""+enddate+" 21:00"+"\",\"city\":1}";
-                String jsonInputString="{\"method\":\"getAllavailCabs\",\"concatPdate\":\"2021-01-15 09:00\",\"concatDdate\":\"2021-01-16 21:00\",\"city\":1}";
+                String jsonInputString="{\"method\":\"getAllavailCabs\",\"concatPdate\":\""+concatPdate+"\",\"concatDdate\":\""+concatDdate+"\",\"city\":1}";
                // String jsonInputString={"method":"getAllavailCabs","concatPdate":"2021-01-15 09:00","concatDdate":"2021-01-16 21:00","city":1};
                 //String jsonInputString1="{\"method\":\"getAllsubService\",\"service_id\":\""+id+"\"}";
 
