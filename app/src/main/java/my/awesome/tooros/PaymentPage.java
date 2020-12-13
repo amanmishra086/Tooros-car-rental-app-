@@ -87,7 +87,7 @@ Button book,apply;
         final String endtime=sharedPreferences.getString("endtime",null);
         int duration=sharedPreferences.getInt("dif",0);
         String dur=String.valueOf(duration);
-      //  timeduration.append(" hrs");
+      // timeduration.append(" hrs");
 //        if(stdate!=" "&& end !=" "&&startime!=null&&endtime!=null&&dur!=null){
 //            startdate.setText(stdate);
 //            enddate.setText(end);
@@ -103,8 +103,8 @@ Button book,apply;
             enddate.setText(end);
             startt.setText("09:00");
             endt.setText("09:00");
-//            timeduration.setText(""+dur);
-//            timeduration.append(" hrs");
+            timeduration.setText(""+dur);
+            timeduration.append(" hrs");
         }else{
 
         }

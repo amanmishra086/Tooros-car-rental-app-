@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -8,609 +8,597 @@
     android:background="#000"
     android:orientation="vertical"
     tools:context=".PaymentPage">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#000"
-        android:orientation="vertical">
-
-
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="330dp"
-        android:background="@drawable/backgroung"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="250dp"
-                android:layout_weight="1.8"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/carname"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="28dp"
-                    android:layout_marginTop="16dp"
-                    android:hint="Maruti Swift"
-                    android:textColor="#000000"
-                    android:textSize="20sp" />
-
-
-                <LinearLayout
-                    android:id="@+id/lin1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="34dp"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="20dp"
-                    android:orientation="horizontal">
-
-
-                    <ImageView
-                        android:id="@+id/imageView8"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="10dp"
-                        android:tint="#000000"
-                        app:srcCompat="@drawable/luggage" />
-
-                    <TextView
-                        android:id="@+id/textView9"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="2dp"
-                        android:hint="Automatic"
-                        android:textColor="#000000"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
-
-                    <ImageView
-                        android:id="@+id/imageView10"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="3dp"
-                        android:tint="#000000"
-                        app:srcCompat="@drawable/petrol" />
-
-                    <TextView
-                        android:id="@+id/textView10"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="2dp"
-                        android:hint="Petrol"
-                        android:textColor="#000000"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/textView20"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="36dp"
-                    android:layout_marginTop="20dp"
-
-                    android:text="Start Date and Time"
-                    android:textColor="#fff"
-                    android:textSize="16sp" />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="2dp"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:id="@+id/imageView11"
-                        android:layout_width="wrap_content"
-                        android:layout_height="16dp"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginRight="2dp"
-                        android:scaleType="centerInside"
-                        app:srcCompat="@drawable/calender" />
-
-                    <TextView
-                        android:id="@+id/startdate"
-                        android:layout_width="130dp"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center_vertical"
-                        android:background="#fff"
-                        android:gravity="center"
-                        android:hint="10 DECEMBER 2020"
-                        android:textColor="#000000" />
-
-                    <TextView
-                        android:id="@+id/starttime"
-                        android:layout_width="60dp"
-                        android:layout_height="wrap_content"
-
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="2dp"
-                        android:background="#fff"
-                        android:gravity="center"
-                        android:hint="9:00 AM"
-                        android:textColor="#000000" />
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/textView15"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="36sp"
-                    android:layout_marginTop="5dp"
-                    android:text="End Date and Time"
-                    android:textColor="#fff"
-                    android:textSize="16sp" />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="2dp"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:id="@+id/imageView12"
-                        android:layout_width="wrap_content"
-                        android:layout_height="16dp"
-                        android:layout_marginRight="2dp"
-                        android:scaleType="centerInside"
-                        app:srcCompat="@drawable/calender" />
-
-                    <TextView
-                        android:id="@+id/enddate"
-                        android:layout_width="130dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:background="#fff"
-                        android:gravity="center"
-                        android:hint="10 DECEMBER 2020"
-                        android:textColor="#000000" />
-
-                    <TextView
-                        android:id="@+id/endtime"
-                        android:layout_width="60dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="2dp"
-                        android:background="#fff"
-                        android:gravity="center"
-                        android:hint="9:00 AM"
-                        android:textColor="#000000" />
-
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="250dp"
-                android:layout_weight="1.2"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:id="@+id/carimage"
-
-                    android:layout_width="150dp"
-                    android:layout_height="110dp"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginRight="3dp"
-                    android:scaleType="centerInside" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginRight="3dp"
-                    android:text="TIME DURATION"
-                    android:textColor="#fff"
-                    android:textSize="18sp" />
-
-                <TextView
-                    android:id="@+id/textView12"
-                    android:layout_width="126dp"
-                    android:layout_height="23dp"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginRight="3dp"
-                    android:background="#fff"
-                    android:gravity="center"
-                    android:hint="49 hrs"
-                    android:textColor="#000000"
-                    android:textSize="16sp" />
-
-
-            </LinearLayout>
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/backgroung"
-            android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/textView18"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="15dp"
-                    android:text="Week Days Charges"
-                    android:textColor="#fff"
-                    android:textSize="18sp" />
-
-                <TextView
-                    android:id="@+id/textView22"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:text="₹525"
-                    android:textColor="#fff"
-                    android:textSize="22sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/textView19"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="15dp"
-                    android:text="Week Days Charges"
-                    android:textColor="#fff"
-                    android:textSize="18sp" />
-
-                <TextView
-                    android:id="@+id/textView21"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:text="₹"
-                    android:textColor="#fff"
-                    android:textSize="22sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            </LinearLayout>
-        </LinearLayout>
-
-
-    </LinearLayout>
-
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
-        <TextView
-            android:id="@+id/textView23"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="26dp"
-
-            android:layout_marginEnd="176dp"
-            android:text="COUPON DISCOUNT"
-            android:textColor="#fff"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.007" />
-
-        <EditText
-            android:id="@+id/couponcode"
-            android:layout_width="208dp"
-            android:layout_height="37dp"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="168dp"
-            android:background="@drawable/redbutton"
-            android:gravity="center_vertical"
-            android:hint="Enter Coupon Code"
-            android:paddingLeft="6dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView23" />
-
-        <Button
-            android:id="@+id/apply"
-            android:layout_width="124dp"
-            android:layout_height="37dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="28dp"
-            android:layout_marginEnd="25dp"
-            android:background="@drawable/redbutton"
-            android:text="APPLY"
-            android:textColor="#fff"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/couponcode"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="190dp"
-        android:layout_marginTop="4dp"
-        android:background="@drawable/backgroung"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="4dp"
-            android:text="PRICING"
-            android:textColor="#fff"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
         <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="3dp"
-                android:text="Base Fare......................................."
 
-                android:textColor="#fff"
-                android:textSize="16sp" />
-            <TextView
-                android:layout_marginLeft="3dp"
-                android:textSize="16sp"
-                android:layout_marginTop="4dp"
-                android:text="₹"
-                android:textColor="#fff"
-                android:textStyle="bold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="330dp"
+                android:background="@drawable/backgroung"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/basefare"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="3dp"
-                android:layout_marginTop="4dp"
-                android:hint="1000"
-                android:textColor="#fff"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-        </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="3dp"
-                android:text="Delivery and Pick Up Charges......"
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="250dp"
+                        android:layout_weight="1.8"
+                        android:orientation="vertical">
 
-                android:textColor="#fff"
-                android:textSize="16sp" />
-            <TextView
-                android:layout_marginLeft="3dp"
-                android:textSize="16sp"
-                android:layout_marginTop="4dp"
-                android:text="₹"
-                android:textColor="#fff"
-                android:textStyle="bold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                        <TextView
+                            android:id="@+id/carname"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="28dp"
+                            android:layout_marginTop="16dp"
+                            android:hint="Maruti Swift"
+                            android:textColor="#000000"
+                            android:textSize="20sp" />
 
-            <TextView
-                android:id="@+id/delivery"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="3dp"
-                android:layout_marginTop="4dp"
-                android:text="0"
-                android:textColor="#fff"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="3dp"
-                android:text="Discount........................................"
 
-                android:textColor="#fff"
-                android:textSize="16sp" />
-            <TextView
-                android:layout_marginLeft="3dp"
-                android:textSize="16sp"
-                android:layout_marginTop="4dp"
-                android:text="₹"
-                android:textColor="#fff"
-                android:textStyle="bold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                        <LinearLayout
+                            android:id="@+id/lin1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="34dp"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginTop="20dp"
+                            android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/discount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="3dp"
-                android:layout_marginTop="4dp"
-               android:text="0"
-                android:textColor="#fff"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="3dp"
-                android:text="GST................................................"
 
-                android:textColor="#fff"
-                android:textSize="16sp" />
-            <TextView
-                android:layout_marginLeft="3dp"
-                android:textSize="16sp"
-                android:layout_marginTop="4dp"
-                android:text="₹"
-                android:textColor="#fff"
-                android:textStyle="bold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                            <ImageView
+                                android:id="@+id/imageView8"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="10dp"
+                                android:tint="#000000"
+                                app:srcCompat="@drawable/luggage" />
 
-            <TextView
-                android:id="@+id/gst"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="3dp"
-                android:layout_marginTop="4dp"
-                android:hint="1000"
-                android:textColor="#fff"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-        </LinearLayout>
+                            <TextView
+                                android:id="@+id/textView9"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="2dp"
+                                android:hint="Automatic"
+                                android:textColor="#000000"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="5dp"
-            android:layout_marginLeft="29dp"
-            android:layout_marginTop="2dp"
-            android:layout_marginRight="74dp"
-            android:background="#fff" />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <TextView
-                android:text="Total"
-                android:layout_marginLeft="30dp"
-                android:textSize="16sp"
-                android:textColor="#fff"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                            <ImageView
+                                android:id="@+id/imageView10"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="3dp"
+                                android:tint="#000000"
+                                app:srcCompat="@drawable/petrol" />
+
+                            <TextView
+                                android:id="@+id/textView10"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="2dp"
+                                android:hint="Petrol"
+                                android:textColor="#000000"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/textView20"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="36dp"
+                            android:layout_marginTop="20dp"
+
+                            android:text="Start Date and Time"
+                            android:textColor="#fff"
+                            android:textSize="16sp" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginTop="2dp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/imageView11"
+                                android:layout_width="wrap_content"
+                                android:layout_height="16dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginRight="2dp"
+                                android:scaleType="centerInside"
+                                app:srcCompat="@drawable/calender" />
+
+                            <TextView
+                                android:id="@+id/startdate"
+                                android:layout_width="100dp"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center_vertical"
+                                android:background="#fff"
+                                android:gravity="center"
+                                android:hint="10/12/2020"
+                                android:textColor="#000000" />
+
+                            <TextView
+                                android:id="@+id/starttime"
+                                android:layout_width="60dp"
+                                android:layout_height="wrap_content"
+
+                                android:layout_gravity="center_horizontal|center_vertical"
+                                android:layout_marginLeft="2dp"
+                                android:background="#fff"
+                                android:gravity="center"
+                                android:hint="9:00 AM"
+                                android:padding="1dp"
+                                android:textColor="#000000" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/textView15"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="36sp"
+                            android:layout_marginTop="5dp"
+                            android:text="End Date and Time"
+                            android:textColor="#fff"
+                            android:textSize="16sp" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginTop="2dp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/imageView12"
+                                android:layout_width="wrap_content"
+                                android:layout_height="16dp"
+                                android:layout_marginRight="2dp"
+                                android:scaleType="centerInside"
+                                app:srcCompat="@drawable/calender" />
+
+                            <TextView
+                                android:id="@+id/enddate"
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:background="#fff"
+                                android:gravity="center"
+                                android:hint="10/11/2020"
+                                android:textColor="#000000" />
+
+                            <TextView
+                                android:id="@+id/endtime"
+                                android:layout_width="60dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal|center_vertical"
+                                android:layout_marginLeft="2dp"
+                                android:background="#fff"
+                                android:gravity="center"
+                                android:hint="9:00 AM"
+                                android:textColor="#000000" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="250dp"
+                        android:layout_weight="1.2"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/carimage"
+
+                            android:layout_width="match_parent"
+                            android:layout_height="110dp"
+                            android:layout_marginTop="30dp"
+                            android:layout_marginRight="4dp"
+                            android:scaleType="centerInside" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginRight="3dp"
+                            android:text="TIME DURATION"
+                            android:textColor="#fff"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:id="@+id/textView12"
+                            android:layout_width="126dp"
+                            android:layout_height="23dp"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginRight="3dp"
+                            android:background="#fff"
+                            android:gravity="center"
+                            android:hint="49 hrs"
+                            android:textColor="#000000"
+                            android:textSize="16sp" />
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/backgroung"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/textView18"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginTop="15dp"
+                                android:text="Week Days Charges"
+                                android:textColor="#fff"
+                                android:textSize="18sp" />
+
+                            <TextView
+                                android:id="@+id/textView22"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:text="₹525"
+                                android:textColor="#fff"
+                                android:textSize="22sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/textView19"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginTop="15dp"
+                                android:text="Week Days Charges"
+                                android:textColor="#fff"
+                                android:textSize="18sp" />
+
+                            <TextView
+                                android:id="@+id/textView21"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:text="₹"
+                                android:textColor="#fff"
+                                android:textSize="22sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/textView23"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="18dp"
+                    android:layout_marginTop="2dp"
+                    android:text="COUPON DISCOUNT"
+                    android:textColor="#fff"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/couponcode"
+                        android:layout_width="208dp"
+                        android:layout_height="37dp"
+                        android:layout_marginLeft="15dp"
+
+                        android:background="@drawable/redbutton"
+                        android:gravity="center_vertical"
+                        android:hint="Enter Coupon Code"
+                        android:paddingLeft="6dp"
+                        />
+
+                    <Button
+                        android:id="@+id/apply"
+                        android:layout_width="124dp"
+                        android:layout_height="37dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/redbutton"
+                        android:text="APPLY"
+                        android:textColor="#fff"
+                        android:textSize="16sp"
+                        />
+                </LinearLayout>
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="190dp"
+                android:layout_height="190dp"
                 android:layout_marginTop="4dp"
-                android:background="@drawable/redbutton"
+                android:background="@drawable/backgroung"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="4dp"
+                    android:text="PRICING"
+                    android:textColor="#fff"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginTop="3dp"
+                        android:text="Base Fare......................................."
+
+                        android:textColor="#fff"
+                        android:textSize="16sp" />
+                    <TextView
+                        android:layout_marginLeft="3dp"
+                        android:textSize="16sp"
+                        android:layout_marginTop="4dp"
+                        android:text="₹"
+                        android:textColor="#fff"
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:id="@+id/basefare"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="3dp"
+                        android:layout_marginTop="4dp"
+                        android:hint="1000"
+                        android:textColor="#fff"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginTop="3dp"
+                        android:text="Delivery and Pick Up Charges......"
+
+                        android:textColor="#fff"
+                        android:textSize="16sp" />
+                    <TextView
+                        android:layout_marginLeft="3dp"
+                        android:textSize="16sp"
+                        android:layout_marginTop="4dp"
+                        android:text="₹"
+                        android:textColor="#fff"
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:id="@+id/delivery"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="3dp"
+                        android:layout_marginTop="4dp"
+                        android:text="0"
+                        android:textColor="#fff"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginTop="3dp"
+                        android:text="Discount........................................"
+
+                        android:textColor="#fff"
+                        android:textSize="16sp" />
+                    <TextView
+                        android:layout_marginLeft="3dp"
+                        android:textSize="16sp"
+                        android:layout_marginTop="4dp"
+                        android:text="₹"
+                        android:textColor="#fff"
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:id="@+id/discount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="3dp"
+                        android:layout_marginTop="4dp"
+                        android:text="0"
+                        android:textColor="#fff"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginTop="3dp"
+                        android:text="GST................................................"
+
+                        android:textColor="#fff"
+                        android:textSize="16sp" />
+                    <TextView
+                        android:layout_marginLeft="3dp"
+                        android:textSize="16sp"
+                        android:layout_marginTop="4dp"
+                        android:text="₹"
+                        android:textColor="#fff"
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:id="@+id/gst"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="3dp"
+                        android:layout_marginTop="4dp"
+                        android:hint="1000"
+                        android:textColor="#fff"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp"
+                    android:layout_marginLeft="29dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginRight="74dp"
+                    android:background="#fff" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:text="Total"
+                        android:layout_marginLeft="30dp"
+                        android:textSize="16sp"
+                        android:textColor="#fff"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="190dp"
+                        android:layout_marginTop="4dp"
+                        android:background="@drawable/redbutton"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="9dp"
+                            android:text="₹"
+                            android:textColor="#fff" />
+
+                        <TextView
+                            android:textStyle="bold"
+                            android:id="@+id/totalamount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:hint="1000"
+                            android:paddingRight="9dp"
+                            android:textColor="#fff" />
+                    </LinearLayout>
+                </LinearLayout>
+                <TextView
+                    android:text="[Inclusive of all Taxes]"
+                    android:layout_marginLeft="30dp"
+                    android:textSize="16sp"
+                    android:textColor="#fff"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="37dp"
+                android:layout_marginTop="8dp"
+
+                android:background="@drawable/backgroung"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="9dp"
-                    android:text="₹"
-                    android:textColor="#fff" />
+                    android:layout_marginLeft="30dp"
+                    android:text="Terms and Conditions"
+                    android:layout_gravity="center_vertical"
+                    android:textColor="#fff"
+                    android:textSize="16sp" />
 
                 <TextView
-                    android:textStyle="bold"
-                    android:id="@+id/totalamount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:hint="1000"
-                    android:paddingRight="9dp"
-                    android:textColor="#fff" />
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="25dp"
+                    android:text="Cancellation Policy"
+                    android:textColor="#fff"
+                    android:textSize="16sp" />
+
             </LinearLayout>
+
+            <Button
+                android:id="@+id/book"
+                android:layout_width="173dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/redbutton"
+                android:paddingLeft="4dp"
+                android:paddingTop="2dp"
+                android:paddingRight="4dp"
+                android:paddingBottom="2dp"
+                android:text="BOOK NOW"
+                android:textSize="25sp" />
+
         </LinearLayout>
-        <TextView
-            android:text="[Inclusive of all Taxes]"
-            android:layout_marginLeft="30dp"
-            android:textSize="16sp"
-            android:textColor="#fff"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="37dp"
-        android:layout_marginTop="8dp"
-
-        android:background="@drawable/backgroung"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:text="Terms and Conditions"
-            android:layout_gravity="center_vertical"
-            android:textColor="#fff"
-            android:textSize="16sp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="25dp"
-            android:text="Cancellation Policy"
-            android:textColor="#fff"
-            android:textSize="16sp" />
-
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/book"
-        android:layout_width="173dp"
-        android:layout_height="45dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp"
-
-        android:background="@drawable/redbutton"
-        android:paddingLeft="4dp"
-        android:paddingTop="2dp"
-        android:paddingRight="4dp"
-        android:paddingBottom="2dp"
-        android:text="BOOK NOW"
-        android:textSize="25sp" />
-
-    </LinearLayout>
-
-</ScrollView>
-
+    </ScrollView>
+</LinearLayout>

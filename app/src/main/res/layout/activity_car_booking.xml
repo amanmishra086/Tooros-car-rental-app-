@@ -92,7 +92,7 @@
 
                     <TextView
                         android:id="@+id/startt"
-                        android:onClick="starttime"
+
                         android:layout_width="50dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="2dp"
@@ -135,7 +135,6 @@
                         android:id="@+id/imageView3"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-
                         android:layout_marginRight="2dp"
                         app:srcCompat="@drawable/calender" />
 
@@ -160,7 +159,7 @@
                         android:background="#fff"
                         android:gravity="clip_horizontal"
                         android:padding="2dp"
-                        android:onClick="endTime"
+
                         android:hint="9:00 AM"
                         android:textColor="#000"
                         android:textSize="10sp" />

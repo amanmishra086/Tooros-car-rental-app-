@@ -67,7 +67,7 @@
 
                 android:id="@+id/linear"
                 android:layout_width="match_parent"
-                android:layout_height="230dp"
+                android:layout_height="260dp"
                 android:background="@drawable/backgroung"
                 android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -185,6 +185,80 @@
 
                 </LinearLayout>
 
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="30dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/shapewhitebackground"
+                        android:gravity="center_vertical"
+                        android:onClick="starttime"
+                        android:orientation="horizontal">
+
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="8dp"
+                            app:srcCompat="@drawable/ic_access_time_black_24dp" />
+
+                        <TextView
+                            android:id="@+id/startt"
+
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginLeft="10dp"
+                            android:gravity="center_vertical"
+                            android:text="Select Start Time"
+                            android:textColor="@android:color/black" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/shapewhitebackground"
+                        android:onClick="endTime">
+
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="8dp"
+
+                            app:srcCompat="@drawable/ic_access_time_black_24dp" />
+
+                        <TextView
+                            android:id="@+id/endt"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginLeft="5dp"
+                            android:gravity="center_vertical"
+                            android:text="Select End Date"
+                            android:textColor="@android:color/black" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
                 <ImageButton
 
                     android:layout_width="match_parent"
@@ -204,7 +278,7 @@
                 android:id="@+id/nestedscroll"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="290dp"
+                android:layout_marginTop="315dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linear">
