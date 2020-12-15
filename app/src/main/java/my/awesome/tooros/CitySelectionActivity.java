@@ -93,9 +93,12 @@ RecyclerView offer_recycler;
         startime=findViewById(R.id.startt);
         endtime=findViewById(R.id.endt);
         spinner=findViewById(R.id.select_city);
-       // ArrayAdapter<String> adapter=new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,City);
-       // adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-      //  spinner.setAdapter(adapter);
+        List<String> list=new ArrayList<String>() ;
+        list.add("Bhubaneshwar");
+        list.add("Kota");
+        ArrayAdapter<String>dataadapter=new ArrayAdapter<String>(CitySelectionActivity.this,android.R.layout.simple_spinner_item,list);
+        dataadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(dataadapter);
                 spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
