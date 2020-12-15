@@ -124,24 +124,22 @@
                             <TextView
                                 android:id="@+id/startdate"
                                 android:layout_width="100dp"
-                                android:layout_height="match_parent"
+                                android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
                                 android:background="#fff"
                                 android:gravity="center"
                                 android:hint="10/12/2020"
-                                android:textColor="#000000" />
+                                android:textColor="#000000"/>
 
                             <TextView
                                 android:id="@+id/starttime"
                                 android:layout_width="60dp"
                                 android:layout_height="wrap_content"
-
                                 android:layout_gravity="center_horizontal|center_vertical"
                                 android:layout_marginLeft="2dp"
                                 android:background="#fff"
                                 android:gravity="center"
                                 android:hint="9:00 AM"
-                                android:padding="1dp"
                                 android:textColor="#000000" />
                         </LinearLayout>
 

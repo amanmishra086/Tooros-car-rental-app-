@@ -619,7 +619,4 @@ RecyclerView offer_recycler;
         timePickerDialog.show();
 
     }
-
-
-
 }
