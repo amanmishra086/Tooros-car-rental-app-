@@ -85,7 +85,7 @@ RecyclerView offer_recycler;
  int hour=0,min,hour1=0,min1;
     TextView startime,endtime;
     String st="",et="";
-
+    List<String> list=new ArrayList<String>() ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -93,12 +93,10 @@ RecyclerView offer_recycler;
         startime=findViewById(R.id.startt);
         endtime=findViewById(R.id.endt);
         spinner=findViewById(R.id.select_city);
-        List<String> list=new ArrayList<String>() ;
-        list.add("Bhubaneshwar");
-        list.add("Kota");
-        ArrayAdapter<String>dataadapter=new ArrayAdapter<String>(CitySelectionActivity.this,android.R.layout.simple_spinner_item,list);
-        dataadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(dataadapter);
+
+       // list.add("Bhubaneshwar");
+       // list.add("Kota");
+
                 spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -271,31 +269,27 @@ RecyclerView offer_recycler;
 
 
 
-//
+
 //        guidlines_adapter=new Guidlines_adapter(guidlines_models,CitySelectionActivity.this);
 //        LinearLayoutManager linearLayoutManager=new LinearLayoutManager(CitySelectionActivity.this,RecyclerView.HORIZONTAL,false);
 //        senitization_recycler.setLayoutManager(linearLayoutManager);
 //        Guidlines_model senitizationmodel=new Guidlines_model(R.drawable.senitization);
 //        guidlines_models.add(senitizationmodel);
-//        //  ServicesFunction("getAllService");//add service name
-////all for offer recycler
+//        ServicesFunction("getAllService");//add service name
+//      all for offer recycler
         offer_adapter=new Offer_adapter(offer_model_arraylist,CitySelectionActivity.this);
         offer_recycler.setAdapter(offer_adapter);
-
         LinearLayoutManager linearLayoutManager1=new LinearLayoutManager(CitySelectionActivity.this,RecyclerView.HORIZONTAL,false);
         offer_recycler.setLayoutManager(linearLayoutManager1);
         Guidlines_model offer=new Guidlines_model(R.drawable.offertooros);
         offer_model_arraylist.add(offer);
         Guidlines_model offer2=new Guidlines_model(R.drawable.offertooros);
         offer_model_arraylist.add(offer2);
-
-
-
-     //   gettingOffersFunction("getAllOffers");//add service name
+        ServicesFunction("getAlllocation");//add service name
 
     }
 //add service name accordingly
-   /* public void ServicesFunction(String getAllService) {
+       public void ServicesFunction(String getAlllocation) {
 //we have to fetch here
         class UserLoginClass extends AsyncTask<String,Void,String> {
 
@@ -324,23 +318,22 @@ RecyclerView offer_recycler;
                         JSONArray result = jsonObject.getJSONArray("result");
                         for (int i=0; i<result.length(); i++ ){
                             JSONObject ob=result.getJSONObject(i);
-//fetch image here and set to adapter
+                            //fetch image here and set to adapter
                             // Toast.makeText(FirstActivity.this, ob.getString("name"), Toast.LENGTH_SHORT).show();
                            // homemodel history=new homemodel(R.drawable.promocodecar2,ob.getString("img"),
-                                 //   ob.getString("service_name"),ob.getString("sch_servie_id"));
-
+                            //ob.getString("service_name"),ob.getString("sch_servie_id"));
                            // androidFlavors.add(history);
+                            list.add(ob.getString("location"));
                         }
-
-
-//
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
 
-                    senitization_recycler.setAdapter(guidlines_adapter);
-                    guidlines_adapter.notifyDataSetChanged();
-
+                    //senitization_recycler.setAdapter(guidlines_adapter);
+                   // guidlines_adapter.notifyDataSetChanged();
+                    ArrayAdapter<String>dataadapter=new ArrayAdapter<String>(CitySelectionActivity.this,android.R.layout.simple_spinner_item,list);
+                    dataadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    spinner.setAdapter(dataadapter);
 
 
                 }else{
@@ -363,7 +356,7 @@ RecyclerView offer_recycler;
             protected String doInBackground(String... params) {
 
 
-                String jsonInputString="{\"method\":\"getAllService\"}";
+                String jsonInputString="{\"method\":\"getAlllocation\"}";
 
                 finalResult = jsonhttpParse.postRequest(jsonInputString, HttpURL);
 
@@ -373,9 +366,9 @@ RecyclerView offer_recycler;
 
         UserLoginClass userLoginClass = new UserLoginClass();
 
-        userLoginClass.execute(getAllService);
+        userLoginClass.execute(getAlllocation);
     }
-    public void   gettingOffersFunction(String getAllOffers) {
+  /*  public void   gettingOffersFunction(String getAllOffers) {
 //we have to fetch here
         class OfferClass  extends AsyncTask<String,Void,String> {
 
