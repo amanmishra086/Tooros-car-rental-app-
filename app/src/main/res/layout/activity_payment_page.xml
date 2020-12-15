@@ -258,7 +258,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
                                 android:layout_marginTop="15dp"
-                                android:text="Week Days Charges"
+                                android:text="Week End Charges"
                                 android:textColor="#fff"
                                 android:textSize="18sp" />
 
@@ -267,7 +267,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
-                                android:text="₹525"
+                                android:text="₹"
                                 android:textColor="#fff"
                                 android:textSize="22sp"
                                 android:textStyle="bold" />
@@ -444,7 +444,40 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="30dp"
                         android:layout_marginTop="3dp"
-                        android:text="Discount........................................"
+                        android:text="Security.........................................."
+
+                        android:textColor="#fff"
+                        android:textSize="16sp" />
+                    <TextView
+                        android:layout_marginLeft="3dp"
+                        android:textSize="16sp"
+                        android:layout_marginTop="4dp"
+                        android:text="₹"
+                        android:textColor="#fff"
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:id="@+id/security"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="3dp"
+                        android:layout_marginTop="4dp"
+                        android:hint="1000"
+                        android:textColor="#fff"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginTop="3dp"
+                        android:text="Discount........................................."
 
                         android:textColor="#fff"
                         android:textSize="16sp" />
@@ -477,7 +510,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="30dp"
                         android:layout_marginTop="3dp"
-                        android:text="GST................................................"
+                        android:text="GST................................................."
 
                         android:textColor="#fff"
                         android:textSize="16sp" />

@@ -2,6 +2,7 @@ package my.awesome.tooros;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -18,14 +19,16 @@ import android.widget.Toast;
 import com.razorpay.Checkout;
 import com.razorpay.PaymentResultListener;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class PaymentPage extends AppCompatActivity implements PaymentResultListener {
-TextView gst,total,basefair,coupondiscount,picupcharges,weekdaychages,totalcharges,startdate,enddate,timeduration,carname,startt,endt,geartype,fuel;
+TextView gst,total,basefair,coupondiscount,securitycharges,picupcharges,weekdaychages,weekendcharges,startdate,enddate,timeduration,carname,startt,endt,geartype,fuel;
 ImageView carimage;
 EditText Couponcode;
 Button book,apply;
+String str;
     ProgressDialog progressDialog;
 
     JsonHttpParse jsonhttpParse = new JsonHttpParse();
@@ -37,11 +40,14 @@ Button book,apply;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment_page);
+
+
+
         startdate=findViewById(R.id.startdate);
         enddate=findViewById(R.id.enddate);
         carimage=findViewById(R.id.carimage);
         weekdaychages=findViewById(R.id.textView21);
-        totalcharges=findViewById(R.id.textView22);
+        weekendcharges=findViewById(R.id.textView22);
         timeduration=findViewById(R.id.textView12);
         basefair=findViewById(R.id.basefare);
         startt=findViewById(R.id.starttime);
@@ -56,6 +62,7 @@ Button book,apply;
         geartype=findViewById(R.id.textView9);
         fuel=findViewById(R.id.textView10);
         apply=findViewById(R.id.apply);
+        securitycharges=findViewById(R.id.security);
        Intent intent=getIntent();
        Bundle bundle=getIntent().getExtras();
        if(bundle!=null){
@@ -71,15 +78,11 @@ Button book,apply;
        carname.setText(""+carn);
        geartype.setText(""+geart);
        fuel.setText(""+fuelt);
-       basefair.setText(""+base_fare);
-       weekdaychages.append(""+weekendcost);
-       float gstpercentage=5.0f;
-       float cost=Float.parseFloat(base_fare);
-       float gstcost=(cost*(gstpercentage/100));
-       gst.setText(""+gstcost);
-       total.setText(""+(cost+gstcost));
+//       basefair.setText(""+base_fare);
+//       weekdaychages.append(""+weekendcost);
 
-        Toast.makeText(PaymentPage.this, ""+carn, Toast.LENGTH_SHORT).show();
+
+
         SharedPreferences sharedPreferences = PaymentPage.this.getSharedPreferences("Date", MODE_PRIVATE);
         final String stdate= sharedPreferences.getString("startdate",null);
         final String end= sharedPreferences.getString("Enddate",null);
@@ -101,16 +104,25 @@ Button book,apply;
         if(stdate!=" "&& end !=" "){
             startdate.setText(stdate);
             enddate.setText(end);
-            startt.setText("09:00");
-            endt.setText("09:00");
-            timeduration.setText(""+dur);
-            timeduration.append(" hrs");
+            startt.setText(startime);
+            endt.setText(endtime);
+
         }else{
 
         }
+
+        final String concatpdate=stdate+" "+startime;
+        final String concatDdate=end+" "+endtime;
+
+        getPriceDetails("getPriceDetails",car_id,concatpdate,concatDdate,"","Online");
+
+
         apply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+               // weekdaychages.append("000");
+
+
                 //take coupon code and recive amount from api
             }
         });
@@ -127,6 +139,113 @@ Button book,apply;
             }
         });
 
+    }
+    public void getPriceDetails(final String method, final String car_id, final String concatpdate, final String concatDdate, String coupon, final String security){
+
+        class BookCabClass extends AsyncTask<String,Void,String> {
+
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+
+                progressDialog = ProgressDialog.show(PaymentPage.this,"Loading Data",null,true,true);
+            }
+
+            @Override
+            protected void onPostExecute(String httpResponseMsg) {
+
+                super.onPostExecute(httpResponseMsg);
+
+                progressDialog.dismiss();
+                boolean msg=httpResponseMsg.contains("200");
+
+              //  Toast.makeText(PaymentPage.this, ""+httpResponseMsg, Toast.LENGTH_SHORT).show();
+
+
+                if(msg){
+
+                    // Toast.makeText(PaymentPage.this, "helloooooo", Toast.LENGTH_SHORT).show();
+
+                    JSONObject jsonObject = null;
+                    try {
+                        jsonObject = new JSONObject(httpResponseMsg);
+
+                        JSONObject ob=new JSONObject(jsonObject.getString("result"));
+                            String weekdays_hr=ob.getString("weekdays_hr");
+                            String weekend_hr=ob.getString("weekend_hr");
+                            String weekdays_rs=ob.getString("weekdays_rs");
+                            String weekend_rs=ob.getString("weekend_rs");
+                            String security_rs=ob.getString("security_rs");
+                            String total_rs=ob.getString("total_rs");
+                      //  Toast.makeText(PaymentPage.this, ""+jsonObject1.getString("total_rs"), Toast.LENGTH_SHORT).show();
+
+                        //Toast.makeText(PaymentPage.this, ""+weekend_rs, Toast.LENGTH_SHORT).show();
+                        String weekendprice;
+
+                        weekendprice=""+(int)Float.parseFloat(weekend_rs);
+                        basefair.setText(""+ (int)(Float.parseFloat(weekdays_rs)+Float.parseFloat(weekend_rs)));
+
+                        float totalhr=Float.parseFloat(weekdays_hr)+Float.parseFloat(weekend_hr);
+                        timeduration.setText(totalhr+" hrs");
+
+
+
+                        weekdaychages.append(""+(int)Float.parseFloat(weekdays_rs));
+                        weekendcharges.append(""+weekendprice);
+                        securitycharges.setText(security_rs);
+
+
+                        //total.setText(total_rs);
+
+                        float gstpercentage=5.0f;
+                        int cost= (int) Float.parseFloat(total_rs);
+                        int gstcost= (int) (cost*(gstpercentage/100));
+                        gst.setText(""+gstcost);
+                        total.setText(""+(cost+gstcost));
+
+
+
+
+
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }else {
+
+                    JSONObject jsonObject = null;
+                    try {
+                        jsonObject = new JSONObject(httpResponseMsg);
+                        String messege = jsonObject.getString("msg");
+                        Toast.makeText(PaymentPage.this, messege, Toast.LENGTH_SHORT).show();
+
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+            @Override
+            protected String doInBackground(String... params) {
+
+
+
+                //String jsonInputString="{\"method\":\"registerUser\",\"name\":\""+strname+"\",\"email\":\""+stremail+"\",\"mobile\":\""+strphone+"\",\"password\":\""+strpassword+"\",\"dl_no\":\""+strdlno+"\",\"aadhar_no\":\""+straadharcardno+"\",\"dob\":\""+strdob+"\"}";
+
+
+
+                String jsonInputString="{\"method\":\"getPriceDetails\",\"car_id\":\""+car_id+"\",\"concatPdate\":\""+concatpdate+"\",\"concatDdate\":\""+concatDdate+"\",\"coupon\":\"\",\"security\":\"Online\"}";
+//                finalResult = jsonhttpParse.postRequest(method,Email,Password, HttpURL);
+                finalResult = jsonhttpParse.postRequest(jsonInputString, HttpURL);
+
+                return finalResult;
+            }
+        }
+
+        BookCabClass bookCabClass = new BookCabClass();
+
+        bookCabClass.execute(method);
     }
 
     public void bookCab(String method, final String stdate, final String end, String startime, String endtime, final String car_id, final String price){

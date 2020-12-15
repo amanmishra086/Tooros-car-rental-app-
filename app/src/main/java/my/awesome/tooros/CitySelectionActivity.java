@@ -84,6 +84,7 @@ RecyclerView offer_recycler;
  //
  int hour=0,min,hour1=0,min1;
     TextView startime,endtime;
+    String st="",et="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -214,7 +215,7 @@ RecyclerView offer_recycler;
 
                 startdate.setText(startdateSelected);
 
-            //  Toast.makeText(CitySelectionActivity.this, ""+dateSelected, Toast.LENGTH_SHORT).show();
+               //  Toast.makeText(CitySelectionActivity.this, ""+dateSelected, Toast.LENGTH_SHORT).show();
                 SharedPreferences sharedPreferences = CitySelectionActivity.this.getSharedPreferences("Date", MODE_PRIVATE);
                 SharedPreferences.Editor myEdit = sharedPreferences.edit();
                 myEdit.putString("startdate",""+startdateSelected);
@@ -222,15 +223,9 @@ RecyclerView offer_recycler;
 
                // Toast.makeText(CitySelectionActivity.this,sdf.format(myStartCalendar.getTime()) , Toast.LENGTH_SHORT).show();
             }
+        };
 
-
-        }
-        ;
-
-
-
-
-                enddatelistener = new DatePickerDialog.OnDateSetListener() {
+         enddatelistener = new DatePickerDialog.OnDateSetListener() {
 
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear,
@@ -239,19 +234,19 @@ RecyclerView offer_recycler;
                 myEndCalendar.set(Calendar.YEAR, year);
                 myEndCalendar.set(Calendar.MONTH, monthOfYear);
                 myEndCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                myEndCalendar.setTimeInMillis(System.currentTimeMillis()-1000);
+              //  myEndCalendar.setTimeInMillis(System.currentTimeMillis()-1000);
                // String myFormat = "dd/MM/yy"; //In which you need put here
                 String myFormat = "yyyy-MM-dd"; //In which you need put here
                 SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
 
 
-                 enddateSelected=sdf.format(myEndCalendar.getTime());
+                enddateSelected=sdf.format(myEndCalendar.getTime());
 
                 enddate.setText(enddateSelected);
 
                 //String dateSelected=sdf.format(myEndCalendar.getTime());
 
-                enddate.setText(enddateSelected);
+              //  enddate.setText(enddateSelected);
                 SharedPreferences sharedPreferences = CitySelectionActivity.this.getSharedPreferences("Date", MODE_PRIVATE);
                 SharedPreferences.Editor myEdit = sharedPreferences.edit();
                 myEdit.putString("Enddate",""+enddateSelected);
@@ -489,7 +484,7 @@ RecyclerView offer_recycler;
     public void onClickFindCarButton(View view) {
        // citySelected=select_city.getSelectedItem().toString();
 
-        if(city.equals("Select City") || startdateSelected=="" || enddateSelected==""||startime==null||endtime==null)
+        if(city.equals("Select City") || startdateSelected=="" || enddateSelected=="" || st=="" || et=="")
         {
             Toast.makeText(this, "Select required input !!", Toast.LENGTH_SHORT).show();
         }
@@ -572,7 +567,7 @@ RecyclerView offer_recycler;
                     Date date1=f24hours1.parse(time1);
                     SimpleDateFormat f12hour1=new SimpleDateFormat("hh:mm aa");
                     endtime.setText(f12hour1.format(date1));
-                    String et=endtime.getText().toString();
+                     et=endtime.getText().toString();
                     SharedPreferences sharedPreferences1 = CitySelectionActivity.this.getSharedPreferences("Date", MODE_PRIVATE);
                     final SharedPreferences.Editor myEdit = sharedPreferences1.edit();
                     myEdit.putString("endtime",""+et);
@@ -606,7 +601,7 @@ RecyclerView offer_recycler;
                     Date date=f24hours.parse(time1);
                     SimpleDateFormat f12hour=new SimpleDateFormat("hh:mm aa");
                     startime.setText(f12hour.format(date));
-                    String st=startime.getText().toString();
+                     st=startime.getText().toString();
                     SharedPreferences sharedPreferences1 = CitySelectionActivity.this.getSharedPreferences("Date", MODE_PRIVATE);
                     final SharedPreferences.Editor myEdit = sharedPreferences1.edit();
                     myEdit.putString("starttime",""+st);

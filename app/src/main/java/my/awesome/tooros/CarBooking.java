@@ -100,7 +100,7 @@ public class CarBooking extends AppCompatActivity {
         recyclerView.setLayoutManager(linearLayoutManager);
 
 
-        getSubSerivices("getAllavailCabs",City,stdate,end);
+        getSubSerivices("getAllavailCabs",City,stdate,end,startime,endtime);
 
 
 //        CarBookingModel carBookingModel=new CarBookingModel(R.drawable.hundaiimage,"Renault Kwid","Petrol","₹1500","5 seat","Automatic","5 baggage","BOOKED");
@@ -112,7 +112,7 @@ public class CarBooking extends AppCompatActivity {
 
     }
 
-    private void getSubSerivices(final String method, String city, final String startdate, final String enddate) {
+    private void getSubSerivices(final String method, String city, final String startdate, final String enddate, final String starttime, final String endtime) {
 
         class OfferClass extends AsyncTask<String,Void,String> {
 
@@ -155,8 +155,6 @@ public class CarBooking extends AppCompatActivity {
                                     ob.getString("weekendcost"),ob.getString("security"),ob.getString("id"));
                             carBookingModels.add(carBookingModel);
                         }
-
-
 //
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -186,8 +184,8 @@ public class CarBooking extends AppCompatActivity {
             @Override
             protected String doInBackground(String... params) {
 
-                String concatPdate=""+startdate+" 09:00";
-                String concatDdate=""+enddate+" 21:00";
+                String concatPdate=""+startdate+" "+starttime;
+                String concatDdate=""+enddate+" "+endtime;
 
                 //String jsonInputString="{\"method\":\"getAllavailCabs\",\"concatPdate\":\""+startdate+" 09:00"+"\",\"concatDdate\":\""+enddate+" 21:00"+"\",\"city\":1}";
                 String jsonInputString="{\"method\":\"getAllavailCabs\",\"concatPdate\":\""+concatPdate+"\",\"concatDdate\":\""+concatDdate+"\",\"city\":1}";
@@ -203,8 +201,6 @@ public class CarBooking extends AppCompatActivity {
         OfferClass offerClass = new OfferClass();
 
         offerClass.execute(method);
-
-
 
 
        // Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
