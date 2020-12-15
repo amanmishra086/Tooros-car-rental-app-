@@ -234,7 +234,11 @@ RecyclerView offer_recycler;
                 myEndCalendar.set(Calendar.YEAR, year);
                 myEndCalendar.set(Calendar.MONTH, monthOfYear);
                 myEndCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+
               //  myEndCalendar.setTimeInMillis(System.currentTimeMillis()-1000);
+
+               // myEndCalendar.setTimeInMillis(System.currentTimeMillis()-1000);
+
                // String myFormat = "dd/MM/yy"; //In which you need put here
                 String myFormat = "yyyy-MM-dd"; //In which you need put here
                 SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
