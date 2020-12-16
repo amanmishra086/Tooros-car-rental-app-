@@ -82,7 +82,7 @@ RecyclerView offer_recycler;
  // String[] Cityname=getResources().getStringArray(R.array.City);
 //List<String> City=Arrays.asList(Cityname);
  //
- int hour=0,min,hour1=0,min1;
+ int hour=0,min,hour1=0,min1,daydif=0;
     TextView startime,endtime;
     String st="",et="";
     List<String> list=new ArrayList<String>() ;
@@ -199,6 +199,7 @@ RecyclerView offer_recycler;
          myEndCalendar = Calendar.getInstance();
 
 
+
          startdatelistener = new DatePickerDialog.OnDateSetListener() {
 
             @Override
@@ -232,22 +233,27 @@ RecyclerView offer_recycler;
             public void onDateSet(DatePicker view, int year, int monthOfYear,
                                   int dayOfMonth) {
                 // TODO Auto-generated method stub
+                String getstartdate=startdateSelected;
+                String getfrom[]=getstartdate.split("-");
+                int dayOfMonth1=Integer.parseInt(getfrom[2]);
+
                 myEndCalendar.set(Calendar.YEAR, year);
                 myEndCalendar.set(Calendar.MONTH, monthOfYear);
-                myEndCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                myEndCalendar.set(Calendar.DAY_OF_MONTH,dayOfMonth);
 
-              //  myEndCalendar.setTimeInMillis(System.currentTimeMillis()-1000);
 
-               // myEndCalendar.setTimeInMillis(System.currentTimeMillis()-1000);
-
-               // String myFormat = "dd/MM/yy"; //In which you need put here
                 String myFormat = "yyyy-MM-dd"; //In which you need put here
                 SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
 
 
                 enddateSelected=sdf.format(myEndCalendar.getTime());
+                String getenddate=enddateSelected;
+                String getfrom2[]=getenddate.split("-");
+                int dayOfMonth2=Integer.parseInt(getfrom2[2]);
 
-                enddate.setText(enddateSelected);
+            daydif=dayOfMonth2-dayOfMonth1;
+
+                    enddate.setText(enddateSelected);
 
                 //String dateSelected=sdf.format(myEndCalendar.getTime());
 
@@ -485,10 +491,15 @@ RecyclerView offer_recycler;
        // citySelected=select_city.getSelectedItem().toString();
 
         if(city.equals("Select City") || startdateSelected=="" || enddateSelected=="" || st=="" || et=="")
+
         {
             Toast.makeText(this, "Select required input !!", Toast.LENGTH_SHORT).show();
+
+        }else if(daydif<=0) {
+            Toast.makeText(this, "Select valid  date to drop !!", Toast.LENGTH_SHORT).show();
         }
         else{
+
             int dif=Math.abs(hour1-hour);
           //  Toast.makeText(CitySelectionActivity.this, ""+dif, Toast.LENGTH_SHORT).show();
             SharedPreferences sharedPreferences2 = CitySelectionActivity.this.getSharedPreferences("Date", MODE_PRIVATE);
