@@ -298,7 +298,7 @@ RecyclerView offer_recycler;
             protected void onPreExecute() {
                 super.onPreExecute();
 
-                progressDialog = ProgressDialog.show(CitySelectionActivity.this,"Loading Services",null,true,true);
+                progressDialog = ProgressDialog.show(CitySelectionActivity.this,"Fetching available cities",null,true,true);
             }
 
             @Override
