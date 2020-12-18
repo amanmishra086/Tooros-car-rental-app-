@@ -123,21 +123,18 @@
 
                             <TextView
                                 android:id="@+id/startdate"
-                                android:layout_width="100dp"
+                                android:layout_width="80dp"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
-                                android:background="#fff"
-                                android:gravity="center"
+                                android:layout_marginLeft="3dp"
                                 android:hint="10/12/2020"
-                                android:textColor="#000000"/>
+                                android:textColor="#000000" />
 
                             <TextView
                                 android:id="@+id/starttime"
                                 android:layout_width="60dp"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal|center_vertical"
-                                android:layout_marginLeft="2dp"
-                                android:background="#fff"
                                 android:gravity="center"
                                 android:hint="9:00 AM"
                                 android:textColor="#000000" />
@@ -170,11 +167,9 @@
 
                             <TextView
                                 android:id="@+id/enddate"
-                                android:layout_width="100dp"
+                                android:layout_width="80dp"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
-                                android:background="#fff"
-                                android:gravity="center"
                                 android:hint="10/11/2020"
                                 android:textColor="#000000" />
 
@@ -184,7 +179,6 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal|center_vertical"
                                 android:layout_marginLeft="2dp"
-                                android:background="#fff"
                                 android:gravity="center"
                                 android:hint="9:00 AM"
                                 android:textColor="#000000" />
@@ -201,9 +195,10 @@
                         <ImageView
                             android:id="@+id/carimage"
 
-                            android:layout_width="match_parent"
-                            android:layout_height="110dp"
-                            android:layout_marginTop="30dp"
+                            android:layout_width="95dp"
+                            android:layout_height="85dp"
+                            android:layout_gravity="clip_horizontal|center"
+                            android:layout_marginTop="40dp"
                             android:layout_marginRight="4dp"
                             android:scaleType="centerInside" />
 
@@ -211,15 +206,16 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="5dp"
                             android:layout_marginRight="3dp"
                             android:text="TIME DURATION"
                             android:textColor="#fff"
-                            android:textSize="18sp" />
+                            android:textSize="12sp" />
 
                         <TextView
                             android:id="@+id/textView12"
-                            android:layout_width="126dp"
-                            android:layout_height="23dp"
+                            android:layout_width="90dp"
+                            android:layout_height="20dp"
                             android:layout_gravity="center_horizontal"
                             android:layout_marginRight="3dp"
                             android:background="#fff"
@@ -370,24 +366,26 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="30dp"
                         android:layout_marginTop="3dp"
-                        android:text="Base Fare......................................."
+                        android:text="Base Fare."
 
                         android:textColor="#fff"
                         android:textSize="16sp" />
+
                     <TextView
-                        android:layout_marginLeft="3dp"
-                        android:textSize="16sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="150dp"
                         android:layout_marginTop="4dp"
                         android:text="₹"
                         android:textColor="#fff"
-                        android:textStyle="bold"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/basefare"
@@ -409,19 +407,20 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="30dp"
                         android:layout_marginTop="3dp"
-                        android:text="Delivery and Pick Up Charges......"
+                        android:text="Delivery and Pick Up Charges."
 
                         android:textColor="#fff"
                         android:textSize="16sp" />
+
                     <TextView
-                        android:layout_marginLeft="3dp"
-                        android:textSize="16sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
                         android:layout_marginTop="4dp"
                         android:text="₹"
                         android:textColor="#fff"
-                        android:textStyle="bold"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/delivery"
@@ -442,19 +441,20 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="30dp"
                         android:layout_marginTop="3dp"
-                        android:text="Security.........................................."
+                        android:text="Security."
 
                         android:textColor="#fff"
                         android:textSize="16sp" />
+
                     <TextView
-                        android:layout_marginLeft="3dp"
-                        android:textSize="16sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="165dp"
                         android:layout_marginTop="4dp"
                         android:text="₹"
                         android:textColor="#fff"
-                        android:textStyle="bold"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/security"
@@ -470,24 +470,26 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="30dp"
                         android:layout_marginTop="3dp"
-                        android:text="Discount........................................."
+                        android:text="Discount."
 
                         android:textColor="#fff"
                         android:textSize="16sp" />
+
                     <TextView
-                        android:layout_marginLeft="3dp"
-                        android:textSize="16sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="158dp"
                         android:layout_marginTop="4dp"
                         android:text="₹"
                         android:textColor="#fff"
-                        android:textStyle="bold"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/discount"
@@ -503,24 +505,26 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="30dp"
                         android:layout_marginTop="3dp"
-                        android:text="GST................................................."
+                        android:text="GST."
 
                         android:textColor="#fff"
                         android:textSize="16sp" />
+
                     <TextView
-                        android:layout_marginLeft="3dp"
-                        android:textSize="16sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="188dp"
                         android:layout_marginTop="4dp"
                         android:text="₹"
                         android:textColor="#fff"
-                        android:textStyle="bold"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/gst"
@@ -555,7 +559,7 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="190dp"
+                        android:layout_marginLeft="170dp"
                         android:layout_marginTop="4dp"
                         android:background="@drawable/redbutton"
                         android:orientation="horizontal">
@@ -568,14 +572,14 @@
                             android:textColor="#fff" />
 
                         <TextView
-                            android:textStyle="bold"
                             android:id="@+id/totalamount"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
                             android:hint="1000"
                             android:paddingRight="9dp"
-                            android:textColor="#fff" />
+                            android:textColor="#fff"
+                            android:textStyle="bold" />
                     </LinearLayout>
                 </LinearLayout>
                 <TextView

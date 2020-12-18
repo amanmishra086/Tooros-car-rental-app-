@@ -18,9 +18,9 @@
         <ImageView
             android:id="@+id/carimage"
             android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_margin="10dp"
             android:layout_height="171dp"
+            android:layout_margin="5dp"
+            android:layout_weight="0.9"
             android:scaleType="centerInside"
             android:src="@drawable/hundaiimage" />
 
@@ -28,7 +28,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginLeft="2dp"
-            android:layout_weight="1"
+            android:layout_weight="1.2"
             android:orientation="vertical">
 
             <TextView
@@ -134,15 +134,15 @@
     </LinearLayout>
 
     <TextView
-        android:layout_marginBottom="2dp"
-        android:layout_marginTop="2dp"
         android:id="@+id/textView13"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="14sp"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="2dp"
+        android:text="Unlimited Kilometers/Free Airport Delivery"
         android:textColor="#97C761"
-        android:text="Unlimited Kilometers/Free Airport Delivery" />
+        android:textSize="14sp" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -154,7 +154,7 @@
             android:id="@+id/textView14"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
+            android:layout_marginStart="48dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="304dp"
             android:layout_marginBottom="57dp"
@@ -172,6 +172,7 @@
             android:id="@+id/price"
             android:layout_width="wrap_content"
             android:layout_height="41dp"
+            android:layout_marginLeft="10dp"
             android:text="₹1500"
             android:textColor="#fff"
             android:textSize="35sp"

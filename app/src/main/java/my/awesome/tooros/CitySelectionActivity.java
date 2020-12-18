@@ -305,6 +305,7 @@ RecyclerView offer_recycler;
                 super.onPreExecute();
 
                 progressDialog = ProgressDialog.show(CitySelectionActivity.this,"Loading Services",null,true,true);
+
             }
 
             @Override
