@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".OtpVerification"></activity>
+        <activity android:name=".ThankYou"></activity>
+        <activity android:name=".OtpVerification" />
         <activity android:name=".PaymentPage" />
         <activity android:name=".CarBooking" />
         <activity android:name=".Signup" />
