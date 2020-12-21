@@ -11,12 +11,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name=".PaymentPage"></activity>
+        <activity android:name=".ThankYou"></activity>
+        <activity android:name=".OtpVerification" />
+        <activity android:name=".PaymentPage" />
         <activity android:name=".CarBooking" />
         <activity android:name=".Signup" />
         <activity android:name=".Login" />
-
         <activity android:name=".Guidlines_adapter" />
         <activity android:name=".Guidlines_model" />
         <activity android:name=".PolicyActivity" />

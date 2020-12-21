@@ -161,16 +161,16 @@ RecyclerView offer_recycler;
         //hide or show items
         SharedPreferences shared = getSharedPreferences("loginOrNot", MODE_PRIVATE);
         String info = (shared.getString("info", ""));
-        String name = (shared.getString("username", ""));
+       // String name = (shared.getString("username", ""));
         Menu menu = navigationView.getMenu();
         if(info.equals("yes")){
-            username.setText(name);
+            //username.setText(name);
             menu.findItem(R.id.nav_login).setVisible(false);
             menu.findItem(R.id.nav_SignUp).setVisible(false);
             menu.findItem(R.id.nav_logout).setVisible(true);
             menu.findItem(R.id.nav_profile).setVisible(true);
         }else{
-            username.setText(name);
+           // username.setText(name);
             menu.findItem(R.id.nav_logout).setVisible(false);
             menu.findItem(R.id.nav_profile).setVisible(false);
         }
@@ -304,7 +304,12 @@ RecyclerView offer_recycler;
             protected void onPreExecute() {
                 super.onPreExecute();
 
-                progressDialog = ProgressDialog.show(CitySelectionActivity.this,"Fetching available cities",null,true,true);
+
+                progressDialog = ProgressDialog.show(CitySelectionActivity.this,"Loading...",null,true,true);
+
+                //progressDialog = ProgressDialog.show(CitySelectionActivity.this,"Loading Services",null,true,true);
+
+
             }
 
             @Override
@@ -557,7 +562,7 @@ RecyclerView offer_recycler;
                 SharedPreferences sharedPreferences = this.getSharedPreferences("loginOrNot", MODE_PRIVATE);
                 final SharedPreferences.Editor myEdit = sharedPreferences.edit();
                 myEdit.putString("info","no");
-                myEdit.putString("username","Guest_User");
+               // myEdit.putString("username","Guest_User");
                 myEdit.apply();
                 startActivity(new Intent(this,CitySelectionActivity.class));
         }

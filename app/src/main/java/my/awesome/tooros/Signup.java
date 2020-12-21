@@ -221,15 +221,15 @@ public class Signup extends AppCompatActivity {
                     try {
                         jsonObject = new JSONObject(httpResponseMsg);
                       //  String messege= jsonObject.getString("otp");
-                        String messege= jsonObject.getString("msg");
+                        //String messege= jsonObject.getString("msg");
 
-//                       Intent intent=new Intent(Signup.this,Login.class);
-//                      //  intent.putExtra("phone",strphone);
-//                      //  intent.putExtra("otp",messege);
-//                        startActivity(intent);
+                       Intent intent=new Intent(Signup.this,OtpVerification.class);
+                        intent.putExtra("phone",strphone);
+                      //  intent.putExtra("otp",messege);
+                        startActivity(intent);
 
                         //Toast.makeText(Signup.this, messege, Toast.LENGTH_SHORT).show();
-                        Toast.makeText(Signup.this, "User Registered successfully !!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Signup.this, "Verify OTP", Toast.LENGTH_SHORT).show();
 
 
                     } catch (JSONException e) {

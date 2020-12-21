@@ -57,7 +57,8 @@ public class CarBooking extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_car_booking);
         recyclerView=findViewById(R.id.bookingrecycler);
-
+//  <item name="colorAccent">@color/colorAccent</item>
+        // <color name="colorAccent">#D81B60</color>
         recyclerView.setHasFixedSize(true);
        startime1=findViewById(R.id.startt);
        endtime1=findViewById(R.id.endt);

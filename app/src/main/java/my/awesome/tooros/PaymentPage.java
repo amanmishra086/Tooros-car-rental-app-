@@ -277,16 +277,11 @@ String str;
                     try {
                         jsonObject = new JSONObject(httpResponseMsg);
                         //  String messege= jsonObject.getString("otp");
+                        String book_id= jsonObject.getString("book_id");
                         String booking_id= jsonObject.getString("booking_id");
                         String payment_id= jsonObject.getString("payment_id");
 
-//                       Intent intent=new Intent(Signup.this,Login.class);
-//                      //  intent.putExtra("phone",strphone);
-//                      //  intent.putExtra("otp",messege);
-//                        startActivity(intent);
 
-                       // Toast.makeText(PaymentPage.this, booking_id, Toast.LENGTH_SHORT).show();
-                        //Toast.makeText(PaymentPage.this, "Bookcab method done", Toast.LENGTH_SHORT).show();
 
 
                     } catch (JSONException e) {
