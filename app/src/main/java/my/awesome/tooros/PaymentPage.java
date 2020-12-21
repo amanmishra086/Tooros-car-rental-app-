@@ -282,8 +282,6 @@ String str;
                         String payment_id= jsonObject.getString("payment_id");
 
 
-
-
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
