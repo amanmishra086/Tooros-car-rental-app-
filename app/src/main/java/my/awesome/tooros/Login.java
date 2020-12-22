@@ -137,6 +137,19 @@ public class Login extends AppCompatActivity {
                                 myEdit.putString("userid",ob.getString("user_id"));
 
                                 myEdit.apply();
+                                Toast.makeText(Login.this, "Logged in successfully !", Toast.LENGTH_SHORT).show();
+
+
+
+                                //to check if user is already login or not
+                                SharedPreferences sharedPreferencesForLoginOrNot = Login.this.getSharedPreferences("loginOrNot", MODE_PRIVATE);
+                                final SharedPreferences.Editor loginedit = sharedPreferencesForLoginOrNot.edit();
+                                loginedit.putString("info","yes");
+                                // loginedit.putString("username","Aman");
+                                loginedit.apply();
+
+                                startActivity(new Intent(Login.this,CitySelectionActivity.class));
+
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -148,18 +161,6 @@ public class Login extends AppCompatActivity {
 
                         //
                       //  Toast.makeText(Login.this, httpResponseMsg, Toast.LENGTH_SHORT).show();
-                        Toast.makeText(Login.this, "Logged in successfully !", Toast.LENGTH_SHORT).show();
-
-
-
-                       //to check if user is already login or not
-                        SharedPreferences sharedPreferencesForLoginOrNot = Login.this.getSharedPreferences("loginOrNot", MODE_PRIVATE);
-                        final SharedPreferences.Editor loginedit = sharedPreferencesForLoginOrNot.edit();
-                        loginedit.putString("info","yes");
-                       // loginedit.putString("username","Aman");
-                        loginedit.apply();
-
-                        startActivity(new Intent(Login.this,CitySelectionActivity.class));
 
 
                     }else{

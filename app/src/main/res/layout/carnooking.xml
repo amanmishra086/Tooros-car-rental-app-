@@ -67,7 +67,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="2dp"
                     android:text="Petrol"
-                    android:textColor="#97C761" />
+                    android:textColor="#fff" />
 
                 <ImageView
                     android:id="@+id/imageView5"
@@ -83,7 +83,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="2dp"
                     android:text="Automatic"
-                    android:textColor="#97C761" />
+                    android:textColor="#fff" />
             </LinearLayout>
 
             <LinearLayout
@@ -100,6 +100,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="2dp"
                     android:scaleType="centerInside"
+                    android:tint="#fff"
                     app:srcCompat="@drawable/seat" />
 
                 <TextView
@@ -109,7 +110,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="3dp"
                     android:text="5 Seat"
-                    android:textColor="#97C761" />
+                    android:textColor="#fff" />
 
                 <ImageView
                     android:id="@+id/imageView7"
@@ -127,7 +128,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="2dp"
                     android:text="3 Baggage"
-                    android:textColor="#97C761"
+                    android:textColor="#fff"
                     android:textSize="14sp" />
             </LinearLayout>
         </LinearLayout>

@@ -513,7 +513,8 @@ RecyclerView offer_recycler;
             myEdit2.apply();
             SharedPreferences sharedPreferencesForLoginOrNot = CitySelectionActivity.this.getSharedPreferences("loginOrNot", MODE_PRIVATE);
             String login=sharedPreferencesForLoginOrNot.getString("info",null);
-            if(login=="yes") {
+         //   Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
+            if(login!="no") {
                 Intent intent = new Intent(CitySelectionActivity.this, CarBooking.class);
 //            intent.putExtra("city",citySelected);
 //            intent.putExtra("startdate",startdateSelected);
