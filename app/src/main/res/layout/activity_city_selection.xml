@@ -250,7 +250,7 @@
                             android:layout_gravity="center_horizontal"
                             android:layout_marginLeft="5dp"
                             android:gravity="center_vertical"
-                            android:text="Select End Date"
+                            android:text="Select End Time"
                             android:textColor="@android:color/black" />
 
                     </LinearLayout>
@@ -310,13 +310,13 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_marginStart="10dp"
-                                android:src="@drawable/senitization" />
+                                android:src="@drawable/group1" />
 
                             <ImageView
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_marginStart="10dp"
-                                android:src="@drawable/senitization" />
+                                android:src="@drawable/group2" />
 
                         </LinearLayout>
                     </HorizontalScrollView>
