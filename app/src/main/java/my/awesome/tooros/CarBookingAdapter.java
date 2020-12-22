@@ -85,6 +85,7 @@ public class CarBookingAdapter extends RecyclerView.Adapter<CarBookingAdapter.vi
         holder.status.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                Intent intent=new Intent(context,PaymentPage.class);
                intent.putExtra("carimage",carBookingModel.getCarimage());
                intent.putExtra("carname",""+carBookingModel.getCarname().toString());

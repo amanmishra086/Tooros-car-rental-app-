@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -113,12 +114,40 @@ public class Login extends AppCompatActivity {
                     // Toast.makeText(Signup.this, httpResponseMsg, Toast.LENGTH_SHORT).show();
 
                     if(httpResponseMsg.contains("200")){
-                        // Toast.makeText(Signup.this, httpResponseMsg, Toast.LENGTH_SHORT).show();
+                        try {
+                            JSONObject jsonObject = new JSONObject(httpResponseMsg);
+                            JSONArray result = jsonObject.getJSONArray("result");
+                            for (int i=0; i<result.length(); i++ ){
+                                JSONObject ob=result.getJSONObject(i);
+                                //fetch image here and set to adapter
+                                // Toast.makeText(Login.this, ob.getString("name"), Toast.LENGTH_SHORT).show();
+                                // homemodel history=new homemodel(R.drawable.promocodecar2,ob.getString("img"),
+                                //ob.getString("service_name"),ob.getString("sch_servie_id"));
+                                // androidFlavors.add(history);
+                                SharedPreferences sharedPreferences2 = Login.this.getSharedPreferences("MySharedPref2", MODE_PRIVATE);
+                                final SharedPreferences.Editor myEdit = sharedPreferences2.edit();
+                                myEdit.putString("Name",ob.getString("name"));
+                                myEdit.putString("Mobile",ob.getString("mobile"));
+                                myEdit.putString("Email",ob.getString("email"));
+                                myEdit.putString("Dob",ob.getString("dob"));
+                                myEdit.putString("Dlno",ob.getString("dl_no"));
+                                myEdit.putString("Aadharno",ob.getString("aadhar_no"));
+                                myEdit.putString("Aadhardoc",ob.getString("aadhar_doc"));
+                                myEdit.putString("Dldoc",ob.getString("dl_doc"));
+                                myEdit.apply();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+
+
+
+
+                        //
+                      //  Toast.makeText(Login.this, httpResponseMsg, Toast.LENGTH_SHORT).show();
                         Toast.makeText(Login.this, "Logged in successfully !", Toast.LENGTH_SHORT).show();
-                        SharedPreferences sharedPreferences2 = Login.this.getSharedPreferences("MySharedPref2", MODE_PRIVATE);
-                        final SharedPreferences.Editor myEdit = sharedPreferences2.edit();
-                        myEdit.putString("login",httpResponseMsg);
-                        myEdit.apply();
+
 
 
                        //to check if user is already login or not

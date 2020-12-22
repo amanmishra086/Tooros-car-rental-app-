@@ -29,6 +29,7 @@ ImageView carimage;
 EditText Couponcode;
 Button book,apply;
 String str;
+    String name,email,mobile,dob,aadharno,dlno;
     ProgressDialog progressDialog;
 
     JsonHttpParse jsonhttpParse = new JsonHttpParse();
@@ -101,6 +102,16 @@ String str;
 //        }else{
 //
 //        }
+        SharedPreferences sharedPreferences2 = PaymentPage.this.getSharedPreferences("MySharedPref2", MODE_PRIVATE);
+        if (sharedPreferences2 != null) {
+            name = sharedPreferences2.getString("Name", null);
+            mobile = sharedPreferences2.getString("Mobile", null);
+            email = sharedPreferences2.getString("Email", null);
+            dob = sharedPreferences2.getString("Dob", null);
+            dlno = sharedPreferences2.getString("Dlno", null);
+            aadharno = sharedPreferences2.getString("Aadharno", null);
+
+        }
         if(stdate!=" "&& end !=" "){
             startdate.setText(stdate);
             enddate.setText(end);
@@ -304,17 +315,15 @@ String str;
             protected String doInBackground(String... params) {
 
 
-
                 //String jsonInputString="{\"method\":\"registerUser\",\"name\":\""+strname+"\",\"email\":\""+stremail+"\",\"mobile\":\""+strphone+"\",\"password\":\""+strpassword+"\",\"dl_no\":\""+strdlno+"\",\"aadhar_no\":\""+straadharcardno+"\",\"dob\":\""+strdob+"\"}";
 
-
-
-                String jsonInputString="{\"method\":\"bookCab\",\"car_id\":\""+car_id+"\",\"city\":\"1\",\"pickup_date\":\""+stdate+"\",\"pickup_time\":\"09:00 AM\",\"dropup_date\":\""+end+"\",\"dropup_time\":\"21:00 PM\",\"booking_amount\":\""+price+"\",\"name\":\"Aman_Mishra\",\"mobile\":\"9636730565\",\"email\":\"abc@gmail.com\",\"message\":\"api testing\",\"coupon\":\"\",\"dlno\":\"DL123456\",\"dob\":\"25-03-2000\",\"security\":\"Online\"}";
+                    String jsonInputString = "{\"method\":\"bookCab\",\"car_id\":\"" + car_id + "\",\"city\":\"1\",\"pickup_date\":\"" + stdate + "\",\"pickup_time\":\"09:00 AM\",\"dropup_date\":\"" + end + "\",\"dropup_time\":\"21:00 PM\",\"booking_amount\":\"" + price + "\",\"name\":\"" + name + "\",\"mobile\":\"\"+mobile+\"\",\"email\":\"\"+email+\"\",\"message\":\"api testing\",\"coupon\":\"\",\"dlno\":\"\"+dlno+\"\",\"dob\":\"\"+dob+\"\",\"security\":\"Online\"}";
 //                finalResult = jsonhttpParse.postRequest(method,Email,Password, HttpURL);
-                finalResult = jsonhttpParse.postRequest(jsonInputString, HttpURL);
+                    finalResult = jsonhttpParse.postRequest(jsonInputString, HttpURL);
 
-                return finalResult;
-            }
+                    return finalResult;
+                }
+
         }
 
         BookCabClass bookCabClass = new BookCabClass();
@@ -347,15 +356,15 @@ String str;
         try {
             JSONObject options = new JSONObject();
 
-            options.put("name",""+"Aman mishra");
+            options.put("name",""+name);
             options.put("description", "Confirm Booking..");
             options.put("image", "https://s3.amazonaws.com/rzp-mobile/images/rzp.png");
             //options.put("order_id", "order_DBJOWzybf0sJbb");//from response of step 3.
             options.put("theme.color", "#FF0000");
             options.put("currency", "INR");
             options.put("amount", ""+total*100);//pass amount in currency subunits
-            options.put("prefill.email",""+"abc@gmail.com");
-            options.put("prefill.contact",""+"9636730565");
+            options.put("prefill.email",""+email);
+            options.put("prefill.contact",""+mobile);
             checkout.open(activity, options);
         } catch(Exception e) {
             Log.e(TAG, "Error in starting Razorpay Checkout", e);

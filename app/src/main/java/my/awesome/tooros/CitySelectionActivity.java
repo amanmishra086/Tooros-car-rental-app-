@@ -511,11 +511,21 @@ RecyclerView offer_recycler;
             final SharedPreferences.Editor myEdit2 = sharedPreferences2.edit();
             myEdit2.putInt("dif",dif);
             myEdit2.apply();
-            Intent intent=new Intent(CitySelectionActivity.this,CarBooking.class);
+            SharedPreferences sharedPreferencesForLoginOrNot = CitySelectionActivity.this.getSharedPreferences("loginOrNot", MODE_PRIVATE);
+            String login=sharedPreferencesForLoginOrNot.getString("info",null);
+            if(login=="yes") {
+                Intent intent = new Intent(CitySelectionActivity.this, CarBooking.class);
 //            intent.putExtra("city",citySelected);
 //            intent.putExtra("startdate",startdateSelected);
 //            intent.putExtra("enddate",enddateSelected);
-            startActivity(intent);
+                startActivity(intent);
+            }else{
+                Intent intent = new Intent(CitySelectionActivity.this, Login.class);
+//            intent.putExtra("city",citySelected);
+//            intent.putExtra("startdate",startdateSelected);
+//            intent.putExtra("enddate",enddateSelected);
+                startActivity(intent);
+            }
         }
 
 

@@ -3,6 +3,7 @@ package my.awesome.tooros;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 
@@ -20,8 +21,11 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void run() {
                 finish();
-                Intent intent=new Intent(SplashActivity.this,CitySelectionActivity.class);
-                startActivity(intent);
+
+
+                    Intent intent = new Intent(SplashActivity.this, CitySelectionActivity.class);
+                    startActivity(intent);
+
 
             }
         },splash_time);
