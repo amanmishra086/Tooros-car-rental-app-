@@ -29,7 +29,7 @@ ImageView carimage;
 EditText Couponcode;
 Button book,apply;
 String str;
-    String name,email,mobile,dob,aadharno,dlno;
+    String name,email,mobile,dob,aadharno,dlno,userid;
     ProgressDialog progressDialog;
 
     JsonHttpParse jsonhttpParse = new JsonHttpParse();
@@ -110,6 +110,7 @@ String str;
             dob = sharedPreferences2.getString("Dob", null);
             dlno = sharedPreferences2.getString("Dlno", null);
             aadharno = sharedPreferences2.getString("Aadharno", null);
+            userid=sharedPreferences2.getString("user_id",null);
 
         }
         if(stdate!=" "&& end !=" "){
@@ -317,7 +318,7 @@ String str;
 
                 //String jsonInputString="{\"method\":\"registerUser\",\"name\":\""+strname+"\",\"email\":\""+stremail+"\",\"mobile\":\""+strphone+"\",\"password\":\""+strpassword+"\",\"dl_no\":\""+strdlno+"\",\"aadhar_no\":\""+straadharcardno+"\",\"dob\":\""+strdob+"\"}";
 
-                    String jsonInputString = "{\"method\":\"bookCab\",\"car_id\":\"" + car_id + "\",\"city\":\"1\",\"pickup_date\":\"" + stdate + "\",\"pickup_time\":\"09:00 AM\",\"dropup_date\":\"" + end + "\",\"dropup_time\":\"21:00 PM\",\"booking_amount\":\"" + price + "\",\"name\":\"" + name + "\",\"mobile\":\"\"+mobile+\"\",\"email\":\"\"+email+\"\",\"message\":\"api testing\",\"coupon\":\"\",\"dlno\":\"\"+dlno+\"\",\"dob\":\"\"+dob+\"\",\"security\":\"Online\"}";
+                    String jsonInputString = "{\"method\":\"bookCab\",\"car_id\":\"" + car_id + "\",\"city\":\"1\",\"pickup_date\":\"" + stdate + "\",\"pickup_time\":\"09:00 AM\",\"dropup_date\":\"" + end + "\",\"dropup_time\":\"21:00 PM\",\"booking_amount\":\"" + price + "\",\"name\":\"" + name + "\",\"mobile\":\""+mobile+"\",\"email\":\""+email+"\",\"message\":\"api testing\",\"coupon\":\"\",\"dlno\":\""+dlno+"\",\"dob\":\""+dob+"\",\"security\":\"Online\"}";
 //                finalResult = jsonhttpParse.postRequest(method,Email,Password, HttpURL);
                     finalResult = jsonhttpParse.postRequest(jsonInputString, HttpURL);
 

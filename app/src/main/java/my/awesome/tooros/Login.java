@@ -134,6 +134,8 @@ public class Login extends AppCompatActivity {
                                 myEdit.putString("Aadharno",ob.getString("aadhar_no"));
                                 myEdit.putString("Aadhardoc",ob.getString("aadhar_doc"));
                                 myEdit.putString("Dldoc",ob.getString("dl_doc"));
+                                myEdit.putString("userid",ob.getString("user_id"));
+
                                 myEdit.apply();
                             }
                         } catch (JSONException e) {
