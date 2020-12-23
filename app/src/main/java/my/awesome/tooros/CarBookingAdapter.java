@@ -2,11 +2,13 @@ package my.awesome.tooros;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -78,29 +80,52 @@ public class CarBookingAdapter extends RecyclerView.Adapter<CarBookingAdapter.vi
 
         holder.baggage.setText(carBookingModel.getBaggage()+" Baggage");
        // holder.status.setText(carBookingModel.getStatus());
-        holder.status.setText("Book Now");
+
+
+        int bookCount=Integer.parseInt(carBookingModel.getBookCount());
+        int mtCount=Integer.parseInt(carBookingModel.getMtCount());
+
+        if(bookCount==0 && mtCount==0){
+            holder.status.setText("Book Now");
+
+            final String finalFuel = fuel;
+            final String finalGear = gear;
+            holder.status.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    Intent intent=new Intent(context,PaymentPage.class);
+                    intent.putExtra("carimage",carBookingModel.getCarimage());
+                    intent.putExtra("carname",""+carBookingModel.getCarname().toString());
+                    intent.putExtra("geartype",""+ finalGear);
+                    intent.putExtra("fuel",""+finalFuel);
+                    intent.putExtra("totalprice",""+carBookingModel.getCarname().toString());
+                    intent.putExtra("cost",carBookingModel.getPrice().toString());
+                    intent.putExtra("weekendcost",carBookingModel.getWeekendcost());
+                    intent.putExtra("car_id",carBookingModel.getCar_id());
+
+                    context.startActivity(intent);
+
+                }
+            });
+
+        }else {
+
+            holder.status.setText(" Booked ");
+            holder.buttonlinearlayout.setBackgroundResource(R.drawable.redbutton2);
+            holder.status.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    Toast.makeText(context, "Not Available", Toast.LENGTH_SHORT).show();
+
+                }
+            });
+        }
+
         holder.carname.setText(carBookingModel.getCarname());
-        final String finalFuel = fuel;
-        final String finalGear = gear;
-        holder.status.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-               Intent intent=new Intent(context,PaymentPage.class);
-               intent.putExtra("carimage",carBookingModel.getCarimage());
-               intent.putExtra("carname",""+carBookingModel.getCarname().toString());
-                intent.putExtra("geartype",""+ finalGear);
-                intent.putExtra("fuel",""+finalFuel);
-                intent.putExtra("totalprice",""+carBookingModel.getCarname().toString());
-                intent.putExtra("cost",carBookingModel.getPrice().toString());
-                intent.putExtra("weekendcost",carBookingModel.getWeekendcost());
-                intent.putExtra("car_id",carBookingModel.getCar_id());
 
-              context.startActivity(intent);
-                //do whatever require to do
-
-            }
-        });
     }
 
     @Override
@@ -109,7 +134,7 @@ public class CarBookingAdapter extends RecyclerView.Adapter<CarBookingAdapter.vi
     }
 
     public class viewHolder extends RecyclerView.ViewHolder {
-ImageView carimage;
+        ImageView carimage;
         TextView fueltype;
         TextView price;
         TextView seat;
@@ -117,7 +142,8 @@ ImageView carimage;
         TextView baggage;
         TextView status;
         TextView carname;
-    Button book;
+        LinearLayout buttonlinearlayout;
+        Button book;
         public viewHolder(@NonNull View itemView) {
             super(itemView);
             carimage=itemView.findViewById(R.id.carimage);
@@ -128,7 +154,7 @@ ImageView carimage;
             geartype=itemView.findViewById(R.id.geartype);
             baggage=itemView.findViewById(R.id.baggage);
             status=itemView.findViewById(R.id.status);
-
+            buttonlinearlayout=itemView.findViewById(R.id.buttonlinearLayout);
 
         }
     }

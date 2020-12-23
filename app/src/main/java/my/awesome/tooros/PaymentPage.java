@@ -1,5 +1,6 @@
 package my.awesome.tooros;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
@@ -7,6 +8,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -28,7 +30,7 @@ TextView gst,total,basefair,coupondiscount,securitycharges,picupcharges,weekdayc
 ImageView carimage;
 EditText Couponcode;
 Button book,apply;
-String str;
+String book_id,booking_id,payment_id,transaction_id;
     String name,email,mobile,dob,aadharno,dlno,userid;
     ProgressDialog progressDialog;
 
@@ -90,18 +92,8 @@ String str;
         final String startime=sharedPreferences.getString("starttime",null);
         final String endtime=sharedPreferences.getString("endtime",null);
         int duration=sharedPreferences.getInt("dif",0);
-        String dur=String.valueOf(duration);
-      // timeduration.append(" hrs");
-//        if(stdate!=" "&& end !=" "&&startime!=null&&endtime!=null&&dur!=null){
-//            startdate.setText(stdate);
-//            enddate.setText(end);
-//            startt.setText(startime);
-//            endt.setText(endtime);
-//           timeduration.setText(""+dur);
-//           timeduration.append(" hrs");
-//        }else{
-//
-//        }
+
+
         SharedPreferences sharedPreferences2 = PaymentPage.this.getSharedPreferences("MySharedPref2", MODE_PRIVATE);
         if (sharedPreferences2 != null) {
             name = sharedPreferences2.getString("Name", null);
@@ -144,6 +136,9 @@ String str;
                 //take all input send to api and proceed for payment
 
                 bookCab("bookCab",stdate,end,startime,endtime,car_id,total.getText().toString());
+
+                beforePayment("beforePayment",book_id);
+
                 startPayment(Float.parseFloat(total.getText().toString()));
 
 
@@ -213,7 +208,7 @@ String str;
                         int cost= (int) Float.parseFloat(total_rs);
                         int gstcost= (int) (cost*(gstpercentage/100));
                         gst.setText(""+gstcost);
-                        total.setText(""+(cost+gstcost));
+                        total.setText(""+(cost));
 
 
 
@@ -288,10 +283,10 @@ String str;
                     JSONObject jsonObject = null;
                     try {
                         jsonObject = new JSONObject(httpResponseMsg);
-                        //  String messege= jsonObject.getString("otp");
-                        String book_id= jsonObject.getString("book_id");
-                        String booking_id= jsonObject.getString("booking_id");
-                        String payment_id= jsonObject.getString("payment_id");
+
+                         book_id= jsonObject.getString("book_id");
+                         booking_id= jsonObject.getString("booking_id");
+                         payment_id= jsonObject.getString("payment_id");
 
 
                     } catch (JSONException e) {
@@ -331,6 +326,136 @@ String str;
 
         bookCabClass.execute(method);
     }
+
+    public void beforePayment(final String method,final String book_id){
+
+        class UserLoginClass extends AsyncTask<String,Void,String> {
+
+
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+
+                progressDialog = ProgressDialog.show(PaymentPage.this,"Loading...",null,true,true);
+            }
+
+            @Override
+            protected void onPostExecute(String httpResponseMsg) {
+
+                super.onPostExecute(httpResponseMsg);
+
+                progressDialog.dismiss();
+
+                JSONObject jsonObject2 = null;
+                try {
+                    jsonObject2 = new JSONObject(httpResponseMsg);
+                    String status = jsonObject2.getString("status");
+
+                    if(status.equals("200")){
+
+                        transaction_id=jsonObject2.getString("transaction_id");
+
+                    }else{
+
+                            String messege = jsonObject2.getString("msg");
+                            Toast.makeText(PaymentPage.this, messege, Toast.LENGTH_SHORT).show();
+
+                    }
+
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
+
+            }
+
+            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+            @Override
+            protected String doInBackground(String... params) {
+
+
+                String jsonInputString="{\"method\":\"beforePayment\",\"book_id\":\""+book_id+"\"}";
+
+//                finalResult = jsonhttpParse.postRequest(method,Email,Password, HttpURL);
+                finalResult = jsonhttpParse.postRequest(jsonInputString, HttpURL);
+
+                return finalResult;
+            }
+        }
+
+        UserLoginClass userLoginClass = new UserLoginClass();
+
+        userLoginClass.execute(method,book_id);
+    }
+    private void afterPayment(final String method, final String booking_id, final String transaction_id, final String payment_id, String status, final String amount, String response_raw_data) {
+
+        class UserLoginClass extends AsyncTask<String,Void,String> {
+
+
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+
+                progressDialog = ProgressDialog.show(PaymentPage.this,"Loading...",null,true,true);
+            }
+
+            @Override
+            protected void onPostExecute(String httpResponseMsg) {
+
+                super.onPostExecute(httpResponseMsg);
+
+                progressDialog.dismiss();
+
+                JSONObject jsonObject2 = null;
+                try {
+                    jsonObject2 = new JSONObject(httpResponseMsg);
+                    String status = jsonObject2.getString("status");
+
+                    if(status.equals("200")){
+
+
+
+                    }else{
+
+                        String messege = jsonObject2.getString("msg");
+                        Toast.makeText(PaymentPage.this, messege, Toast.LENGTH_SHORT).show();
+
+                    }
+
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                // Toast.makeText(Signup.this, httpResponseMsg, Toast.LENGTH_SHORT).show();
+
+
+
+            }
+
+            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+            @Override
+            protected String doInBackground(String... params) {
+
+
+                String jsonInputString="{\"method\":\"afterPayment\",\"booking_id\":\""+booking_id+"\",\"transaction_id\":\""+transaction_id+"\",\"payment_id\":\""+payment_id+"\",\"status\":1,\"amount\":\""+amount+"\",\"response_raw_data\":\"\"}";
+
+//                finalResult = jsonhttpParse.postRequest(method,Email,Password, HttpURL);
+                finalResult = jsonhttpParse.postRequest(jsonInputString, HttpURL);
+
+                return finalResult;
+            }
+        }
+
+        UserLoginClass userLoginClass = new UserLoginClass();
+
+        userLoginClass.execute(method);
+    }
+
 
     public void startPayment(Float total) {
 
@@ -374,9 +499,18 @@ String str;
 
     @Override
     public void onPaymentSuccess(String s) {
+
+        String status="1";
+
+        String amount=total.getText().toString();
+
+        afterPayment("afterPayment",booking_id,transaction_id,payment_id,status,amount,"");
+
         Toast.makeText(this, "Payment success--"+s, Toast.LENGTH_SHORT).show();
         //UserLoginFunction1();
     }
+
+
 
     @Override
     public void onPaymentError(int i, String s) {

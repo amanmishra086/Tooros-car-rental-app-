@@ -153,7 +153,7 @@ public class CarBooking extends AppCompatActivity {
                             CarBookingModel carBookingModel=new CarBookingModel(R.drawable.hundaiimage,ob.getString("car_nme")
                                     ,ob.getString("fuelType"),ob.getString("cost"),ob.getString("no_of_seat"),
                                     ob.getString("gearType"),ob.getString("no_of_baggage"),ob.getString("status"),
-                                    ob.getString("weekendcost"),ob.getString("security"),ob.getString("id"));
+                                    ob.getString("weekendcost"),ob.getString("security"),ob.getString("id"),ob.getString("bookCount"),ob.getString("mtCount"));
                             carBookingModels.add(carBookingModel);
                         }
 //

@@ -3,6 +3,7 @@ package my.awesome.tooros;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -18,6 +19,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -94,20 +97,33 @@ RecyclerView offer_recycler;
         endtime=findViewById(R.id.endt);
         spinner=findViewById(R.id.select_city);
 
-       // list.add("Bhubaneshwar");
-       // list.add("Kota");
+
+        boolean online=isOnline();
+        if(!online){
+            AlertDialog.Builder builder =new AlertDialog.Builder(this);
+            builder.setTitle("No internet Connection");
+            builder.setMessage("Please turn on internet connection to continue");
+            builder.setNegativeButton("close", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+            AlertDialog alertDialog = builder.create();
+            alertDialog.show();
+        }
+
+
 
                 spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                         city=parent.getItemAtPosition(position).toString();
-                       // Toast.makeText(CitySelectionActivity.this, ""+city, Toast.LENGTH_SHORT).show();
-                      //  city=spinner.getSelectedItem().toString();
                         SharedPreferences sharedPreferences = CitySelectionActivity.this.getSharedPreferences("Date", MODE_PRIVATE);
                         SharedPreferences.Editor myEdit = sharedPreferences.edit();
                         myEdit.putString("city",""+city);
                         myEdit.apply();
-                       // Toast.makeText(CitySelectionActivity.this, ""+city, Toast.LENGTH_SHORT).show();
+
                     }
 
                     @Override
@@ -174,9 +190,6 @@ RecyclerView offer_recycler;
             menu.findItem(R.id.nav_logout).setVisible(false);
             menu.findItem(R.id.nav_profile).setVisible(false);
         }
-
-
-
 
 
         navigationView.setItemIconTintList(null);
@@ -275,7 +288,6 @@ RecyclerView offer_recycler;
 
 
 
-
 //        guidlines_adapter=new Guidlines_adapter(guidlines_models,CitySelectionActivity.this);
 //        LinearLayoutManager linearLayoutManager=new LinearLayoutManager(CitySelectionActivity.this,RecyclerView.HORIZONTAL,false);
 //        senitization_recycler.setLayoutManager(linearLayoutManager);
@@ -294,6 +306,19 @@ RecyclerView offer_recycler;
         ServicesFunction("getAlllocation");//add service name
 
     }
+
+    public boolean isOnline() {
+        ConnectivityManager conMgr = (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = conMgr.getActiveNetworkInfo();
+
+        if(netInfo == null || !netInfo.isConnected() || !netInfo.isAvailable()){
+            Toast.makeText(CitySelectionActivity.this, "No Internet connection!", Toast.LENGTH_LONG).show();
+
+            return false;
+        }
+        return true;
+    }
+
 //add service name accordingly
        public void ServicesFunction(String getAlllocation) {
 //we have to fetch here
