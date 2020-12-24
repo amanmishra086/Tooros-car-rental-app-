@@ -254,7 +254,7 @@ String book_id,booking_id,payment_id,transaction_id;
         bookCabClass.execute(method);
     }
 
-    public void bookCab(String method, final String stdate, final String end, String startime, String endtime, final String car_id, final String price){
+    public void bookCab(String method, final String stdate, final String end, final String startime, final String endtime, final String car_id, final String price){
 
         class BookCabClass extends AsyncTask<String,Void,String> {
 
@@ -312,7 +312,7 @@ String book_id,booking_id,payment_id,transaction_id;
 
                 //String jsonInputString="{\"method\":\"registerUser\",\"name\":\""+strname+"\",\"email\":\""+stremail+"\",\"mobile\":\""+strphone+"\",\"password\":\""+strpassword+"\",\"dl_no\":\""+strdlno+"\",\"aadhar_no\":\""+straadharcardno+"\",\"dob\":\""+strdob+"\"}";
 
-                    String jsonInputString = "{\"method\":\"bookCab\",\"car_id\":\"" + car_id + "\",\"city\":\"1\",\"pickup_date\":\"" + stdate + "\",\"pickup_time\":\"09:00 AM\",\"dropup_date\":\"" + end + "\",\"dropup_time\":\"21:00 PM\",\"booking_amount\":\"" + price + "\",\"name\":\"" + name + "\",\"mobile\":\""+mobile+"\",\"email\":\""+email+"\",\"message\":\"api testing\",\"coupon\":\"\",\"dlno\":\""+dlno+"\",\"dob\":\""+dob+"\",\"security\":\"Online\"}";
+                    String jsonInputString = "{\"method\":\"bookCab\",\"car_id\":\"" + car_id + "\",\"city\":\"1\",\"pickup_date\":\"" + stdate + "\",\"pickup_time\":\""+startime+"\",\"dropup_date\":\"" + end + "\",\"dropup_time\":\""+endtime+"\",\"booking_amount\":\"" + price + "\",\"name\":\"" + name + "\",\"mobile\":\""+mobile+"\",\"email\":\""+email+"\",\"message\":\"api testing\",\"coupon\":\"\",\"dlno\":\""+dlno+"\",\"dob\":\""+dob+"\",\"security\":\"Online\"}";
 //                finalResult = jsonhttpParse.postRequest(method,Email,Password, HttpURL);
                     finalResult = jsonhttpParse.postRequest(jsonInputString, HttpURL);
 
