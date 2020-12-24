@@ -89,6 +89,7 @@ RecyclerView offer_recycler;
     TextView startime,endtime;
     String st="",et="";
     List<String> list=new ArrayList<String>() ;
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -101,14 +102,15 @@ RecyclerView offer_recycler;
         boolean online=isOnline();
         if(!online){
             AlertDialog.Builder builder =new AlertDialog.Builder(this);
+            builder.setCancelable(false);
             builder.setTitle("No internet Connection");
-            builder.setMessage("Please turn on internet connection to continue");
-            builder.setNegativeButton("close", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    dialog.dismiss();
-                }
-            });
+            builder.setMessage("Please turn on internet connection and reopen the application");
+//            builder.setNegativeButton("close", new DialogInterface.OnClickListener() {
+//                @Override
+//                public void onClick(DialogInterface dialog, int which) {
+//                    dialog.dismiss();
+//                }
+//            });
             AlertDialog alertDialog = builder.create();
             alertDialog.show();
         }
@@ -199,6 +201,7 @@ RecyclerView offer_recycler;
          navigationView.bringToFront();
 
         ActionBarDrawerToggle toggle=new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.app_name,R.string.app_name);
+        toggle.getDrawerArrowDrawable().setColor(getColor(R.color.white));
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
