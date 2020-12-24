@@ -170,8 +170,7 @@ String book_id,booking_id,payment_id,transaction_id;
 
 
                 if(msg){
-
-                    // Toast.makeText(PaymentPage.this, "helloooooo", Toast.LENGTH_SHORT).show();
+                  // Toast.makeText(PaymentPage.this, "helloooooo", Toast.LENGTH_SHORT).show();
 
                     JSONObject jsonObject = null;
                     try {
@@ -362,13 +361,9 @@ String book_id,booking_id,payment_id,transaction_id;
 
                     }
 
-
-
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
-
 
             }
 
@@ -416,7 +411,7 @@ String book_id,booking_id,payment_id,transaction_id;
 
                     if(status.equals("200")){
 
-
+                        progressDialog.dismiss();
 
                     }else{
 
@@ -507,6 +502,8 @@ String book_id,booking_id,payment_id,transaction_id;
         afterPayment("afterPayment",booking_id,transaction_id,payment_id,status,amount,"");
 
         Toast.makeText(this, "Payment success--"+s, Toast.LENGTH_SHORT).show();
+
+        progressDialog.dismiss();
         //UserLoginFunction1();
     }
 
