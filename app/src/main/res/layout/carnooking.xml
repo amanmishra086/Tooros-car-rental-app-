@@ -159,7 +159,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="304dp"
             android:layout_marginBottom="57dp"
-            android:text="RENTAL /24hrs"
+            android:text="RENTAL"
             android:textColor="#000000"
             android:textSize="20sp"
             android:textStyle="bold"
