@@ -3,7 +3,7 @@ package my.awesome.tooros;
 import android.widget.TextView;
 
 public class CarBookingModel {
-    int carimage;
+    String carimage;
     String carname;
     String fueltype;
     String price;
@@ -17,7 +17,7 @@ public class CarBookingModel {
     String bookCount,mtCount;
 
 
-    public CarBookingModel(int carimage, String carname, String fueltype, String price, String seat, String geartype, String baggage, String status, String weekendcost, String security, String car_id, String bookCount, String mtCount) {
+    public CarBookingModel(String carimage, String carname, String fueltype, String price, String seat, String geartype, String baggage, String status, String weekendcost, String security, String car_id, String bookCount, String mtCount) {
         this.carimage = carimage;
         this.carname = carname;
         this.fueltype = fueltype;
@@ -57,11 +57,11 @@ public class CarBookingModel {
         this.car_id = car_id;
     }
 
-    public int getCarimage() {
+    public String getCarimage() {
         return carimage;
     }
 
-    public void setCarimage(int carimage) {
+    public void setCarimage(String carimage) {
         this.carimage = carimage;
     }
 

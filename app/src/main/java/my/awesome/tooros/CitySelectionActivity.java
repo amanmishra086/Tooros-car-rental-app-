@@ -575,7 +575,8 @@ RecyclerView offer_recycler;
                 startActivity(new Intent(this,PolicyActivity.class));
                 break;
             case R.id.nav_profile:
-                Toast.makeText(this, "Not created till now", Toast.LENGTH_SHORT).show();
+               // Toast.makeText(this, "Not created till now", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(CitySelectionActivity.this,Profile.class));
                 break;
             case R.id.nav_login:
                 startActivity(new Intent(this,Login.class));

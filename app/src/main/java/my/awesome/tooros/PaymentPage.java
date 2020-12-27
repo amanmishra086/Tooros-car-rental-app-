@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.razorpay.Checkout;
 import com.razorpay.PaymentResultListener;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -67,8 +68,10 @@ String str;
        Intent intent=getIntent();
        Bundle bundle=getIntent().getExtras();
        if(bundle!=null){
-           int resid=bundle.getInt("carimage");
-           carimage.setImageResource(resid);
+//           int resid=bundle.getInt("carimage");
+//           carimage.setImageResource(resid);
+           String url=bundle.getString("carimage");
+           Picasso.with(this).load(url.replace("http","https")).fit().centerInside().into(carimage);
        }
        String carn=intent.getExtras().getString("carname");
        String  geart=intent.getExtras().getString("geartype");

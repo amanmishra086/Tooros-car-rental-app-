@@ -15,6 +15,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 public class CarBookingAdapter extends RecyclerView.Adapter<CarBookingAdapter.viewHolder> {
@@ -37,7 +39,9 @@ public class CarBookingAdapter extends RecyclerView.Adapter<CarBookingAdapter.vi
     public void onBindViewHolder(@NonNull final viewHolder holder, int position) {
         final CarBookingModel carBookingModel=carBookingModels.get(position);
        int pos1=carBookingModels.indexOf(carBookingModel);
-        holder.carimage.setImageResource(carBookingModel.getCarimage());
+        //holder.carimage.setImageResource(carBookingModel.getCarimage());
+        Picasso.with(context).load(carBookingModel.getCarimage().replace("http","https")).fit().centerInside().into(holder.carimage);
+
 
         String fuel="";
         switch (Integer.parseInt(carBookingModel.getFueltype())){
