@@ -541,27 +541,14 @@ RecyclerView offer_recycler;
             myEdit2.apply();
             SharedPreferences sharedPreferencesForLoginOrNot = CitySelectionActivity.this.getSharedPreferences("loginOrNot", MODE_PRIVATE);
             String login=sharedPreferencesForLoginOrNot.getString("info",null);
-         //   Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
-            if(login!="no") {
+         //   Toast.makeText(this, "", Toast.LENGTH_SHORT).show()
                 Intent intent = new Intent(CitySelectionActivity.this, CarBooking.class);
-//            intent.putExtra("city",citySelected);
-//            intent.putExtra("startdate",startdateSelected);
-//            intent.putExtra("enddate",enddateSelected);
                 startActivity(intent);
-            }else{
-                Intent intent = new Intent(CitySelectionActivity.this, Login.class);
-//            intent.putExtra("city",citySelected);
-//            intent.putExtra("startdate",startdateSelected);
-//            intent.putExtra("enddate",enddateSelected);
-                startActivity(intent);
-            }
+
         }
 
 
-//
-//        Toast.makeText(this, "No Car Found !!", Toast.LENGTH_SHORT).show();
-
-    }
+     }
 
 
 

@@ -28,7 +28,7 @@ public class Login extends AppCompatActivity {
     String finalResult ;
     Boolean CheckEditText ;
     ProgressDialog progressDialog;
-
+    int pay1=0;
     JsonHttpParse jsonhttpParse = new JsonHttpParse();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +38,9 @@ public class Login extends AppCompatActivity {
         email=findViewById(R.id.emailcontainer);
         password=findViewById(R.id.passwordcontainer);
         signin=findViewById(R.id.loginbtn);
+        Intent intent=getIntent();
+
+         pay1 = intent.getIntExtra("val",0);
         // public static final String UserEmail = "";
 
 
@@ -66,6 +69,7 @@ public class Login extends AppCompatActivity {
             if(CheckEditText){
 
             UserLoginFunction("login",stremail,strpassword);
+
 
             }
             else {
@@ -148,15 +152,18 @@ public class Login extends AppCompatActivity {
                                 // loginedit.putString("username","Aman");
                                 loginedit.apply();
 
-                                startActivity(new Intent(Login.this,CitySelectionActivity.class));
+                                Toast.makeText(Login.this, ""+pay1, Toast.LENGTH_SHORT).show();
+                                if(pay1==1) {
+                                    startActivity(new Intent(Login.this, PaymentPage.class));
+                                }else
+                                    startActivity(new Intent(Login.this, CitySelectionActivity.class));
+
+
 
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-
-
-
 
 
                         //
