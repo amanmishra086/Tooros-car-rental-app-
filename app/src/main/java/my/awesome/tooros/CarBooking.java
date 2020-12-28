@@ -49,7 +49,6 @@ public class CarBooking extends AppCompatActivity {
     String HttpURL = "https://www.cakiweb.com/tooros/api/api.php";
     String finalResult1 ;
     JsonHttpParse jsonhttpParse = new JsonHttpParse();
-
     TextView cityname,start,end;
 
     @Override
@@ -72,6 +71,9 @@ public class CarBooking extends AppCompatActivity {
         String City= sharedPreferences.getString("city",null);
         final String startime=sharedPreferences.getString("starttime",null);
         final String endtime=sharedPreferences.getString("endtime",null);
+        Toast.makeText(CarBooking.this, ""+startime+""+endtime, Toast.LENGTH_SHORT).show();
+     //   String concatPdate1=""+stdate+" "+startime;
+     //   Toast.makeText(CarBooking.this, ""+concatPdate1, Toast.LENGTH_SHORT).show();
         if(stdate!=" "&& end !=" "&& City!=" "&& startime!=" " && endtime!=" "){
             startdate.setText(stdate);
             enddate.setText(end);

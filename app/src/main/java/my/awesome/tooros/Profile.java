@@ -152,5 +152,8 @@ public class Profile extends AppCompatActivity {
     public void onClickSubmit(View view) {
         //do whatever you want from here
     }
+
+    public void onClickDlsnap(View view) {
+    }
 }
 

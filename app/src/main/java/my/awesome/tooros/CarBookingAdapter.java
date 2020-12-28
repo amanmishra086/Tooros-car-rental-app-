@@ -94,7 +94,7 @@ public class CarBookingAdapter extends RecyclerView.Adapter<CarBookingAdapter.vi
 
             final String finalFuel = fuel;
             final String finalGear = gear;
-            holder.status.setOnClickListener(new View.OnClickListener() {
+            holder.status.setOnClickListener( new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
 
