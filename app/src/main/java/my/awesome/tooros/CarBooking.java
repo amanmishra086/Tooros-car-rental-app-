@@ -50,7 +50,7 @@ public class CarBooking extends AppCompatActivity {
     String finalResult1 ;
     JsonHttpParse jsonhttpParse = new JsonHttpParse();
     TextView cityname,start,end;
-
+String cityid;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,9 +69,11 @@ public class CarBooking extends AppCompatActivity {
         String stdate= sharedPreferences.getString("startdate",null);
         String end= sharedPreferences.getString("Enddate",null);
         String City= sharedPreferences.getString("city",null);
+        cityid=sharedPreferences.getString("cityid",null);
+        Toast.makeText(CarBooking.this, ""+cityid, Toast.LENGTH_SHORT).show();
         final String startime=sharedPreferences.getString("starttime",null);
         final String endtime=sharedPreferences.getString("endtime",null);
-        Toast.makeText(CarBooking.this, ""+startime+""+endtime, Toast.LENGTH_SHORT).show();
+       // Toast.makeText(CarBooking.this, ""+startime+""+endtime, Toast.LENGTH_SHORT).show();
      //   String concatPdate1=""+stdate+" "+startime;
      //   Toast.makeText(CarBooking.this, ""+concatPdate1, Toast.LENGTH_SHORT).show();
         if(stdate!=" "&& end !=" "&& City!=" "&& startime!=" " && endtime!=" "){
@@ -191,7 +193,7 @@ public class CarBooking extends AppCompatActivity {
                 String concatDdate=""+enddate+" "+endtime;
 
                 //String jsonInputString="{\"method\":\"getAllavailCabs\",\"concatPdate\":\""+startdate+" 09:00"+"\",\"concatDdate\":\""+enddate+" 21:00"+"\",\"city\":1}";
-                String jsonInputString="{\"method\":\"getAllavailCabs\",\"concatPdate\":\""+concatPdate+"\",\"concatDdate\":\""+concatDdate+"\",\"city\":1}";
+                String jsonInputString="{\"method\":\"getAllavailCabs\",\"concatPdate\":\""+concatPdate+"\",\"concatDdate\":\""+concatDdate+"\",\"city\":"+cityid+"}";
                // String jsonInputString={"method":"getAllavailCabs","concatPdate":"2021-01-15 09:00","concatDdate":"2021-01-16 21:00","city":1};
                 //String jsonInputString1="{\"method\":\"getAllsubService\",\"service_id\":\""+id+"\"}";
 

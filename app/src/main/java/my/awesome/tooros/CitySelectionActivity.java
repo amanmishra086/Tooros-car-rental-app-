@@ -91,7 +91,8 @@ RecyclerView offer_recycler;
     String st="",et="";
     //this is city adapter
     CityAdapter cityAdapter;
-    ArrayList<ModelCity> modelcityss=new ArrayList<>();
+ ArrayList<ModelCity> modelcityss=new ArrayList<>();
+    ModelCity modelCity;
    // List<String> list=new ArrayList<String>() ;
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -102,7 +103,8 @@ RecyclerView offer_recycler;
         endtime=findViewById(R.id.endt);
         spinner=findViewById(R.id.select_city);
         //
-       cityAdapter=new CityAdapter(CitySelectionActivity.this,modelcityss);
+     //  cityAdapter=new CityAdapter(CitySelectionActivity.this,modelcityss);
+
         boolean online=isOnline();
         if(!online){
             AlertDialog.Builder builder =new AlertDialog.Builder(this);
@@ -121,7 +123,8 @@ RecyclerView offer_recycler;
 
 
 
-
+        cityAdapter=new CityAdapter(CitySelectionActivity.this,R.layout.city,modelcityss);
+        spinner.setAdapter(cityAdapter);
 
 
 //         sharedpreference to store info if user is logged in or not
@@ -348,15 +351,16 @@ RecyclerView offer_recycler;
                            // homemodel history=new homemodel(R.drawable.promocodecar2,ob.getString("img"),
                             //ob.getString("service_name"),ob.getString("sch_servie_id"));
                            // androidFlavors.add(history);
-                        ModelCity modelCity=new ModelCity(ob.getString("location"),ob.getString("1"));
+                         modelCity=new ModelCity(ob.getString("location"),ob.getString("id"));
 //                            list.add(ob.getString("location"));
                             modelcityss.add(modelCity);
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
+                    cityAdapter.notifyDataSetChanged();
 
-                   cityAdapter.notifyDataSetChanged();
+
                     //senitization_recycler.setAdapter(guidlines_adapter);
                    // guidlines_adapter.notifyDataSetChanged();
 
@@ -510,7 +514,7 @@ RecyclerView offer_recycler;
     public void onClickFindCarButton(View view) {
        // citySelected=select_city.getSelectedItem().toString();
 
-        if(city.equals("Select City") || startdateSelected=="" || enddateSelected=="" || st=="" || et=="")
+        if( startdateSelected=="" || enddateSelected=="" || st=="" || et=="")
 
         {
             Toast.makeText(this, "Select required input !!", Toast.LENGTH_SHORT).show();
