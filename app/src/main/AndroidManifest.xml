@@ -12,7 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Profile"></activity>
+        <activity android:name=".TermsAndCondition"></activity>
+        <activity android:name=".HelpAndSupport" />
+        <activity android:name=".Profile" />
         <activity android:name=".ThankYou" />
         <activity android:name=".OtpVerification" />
         <activity android:name=".PaymentPage" />

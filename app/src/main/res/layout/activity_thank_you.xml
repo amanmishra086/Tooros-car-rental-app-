@@ -17,9 +17,10 @@
         android:layout_marginTop="120dp"
         android:src="@drawable/splashlogo" />
     <TextView
+        android:id="@+id/invoice"
         android:layout_marginTop="20dp"
         android:layout_gravity="center_horizontal"
-        android:text="INVOICE NO.: TOR/345/223"
+        android:text="INVOICE NO :-  "
         android:textSize="20sp"
         android:textColor="#fff"
         android:layout_width="wrap_content"
@@ -66,7 +67,7 @@
                     app:srcCompat="@drawable/calender" />
 
                 <TextView
-                    android:id="@+id/textView4"
+                    android:id="@+id/startdate"
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="4dp"
@@ -76,7 +77,7 @@
                     android:textSize="14sp" />
 
                 <TextView
-                    android:id="@+id/startt"
+                    android:id="@+id/starttime"
 
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
@@ -124,7 +125,7 @@
                     app:srcCompat="@drawable/calender" />
 
                 <TextView
-                    android:id="@+id/textView7"
+                    android:id="@+id/enddate"
                     android:layout_width="80dp"
                     android:layout_height="match_parent"
 
@@ -134,7 +135,7 @@
                     android:textSize="14sp" />
 
                 <TextView
-                    android:id="@+id/endt"
+                    android:id="@+id/endtime"
                     android:layout_width="68dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="2dp"

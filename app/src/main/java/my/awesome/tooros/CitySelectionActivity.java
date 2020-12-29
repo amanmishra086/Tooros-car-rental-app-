@@ -574,7 +574,9 @@ RecyclerView offer_recycler;
 
             case R.id.nav_home:
                 break;
-
+            case R.id.nav_help:
+                startActivity(new Intent(this,HelpAndSupport.class));
+                break;
             case R.id.nav_policy:
                 startActivity(new Intent(this,PolicyActivity.class));
                 break;

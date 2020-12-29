@@ -138,6 +138,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/mobilenocontainer" />
 
             <EditText
+                android:inputType="textPassword"
                 android:id="@+id/passwordcontainer"
                 android:layout_width="334dp"
                 android:layout_height="30dp"
@@ -169,6 +170,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/passwordcontainer" />
 
             <EditText
+                android:inputType="textPassword"
                 android:id="@+id/repasswordcontainer"
                 android:layout_width="334dp"
                 android:layout_height="30dp"
