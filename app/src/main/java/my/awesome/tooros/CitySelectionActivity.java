@@ -122,27 +122,6 @@ RecyclerView offer_recycler;
             alertDialog.show();
         }
 
-            spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                    @Override
-                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        city=parent.getItemAtPosition(position).toString();
-                        SharedPreferences sharedPreferences = CitySelectionActivity.this.getSharedPreferences("Date", MODE_PRIVATE);
-                        SharedPreferences.Editor myEdit = sharedPreferences.edit();
-                        myEdit.putString("city",""+city);
-                        myEdit.apply();
-
-                    }
-
-                    @Override
-                    public void onNothingSelected(AdapterView<?> parent) {
-                        city="Bhubaneswar";
-                        SharedPreferences sharedPreferences = CitySelectionActivity.this.getSharedPreferences("Date", MODE_PRIVATE);
-                        SharedPreferences.Editor myEdit = sharedPreferences.edit();
-                        myEdit.putString("city",""+city);
-                        myEdit.apply();
-
-                    }
-                });
 
 
 
