@@ -114,10 +114,7 @@ RecyclerView offer_recycler;
             AlertDialog alertDialog = builder.create();
             alertDialog.show();
         }
-
-
-
-                spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                         city=parent.getItemAtPosition(position).toString();
@@ -133,9 +130,6 @@ RecyclerView offer_recycler;
 
                     }
                 });
-
-
-
 
 
 //         sharedpreference to store info if user is logged in or not

@@ -44,7 +44,6 @@ String str;
         setContentView(R.layout.activity_payment_page);
 
 
-
         startdate=findViewById(R.id.startdate);
         enddate=findViewById(R.id.enddate);
         carimage=findViewById(R.id.carimage);
