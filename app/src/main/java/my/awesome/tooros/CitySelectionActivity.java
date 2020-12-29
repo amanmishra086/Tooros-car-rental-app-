@@ -34,6 +34,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -41,6 +42,7 @@ import android.widget.Toast;
 import android.widget.Toolbar;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.snackbar.Snackbar;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -88,16 +90,21 @@ RecyclerView offer_recycler;
  int hour=0,min,hour1=0,min1,daydif=0;
     TextView startime,endtime;
     String st="",et="";
-    List<String> list=new ArrayList<String>() ;
+    //this is city adapter
+    CityAdapter cityAdapter;
+ ArrayList<ModelCity> modelcityss=new ArrayList<>();
+    ModelCity modelCity;
+   // List<String> list=new ArrayList<String>() ;
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_city_selection);
         startime=findViewById(R.id.startt);
         endtime=findViewById(R.id.endt);
         spinner=findViewById(R.id.select_city);
-
+        //
+     //  cityAdapter=new CityAdapter(CitySelectionActivity.this,modelcityss);
 
         boolean online=isOnline();
         if(!online){
@@ -105,15 +112,16 @@ RecyclerView offer_recycler;
             builder.setCancelable(false);
             builder.setTitle("No internet Connection");
             builder.setMessage("Please turn on internet connection and reopen the application");
-//            builder.setNegativeButton("close", new DialogInterface.OnClickListener() {
+//            builder.setNegativeButton("Refresh", new DialogInterface.OnClickListener() {
 //                @Override
 //                public void onClick(DialogInterface dialog, int which) {
-//                    dialog.dismiss();
+//                    onCreate(savedInstanceState);
 //                }
 //            });
             AlertDialog alertDialog = builder.create();
             alertDialog.show();
         }
+
             spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -127,9 +135,21 @@ RecyclerView offer_recycler;
 
                     @Override
                     public void onNothingSelected(AdapterView<?> parent) {
+                        city="Bhubaneswar";
+                        SharedPreferences sharedPreferences = CitySelectionActivity.this.getSharedPreferences("Date", MODE_PRIVATE);
+                        SharedPreferences.Editor myEdit = sharedPreferences.edit();
+                        myEdit.putString("city",""+city);
+                        myEdit.apply();
 
                     }
                 });
+
+
+
+
+        cityAdapter=new CityAdapter(CitySelectionActivity.this,R.layout.city,modelcityss);
+        spinner.setAdapter(cityAdapter);
+
 
 
 //         sharedpreference to store info if user is logged in or not
@@ -160,7 +180,7 @@ RecyclerView offer_recycler;
         startdate=findViewById(R.id.startDate);
         enddate=findViewById(R.id.endDate);
 
-        //spinner.setOnItemSelectedListener(onContextItemSelected());
+
 
 
 //        SharedPreferences sharedPreferences = CitySelectionActivity.this.getSharedPreferences("Date", MODE_PRIVATE);
@@ -356,17 +376,19 @@ RecyclerView offer_recycler;
                            // homemodel history=new homemodel(R.drawable.promocodecar2,ob.getString("img"),
                             //ob.getString("service_name"),ob.getString("sch_servie_id"));
                            // androidFlavors.add(history);
-                            list.add(ob.getString("location"));
+                         modelCity=new ModelCity(ob.getString("location"),ob.getString("id"));
+//                            list.add(ob.getString("location"));
+                            modelcityss.add(modelCity);
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
+                    cityAdapter.notifyDataSetChanged();
+
 
                     //senitization_recycler.setAdapter(guidlines_adapter);
                    // guidlines_adapter.notifyDataSetChanged();
-                    ArrayAdapter<String>dataadapter=new ArrayAdapter<String>(CitySelectionActivity.this,android.R.layout.simple_spinner_item,list);
-                    dataadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                    spinner.setAdapter(dataadapter);
+
 
 
                 }else{
@@ -517,13 +539,22 @@ RecyclerView offer_recycler;
     public void onClickFindCarButton(View view) {
        // citySelected=select_city.getSelectedItem().toString();
 
-        if(city.equals("Select City") || startdateSelected=="" || enddateSelected=="" || st=="" || et=="")
+        if( startdateSelected=="" || enddateSelected=="" || st=="" || et=="")
 
         {
             Toast.makeText(this, "Select required input !!", Toast.LENGTH_SHORT).show();
 
         }else if(daydif<=0) {
-            Toast.makeText(this, "Select valid  date to drop !!", Toast.LENGTH_SHORT).show();
+            Snackbar.make(view, "Select valid  date to drop !!", Snackbar.LENGTH_LONG)
+                    .setAction("OK", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+
+                        }
+                    })
+                    .setActionTextColor(getResources().getColor(android.R.color.holo_red_light ))
+                    .show();
+           // Toast.makeText(this, "Select valid  date to drop !!", Toast.LENGTH_SHORT).show();
         }
         else{
 
@@ -569,8 +600,7 @@ RecyclerView offer_recycler;
                 startActivity(new Intent(this,PolicyActivity.class));
                 break;
             case R.id.nav_profile:
-               // Toast.makeText(this, "Not created till now", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(CitySelectionActivity.this,Profile.class));
+                startActivity(new Intent(this,Profile.class));
                 break;
             case R.id.nav_login:
                 startActivity(new Intent(this,Login.class));
@@ -602,8 +632,8 @@ RecyclerView offer_recycler;
                 SimpleDateFormat f24hours1=new SimpleDateFormat("HH:mm");
                 try {
                     Date date1=f24hours1.parse(time1);
-                    SimpleDateFormat f12hour1=new SimpleDateFormat("hh:mm aa");
-                    endtime.setText(f12hour1.format(date1));
+                   // SimpleDateFormat f12hour1=new SimpleDateFormat("hh:mm ");
+                    endtime.setText(f24hours1.format(date1));
                      et=endtime.getText().toString();
                     SharedPreferences sharedPreferences1 = CitySelectionActivity.this.getSharedPreferences("Date", MODE_PRIVATE);
                     final SharedPreferences.Editor myEdit = sharedPreferences1.edit();
@@ -616,7 +646,7 @@ RecyclerView offer_recycler;
                     e.printStackTrace();
                 }
             }
-        },12,0,false
+        },24,0,true
         );
         timePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         timePickerDialog.updateTime(hour1,min1);
@@ -636,8 +666,8 @@ RecyclerView offer_recycler;
                 SimpleDateFormat f24hours=new SimpleDateFormat("HH:mm");
                 try {
                     Date date=f24hours.parse(time1);
-                    SimpleDateFormat f12hour=new SimpleDateFormat("hh:mm aa");
-                    startime.setText(f12hour.format(date));
+                    //SimpleDateFormat f12hour=new SimpleDateFormat("hh:mm ");
+                    startime.setText(f24hours.format(date));
                      st=startime.getText().toString();
                     SharedPreferences sharedPreferences1 = CitySelectionActivity.this.getSharedPreferences("Date", MODE_PRIVATE);
                     final SharedPreferences.Editor myEdit = sharedPreferences1.edit();
@@ -649,7 +679,7 @@ RecyclerView offer_recycler;
                     e.printStackTrace();
                 }
             }
-        },12,0,false
+        },24,0,true
         );
         timePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         timePickerDialog.updateTime(hour,min);

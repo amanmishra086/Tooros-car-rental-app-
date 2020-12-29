@@ -23,8 +23,8 @@ import java.util.Calendar;
 import java.util.Locale;
 
 public class Profile extends AppCompatActivity {
-    EditText name , email , phone, password,confirmpassword,aadharcardno,dlno;
-    TextView Dob;
+    EditText name , password,confirmpassword,aadharcardno,dlno;
+    TextView Dob , email , phone;
     Button Register;
     Uri imageuri;
     ImageView aadharpic,dlpic;
@@ -151,6 +151,9 @@ public class Profile extends AppCompatActivity {
 
     public void onClickSubmit(View view) {
         //do whatever you want from here
+    }
+
+    public void onClickDlsnap(View view) {
     }
 }
 
