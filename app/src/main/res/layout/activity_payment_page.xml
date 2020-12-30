@@ -557,44 +557,48 @@
                     android:layout_height="5dp"
                     android:layout_marginLeft="29dp"
                     android:layout_marginTop="2dp"
-                    android:layout_marginRight="74dp"
+                    android:layout_marginRight="29dp"
                     android:background="#fff" />
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="20dp">
                     <TextView
                         android:text="Total"
                         android:layout_marginLeft="30dp"
                         android:textSize="16sp"
                         android:textColor="#fff"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
+                        android:layout_weight="3"
                         android:layout_height="wrap_content"/>
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="170dp"
-                        android:layout_marginTop="4dp"
-                        android:background="@drawable/redbutton"
-                        android:orientation="horizontal">
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="4dp"-->
+<!--                       -->
+<!--                        android:background="@drawable/redbutton"-->
+<!--                        android:orientation="horizontal"-->
+<!--                        android:paddingLeft="10dp">-->
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:paddingLeft="9dp"
+
                             android:text="₹"
                             android:textColor="#fff" />
 
                         <TextView
                             android:id="@+id/totalamount"
-                            android:layout_width="wrap_content"
+                            android:paddingLeft="4dp"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            android:hint="1000"
+
+                            android:text="1000"
                             android:paddingRight="9dp"
-                            android:textColor="#fff"
+                            android:textColor="#88F30B"
                             android:textStyle="bold" />
-                    </LinearLayout>
+<!--                    </LinearLayout>-->
                 </LinearLayout>
                 <TextView
                     android:text="[Inclusive of all Taxes]"
@@ -614,6 +618,8 @@
                 android:orientation="horizontal">
 
                 <TextView
+
+                    android:onClick="termsAndConditionClick"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="30dp"
@@ -623,6 +629,7 @@
                     android:textSize="16sp" />
 
                 <TextView
+                    android:onClick="privacyPolicyClick"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
