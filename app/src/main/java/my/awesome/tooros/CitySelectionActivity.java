@@ -17,6 +17,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
@@ -56,7 +57,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-public class CitySelectionActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class CitySelectionActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener  {
     String HttpURL = "https://www.cakiweb.com/tooros/api/api.php";
     String finalResult ;
     ProgressDialog progressDialog;
@@ -103,6 +104,7 @@ RecyclerView offer_recycler;
         endtime=findViewById(R.id.endt);
         spinner=findViewById(R.id.select_city);
         //
+
      //  cityAdapter=new CityAdapter(CitySelectionActivity.this,modelcityss);
 
         boolean online=isOnline();
@@ -589,22 +591,29 @@ RecyclerView offer_recycler;
 
         return true;
     }
+
     public void endTime(View view) {
+
         TimePickerDialog timePickerDialog=new TimePickerDialog(CitySelectionActivity.this, android.R.style.Theme_Holo_Light_Dialog_MinWidth, new TimePickerDialog.OnTimeSetListener() {
+
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+
                 hour1=hourOfDay;
-                min1=minute;
-                String time1=hour1+":"+min1;
+
+               // min1=00;
+                String time1=hour1+":"+00;
                 SimpleDateFormat f24hours1=new SimpleDateFormat("HH:mm");
                 try {
                     Date date1=f24hours1.parse(time1);
-                   // SimpleDateFormat f12hour1=new SimpleDateFormat("hh:mm ");
-                    endtime.setText(f24hours1.format(date1));
+                   SimpleDateFormat f12hour1=new SimpleDateFormat("hh:mm aa");
+                    endtime.setText(f12hour1.format(date1));
                      et=endtime.getText().toString();
+                     String endtimee=f24hours1.format(date1);
                     SharedPreferences sharedPreferences1 = CitySelectionActivity.this.getSharedPreferences("Date", MODE_PRIVATE);
                     final SharedPreferences.Editor myEdit = sharedPreferences1.edit();
                     myEdit.putString("endtime",""+et);
+                    myEdit.putString("endtimee",""+endtimee);
                     myEdit.apply();
                     // Toast.makeText(CarBooking.this, ""+sd, Toast.LENGTH_SHORT).show();
 
@@ -613,7 +622,7 @@ RecyclerView offer_recycler;
                     e.printStackTrace();
                 }
             }
-        },24,0,true
+        },12,0,false
         );
         timePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         timePickerDialog.updateTime(hour1,min1);
@@ -623,22 +632,28 @@ RecyclerView offer_recycler;
 
 
     public void starttime(View view) {
-        TimePickerDialog timePickerDialog=new TimePickerDialog(CitySelectionActivity.this, android.R.style.Theme_Holo_Light_Dialog_MinWidth, new TimePickerDialog.OnTimeSetListener() {
+     final   TimePickerDialog timePickerDialog=new TimePickerDialog(CitySelectionActivity.this, android.R.style.Theme_Holo_Light_Dialog_MinWidth, new TimePickerDialog.OnTimeSetListener() {
+
+
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                hour=hourOfDay;
-                min=minute;
 
-                String time1=hour+":"+min;
+                hour=hourOfDay;
+
+               min=minute;
+                String time1=hour+":"+00;
                 SimpleDateFormat f24hours=new SimpleDateFormat("HH:mm");
                 try {
                     Date date=f24hours.parse(time1);
-                    //SimpleDateFormat f12hour=new SimpleDateFormat("hh:mm ");
-                    startime.setText(f24hours.format(date));
+                    SimpleDateFormat f12hour=new SimpleDateFormat("hh:mm aa");
+
+                    startime.setText(f12hour.format(date));
+                    String timee=f24hours.format(date);
                      st=startime.getText().toString();
                     SharedPreferences sharedPreferences1 = CitySelectionActivity.this.getSharedPreferences("Date", MODE_PRIVATE);
                     final SharedPreferences.Editor myEdit = sharedPreferences1.edit();
                     myEdit.putString("starttime",""+st);
+                    myEdit.putString("startimee",""+timee);
                     myEdit.apply();
                     //Toast.makeText(CarBooking.this, ""+startime, Toast.LENGTH_SHORT).show();
                 } catch (ParseException e) {
@@ -646,7 +661,8 @@ RecyclerView offer_recycler;
                     e.printStackTrace();
                 }
             }
-        },24,0,true
+
+        },12,0,false
         );
         timePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         timePickerDialog.updateTime(hour,min);

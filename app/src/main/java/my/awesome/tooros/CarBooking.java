@@ -73,6 +73,8 @@ String cityid;
         Toast.makeText(CarBooking.this, ""+cityid, Toast.LENGTH_SHORT).show();
         final String startime=sharedPreferences.getString("starttime",null);
         final String endtime=sharedPreferences.getString("endtime",null);
+        final String endtimee=sharedPreferences.getString("endtimee",null);
+        final String startimee=sharedPreferences.getString("startimee",null);
        // Toast.makeText(CarBooking.this, ""+startime+""+endtime, Toast.LENGTH_SHORT).show();
      //   String concatPdate1=""+stdate+" "+startime;
      //   Toast.makeText(CarBooking.this, ""+concatPdate1, Toast.LENGTH_SHORT).show();
@@ -80,6 +82,7 @@ String cityid;
             startdate.setText(stdate);
             enddate.setText(end);
             city.setText(City);
+
             startime1.setText(startime);
             endtime1.setText(endtime);
         }
@@ -105,7 +108,7 @@ String cityid;
         recyclerView.setLayoutManager(linearLayoutManager);
 
 
-        getSubSerivices("getAllavailCabs",City,stdate,end,startime,endtime);
+        getSubSerivices("getAllavailCabs",City,stdate,end,startimee,endtimee);
 
 
 //        CarBookingModel carBookingModel=new CarBookingModel(R.drawable.hundaiimage,"Renault Kwid","Petrol","₹1500","5 seat","Automatic","5 baggage","BOOKED");

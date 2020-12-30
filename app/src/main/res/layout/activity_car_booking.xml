@@ -92,7 +92,7 @@
                     <TextView
                         android:id="@+id/startt"
 
-                        android:layout_width="60dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="2dp"
                         android:hint="9:00 AM"
