@@ -43,6 +43,7 @@ import android.widget.Toast;
 import android.widget.Toolbar;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.snackbar.Snackbar;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -97,7 +98,7 @@ RecyclerView offer_recycler;
    // List<String> list=new ArrayList<String>() ;
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_city_selection);
         startime=findViewById(R.id.startt);
@@ -113,10 +114,10 @@ RecyclerView offer_recycler;
             builder.setCancelable(false);
             builder.setTitle("No internet Connection");
             builder.setMessage("Please turn on internet connection and reopen the application");
-//            builder.setNegativeButton("close", new DialogInterface.OnClickListener() {
+//            builder.setNegativeButton("Refresh", new DialogInterface.OnClickListener() {
 //                @Override
 //                public void onClick(DialogInterface dialog, int which) {
-//                    dialog.dismiss();
+//                    onCreate(savedInstanceState);
 //                }
 //            });
             AlertDialog alertDialog = builder.create();
@@ -125,8 +126,11 @@ RecyclerView offer_recycler;
 
 
 
+
+
         cityAdapter=new CityAdapter(CitySelectionActivity.this,R.layout.city,modelcityss);
         spinner.setAdapter(cityAdapter);
+
 
 
 //         sharedpreference to store info if user is logged in or not
@@ -522,7 +526,16 @@ RecyclerView offer_recycler;
             Toast.makeText(this, "Select required input !!", Toast.LENGTH_SHORT).show();
 
         }else if(daydif<=0) {
-            Toast.makeText(this, "Select valid  date to drop !!", Toast.LENGTH_SHORT).show();
+            Snackbar.make(view, "Select valid  date to drop !!", Snackbar.LENGTH_LONG)
+                    .setAction("OK", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+
+                        }
+                    })
+                    .setActionTextColor(getResources().getColor(android.R.color.holo_red_light ))
+                    .show();
+           // Toast.makeText(this, "Select valid  date to drop !!", Toast.LENGTH_SHORT).show();
         }
         else{
 
@@ -568,8 +581,7 @@ RecyclerView offer_recycler;
                 startActivity(new Intent(this,PolicyActivity.class));
                 break;
             case R.id.nav_profile:
-               // Toast.makeText(this, "Not created till now", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(CitySelectionActivity.this,Profile.class));
+                startActivity(new Intent(this,Profile.class));
                 break;
             case R.id.nav_login:
                 startActivity(new Intent(this,Login.class));
