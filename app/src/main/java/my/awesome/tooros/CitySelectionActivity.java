@@ -88,7 +88,7 @@ RecyclerView offer_recycler;
  // String[] Cityname=getResources().getStringArray(R.array.City);
 //List<String> City=Arrays.asList(Cityname);
  //
- int hour=0,min,hour1=0,min1,daydif=0;
+ int hour=0,min,hour1=0,min1,daydif=0,monthdif=0,yeardif=0;
     TextView startime,endtime;
     String st="",et="";
     //this is city adapter
@@ -247,7 +247,8 @@ RecyclerView offer_recycler;
                 String getstartdate=startdateSelected;
                 String getfrom[]=getstartdate.split("-");
                 int dayOfMonth1=Integer.parseInt(getfrom[2]);
-
+                int month1=Integer.parseInt(getfrom[1]);
+                int year1=Integer.parseInt(getfrom[0]);
                 myEndCalendar.set(Calendar.YEAR, year);
                 myEndCalendar.set(Calendar.MONTH, monthOfYear);
                 myEndCalendar.set(Calendar.DAY_OF_MONTH,dayOfMonth);
@@ -261,9 +262,12 @@ RecyclerView offer_recycler;
                 String getenddate=enddateSelected;
                 String getfrom2[]=getenddate.split("-");
                 int dayOfMonth2=Integer.parseInt(getfrom2[2]);
-
+                int mont2=Integer.parseInt(getfrom2[1]);
+                int year2=Integer.parseInt(getfrom2[0]);
             daydif=dayOfMonth2-dayOfMonth1;
-
+            monthdif=mont2-month1;
+            yeardif=year2-year1;
+                Toast.makeText(CitySelectionActivity.this, ""+daydif+""+monthdif+""+""+yeardif, Toast.LENGTH_SHORT).show();
                     enddate.setText(enddateSelected);
 
                 //String dateSelected=sdf.format(myEndCalendar.getTime());
@@ -526,32 +530,77 @@ RecyclerView offer_recycler;
             Toast.makeText(this, "Select required input !!", Toast.LENGTH_SHORT).show();
 
         }else if(daydif<=0) {
-            Snackbar.make(view, "Select valid  date to drop !!", Snackbar.LENGTH_LONG)
-                    .setAction("OK", new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
+            if (monthdif <= 0) {
+            if(yeardif<=0) {
 
-                        }
-                    })
-                    .setActionTextColor(getResources().getColor(android.R.color.holo_red_light ))
-                    .show();
-           // Toast.makeText(this, "Select valid  date to drop !!", Toast.LENGTH_SHORT).show();
+                Snackbar.make(view, "Select valid  date to drop !!", Snackbar.LENGTH_LONG)
+                        .setAction("OK", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+
+                            }
+                        })
+                        .setActionTextColor(getResources().getColor(android.R.color.holo_red_light))
+                        .show();
+                // Toast.makeText(this, "Select valid  date to drop !!", Toast.LENGTH_SHORT).show();
+            }
+            else {
+
+                    if (yeardif >0) {
+
+                        int dif = Math.abs(hour1 - hour);
+                        //  Toast.makeText(CitySelectionActivity.this, ""+dif, Toast.LENGTH_SHORT).show();
+                        SharedPreferences sharedPreferences2 = CitySelectionActivity.this.getSharedPreferences("Date", MODE_PRIVATE);
+                        final SharedPreferences.Editor myEdit2 = sharedPreferences2.edit();
+                        myEdit2.putInt("dif", dif);
+                        myEdit2.apply();
+                        SharedPreferences sharedPreferencesForLoginOrNot = CitySelectionActivity.this.getSharedPreferences("loginOrNot", MODE_PRIVATE);
+                        String login = sharedPreferencesForLoginOrNot.getString("info", null);
+                        //   Toast.makeText(this, "", Toast.LENGTH_SHORT).show()
+                        Intent intent = new Intent(CitySelectionActivity.this, CarBooking.class);
+                        startActivity(intent);
+
+                    }
+
+            }
+            }
+            else {
+
+                    if (yeardif >= 0) {
+
+                        int dif = Math.abs(hour1 - hour);
+                        //  Toast.makeText(CitySelectionActivity.this, ""+dif, Toast.LENGTH_SHORT).show();
+                        SharedPreferences sharedPreferences2 = CitySelectionActivity.this.getSharedPreferences("Date", MODE_PRIVATE);
+                        final SharedPreferences.Editor myEdit2 = sharedPreferences2.edit();
+                        myEdit2.putInt("dif", dif);
+                        myEdit2.apply();
+                        SharedPreferences sharedPreferencesForLoginOrNot = CitySelectionActivity.this.getSharedPreferences("loginOrNot", MODE_PRIVATE);
+                        String login = sharedPreferencesForLoginOrNot.getString("info", null);
+                        //   Toast.makeText(this, "", Toast.LENGTH_SHORT).show()
+                        Intent intent = new Intent(CitySelectionActivity.this, CarBooking.class);
+                        startActivity(intent);
+
+
+                }
+            }
         }
-        else{
+        else {
 
-            int dif=Math.abs(hour1-hour);
-          //  Toast.makeText(CitySelectionActivity.this, ""+dif, Toast.LENGTH_SHORT).show();
-            SharedPreferences sharedPreferences2 = CitySelectionActivity.this.getSharedPreferences("Date", MODE_PRIVATE);
-            final SharedPreferences.Editor myEdit2 = sharedPreferences2.edit();
-            myEdit2.putInt("dif",dif);
-            myEdit2.apply();
-            SharedPreferences sharedPreferencesForLoginOrNot = CitySelectionActivity.this.getSharedPreferences("loginOrNot", MODE_PRIVATE);
-            String login=sharedPreferencesForLoginOrNot.getString("info",null);
-         //   Toast.makeText(this, "", Toast.LENGTH_SHORT).show()
-                Intent intent = new Intent(CitySelectionActivity.this, CarBooking.class);
-                startActivity(intent);
 
-        }
+                    int dif = Math.abs(hour1 - hour);
+                    //  Toast.makeText(CitySelectionActivity.this, ""+dif, Toast.LENGTH_SHORT).show();
+                    SharedPreferences sharedPreferences2 = CitySelectionActivity.this.getSharedPreferences("Date", MODE_PRIVATE);
+                    final SharedPreferences.Editor myEdit2 = sharedPreferences2.edit();
+                    myEdit2.putInt("dif", dif);
+                    myEdit2.apply();
+                    SharedPreferences sharedPreferencesForLoginOrNot = CitySelectionActivity.this.getSharedPreferences("loginOrNot", MODE_PRIVATE);
+                    String login = sharedPreferencesForLoginOrNot.getString("info", null);
+                    //   Toast.makeText(this, "", Toast.LENGTH_SHORT).show()
+                    Intent intent = new Intent(CitySelectionActivity.this, CarBooking.class);
+                    startActivity(intent);
+
+                }
+
 
 
      }
