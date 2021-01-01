@@ -14,7 +14,7 @@
         android:layout_height="121dp"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="80dp"
         android:src="@drawable/splashlogo" />
     <TextView
         android:id="@+id/invoice"
@@ -172,6 +172,24 @@
         android:textColor="#9CCC65"
         android:textSize="15sp"
         android:textStyle="bold" />
+
+
+
+    <TextView
+        android:drawablePadding="5dp"
+        android:drawableLeft="@drawable/ic_file_download"
+        android:onClick="downloadInvoice"
+        android:padding="12dp"
+        android:background="@drawable/redbutton"
+        android:layout_marginTop="40dp"
+        android:textSize="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="DOWNLOAD INVOICE"
+        android:layout_gravity="center_horizontal"
+        android:textColor="#fff"
+        android:textStyle="bold"/>
+
 
 
 </LinearLayout>

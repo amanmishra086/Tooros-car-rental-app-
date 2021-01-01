@@ -272,7 +272,169 @@
                     android:src="@drawable/findcarbutton" />
 
 
+
+
             </LinearLayout>
+
+
+<!--            <LinearLayout-->
+<!--                android:id="@+id/bookingstatus"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/linear"-->
+<!--                android:orientation="horizontal"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="190dp"-->
+
+<!--                android:background="@drawable/backgroung">-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="200dp"-->
+<!--                    android:orientation="vertical"-->
+<!--                    android:layout_height="wrap_content">-->
+
+<!--                    &lt;!&ndash;            <TextView&ndash;&gt;-->
+<!--                    &lt;!&ndash;                android:layout_width="wrap_content"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                android:layout_height="wrap_content"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                android:text="Booking status"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                android:textSize="20dp"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                android:textStyle="bold"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                android:textColor="@color/colorPrimary"/>&ndash;&gt;-->
+
+
+<!--                    <ImageView-->
+<!--                        android:id="@+id/carimage"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="150dp"-->
+<!--                        android:layout_weight="0.9"-->
+<!--                        android:scaleType="centerInside"-->
+<!--                        android:src="@drawable/hundaiimage" />-->
+<!--                    <TextView-->
+<!--                        android:textStyle="bold"-->
+<!--                        android:textSize="20dp"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Car name"-->
+<!--                        android:layout_marginBottom="10dp"-->
+<!--                        android:layout_marginStart="10dp"/>-->
+
+<!--                </LinearLayout>-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_marginLeft="2dp"-->
+<!--                    android:layout_weight="1.2"-->
+<!--                    android:orientation="vertical">-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/textView20"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginLeft="36dp"-->
+<!--                        android:layout_marginTop="20dp"-->
+
+<!--                        android:text="Start Date and Time"-->
+<!--                        android:textColor="#fff"-->
+<!--                        android:textSize="16sp" />-->
+
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginLeft="15dp"-->
+<!--                        android:layout_marginTop="2dp"-->
+<!--                        android:orientation="horizontal">-->
+
+<!--                        <ImageView-->
+<!--                            android:id="@+id/imageView11"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="16dp"-->
+<!--                            android:layout_gravity="center_vertical"-->
+<!--                            android:layout_marginRight="2dp"-->
+<!--                            android:scaleType="centerInside"-->
+<!--                            android:tint="#fff"-->
+<!--                            app:srcCompat="@drawable/calender" />-->
+
+<!--                        <TextView-->
+<!--                            android:id="@+id/startdate"-->
+<!--                            android:layout_width="80dp"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_gravity="center_vertical"-->
+<!--                            android:layout_marginLeft="3dp"-->
+<!--                            android:hint="10/12/2020"-->
+<!--                            android:textColor="#fff" />-->
+
+<!--                        <TextView-->
+<!--                            android:id="@+id/starttime"-->
+<!--                            android:layout_width="60dp"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_gravity="center_horizontal|center_vertical"-->
+<!--                            android:gravity="center"-->
+<!--                            android:hint="9:00 AM"-->
+<!--                            android:textColor="#fff" />-->
+<!--                    </LinearLayout>-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/textView15"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginLeft="36sp"-->
+<!--                        android:layout_marginTop="5dp"-->
+<!--                        android:text="End Date and Time"-->
+<!--                        android:textColor="#fff"-->
+<!--                        android:textSize="16sp" />-->
+
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginLeft="15dp"-->
+<!--                        android:layout_marginTop="2dp"-->
+<!--                        android:orientation="horizontal">-->
+
+<!--                        <ImageView-->
+<!--                            android:id="@+id/imageView12"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="16dp"-->
+<!--                            android:layout_marginRight="2dp"-->
+<!--                            android:scaleType="centerInside"-->
+<!--                            android:tint="#fff"-->
+<!--                            app:srcCompat="@drawable/calender" />-->
+
+<!--                        <TextView-->
+<!--                            android:id="@+id/enddate"-->
+<!--                            android:layout_width="80dp"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_gravity="center_vertical"-->
+<!--                            android:layout_marginLeft="3dp"-->
+<!--                            android:hint="10/11/2020"-->
+<!--                            android:textColor="#fff" />-->
+
+<!--                        <TextView-->
+<!--                            android:id="@+id/endtime"-->
+<!--                            android:layout_width="60dp"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_gravity="center_horizontal|center_vertical"-->
+<!--                            android:layout_marginLeft="2dp"-->
+<!--                            android:gravity="center"-->
+<!--                            android:hint="9:00 AM"-->
+<!--                            android:textColor="#fff" />-->
+<!--                    </LinearLayout>-->
+
+<!--                    <Button-->
+<!--                        android:paddingLeft="25dp"-->
+<!--                        android:paddingRight="25dp"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text=" Booked "-->
+<!--                        android:background="@drawable/redbutton"-->
+<!--                        android:layout_marginTop="10dp"-->
+<!--                        android:layout_gravity="center_horizontal"/>-->
+
+<!--                </LinearLayout>-->
+
+<!--            </LinearLayout>-->
+
+
+
 
             <androidx.core.widget.NestedScrollView
                 android:id="@+id/nestedscroll"
