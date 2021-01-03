@@ -190,8 +190,14 @@ public class Signup extends AppCompatActivity {
 
         }
         else {
+            if(!strpassword.equals(strconfirmpassword)){
+                Toast.makeText(this, "Please confirm correct password !!", Toast.LENGTH_SHORT).show();
+                CheckEditText = false;
+            }else{
+                CheckEditText = true ;
+            }
 
-            CheckEditText = true ;
+
         }
 
     }

@@ -112,13 +112,15 @@
     </LinearLayout>
 
         <Button
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
             android:id="@+id/invoicedownload"
             android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
             android:layout_gravity="center_horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="   Invoice   "
+            android:text="Invoice"
             android:textSize="15sp"
             android:background="@drawable/redbutton"
             android:drawableLeft="@drawable/ic_file_download"/>
@@ -132,15 +134,16 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <ImageView
+<!--        <ImageView-->
 
-            android:layout_width="100dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_height="80dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/carbooking"/>
+<!--            android:layout_width="100dp"-->
+<!--            android:layout_gravity="center_horizontal"-->
+<!--            android:layout_height="80dp"-->
+<!--            android:scaleType="fitXY"-->
+<!--            android:src="@drawable/carbooking"/>-->
 
         <TextView
+           android:layout_marginTop="40dp"
             android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -165,7 +168,7 @@
             android:text="₹ "
             android:textSize="18sp"
             android:textStyle="bold"
-            android:textColor="@color/colorPrimary"
+            android:textColor="#F1D30B"
             android:layout_gravity="center_horizontal"/>
 
 

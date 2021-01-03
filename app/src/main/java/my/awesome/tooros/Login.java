@@ -16,9 +16,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.material.snackbar.Snackbar;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.io.IOException;
 
 public class Login extends AppCompatActivity {
     EditText email,password;
@@ -204,5 +208,94 @@ public class Login extends AppCompatActivity {
             userLoginClass.execute(method,Email,Password);
         }
 
+    public void forgetPasswordClick(View view) {
+
+        stremail=email.getText().toString().trim();
+
+        if(stremail.length()!=0){
+            forgetPassword("forgotPwd",email.getText().toString());
+        }else{
+            Snackbar.make(view, " Please Enter email ..", Snackbar.LENGTH_LONG)
+                    .setActionTextColor(getResources().getColor(android.R.color.holo_green_dark))
+                    .show();
+
+        }
+
+
+
+
     }
+
+    private void forgetPassword(String method, final String email) {
+
+        class UserLoginClass extends AsyncTask<String,Void,String> {
+
+
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+
+                progressDialog = ProgressDialog.show(Login.this,"Loading...",null,true,true);
+            }
+
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            @Override
+            protected void onPostExecute(String httpResponseMsg) {
+
+                super.onPostExecute(httpResponseMsg);
+
+                progressDialog.dismiss();
+
+                JSONObject jsonObject2 = null;
+                try {
+                    jsonObject2 = new JSONObject(httpResponseMsg);
+                    String status = jsonObject2.getString("status");
+
+                    if(status.equals("200")){
+
+                        String msg=jsonObject2.getString("msg");
+
+                         Toast.makeText(Login.this, ""+msg, Toast.LENGTH_LONG).show();
+
+
+
+                    }else{
+
+                        String messege = jsonObject2.getString("msg");
+                        Toast.makeText(Login.this, messege, Toast.LENGTH_SHORT).show();
+
+                    }
+
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
+            }
+
+            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+            @Override
+            protected String doInBackground(String... params) {
+
+
+                String jsonInputString="{\"method\":\"forgotPwd\",\"email\":\""+email+"\"}";
+
+                //  Toast.makeText(PaymentPage.this, ""+book_id, Toast.LENGTH_SHORT).show();
+
+//                finalResult = jsonhttpParse.postRequest(method,Email,Password, HttpURL);
+                finalResult = jsonhttpParse.postRequest(jsonInputString, HttpURL);
+
+                return finalResult;
+            }
+        }
+
+        UserLoginClass userLoginClass = new UserLoginClass();
+
+        userLoginClass.execute(method,email);
+
+
+    }
+}
 

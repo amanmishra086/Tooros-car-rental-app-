@@ -28,7 +28,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -72,6 +71,9 @@ String cityid;
         cityid=sharedPreferences.getString("cityid",null);
        // Toast.makeText(CarBooking.this, ""+cityid, Toast.LENGTH_SHORT).show();
         final String startime=sharedPreferences.getString("starttime",null);
+        String startimee=sharedPreferences.getString("startimee","");
+        String endtimee=sharedPreferences.getString("endtimee","");
+
         final String endtime=sharedPreferences.getString("endtime",null);
        // Toast.makeText(CarBooking.this, ""+startime+""+endtime, Toast.LENGTH_SHORT).show();
      //   String concatPdate1=""+stdate+" "+startime;
@@ -105,7 +107,7 @@ String cityid;
         recyclerView.setLayoutManager(linearLayoutManager);
 
 
-        getSubSerivices("getAllavailCabs",City,stdate,end,startime,endtime);
+        getSubSerivices("getAllavailCabs",City,stdate,end,startimee,endtimee);
 
 
 //        CarBookingModel carBookingModel=new CarBookingModel(R.drawable.hundaiimage,"Renault Kwid","Petrol","₹1500","5 seat","Automatic","5 baggage","BOOKED");

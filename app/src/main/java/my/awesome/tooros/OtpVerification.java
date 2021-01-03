@@ -21,7 +21,8 @@ import org.json.JSONObject;
 public class OtpVerification extends AppCompatActivity {
     String HttpURL = "https://www.cakiweb.com/tooros/api/api.php";
 TextView mobileno;
-EditText otp;String phone;
+EditText otp;
+    String phone;
     String finalResult ;
 
     ProgressDialog progressDialog;
@@ -120,5 +121,84 @@ EditText otp;String phone;
         UserLoginClass userLoginClass = new UserLoginClass();
 
         userLoginClass.execute(method,phone,otp);
+    }
+
+    public void resendOtpClick(View view) {
+
+        resendVerificationOTP("resendVerificationOTP",phone);
+
+    }
+
+    private void resendVerificationOTP(String method, final String phone) {
+
+        class UserLoginClass extends AsyncTask<String,Void,String> {
+
+
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+
+                progressDialog = ProgressDialog.show(OtpVerification.this,"Loading...",null,true,true);
+            }
+
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            @Override
+            protected void onPostExecute(String httpResponseMsg) {
+
+                super.onPostExecute(httpResponseMsg);
+
+                progressDialog.dismiss();
+
+                JSONObject jsonObject2 = null;
+                try {
+                    jsonObject2 = new JSONObject(httpResponseMsg);
+                    String status = jsonObject2.getString("status");
+
+                    if(status.equals("200")){
+
+//                        String msg=jsonObject2.getString("msg");
+//
+//                        Toast.makeText(OtpVerification.this, ""+msg, Toast.LENGTH_LONG).show();
+
+                        Toast.makeText(OtpVerification.this, "OTP Sent", Toast.LENGTH_SHORT).show();
+
+
+
+                    }else{
+
+                        String messege = jsonObject2.getString("msg");
+                        Toast.makeText(OtpVerification.this, messege, Toast.LENGTH_SHORT).show();
+
+                    }
+
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
+            }
+
+            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+            @Override
+            protected String doInBackground(String... params) {
+
+
+                String jsonInputString="{\"method\":\"resendVerificationOTP\",\"mobile\":\""+phone+"\"}";
+
+                //  Toast.makeText(PaymentPage.this, ""+book_id, Toast.LENGTH_SHORT).show();
+
+//                finalResult = jsonhttpParse.postRequest(method,Email,Password, HttpURL);
+                finalResult = jsonhttpParse.postRequest(jsonInputString, HttpURL);
+
+                return finalResult;
+            }
+        }
+
+        UserLoginClass userLoginClass = new UserLoginClass();
+
+        userLoginClass.execute(method,phone);
+
     }
 }

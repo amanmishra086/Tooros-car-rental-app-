@@ -19,7 +19,7 @@ public class PdfViewActivity extends AppCompatActivity {
     PDFView pdfView;
     File file;
 
-    
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

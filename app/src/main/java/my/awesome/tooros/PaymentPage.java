@@ -114,7 +114,7 @@ Button book,apply;
             dob = sharedPreferences2.getString("Dob", null);
             dlno = sharedPreferences2.getString("Dlno", null);
             aadharno = sharedPreferences2.getString("Aadharno", null);
-            userid=sharedPreferences2.getString("user_id",null);
+            userid=sharedPreferences2.getString("userid",null);
 
         }
         if(stdate!=" "&& end !=" "){
@@ -145,6 +145,10 @@ Button book,apply;
         book.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
+               // Toast.makeText(PaymentPage.this, ""+userid, Toast.LENGTH_SHORT).show();
+
                 //take all input send to api and proceed for payment
                 SharedPreferences sharedPreferences = PaymentPage.this.getSharedPreferences("loginOrNot", MODE_PRIVATE);
                String check=sharedPreferences.getString("info",null);
@@ -329,8 +333,7 @@ Button book,apply;
 
             @Override
             protected String doInBackground(String... params) {
-
-
+                
                 //String jsonInputString="{\"method\":\"registerUser\",\"name\":\""+strname+"\",\"email\":\""+stremail+"\",\"mobile\":\""+strphone+"\",\"password\":\""+strpassword+"\",\"dl_no\":\""+strdlno+"\",\"aadhar_no\":\""+straadharcardno+"\",\"dob\":\""+strdob+"\"}";
 
                     String jsonInputString = "{\"method\":\"bookCab\",\"user_id\":\"" + userid + "\",\"car_id\":\"" + car_id + "\",\"city\":\"1\",\"pickup_date\":\"" + stdate + "\",\"pickup_time\":\""+startime+"\",\"dropup_date\":\"" + end + "\",\"dropup_time\":\""+endtime+"\",\"booking_amount\":\"" + price + "\",\"name\":\"" + name + "\",\"mobile\":\""+mobile+"\",\"email\":\""+email+"\",\"message\":\"api testing\",\"coupon\":\"\",\"dlno\":\""+dlno+"\",\"dob\":\""+dob+"\",\"security\":\"Online\"}";

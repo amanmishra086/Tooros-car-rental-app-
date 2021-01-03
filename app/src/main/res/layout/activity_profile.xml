@@ -230,7 +230,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:text="Aadhar Card Snap*"
+                android:text="Aadhar Card Snap"
                 android:textSize="13sp"
                 android:textStyle="bold"
                 android:textColor="#fff"
@@ -280,7 +280,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:text="Upload DL No Snap*"
+                android:text="Upload DL No Snap"
 
                 android:textSize="13sp"
                 android:textStyle="bold"
