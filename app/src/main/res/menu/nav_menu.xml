@@ -19,16 +19,16 @@
             android:id="@+id/nav_profile"
             android:icon="@drawable/ic_person_profile"
             android:title="Profile" />
+        
+        <item
+            android:id="@+id/nav_booking"
+            android:icon="@drawable/ic_booking"
+            android:title="Booking Details" />
 
         <item
             android:id="@+id/nav_logout"
             android:icon="@drawable/ic_person_login"
             android:title="Logout" />
-
-        <item
-            android:id="@+id/nav_booking"
-            android:icon="@drawable/ic_booking"
-            android:title="Booking Details" />
 
 <!--        <item-->
 <!--            android:id="@+id/nav_cycle"-->

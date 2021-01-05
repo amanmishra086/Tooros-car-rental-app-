@@ -18,6 +18,20 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.snackbar.Snackbar;
+
+
+
+//pratik  jha   prem  jha    rina   jha    chahat  jha    aman   mishra   priti   kumari  jha   prashant  kumar  jha
+//
+//brow   pramod  jha
+
+
+
+
+
+
+
 import com.razorpay.Checkout;
 import com.razorpay.PaymentResultListener;
 import com.squareup.picasso.Picasso;
@@ -27,10 +41,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class PaymentPage extends AppCompatActivity implements PaymentResultListener {
-TextView gst,total,basefair,coupondiscount,securitycharges,picupcharges,weekdaychages,weekendcharges,startdate,enddate,timeduration,carname,startt,endt,geartype,fuel;
-ImageView carimage;
-EditText Couponcode;
-Button book,apply;
+    TextView gst,total,basefair,coupondiscount,securitycharges,picupcharges,weekdaychages,weekendcharges,
+            startdate,enddate,timeduration,carname,startt,endt,geartype,fuel;
+    ImageView carimage;
+    EditText Couponcode;
+    Button book,apply;
     String book_id,booking_id,payment_id,transaction_id;
     String name,email,mobile,dob,aadharno,dlno,userid;
     ProgressDialog progressDialog;
@@ -39,12 +54,15 @@ Button book,apply;
     String finalResult ;
     String HttpURL = "https://www.cakiweb.com/tooros/api/api.php";
 
+    View view;
+
     private static final String TAG = PaymentPage.class.getSimpleName();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment_page);
 
+        view = findViewById(android.R.id.content);
 
         startdate=findViewById(R.id.startdate);
         enddate=findViewById(R.id.enddate);
@@ -136,16 +154,17 @@ Button book,apply;
         apply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // weekdaychages.append("000");
 
+              String coupon=Couponcode.getText().toString();
+              String secutity="Online";
 
-                //take coupon code and recive amount from api
+             getPriceDetails("getPriceDetails",car_id,concatpdate,concatDdate,coupon,secutity);
+
             }
         });
         book.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
 
                // Toast.makeText(PaymentPage.this, ""+userid, Toast.LENGTH_SHORT).show();
 
@@ -160,25 +179,23 @@ Button book,apply;
                }else {
                    bookCab("bookCab",userid,stdate,end,startime,endtime,car_id,total.getText().toString());
 
-//                   beforePayment("beforePayment",book_id);
-
                    startPayment(Float.parseFloat(total.getText().toString()));
                }
-
 
             }
         });
 
     }
-    public void getPriceDetails(final String method, final String car_id, final String concatpdate, final String concatDdate, String coupon, final String security){
+    public void getPriceDetails(final String method, final String car_id, final String concatpdate, final String concatDdate, final String coupon, final String security) {
 
-        class BookCabClass extends AsyncTask<String,Void,String> {
+
+        class BookCabClass extends AsyncTask<String, Void, String> {
 
             @Override
             protected void onPreExecute() {
                 super.onPreExecute();
 
-                progressDialog = ProgressDialog.show(PaymentPage.this,"Loading Data",null,true,true);
+                progressDialog = ProgressDialog.show(PaymentPage.this, "Loading Data", null, true, true);
             }
 
             @Override
@@ -187,12 +204,12 @@ Button book,apply;
                 super.onPostExecute(httpResponseMsg);
 
                 progressDialog.dismiss();
-                boolean msg=httpResponseMsg.contains("200");
+                boolean msg = httpResponseMsg.contains("200");
 
-              //  Toast.makeText(PaymentPage.this, ""+httpResponseMsg, Toast.LENGTH_SHORT).show();
+                //  Toast.makeText(PaymentPage.this, ""+httpResponseMsg, Toast.LENGTH_SHORT).show();
 
 
-                if(msg){
+                if (msg) {
 
                     // Toast.makeText(PaymentPage.this, "helloooooo", Toast.LENGTH_SHORT).show();
 
@@ -200,48 +217,56 @@ Button book,apply;
                     try {
                         jsonObject = new JSONObject(httpResponseMsg);
 
-                        JSONObject ob=new JSONObject(jsonObject.getString("result"));
-                            String weekdays_hr=ob.getString("weekdays_hr");
-                            String weekend_hr=ob.getString("weekend_hr");
-                            String weekdays_rs=ob.getString("weekdays_rs");
-                            String weekend_rs=ob.getString("weekend_rs");
-                            String security_rs=ob.getString("security_rs");
-                            String total_rs=ob.getString("total_rs");
-                      //  Toast.makeText(PaymentPage.this, ""+jsonObject1.getString("total_rs"), Toast.LENGTH_SHORT).show();
+                        JSONObject ob = new JSONObject(jsonObject.getString("result"));
+                        String weekdays_hr = ob.getString("weekdays_hr");
+                        String weekend_hr = ob.getString("weekend_hr");
+                        String weekdays_rs = ob.getString("weekdays_rs");
+                        String weekend_rs = ob.getString("weekend_rs");
+                        String security_rs = ob.getString("security_rs");
+                        String total_rs = ob.getString("total_rs");
+                        String discountrs = ob.getString("discount_rs");
+                        String discountpercentage = ob.getString("discount");
+                        String couponstatus = ob.getString("coupon_status");
 
-                        //Toast.makeText(PaymentPage.this, ""+weekend_rs, Toast.LENGTH_SHORT).show();
+                        if (couponstatus.equals("Invalid Coupon Code")) {
+                            Snackbar.make(view, "Invalid Coupon Code !!", Snackbar.LENGTH_LONG)
+                                    .setActionTextColor(getResources().getColor(android.R.color.holo_green_dark))
+                                    .show();
+                        } else if(Float.parseFloat(discountpercentage)>0) {
+                            Snackbar.make(view, "" + discountpercentage + "% discount added..", Snackbar.LENGTH_LONG)
+                                    .setActionTextColor(getResources().getColor(android.R.color.holo_green_dark))
+                                    .show();
+                        }
+
+                        coupondiscount.setText("" + (int) Float.parseFloat(discountrs));
+
                         String weekendprice;
 
-                        weekendprice=""+(int)Float.parseFloat(weekend_rs);
-                        basefair.setText(""+ (int)(Float.parseFloat(weekdays_rs)+Float.parseFloat(weekend_rs)));
+                        weekendprice = "" + (int) Float.parseFloat(weekend_rs);
+                        basefair.setText("" + (int) (Float.parseFloat(weekdays_rs) + Float.parseFloat(weekend_rs)));
 
-                        float totalhr=Float.parseFloat(weekdays_hr)+Float.parseFloat(weekend_hr);
-                        timeduration.setText(totalhr+" hrs");
+                        float totalhr = Float.parseFloat(weekdays_hr) + Float.parseFloat(weekend_hr);
+                        timeduration.setText(totalhr + " hrs");
 
 
-
-                        weekdaychages.append(""+(int)Float.parseFloat(weekdays_rs));
-                        weekendcharges.append(""+weekendprice);
+                        weekdaychages.setText("₹" + (int) Float.parseFloat(weekdays_rs));
+                        weekendcharges.setText("₹" + weekendprice);
                         securitycharges.setText(security_rs);
 
 
                         //total.setText(total_rs);
 
-                        float gstpercentage=5.0f;
-                        int cost= (int) Float.parseFloat(total_rs);
-                        int gstcost= (int) (cost*(gstpercentage/100));
-                        gst.setText(""+gstcost);
-                        total.setText(""+(cost));
-
-
-
-
+                        float gstpercentage = 5.0f;
+                        int cost = (int) Float.parseFloat(total_rs);
+                        int gstcost = (int) (cost * (gstpercentage / 100));
+                        gst.setText("" + gstcost);
+                        total.setText("" + (cost));
 
 
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-                }else {
+                } else {
 
                     JSONObject jsonObject = null;
                     try {
@@ -260,13 +285,11 @@ Button book,apply;
             protected String doInBackground(String... params) {
 
 
-
                 //String jsonInputString="{\"method\":\"registerUser\",\"name\":\""+strname+"\",\"email\":\""+stremail+"\",\"mobile\":\""+strphone+"\",\"password\":\""+strpassword+"\",\"dl_no\":\""+strdlno+"\",\"aadhar_no\":\""+straadharcardno+"\",\"dob\":\""+strdob+"\"}";
 
 
+                String jsonInputString = "{\"method\":\"getPriceDetails\",\"car_id\":\"" + car_id + "\",\"concatPdate\":\"" + concatpdate + "\",\"concatDdate\":\"" + concatDdate + "\",\"coupon\":\"" + coupon + "\",\"security\":\"Online\"}";
 
-                String jsonInputString="{\"method\":\"getPriceDetails\",\"car_id\":\""+car_id+"\",\"concatPdate\":\""+concatpdate+"\",\"concatDdate\":\""+concatDdate+"\",\"coupon\":\"\",\"security\":\"Online\"}";
-//                finalResult = jsonhttpParse.postRequest(method,Email,Password, HttpURL);
                 finalResult = jsonhttpParse.postRequest(jsonInputString, HttpURL);
 
                 return finalResult;
@@ -274,8 +297,8 @@ Button book,apply;
         }
 
         BookCabClass bookCabClass = new BookCabClass();
-
         bookCabClass.execute(method);
+
     }
 
     public void bookCab(String method, final String userid, final String stdate, final String end, final String startime, final String endtime, final String car_id, final String price){
