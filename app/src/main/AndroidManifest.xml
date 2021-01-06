@@ -14,6 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".newpassword"></activity>
+        <activity android:name=".Resetpassword" />
         <activity android:name=".BookingHistory" />
         <activity android:name=".PdfViewActivity" />
         <activity android:name=".TermsAndCondition" />
