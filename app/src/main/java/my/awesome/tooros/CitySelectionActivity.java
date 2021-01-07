@@ -257,6 +257,7 @@ RecyclerView offer_recycler;
                 SharedPreferences sharedPreferences = CitySelectionActivity.this.getSharedPreferences("Date", MODE_PRIVATE);
                 SharedPreferences.Editor myEdit = sharedPreferences.edit();
                 myEdit.putString("startdate",""+startdateSelected);
+
                 myEdit.apply();
 
                // Toast.makeText(CitySelectionActivity.this,sdf.format(myStartCalendar.getTime()) , Toast.LENGTH_SHORT).show();
