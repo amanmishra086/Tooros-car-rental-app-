@@ -70,7 +70,7 @@ String cityid;
         final String startime=sharedPreferences.getString("starttime",null);
         final String endtime=sharedPreferences.getString("endtime",null);
         final String startimee=sharedPreferences.getString("startimee",null);
-        final String endtimee=sharedPreferences.getString("endtime",null);
+        final String endtimee=sharedPreferences.getString("endtimee",null);
        //Toast.makeText(CarBooking.this, ""+startime+""+endtime, Toast.LENGTH_SHORT).show();
      //   String concatPdate1=""+stdate+" "+startime;
      //   Toast.makeText(CarBooking.this, ""+concatPdate1, Toast.LENGTH_SHORT).show();
