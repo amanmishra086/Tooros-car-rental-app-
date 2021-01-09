@@ -7,6 +7,7 @@ import androidx.core.content.ContextCompat;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 
@@ -15,12 +16,8 @@ import com.github.barteksc.pdfviewer.PDFView;
 import java.io.File;
 
 public class PdfViewActivity extends AppCompatActivity {
-
     PDFView pdfView;
     File file;
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +36,9 @@ public class PdfViewActivity extends AppCompatActivity {
 
         pdfView= findViewById(R.id.pdfView);
 
-        file=new File(getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS) + "/"+booking_id+"_"+"Tooros_Invoice.pdf");
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.FROYO) {
+            file=new File(getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS) + "/"+booking_id+"_"+"Tooros_Invoice.pdf");
+        }
 
 
         pdfView.fromFile(file).load();

@@ -28,6 +28,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -37,13 +38,9 @@ public class CarBooking extends AppCompatActivity {
 
 
     RecyclerView recyclerView;
-
-
     TextView startdate,enddate,city,startime1,endtime1;
-
     ArrayList<CarBookingModel> carBookingModels = new ArrayList<CarBookingModel>();
     CarBookingAdapter carBookingAdapter;
-
     ProgressDialog progressDialog1;
     String HttpURL = "https://www.cakiweb.com/tooros/api/api.php";
     String finalResult1 ;
@@ -69,13 +66,12 @@ String cityid;
         String end= sharedPreferences.getString("Enddate",null);
         String City= sharedPreferences.getString("city",null);
         cityid=sharedPreferences.getString("cityid",null);
-       // Toast.makeText(CarBooking.this, ""+cityid, Toast.LENGTH_SHORT).show();
+     //   Toast.makeText(CarBooking.this, ""+cityid, Toast.LENGTH_SHORT).show();
         final String startime=sharedPreferences.getString("starttime",null);
-        String startimee=sharedPreferences.getString("startimee","");
-        String endtimee=sharedPreferences.getString("endtimee","");
-
         final String endtime=sharedPreferences.getString("endtime",null);
-       // Toast.makeText(CarBooking.this, ""+startime+""+endtime, Toast.LENGTH_SHORT).show();
+        final String startimee=sharedPreferences.getString("startimee",null);
+        final String endtimee=sharedPreferences.getString("endtimee",null);
+       //Toast.makeText(CarBooking.this, ""+startime+""+endtime, Toast.LENGTH_SHORT).show();
      //   String concatPdate1=""+stdate+" "+startime;
      //   Toast.makeText(CarBooking.this, ""+concatPdate1, Toast.LENGTH_SHORT).show();
         if(stdate!=" "&& end !=" "&& City!=" "&& startime!=" " && endtime!=" "){
@@ -177,9 +173,7 @@ String cityid;
                     try {
                         jsonObject = new JSONObject(httpResponseMsg);
                         String messege = jsonObject.getString("msg");
-                        finish();
-                        startActivity(new Intent(CarBooking.this,CitySelectionActivity.class));
-                        Toast.makeText(CarBooking.this, "No Car found !!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(CarBooking.this, messege, Toast.LENGTH_SHORT).show();
 
 
                     } catch (JSONException e) {

@@ -156,7 +156,7 @@ public class Login extends AppCompatActivity {
                                 // loginedit.putString("username","Aman");
                                 loginedit.apply();
 
-                                Toast.makeText(Login.this, ""+pay1, Toast.LENGTH_SHORT).show();
+                               // Toast.makeText(Login.this, ""+pay1, Toast.LENGTH_SHORT).show();
                                 if(pay1==1) {
                                     startActivity(new Intent(Login.this, PaymentPage.class));
                                 }else
@@ -213,9 +213,9 @@ public class Login extends AppCompatActivity {
         stremail=email.getText().toString().trim();
 
         if(stremail.length()!=0){
-            forgetPassword("forgotPwd",email.getText().toString());
+            forgetPassword("chkResetPassword",email.getText().toString());
         }else{
-            Snackbar.make(view, " Please Enter email ..", Snackbar.LENGTH_LONG)
+            Snackbar.make(view, " Please Enter Phone number ..", Snackbar.LENGTH_LONG)
                     .setActionTextColor(getResources().getColor(android.R.color.holo_green_dark))
                     .show();
 
@@ -252,6 +252,9 @@ public class Login extends AppCompatActivity {
                     String status = jsonObject2.getString("status");
 
                     if(status.equals("200")){
+                        Intent intent =new Intent(Login.this,Resetpassword.class);
+                        intent.putExtra("mobile",""+email);
+                         startActivity(intent);
 
                         String msg=jsonObject2.getString("msg");
 
@@ -280,7 +283,7 @@ public class Login extends AppCompatActivity {
             protected String doInBackground(String... params) {
 
 
-                String jsonInputString="{\"method\":\"forgotPwd\",\"email\":\""+email+"\"}";
+                String jsonInputString="{\"method\":\"chkResetPassword\",\"mobile_number\":\""+email+"\"}";
 
                 //  Toast.makeText(PaymentPage.this, ""+book_id, Toast.LENGTH_SHORT).show();
 
