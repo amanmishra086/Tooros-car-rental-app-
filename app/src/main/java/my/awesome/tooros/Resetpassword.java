@@ -72,7 +72,7 @@ String strotp,strmobile;
             protected void onPostExecute(String httpResponseMsg) {
 
                 super.onPostExecute(httpResponseMsg);
-                Toast.makeText(Resetpassword.this, ""+httpResponseMsg, Toast.LENGTH_SHORT).show();
+               // Toast.makeText(Resetpassword.this, ""+httpResponseMsg, Toast.LENGTH_SHORT).show();
                 progressDialog.dismiss();
 
                 JSONObject jsonObject2 = null;

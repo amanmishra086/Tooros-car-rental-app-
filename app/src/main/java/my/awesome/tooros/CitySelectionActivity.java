@@ -40,6 +40,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
@@ -51,6 +52,9 @@ import android.widget.Toolbar;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
+import com.squareup.picasso.Downloader;
+import com.squareup.picasso.Picasso;
+//import com.squareup.picasso.Request;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -70,11 +74,18 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
+
 public class CitySelectionActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener  {
 
     String HttpURL = "https://www.cakiweb.com/tooros/api/api.php";
     String finalResult ;
     ProgressDialog progressDialog;
+    ProgressDialog progressDialog2;
     JsonHttpParse jsonhttpParse = new JsonHttpParse();
 
     TextView username;
@@ -98,8 +109,7 @@ Guidlines_adapter guidlines_adapter;
 RecyclerView offer_recycler;
     ArrayList<Guidlines_model> offer_model_arraylist = new ArrayList<Guidlines_model>();
     Offer_adapter offer_adapter;
- // String[] Cityname=getResources().getStringArray(R.array.City);
-//List<String> City=Arrays.asList(Cityname);
+
  //
  int hour=0,min,hour1=0,min1,daydif=0,monthdif=0,yeardif=0;
     TextView startime,endtime;
@@ -109,6 +119,11 @@ RecyclerView offer_recycler;
  ArrayList<ModelCity> modelcityss=new ArrayList<>();
     ModelCity modelCity;
    // List<String> list=new ArrayList<String>() ;
+
+    TextView carname,fuel,gear,baggage,startdatebooking,enddatebooking;
+    ImageView carimagebooking;LinearLayout bookinglinearLayout;String userid;
+
+
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -117,6 +132,18 @@ RecyclerView offer_recycler;
         startime=findViewById(R.id.startt);
         endtime=findViewById(R.id.endt);
         spinner=findViewById(R.id.select_city);
+
+        carname=findViewById(R.id.carname);
+        fuel=findViewById(R.id.fueltype);
+        gear=findViewById(R.id.geartype);
+        baggage=findViewById(R.id.baggage);
+        startdatebooking=findViewById(R.id.startdate);
+        enddatebooking=findViewById(R.id.enddate);
+        carimagebooking=findViewById(R.id.carimage);
+        bookinglinearLayout=findViewById(R.id.bookingstatus);
+
+
+
         //
 
 
@@ -156,13 +183,14 @@ RecyclerView offer_recycler;
 
 
 
-
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         View headerView = navigationView.getHeaderView(0);
         username= (TextView) headerView.findViewById((R.id.user_name));
         SharedPreferences sharedPreferences2 = CitySelectionActivity.this.getSharedPreferences("MySharedPref2", MODE_PRIVATE);
         if (sharedPreferences2 != null) {
             username.setText(sharedPreferences2.getString("Name", null));
+            userid=sharedPreferences2.getString("userid",null);
+
 
         }
 
@@ -198,19 +226,19 @@ RecyclerView offer_recycler;
         SharedPreferences shared = getSharedPreferences("loginOrNot", MODE_PRIVATE);
         String info = (shared.getString("info", ""));
        // String name = (shared.getString("username", ""));
-        Menu menu = navigationView.getMenu();
+        Menu menu2 = navigationView.getMenu();
         if(info.equals("yes")){
             //username.setText(name);
-            menu.findItem(R.id.nav_login).setVisible(false);
-            menu.findItem(R.id.nav_SignUp).setVisible(false);
-            menu.findItem(R.id.nav_logout).setVisible(true);
-            menu.findItem(R.id.nav_profile).setVisible(true);
+            menu2.findItem(R.id.nav_login).setVisible(false);
+            menu2.findItem(R.id.nav_SignUp).setVisible(false);
+            menu2.findItem(R.id.nav_logout).setVisible(true);
+            menu2.findItem(R.id.nav_profile).setVisible(true);
 
         }else{
            // username.setText(name);
-            menu.findItem(R.id.nav_logout).setVisible(false);
-            menu.findItem(R.id.nav_profile).setVisible(false);
-            menu.findItem(R.id.nav_booking).setVisible(false);
+            menu2.findItem(R.id.nav_logout).setVisible(false);
+            menu2.findItem(R.id.nav_profile).setVisible(false);
+            menu2.findItem(R.id.nav_booking).setVisible(false);
         }
 
 
@@ -333,6 +361,99 @@ RecyclerView offer_recycler;
         offer_model_arraylist.add(offer2);
         ServicesFunction("getAlllocation");//add service name
 
+        if(userid!=null){
+            final int res=0;
+            upCommingBookingInfo("upCommingBookingInfo",Integer.parseInt(userid),res);
+        }else{
+            bookinglinearLayout.setVisibility(View.GONE);
+        }
+
+
+    }
+
+    private void upCommingBookingInfo(final String method, final int user_id,  final int res) {
+
+        class UserLoginClass2 extends AsyncTask<String,Void,String> {
+
+
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+
+                progressDialog2 = ProgressDialog.show(CitySelectionActivity.this,"Loading...",null,true,true);
+                progressDialog2.setCancelable(false);
+            }
+
+            @Override
+            protected void onPostExecute(String httpResponseMsg) {
+
+                super.onPostExecute(httpResponseMsg);
+
+                progressDialog2.dismiss();
+
+                JSONObject jsonObject2 = null;
+                try {
+                    jsonObject2 = new JSONObject(httpResponseMsg);
+                    String status = jsonObject2.getString("status");
+
+                    if(status.equals("200")){
+
+                        JSONObject jsonObject =new JSONObject(jsonObject2.getString("result"));
+                        carname.setText(jsonObject.getString("booked_car"));
+                        fuel.setText(jsonObject.getString("fuel_type"));
+                        gear.setText(jsonObject.getString("gear_type"));
+                        baggage.setText(jsonObject.getString("no_of_baggage")+" Baggage");
+                        startdatebooking.setText(jsonObject.getString("bookFrom"));
+                        enddatebooking.setText(jsonObject.getString("bookTo"));
+
+                        String carurl=jsonObject.getString("car_img");
+                        Picasso.with(CitySelectionActivity.this).load(carurl.replace("http","https")).fit().centerInside().into(carimagebooking);
+                       // Toast.makeText(CitySelectionActivity.this, "booking status", Toast.LENGTH_SHORT).show();
+
+
+
+                    }else{
+
+                        bookinglinearLayout.setVisibility(View.GONE);
+
+//                        String messege = jsonObject2.getString("msg");
+//                        Toast.makeText(CitySelectionActivity.this, messege, Toast.LENGTH_SHORT).show();
+
+                    }
+
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                // Toast.makeText(Signup.this, httpResponseMsg, Toast.LENGTH_SHORT).show();
+
+
+
+            }
+
+            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+            @Override
+            protected String doInBackground(String... params) {
+
+
+                String jsonInputString="{\"method\":\"upCommingBookingInfo\",\"user_id\":\""+user_id+"\"}";
+
+//                finalResult = jsonhttpParse.postRequest(method,Email,Password, HttpURL);
+                finalResult = jsonhttpParse.postRequest(jsonInputString, HttpURL);
+
+                return finalResult;
+            }
+        }
+
+        UserLoginClass2 userLoginClass2 = new UserLoginClass2();
+
+        userLoginClass2.execute(method);
+
+
+
+
     }
 
     public boolean isOnline() {
@@ -359,7 +480,7 @@ RecyclerView offer_recycler;
 
 
                 progressDialog = ProgressDialog.show(CitySelectionActivity.this,"Loading...",null,true,true);
-
+                progressDialog.setCancelable(false);
                 //progressDialog = ProgressDialog.show(CitySelectionActivity.this,"Loading Services",null,true,true);
 
 
@@ -552,6 +673,7 @@ RecyclerView offer_recycler;
     public void onClickFindCarButton(View view) throws IOException {
 
 
+
         if( startdateSelected=="" || enddateSelected=="" || st=="" || et=="")
 
         {
@@ -641,7 +763,7 @@ RecyclerView offer_recycler;
         if(drawerLayout.isDrawerOpen(GravityCompat.START)){
             drawerLayout.closeDrawer(GravityCompat.START);
         }else{
-            super.onBackPressed();
+           // super.onBackPressed();
         }
 
     }
@@ -655,6 +777,9 @@ RecyclerView offer_recycler;
                 break;
             case R.id.nav_help:
                 startActivity(new Intent(this,HelpAndSupport.class));
+                break;
+            case R.id.nav_about_us:
+                startActivity(new Intent(this,AboutUs.class));
                 break;
             case R.id.nav_booking:
                 startActivity(new Intent(this,BookingHistory.class));
@@ -678,6 +803,11 @@ RecyclerView offer_recycler;
                 myEdit.putString("info","no");
                // myEdit.putString("username","Guest_User");
                 myEdit.apply();
+                SharedPreferences preferences =getSharedPreferences("MySharedPref2",Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.clear();
+                editor.apply();
+                finish();
                 startActivity(new Intent(this,CitySelectionActivity.class));
         }
 
@@ -763,4 +893,5 @@ RecyclerView offer_recycler;
         timePickerDialog.show();
 
     }
+
 }

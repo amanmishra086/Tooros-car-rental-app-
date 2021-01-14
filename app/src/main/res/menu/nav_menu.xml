@@ -25,43 +25,54 @@
             android:icon="@drawable/ic_booking"
             android:title="Booking Details" />
 
+
+
+        <item
+
+            android:id="@+id/nav_about_us"
+            android:icon="@drawable/ic_about"
+            android:title="About Us" />
+
+        <item
+
+            android:id="@+id/nav_policy"
+            android:icon="@drawable/ic_policies"
+            android:title="Policies" />
+
+        <item
+            android:id="@+id/nav_help"
+            android:icon="@drawable/ic_help"
+            android:title="Help And Support" />
+
         <item
             android:id="@+id/nav_logout"
             android:icon="@drawable/ic_person_login"
             android:title="Logout" />
 
-<!--        <item-->
-<!--            android:id="@+id/nav_cycle"-->
-<!--            android:icon="@drawable/caricon"-->
-<!--            android:title="Policies" />-->
 
-<!--        <item-->
-<!--            android:id="@+id/nav_bus"-->
-<!--            android:icon="@drawable/caricon"-->
-<!--            android:title="Help And Support" />-->
-
-<!--        <item-->
-<!--            android:id="@+id/nav_plane"-->
-<!--            android:icon="@drawable/caricon"-->
-<!--            android:title="Plane" />-->
 
     </group>
-    <item android:title="About">
+<!--    <item android:title="About">-->
 
-        <menu>
+<!--        <menu>-->
 
-            <group android:checkableBehavior="single">
+<!--            <group android:checkableBehavior="single">-->
+<!--                <item-->
 
-                <item
+<!--                    android:id="@+id/nav_about_us"-->
+<!--                    android:icon="@drawable/ic_about"-->
+<!--                    android:title="About Us" />-->
 
-                    android:id="@+id/nav_policy"
-                    android:icon="@drawable/ic_policies"
-                    android:title="Policies" />
+<!--                <item-->
 
-                <item
-                    android:id="@+id/nav_help"
-                    android:icon="@drawable/ic_help"
-                    android:title="Help And Support" />
+<!--                    android:id="@+id/nav_policy"-->
+<!--                    android:icon="@drawable/ic_policies"-->
+<!--                    android:title="Policies" />-->
+
+<!--                <item-->
+<!--                    android:id="@+id/nav_help"-->
+<!--                    android:icon="@drawable/ic_help"-->
+<!--                    android:title="Help And Support" />-->
 
 <!--                <item-->
 <!--                    android:id="@+id/nav_login"-->
@@ -77,9 +88,9 @@
 <!--                    android:id="@+id/nav_logout"-->
 <!--                    android:icon="@drawable/caricon"-->
 <!--                    android:title="Logout" />-->
-            </group>
-        </menu>
-    </item>
+<!--            </group>-->
+<!--        </menu>-->
+<!--    </item>-->
 
 <!--    <item android:title="Communicate">-->
 

@@ -14,7 +14,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".newpassword"></activity>
+        <activity android:name=".CancellationPolicy"></activity>
+        <activity android:name=".AboutUs" />
+        <activity android:name=".ForgetPassword" />
+        <activity android:name=".newpassword" />
         <activity android:name=".Resetpassword" />
         <activity android:name=".BookingHistory" />
         <activity android:name=".PdfViewActivity" />
@@ -46,7 +49,7 @@
 
         <meta-data
             android:name="com.razorpay.ApiKey"
-            android:value="rzp_test_YZ0rZv8DFWccCl" />
+            android:value="rzp_test_0g1YxZ60ZH47uN" />
     </application>
 
 </manifest>

@@ -28,7 +28,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -171,9 +170,15 @@ String cityid;
                 }else{
                     JSONObject jsonObject = null;
                     try {
+
                         jsonObject = new JSONObject(httpResponseMsg);
-                        String messege = jsonObject.getString("msg");
-                        Toast.makeText(CarBooking.this, messege, Toast.LENGTH_SHORT).show();
+
+                        Toast.makeText(CarBooking.this, "No Car Found !!", Toast.LENGTH_SHORT).show();
+                        finish();
+                        startActivity(new Intent(CarBooking.this,CitySelectionActivity.class));
+
+//                        String messege = jsonObject.getString("msg");
+//                        Toast.makeText(CarBooking.this, messege, Toast.LENGTH_SHORT).show();
 
 
                     } catch (JSONException e) {

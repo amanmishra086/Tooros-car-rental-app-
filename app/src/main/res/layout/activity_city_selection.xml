@@ -23,7 +23,8 @@
 <!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="match_parent">-->
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#534747">
@@ -31,14 +32,11 @@
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:background="#3D3D3D"
                 android:minHeight="?attr/actionBarSize"
                 android:theme="?attr/actionBarTheme"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
                 app:navigationIcon="@drawable/navicon2">
 
                 <RelativeLayout
@@ -276,92 +274,198 @@
 
             </LinearLayout>
 
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
 
-<!--            <LinearLayout-->
-<!--                android:id="@+id/bookingstatus"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/linear"-->
-<!--                android:orientation="horizontal"-->
-<!--                android:layout_marginTop="10dp"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="190dp"-->
+                <LinearLayout
 
-<!--                android:background="@drawable/backgroung">-->
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
-<!--                <LinearLayout-->
-<!--                    android:layout_width="200dp"-->
-<!--                    android:orientation="vertical"-->
-<!--                    android:layout_height="wrap_content">-->
+            <LinearLayout
+                android:id="@+id/bookingstatus"
+                app:layout_constraintTop_toBottomOf="@+id/linear"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="190dp"
 
-<!--                    &lt;!&ndash;            <TextView&ndash;&gt;-->
-<!--                    &lt;!&ndash;                android:layout_width="wrap_content"&ndash;&gt;-->
-<!--                    &lt;!&ndash;                android:layout_height="wrap_content"&ndash;&gt;-->
-<!--                    &lt;!&ndash;                android:text="Booking status"&ndash;&gt;-->
-<!--                    &lt;!&ndash;                android:textSize="20dp"&ndash;&gt;-->
-<!--                    &lt;!&ndash;                android:textStyle="bold"&ndash;&gt;-->
-<!--                    &lt;!&ndash;                android:textColor="@color/colorPrimary"/>&ndash;&gt;-->
+                android:background="@drawable/backgroung">
+
+                <LinearLayout
+                    android:layout_width="200dp"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Booking status"
+                                    android:layout_gravity="center_horizontal"
+                                    android:textSize="20dp"
+                                    android:textStyle="bold"
+                                    android:textColor="@android:color/black"/>
 
 
-<!--                    <ImageView-->
-<!--                        android:id="@+id/carimage"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="150dp"-->
-<!--                        android:layout_weight="0.9"-->
-<!--                        android:scaleType="centerInside"-->
-<!--                        android:src="@drawable/hundaiimage" />-->
-<!--                    <TextView-->
-<!--                        android:textStyle="bold"-->
-<!--                        android:textSize="20dp"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="Car name"-->
-<!--                        android:layout_marginBottom="10dp"-->
-<!--                        android:layout_marginStart="10dp"/>-->
+                    <ImageView
+                        android:id="@+id/carimage"
+                        android:layout_width="150dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_height="120dp"
+                        android:layout_weight="0.9"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/hundaiimage" />
+                    <TextView
+                        android:id="@+id/carname"
+                        android:layout_gravity="center_horizontal"
+                        android:textColor="@android:color/black"
+                        android:textStyle="bold"
+                        android:textSize="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Car name"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginStart="10dp"/>
 
-<!--                </LinearLayout>-->
+                </LinearLayout>
 
-<!--                <LinearLayout-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="match_parent"-->
-<!--                    android:layout_marginLeft="2dp"-->
-<!--                    android:layout_weight="1.2"-->
-<!--                    android:orientation="vertical">-->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="2dp"
+                    android:layout_weight="1.2"
+                    android:orientation="vertical">
 
-<!--                    <TextView-->
-<!--                        android:id="@+id/textView20"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_marginLeft="36dp"-->
-<!--                        android:layout_marginTop="20dp"-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
 
-<!--                        android:text="Start Date and Time"-->
-<!--                        android:textColor="#fff"-->
-<!--                        android:textSize="16sp" />-->
+                        android:layout_marginTop="8dp"
+                        android:orientation="horizontal">
 
-<!--                    <LinearLayout-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_marginLeft="15dp"-->
-<!--                        android:layout_marginTop="2dp"-->
-<!--                        android:orientation="horizontal">-->
+                        <ImageView
+                            android:id="@+id/imageView4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="2dp"
+                            android:scaleType="centerInside"
+                            app:srcCompat="@drawable/petrol" />
+
+                        <TextView
+                            android:id="@+id/fueltype"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="2dp"
+                            android:text="Petrol"
+                            android:textColor="#fff" />
+
+                        <ImageView
+                            android:id="@+id/imageView5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="3dp"
+                            app:srcCompat="@drawable/luggage" />
+
+                        <TextView
+                            android:id="@+id/geartype"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="2dp"
+                            android:text="Automatic"
+                            android:textColor="#fff" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:gravity="center_horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="6dp"
+                        android:orientation="horizontal">
 
 <!--                        <ImageView-->
-<!--                            android:id="@+id/imageView11"-->
+<!--                            android:id="@+id/imageView6"-->
 <!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="16dp"-->
+<!--                            android:layout_height="wrap_content"-->
 <!--                            android:layout_gravity="center_vertical"-->
-<!--                            android:layout_marginRight="2dp"-->
+<!--                            android:layout_marginLeft="2dp"-->
 <!--                            android:scaleType="centerInside"-->
 <!--                            android:tint="#fff"-->
-<!--                            app:srcCompat="@drawable/calender" />-->
+<!--                            app:srcCompat="@drawable/seat" />-->
 
 <!--                        <TextView-->
-<!--                            android:id="@+id/startdate"-->
-<!--                            android:layout_width="80dp"-->
+<!--                            android:id="@+id/totalseat"-->
+<!--                            android:layout_width="wrap_content"-->
 <!--                            android:layout_height="wrap_content"-->
 <!--                            android:layout_gravity="center_vertical"-->
 <!--                            android:layout_marginLeft="3dp"-->
-<!--                            android:hint="10/12/2020"-->
+<!--                            android:text="5 Seat"-->
 <!--                            android:textColor="#fff" />-->
+
+                        <ImageView
+                            android:id="@+id/imageView7"
+                            android:layout_width="28dp"
+                            android:layout_height="29dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="5dp"
+                            android:scaleType="fitCenter"
+                            app:srcCompat="@drawable/gear" />
+
+                        <TextView
+                            android:id="@+id/baggage"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="2dp"
+                            android:text="3 Baggage"
+                            android:textColor="#fff"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/textView20"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="36dp"
+                        android:layout_marginTop="10dp"
+
+                        android:text="Start Date and Time"
+                        android:textColor="#fff"
+                        android:textSize="12sp" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="2dp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/imageView11"
+                            android:layout_width="wrap_content"
+                            android:layout_height="16dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginRight="2dp"
+                            android:scaleType="centerInside"
+                            android:tint="#fff"
+                            app:srcCompat="@drawable/calender" />
+
+                        <TextView
+                            android:id="@+id/startdate"
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="3dp"
+                            android:hint="10/12/2020 00:00"
+                            android:textColor="#fff" />
 
 <!--                        <TextView-->
 <!--                            android:id="@+id/starttime"-->
@@ -371,42 +475,42 @@
 <!--                            android:gravity="center"-->
 <!--                            android:hint="9:00 AM"-->
 <!--                            android:textColor="#fff" />-->
-<!--                    </LinearLayout>-->
+                    </LinearLayout>
 
-<!--                    <TextView-->
-<!--                        android:id="@+id/textView15"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_marginLeft="36sp"-->
-<!--                        android:layout_marginTop="5dp"-->
-<!--                        android:text="End Date and Time"-->
-<!--                        android:textColor="#fff"-->
-<!--                        android:textSize="16sp" />-->
+                    <TextView
+                        android:id="@+id/textView15"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="36sp"
+                        android:layout_marginTop="5dp"
+                        android:text="End Date and Time"
+                        android:textColor="#fff"
+                        android:textSize="12sp" />
 
-<!--                    <LinearLayout-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_marginLeft="15dp"-->
-<!--                        android:layout_marginTop="2dp"-->
-<!--                        android:orientation="horizontal">-->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="2dp"
+                        android:orientation="horizontal">
 
-<!--                        <ImageView-->
-<!--                            android:id="@+id/imageView12"-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="16dp"-->
-<!--                            android:layout_marginRight="2dp"-->
-<!--                            android:scaleType="centerInside"-->
-<!--                            android:tint="#fff"-->
-<!--                            app:srcCompat="@drawable/calender" />-->
+                        <ImageView
+                            android:id="@+id/imageView12"
+                            android:layout_width="wrap_content"
+                            android:layout_height="16dp"
+                            android:layout_marginRight="2dp"
+                            android:scaleType="centerInside"
+                            android:tint="#fff"
+                            app:srcCompat="@drawable/calender" />
 
-<!--                        <TextView-->
-<!--                            android:id="@+id/enddate"-->
-<!--                            android:layout_width="80dp"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:layout_gravity="center_vertical"-->
-<!--                            android:layout_marginLeft="3dp"-->
-<!--                            android:hint="10/11/2020"-->
-<!--                            android:textColor="#fff" />-->
+                        <TextView
+                            android:id="@+id/enddate"
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="3dp"
+                            android:hint="10/11/2020"
+                            android:textColor="#fff" />
 
 <!--                        <TextView-->
 <!--                            android:id="@+id/endtime"-->
@@ -417,7 +521,7 @@
 <!--                            android:gravity="center"-->
 <!--                            android:hint="9:00 AM"-->
 <!--                            android:textColor="#fff" />-->
-<!--                    </LinearLayout>-->
+                    </LinearLayout>
 
 <!--                    <Button-->
 <!--                        android:paddingLeft="25dp"-->
@@ -429,21 +533,14 @@
 <!--                        android:layout_marginTop="10dp"-->
 <!--                        android:layout_gravity="center_horizontal"/>-->
 
-<!--                </LinearLayout>-->
+                </LinearLayout>
 
-<!--            </LinearLayout>-->
-
-
+            </LinearLayout>
 
 
-            <androidx.core.widget.NestedScrollView
-                android:id="@+id/nestedscroll"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="315dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linear">
+
+
+
 
                 <LinearLayout
 
@@ -513,10 +610,11 @@
 
 
                 </LinearLayout>
+                </LinearLayout>
             </androidx.core.widget.NestedScrollView>
 
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
 
 
 

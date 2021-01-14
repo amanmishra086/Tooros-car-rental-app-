@@ -13,4 +13,37 @@
         android:layout_height="match_parent"/>
 
 
+<!--    <LinearLayout-->
+<!--        android:background="@drawable/backgroung"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:orientation="vertical">-->
+
+<!--        <TextView-->
+<!--            android:layout_marginTop="40dp"-->
+<!--            android:gravity="center_horizontal"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:textStyle="bold"-->
+<!--            android:textColor="#0AF316"-->
+<!--            android:textSize="30dp"-->
+<!--            android:text="Our Privacy Policy"/>-->
+
+<!--        &lt;!&ndash;    <WebView&ndash;&gt;-->
+<!--        &lt;!&ndash;        android:id="@+id/web"&ndash;&gt;-->
+<!--        &lt;!&ndash;        android:layout_width="match_parent"&ndash;&gt;-->
+<!--        &lt;!&ndash;        android:layout_height="match_parent"/>&ndash;&gt;-->
+
+<!--        <TextView-->
+<!--            android:textColor="#fff"-->
+<!--            android:layout_marginTop="20dp"-->
+<!--            android:padding="10dp"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:text="@string/policy"/>-->
+
+
+<!--    </LinearLayout>-->
+
+
 </LinearLayout>

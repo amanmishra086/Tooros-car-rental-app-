@@ -42,8 +42,8 @@ public class Login extends AppCompatActivity {
         email=findViewById(R.id.emailcontainer);
         password=findViewById(R.id.passwordcontainer);
         signin=findViewById(R.id.loginbtn);
-        Intent intent=getIntent();
 
+        Intent intent=getIntent();
          pay1 = intent.getIntExtra("val",0);
         // public static final String UserEmail = "";
 
@@ -158,8 +158,10 @@ public class Login extends AppCompatActivity {
 
                                // Toast.makeText(Login.this, ""+pay1, Toast.LENGTH_SHORT).show();
                                 if(pay1==1) {
+                                    finish();
                                     startActivity(new Intent(Login.this, PaymentPage.class));
                                 }else
+                                    finish();
                                     startActivity(new Intent(Login.this, CitySelectionActivity.class));
 
 
@@ -210,16 +212,18 @@ public class Login extends AppCompatActivity {
 
     public void forgetPasswordClick(View view) {
 
-        stremail=email.getText().toString().trim();
+//        stremail=email.getText().toString().trim();
+//
+//        if(stremail.length()!=0){
+//            forgetPassword("chkResetPassword",email.getText().toString());
+//        }else{
+//            Snackbar.make(view, " Please Enter Phone number ..", Snackbar.LENGTH_LONG)
+//                    .setActionTextColor(getResources().getColor(android.R.color.holo_green_dark))
+//                    .show();
+//
+//        }
 
-        if(stremail.length()!=0){
-            forgetPassword("chkResetPassword",email.getText().toString());
-        }else{
-            Snackbar.make(view, " Please Enter Phone number ..", Snackbar.LENGTH_LONG)
-                    .setActionTextColor(getResources().getColor(android.R.color.holo_green_dark))
-                    .show();
-
-        }
+        startActivity(new Intent(this,ForgetPassword.class));
 
 
 

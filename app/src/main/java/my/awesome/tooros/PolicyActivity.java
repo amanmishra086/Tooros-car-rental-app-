@@ -23,16 +23,16 @@ public class PolicyActivity extends AppCompatActivity {
         setContentView(R.layout.activity_policy);
 
 
-        Toast.makeText(this, "Loading...", Toast.LENGTH_SHORT).show();
-
-
-        web = findViewById(R.id.web);
-        web.loadUrl("https://tooros.in/page.php?page=4");
-        WebSettings webSettings=web.getSettings();
-        webSettings.setAllowContentAccess(true);
-
-        webSettings.setJavaScriptEnabled(true);
-        web.setWebViewClient(new WebViewClient());
+//        Toast.makeText(this, "Loading...", Toast.LENGTH_SHORT).show();
+//
+//
+//        web = findViewById(R.id.web);
+//        web.loadUrl("https://tooros.in/page.php?page=4");
+//        WebSettings webSettings=web.getSettings();
+//        webSettings.setAllowContentAccess(true);
+//
+//        webSettings.setJavaScriptEnabled(true);
+//        web.setWebViewClient(new WebViewClient());
 
 
 

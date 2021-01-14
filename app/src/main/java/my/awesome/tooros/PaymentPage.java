@@ -20,18 +20,6 @@ import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
 
-
-
-//pratik  jha   prem  jha    rina   jha    chahat  jha    aman   mishra   priti   kumari  jha   prashant  kumar  jha
-//
-//brow   pramod  jha
-
-
-
-
-
-
-
 import com.razorpay.Checkout;
 import com.razorpay.PaymentResultListener;
 import com.squareup.picasso.Picasso;
@@ -169,18 +157,38 @@ public class PaymentPage extends AppCompatActivity implements PaymentResultListe
                // Toast.makeText(PaymentPage.this, ""+userid, Toast.LENGTH_SHORT).show();
 
                 //take all input send to api and proceed for payment
-                SharedPreferences sharedPreferences = PaymentPage.this.getSharedPreferences("loginOrNot", MODE_PRIVATE);
-               String check=sharedPreferences.getString("info",null);
-               if(check=="no"||check==null) {
-                   Intent intent=new Intent(PaymentPage.this,Login.class);
-                   int pay=1;
-                   intent.putExtra("val",pay);
-                   startActivity(intent);
-               }else {
-                   bookCab("bookCab",userid,stdate,end,startime,endtime,car_id,total.getText().toString());
 
-                   startPayment(Float.parseFloat(total.getText().toString()));
-               }
+//                SharedPreferences sharedPreferences2 = PaymentPage.this.getSharedPreferences("MySharedPref2", MODE_PRIVATE);
+//                if (sharedPreferences2 == null) {
+//                    Intent intent=new Intent(PaymentPage.this,Login.class);
+//                    int pay=1;
+//                    intent.putExtra("val",pay);
+//                    startActivity(intent);
+//                }else{
+//                    bookCab("bookCab",userid,stdate,end,startime,endtime,car_id,total.getText().toString());
+//
+//                    startPayment(Float.parseFloat(total.getText().toString()));
+//                }
+
+
+                SharedPreferences sharedPreferences = PaymentPage.this.getSharedPreferences("loginOrNot", MODE_PRIVATE);
+
+                if(sharedPreferences!=null){
+                    String check=sharedPreferences.getString("info",null);
+                    if(check=="no"||check==null) {
+                        Toast.makeText(PaymentPage.this, "Please Login to continue..", Toast.LENGTH_SHORT).show();
+                        Intent intent=new Intent(PaymentPage.this,Login.class);
+                        int pay=1;
+                        intent.putExtra("val",pay);
+                        startActivity(intent);
+                    }else {
+                        bookCab("bookCab",userid,stdate,end,startime,endtime,car_id,total.getText().toString());
+
+                        startPayment(Float.parseFloat(total.getText().toString()));
+                    }
+                }
+
+
 
             }
         });
@@ -345,7 +353,7 @@ public class PaymentPage extends AppCompatActivity implements PaymentResultListe
                     try {
                         jsonObject = new JSONObject(httpResponseMsg);
                         String messege = jsonObject.getString("msg");
-                      //  Toast.makeText(PaymentPage.this, messege, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(PaymentPage.this,"bookcab:---"+ messege, Toast.LENGTH_SHORT).show();
 
 
                     } catch (JSONException e) {
@@ -403,7 +411,7 @@ public class PaymentPage extends AppCompatActivity implements PaymentResultListe
                     }else{
 
                         String messege = jsonObject2.getString("msg");
-                        //Toast.makeText(PaymentPage.this, messege, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(PaymentPage.this, "before payment:---"+messege, Toast.LENGTH_SHORT).show();
 
                     }
 
@@ -517,7 +525,7 @@ public class PaymentPage extends AppCompatActivity implements PaymentResultListe
         /**
          * Set your logo here
          */
-        checkout.setImage(R.drawable.caricon);
+        checkout.setImage(R.drawable.splashlogo);
 
         /**
          * Reference to current activity
@@ -586,7 +594,7 @@ public class PaymentPage extends AppCompatActivity implements PaymentResultListe
 
     public void privacyPolicyClick(View view) {
 
-        startActivity(new Intent(this,PolicyActivity.class));
+        startActivity(new Intent(this,CancellationPolicy.class));
 
     }
 }

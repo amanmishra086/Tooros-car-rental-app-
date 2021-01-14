@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,11 +7,36 @@
     android:layout_height="match_parent"
     tools:context=".PolicyActivity">
 
+<LinearLayout
+    android:background="@drawable/backgroung"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-
-
-    <WebView
-        android:id="@+id/web"
+    <TextView
+        android:layout_marginTop="40dp"
+        android:gravity="center_horizontal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:textStyle="bold"
+        android:textColor="#0AF316"
+        android:textSize="30dp"
+        android:text="Our Privacy Policy"/>
+
+<!--    <WebView-->
+<!--        android:id="@+id/web"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"/>-->
+
+    <TextView
+        android:textColor="#fff"
+        android:layout_marginTop="20dp"
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/policy"/>
+
+
 </LinearLayout>
+
+</ScrollView>
