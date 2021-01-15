@@ -65,7 +65,7 @@ public class BookingHistory extends AppCompatActivity {
             protected void onPreExecute() {
                 super.onPreExecute();
 
-                progressDialog = ProgressDialog.show(BookingHistory.this,"Loading...",null,true,true);
+                progressDialog = ProgressDialog.show(BookingHistory.this,"Loading...",null,true,false);
             }
 
             @RequiresApi(api = Build.VERSION_CODES.O)

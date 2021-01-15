@@ -120,7 +120,7 @@ RecyclerView offer_recycler;
     ModelCity modelCity;
    // List<String> list=new ArrayList<String>() ;
 
-    TextView carname,fuel,gear,baggage,startdatebooking,enddatebooking;
+    TextView carname,fuel,gear,baggage,totalseat,startdatebooking,enddatebooking;
     ImageView carimagebooking;LinearLayout bookinglinearLayout;String userid;
 
 
@@ -137,12 +137,19 @@ RecyclerView offer_recycler;
         fuel=findViewById(R.id.fueltype);
         gear=findViewById(R.id.geartype);
         baggage=findViewById(R.id.baggage);
+        totalseat=findViewById(R.id.totalseat);
         startdatebooking=findViewById(R.id.startdate);
         enddatebooking=findViewById(R.id.enddate);
         carimagebooking=findViewById(R.id.carimage);
         bookinglinearLayout=findViewById(R.id.bookingstatus);
 
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
+        }
 
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+        }
 
         //
 
@@ -174,12 +181,7 @@ RecyclerView offer_recycler;
 
 
 
-//         sharedpreference to store info if user is logged in or not
-//        SharedPreferences sharedPreferences = this.getSharedPreferences("loginOrNot", MODE_PRIVATE);
-//        final SharedPreferences.Editor myEdit = sharedPreferences.edit();
-//        myEdit.putString("info","no");
-//        myEdit.putString("username","");
-//        myEdit.apply();
+
 
 
 
@@ -403,6 +405,7 @@ RecyclerView offer_recycler;
                         fuel.setText(jsonObject.getString("fuel_type"));
                         gear.setText(jsonObject.getString("gear_type"));
                         baggage.setText(jsonObject.getString("no_of_baggage")+" Baggage");
+                        totalseat.setText(jsonObject.getString("no_of_seat")+" Seat");
                         startdatebooking.setText(jsonObject.getString("bookFrom"));
                         enddatebooking.setText(jsonObject.getString("bookTo"));
 

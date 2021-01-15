@@ -114,7 +114,6 @@ public class ThankYou extends AppCompatActivity {
 
                         String base64string=jsonObject2.getString("base64file");
 
-                       // Toast.makeText(ThankYou.this, ""+base64string, Toast.LENGTH_LONG).show();
                         try {
                             download(base64string);
                         } catch (IOException e) {

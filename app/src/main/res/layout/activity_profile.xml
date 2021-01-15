@@ -241,6 +241,7 @@
 
 
             <LinearLayout
+                android:padding="4dp"
                 android:id="@+id/linear2"
                 android:layout_width="334dp"
                 android:layout_height="30dp"
@@ -266,12 +267,25 @@
 
                 <TextView
                     android:id="@+id/aadharsnapcontainer"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
-                    android:gravity="center_vertical"
+                    android:layout_gravity="center_vertical"
                     android:text="No File Chosen"
                     android:textColor="@android:color/black" />
+
+                <TextView
+                    android:onClick="aadharViewButtonclick"
+                    android:id="@+id/aadharViewButton"
+                    android:layout_marginEnd="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:gravity="right"
+                    android:layout_gravity="center_vertical"
+                    android:textStyle="bold"
+                    android:text="View"
+                    android:textColor="@android:color/holo_red_dark" />
 
             </LinearLayout>
             <TextView
@@ -279,7 +293,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:text="Upload DL No Snap"
+                android:text="Upload DL Snap"
 
                 android:textSize="13sp"
                 android:textStyle="bold"
@@ -291,6 +305,7 @@
 
 
             <LinearLayout
+                android:padding="4dp"
                 android:id="@+id/linear3"
                 android:layout_width="334dp"
                 android:layout_height="30dp"
@@ -315,33 +330,44 @@
 
                 <TextView
                     android:id="@+id/dlsnapcontainer"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:gravity="center_vertical"
                     android:text="No File Chosen"
                     android:textColor="@android:color/black" />
 
+                <TextView
+                    android:onClick="dlViewButtonclick"
+                    android:id="@+id/dlViewButton"
+                    android:layout_marginEnd="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:gravity="right"
+                    android:layout_gravity="center_vertical"
+                    android:textStyle="bold"
+                    android:text="View"
+                    android:textColor="@android:color/holo_red_dark" />
+
             </LinearLayout>
 
-
             <Button
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
                 android:id="@+id/registerbtn"
-                android:layout_width="78dp"
-                android:layout_height="24dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="164dp"
-                android:layout_marginBottom="8dp"
+                android:layout_width="wrap_content"
+               android:layout_marginTop="15dp"
+                android:layout_height="wrap_content"
                 android:background="#90C208"
                 android:onClick="onClickSubmit"
                 android:scaleType="fitXY"
                 android:text="Update User"
                 android:textColor="#fff"
-                android:textSize="10sp"
+                android:textSize="15sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.308"
-
+          app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linear3"
                 app:layout_constraintVertical_bias="0.0" />
 

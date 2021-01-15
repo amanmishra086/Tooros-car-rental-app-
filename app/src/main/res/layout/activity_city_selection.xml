@@ -384,31 +384,30 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:gravity="center_horizontal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="8dp"
                         android:layout_marginTop="6dp"
                         android:orientation="horizontal">
 
-<!--                        <ImageView-->
-<!--                            android:id="@+id/imageView6"-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:layout_gravity="center_vertical"-->
-<!--                            android:layout_marginLeft="2dp"-->
-<!--                            android:scaleType="centerInside"-->
-<!--                            android:tint="#fff"-->
-<!--                            app:srcCompat="@drawable/seat" />-->
+                        <ImageView
+                            android:id="@+id/imageView6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="2dp"
+                            android:scaleType="centerInside"
+                            android:tint="#fff"
+                            app:srcCompat="@drawable/seat" />
 
-<!--                        <TextView-->
-<!--                            android:id="@+id/totalseat"-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:layout_gravity="center_vertical"-->
-<!--                            android:layout_marginLeft="3dp"-->
-<!--                            android:text="5 Seat"-->
-<!--                            android:textColor="#fff" />-->
+                        <TextView
+                            android:id="@+id/totalseat"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="3dp"
+                            android:text="2 Seat"
+                            android:textColor="#fff" />
 
                         <ImageView
                             android:id="@+id/imageView7"
