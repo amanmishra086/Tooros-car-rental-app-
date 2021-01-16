@@ -299,4 +299,9 @@ public class Signup extends AppCompatActivity {
 
     public void onClickDlsnap(View view) {
     }
+
+    public void termsc(View view) {
+        Intent intent=new Intent(Signup.this,TermsAndCondition.class);
+        startActivity(intent);
+    }
 }

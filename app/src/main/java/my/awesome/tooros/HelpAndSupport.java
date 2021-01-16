@@ -17,15 +17,15 @@ public class HelpAndSupport extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_help_and_support);
 
-        Toast.makeText(this, "Loading...", Toast.LENGTH_SHORT).show();
+       // Toast.makeText(this, "Loading...", Toast.LENGTH_SHORT).show();
 
-        web = findViewById(R.id.web);
-        web.loadUrl("https://tooros.in/car-rental-bhubaneswar.php");
-        WebSettings webSettings=web.getSettings();
-        webSettings.setAllowContentAccess(true);
+      //  web = findViewById(R.id.web);
+      //  web.loadUrl("https://tooros.in/car-rental-bhubaneswar.php");
+      //  WebSettings webSettings=web.getSettings();
+      //  webSettings.setAllowContentAccess(true);
 
-        webSettings.setJavaScriptEnabled(true);
-        web.setWebViewClient(new WebViewClient());
+      //  webSettings.setJavaScriptEnabled(true);
+       // web.setWebViewClient(new WebViewClient());
 
     }
 }

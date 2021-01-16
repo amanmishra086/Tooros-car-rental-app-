@@ -4,46 +4,156 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
+    android:background="@drawable/backgroung"
+    android:orientation="vertical"
     tools:context=".HelpAndSupport">
-
-
-    <WebView
-        android:id="@+id/web"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="wrap_content">
+
+<LinearLayout
+    android:layout_gravity="center_vertical"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <!--    <LinearLayout-->
+    <!--        android:background="@drawable/backgroung"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        android:orientation="vertical">-->
+
+    <!--        <TextView-->
+    <!--            android:layout_marginTop="40dp"-->
+    <!--            android:gravity="center_horizontal"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="match_parent"-->
+    <!--            android:textStyle="bold"-->
+    <!--            android:textColor="#0AF316"-->
+    <!--            android:textSize="30dp"-->
+    <!--            android:text="Our Privacy Policy"/>-->
+
+    <!--        &lt;!&ndash;    <WebView&ndash;&gt;-->
+    <!--        &lt;!&ndash;        android:id="@+id/web"&ndash;&gt;-->
+    <!--        &lt;!&ndash;        android:layout_width="match_parent"&ndash;&gt;-->
+    <!--        &lt;!&ndash;        android:layout_height="match_parent"/>&ndash;&gt;-->
+
+    <!--        <TextView-->
+    <!--            android:textColor="#fff"-->
+    <!--            android:layout_marginTop="20dp"-->
+    <!--            android:padding="10dp"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="match_parent"-->
+    <!--            android:text="@string/policy"/>-->
 
 
-<!--    <LinearLayout-->
-<!--        android:background="@drawable/backgroung"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:orientation="vertical">-->
-
-<!--        <TextView-->
-<!--            android:layout_marginTop="40dp"-->
-<!--            android:gravity="center_horizontal"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:textStyle="bold"-->
-<!--            android:textColor="#0AF316"-->
-<!--            android:textSize="30dp"-->
-<!--            android:text="Our Privacy Policy"/>-->
-
-<!--        &lt;!&ndash;    <WebView&ndash;&gt;-->
-<!--        &lt;!&ndash;        android:id="@+id/web"&ndash;&gt;-->
-<!--        &lt;!&ndash;        android:layout_width="match_parent"&ndash;&gt;-->
-<!--        &lt;!&ndash;        android:layout_height="match_parent"/>&ndash;&gt;-->
-
-<!--        <TextView-->
-<!--            android:textColor="#fff"-->
-<!--            android:layout_marginTop="20dp"-->
-<!--            android:padding="10dp"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:text="@string/policy"/>-->
+    <!--    </LinearLayout>-->
 
 
-<!--    </LinearLayout>-->
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="160dp"
+        android:gravity="center_horizontal"
+        android:text="Help And Support"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp" />
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="match_parent"
 
+        android:layout_height="wrap_content">
 
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="5dp"
+            android:src="@drawable/ic_location_on_black_24dp" />
+    <TextView
+        android:layout_gravity="center"
+        android:layout_marginLeft="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="Address:-AM-17,Phase 1,Bhimtangi Housing Colony,Bhubaneswar,Odisha 751002"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="5dp"
+            android:src="@drawable/ic_phone_black_24dp" />
+        <TextView
+            android:layout_gravity="center"
+            android:layout_marginLeft="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Phone:- (+91)9692101373"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="5dp"
+            android:src="@drawable/ic_chat_black_24dp" />
+        <TextView
+            android:layout_gravity="center"
+            android:layout_marginLeft="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Whatsapp:-(+91)9040007374"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="5dp"
+            android:src="@drawable/ic_email_black_24dp" />
+        <TextView
+            android:layout_gravity="center"
+            android:layout_marginLeft="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email:-support@tooros.in"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp" />
+    </LinearLayout>
+</LinearLayout>
+    </ScrollView>
 </LinearLayout>
