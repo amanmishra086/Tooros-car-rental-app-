@@ -42,7 +42,7 @@ public class ThankYou extends AppCompatActivity {
     String HttpURL = "https://www.cakiweb.com/tooros/api/api.php";
 
    // String base64string;
-    String booking_id,transaction_id;
+    String booking_id;
 
 
     @Override
@@ -59,11 +59,11 @@ public class ThankYou extends AppCompatActivity {
         Intent intent=getIntent();
         String invoice=intent.getExtras().getString("invoice");
          booking_id=intent.getExtras().getString("booking_id");
-        transaction_id=intent.getExtras().getString("transaction_id");
+
          //booking_id="201230003";
 
 
-        invoiceText.append(""+transaction_id);
+        invoiceText.append(""+booking_id);
         startdate.setText(""+intent.getExtras().getString("startdate"));
         enddate.setText(""+intent.getExtras().getString("enddate"));
         starttime.setText(""+intent.getExtras().getString("starttime"));

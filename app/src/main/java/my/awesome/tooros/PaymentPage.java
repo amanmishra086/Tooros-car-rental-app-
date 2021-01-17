@@ -566,12 +566,11 @@ public class PaymentPage extends AppCompatActivity implements PaymentResultListe
 
         Intent intent=new Intent(this,ThankYou.class);
         intent.putExtra("invoice",s);
-        intent.putExtra("transaction_id",transaction_id);
+        intent.putExtra("booking_id",booking_id);
         intent.putExtra("startdate",startdate.getText());
         intent.putExtra("enddate",enddate.getText());
         intent.putExtra("starttime",startt.getText());
         intent.putExtra("endtime",endt.getText());
-        intent.putExtra("booking_id",booking_id);
         startActivity(intent);
     }
 

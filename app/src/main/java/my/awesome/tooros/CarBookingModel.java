@@ -15,9 +15,10 @@ public class CarBookingModel {
     String security;
     String car_id;
     String bookCount,mtCount;
+    String note;
 
 
-    public CarBookingModel(String carimage, String carname, String fueltype, String price, String seat, String geartype, String baggage, String status, String weekendcost, String security, String car_id, String bookCount, String mtCount) {
+    public CarBookingModel(String carimage, String carname, String fueltype, String price, String seat, String geartype, String baggage, String status, String weekendcost, String security, String car_id, String bookCount, String mtCount,String note) {
         this.carimage = carimage;
         this.carname = carname;
         this.fueltype = fueltype;
@@ -31,6 +32,15 @@ public class CarBookingModel {
         this.car_id = car_id;
         this.bookCount = bookCount;
         this.mtCount = mtCount;
+        this.note=note;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
     }
 
     public String getBookCount() {

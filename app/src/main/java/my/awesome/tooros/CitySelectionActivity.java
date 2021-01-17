@@ -595,6 +595,7 @@ RecyclerView offer_recycler;
 
 
                 }else{
+                    offer_recycler.setVisibility(View.GONE);
                     JSONObject jsonObject = null;
                     try {
                         jsonObject = new JSONObject(httpResponseMsg);

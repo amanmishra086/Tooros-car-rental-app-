@@ -41,7 +41,7 @@ public class CarBookingAdapter extends RecyclerView.Adapter<CarBookingAdapter.vi
        int pos1=carBookingModels.indexOf(carBookingModel);
         //holder.carimage.setImageResource(carBookingModel.getCarimage());
         Picasso.with(context).load(carBookingModel.getCarimage().replace("http","https")).fit().centerInside().into(holder.carimage);
-
+        holder.note.setText(carBookingModel.getNote());
 
         String fuel="";
         switch (Integer.parseInt(carBookingModel.getFueltype())){
@@ -146,6 +146,7 @@ public class CarBookingAdapter extends RecyclerView.Adapter<CarBookingAdapter.vi
         TextView baggage;
         TextView status;
         TextView carname;
+        TextView note;
         LinearLayout buttonlinearlayout;
         Button book;
         public viewHolder(@NonNull View itemView) {
@@ -158,6 +159,7 @@ public class CarBookingAdapter extends RecyclerView.Adapter<CarBookingAdapter.vi
             geartype=itemView.findViewById(R.id.geartype);
             baggage=itemView.findViewById(R.id.baggage);
             status=itemView.findViewById(R.id.status);
+            note=itemView.findViewById(R.id.textView13);
             buttonlinearlayout=itemView.findViewById(R.id.buttonlinearLayout);
 
         }

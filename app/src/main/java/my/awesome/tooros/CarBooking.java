@@ -154,7 +154,8 @@ String cityid;
                             CarBookingModel carBookingModel=new CarBookingModel(ob.getString("car_image"),ob.getString("car_nme")
                                     ,ob.getString("fuelType"),ob.getString("cost"),ob.getString("no_of_seat"),
                                     ob.getString("gearType"),ob.getString("no_of_baggage"),ob.getString("status"),
-                                    ob.getString("weekendcost"),ob.getString("security"),ob.getString("id"),ob.getString("bookCount"),ob.getString("mtCount"));
+                                    ob.getString("weekendcost"),ob.getString("security"),ob.getString("id"),ob.getString("bookCount")
+                                    ,ob.getString("mtCount"),ob.getString("note"));
                             carBookingModels.add(carBookingModel);
                         }
 //
