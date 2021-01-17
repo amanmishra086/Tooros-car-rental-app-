@@ -9,6 +9,8 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 import static android.media.CamcorderProfile.get;
@@ -33,8 +35,8 @@ public class Offer_adapter extends RecyclerView.Adapter<Offer_adapter.viewHolder
     public void onBindViewHolder(@NonNull viewHolder holder, int position) {
         Guidlines_model offer_model1=offer_model_arraylist.get(position);
 
-        holder.imageView.setImageResource(offer_model1.getImage());
-        // Picasso.with(context).load(guidlines_model1.getImage_url().replace("http","https")).fit().into(holder.imageView);
+        //holder.imageView.setImageResource(offer_model1.getImage());
+         Picasso.with(context).load(offer_model1.getImgurl()).fit().into(holder.imageView);
     }
 
     @Override
@@ -46,7 +48,7 @@ public class Offer_adapter extends RecyclerView.Adapter<Offer_adapter.viewHolder
         ImageView imageView;
         public viewHolder(@NonNull View itemView) {
             super(itemView);
-            imageView=itemView.findViewById(R.id.senitizationimage);
+            imageView=itemView.findViewById(R.id.offerimage);
         }
     }
 }

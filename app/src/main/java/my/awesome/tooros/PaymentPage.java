@@ -566,6 +566,7 @@ public class PaymentPage extends AppCompatActivity implements PaymentResultListe
 
         Intent intent=new Intent(this,ThankYou.class);
         intent.putExtra("invoice",s);
+        intent.putExtra("transaction_id",transaction_id);
         intent.putExtra("startdate",startdate.getText());
         intent.putExtra("enddate",enddate.getText());
         intent.putExtra("starttime",startt.getText());
@@ -581,9 +582,9 @@ public class PaymentPage extends AppCompatActivity implements PaymentResultListe
 
         // Toast.makeText(this, i+"-"+s, Toast.LENGTH_SHORT).show();
         try {
-            Toast.makeText(this, "error is coming--"+String.valueOf(i)+"--"+s, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, s, Toast.LENGTH_SHORT).show();
         }catch (Exception e){
-            Toast.makeText(this, "Exception is coming--"+e, Toast.LENGTH_SHORT).show();
+           // Toast.makeText(this, "Exception is coming--"+e, Toast.LENGTH_SHORT).show();
         }
 
     }

@@ -1,9 +1,12 @@
 package my.awesome.tooros;
 
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
 
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -212,23 +215,18 @@ public class Login extends AppCompatActivity {
 
     public void forgetPasswordClick(View view) {
 
-//        stremail=email.getText().toString().trim();
-//
-//        if(stremail.length()!=0){
-//            forgetPassword("chkResetPassword",email.getText().toString());
-//        }else{
-//            Snackbar.make(view, " Please Enter Phone number ..", Snackbar.LENGTH_LONG)
-//                    .setActionTextColor(getResources().getColor(android.R.color.holo_green_dark))
-//                    .show();
-//
-//        }
-
         startActivity(new Intent(this,ForgetPassword.class));
 
-
-
-
     }
+    @Override
+    public void onBackPressed(){
+
+        finish();
+        startActivity(new Intent(Login.this,CitySelectionActivity.class));
+
+        }
+
+
 
     private void forgetPassword(String method, final String email) {
 

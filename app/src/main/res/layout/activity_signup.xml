@@ -28,6 +28,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="80dp"
+        android:layout_marginBottom="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -285,105 +286,105 @@
                 app:layout_constraintHorizontal_bias="0.488"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/aadharno" />
-            <TextView
-                android:id="@+id/aadharsnap"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:text="Aadhar Card Snap"
-                android:textSize="13sp"
-                android:textStyle="bold"
-                android:textColor="#fff"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.089"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/aadharcontainer" />
+<!--            <TextView-->
+<!--                android:id="@+id/aadharsnap"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="12dp"-->
+<!--                android:text="Aadhar Card Snap"-->
+<!--                android:textSize="13sp"-->
+<!--                android:textStyle="bold"-->
+<!--                android:textColor="#fff"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintHorizontal_bias="0.089"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/aadharcontainer" />-->
 
 
-            <LinearLayout
-                android:id="@+id/linear2"
-                android:layout_width="334dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="9dp"
-                android:layout_marginEnd="5dp"
-                android:background="@drawable/shapewhitebackground"
+<!--            <LinearLayout-->
+<!--                android:id="@+id/linear2"-->
+<!--                android:layout_width="334dp"-->
+<!--                android:layout_height="30dp"-->
+<!--                android:layout_marginStart="5dp"-->
+<!--                android:layout_marginTop="9dp"-->
+<!--                android:layout_marginEnd="5dp"-->
+<!--                android:background="@drawable/shapewhitebackground"-->
 
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.488"
-                app:layout_constraintStart_toStartOf="parent"
-                android:onClick="onClickAadharsnap"
-                app:layout_constraintTop_toBottomOf="@+id/aadharsnap">
-
-
-                <ImageView
-                    android:id="@+id/aadharpic"
-                    android:layout_width="40dp"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="8dp"
-                    android:src="@drawable/calender" />
-
-                <TextView
-                    android:id="@+id/aadharsnapcontainer"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="5dp"
-                    android:gravity="center_vertical"
-                    android:text="No File Chosen"
-                    android:textColor="@android:color/black" />
-
-            </LinearLayout>
-            <TextView
-                android:id="@+id/dlsnap"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:text="Upload DL No Snap"
-
-                android:textSize="13sp"
-                android:textStyle="bold"
-                android:textColor="#fff"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.089"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linear2" />
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintHorizontal_bias="0.488"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                android:onClick="onClickAadharsnap"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/aadharsnap">-->
 
 
-            <LinearLayout
-                android:id="@+id/linear3"
-                android:layout_width="334dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="9dp"
-                android:layout_marginEnd="5dp"
-                android:background="@drawable/shapewhitebackground"
-                android:onClick="onClickDlsnap"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.488"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/dlsnap">
+<!--                <ImageView-->
+<!--                    android:id="@+id/aadharpic"-->
+<!--                    android:layout_width="40dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_centerVertical="true"-->
+<!--                    android:layout_gravity="center_vertical"-->
+<!--                    android:layout_marginLeft="8dp"-->
+<!--                    android:src="@drawable/calender" />-->
 
-                <ImageView
-                    android:id="@+id/dlpic"
-                    android:layout_width="40dp"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="8dp"
-                    android:src="@drawable/calender" />
+<!--                <TextView-->
+<!--                    android:id="@+id/aadharsnapcontainer"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_marginLeft="5dp"-->
+<!--                    android:gravity="center_vertical"-->
+<!--                    android:text="No File Chosen"-->
+<!--                    android:textColor="@android:color/black" />-->
 
-                <TextView
-                    android:id="@+id/dlsnapcontainer"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="5dp"
-                    android:gravity="center_vertical"
-                    android:text="No File Chosen"
-                    android:textColor="@android:color/black" />
+<!--            </LinearLayout>-->
+<!--            <TextView-->
+<!--                android:id="@+id/dlsnap"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="12dp"-->
+<!--                android:text="Upload DL No Snap"-->
 
-            </LinearLayout>
+<!--                android:textSize="13sp"-->
+<!--                android:textStyle="bold"-->
+<!--                android:textColor="#fff"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintHorizontal_bias="0.089"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/linear2" />-->
+
+
+<!--            <LinearLayout-->
+<!--                android:id="@+id/linear3"-->
+<!--                android:layout_width="334dp"-->
+<!--                android:layout_height="30dp"-->
+<!--                android:layout_marginStart="5dp"-->
+<!--                android:layout_marginTop="9dp"-->
+<!--                android:layout_marginEnd="5dp"-->
+<!--                android:background="@drawable/shapewhitebackground"-->
+<!--                android:onClick="onClickDlsnap"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintHorizontal_bias="0.488"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/dlsnap">-->
+
+<!--                <ImageView-->
+<!--                    android:id="@+id/dlpic"-->
+<!--                    android:layout_width="40dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_centerVertical="true"-->
+<!--                    android:layout_gravity="center_vertical"-->
+<!--                    android:layout_marginLeft="8dp"-->
+<!--                    android:src="@drawable/calender" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/dlsnapcontainer"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_marginLeft="5dp"-->
+<!--                    android:gravity="center_vertical"-->
+<!--                    android:text="No File Chosen"-->
+<!--                    android:textColor="@android:color/black" />-->
+
+<!--            </LinearLayout>-->
 
             <CheckBox
                 android:id="@+id/checkBox"
@@ -392,13 +393,13 @@
                 android:layout_marginTop="12dp"
                 android:layout_marginBottom="8dp"
                 android:textColor="#fff"
-
+                android:text="I have read all"
                 android:textSize="8sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.086"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linear3"
+                app:layout_constraintTop_toBottomOf="@+id/aadharcontainer"
                 app:layout_constraintVertical_bias="0.05" />
 
             <TextView
@@ -408,20 +409,19 @@
                 android:layout_marginTop="12dp"
                 android:layout_marginBottom="8dp"
                 android:onClick="termsc"
-                android:text="I have read all TERMS AND CONDITIONS"
+                android:text=" TERMS AND CONDITIONS"
                 android:textColor="#fff"
                 android:textSize="8sp"
-
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.25"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linear3" />
+                app:layout_constraintEnd_toStartOf="@+id/registerbtn"
+                app:layout_constraintHorizontal_bias="0.05"
+                app:layout_constraintStart_toEndOf="@+id/checkBox"
+                app:layout_constraintTop_toBottomOf="@+id/aadharcontainer" />
 
             <Button
                 android:id="@+id/registerbtn"
-                android:layout_width="78dp"
-                android:layout_height="24dp"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="8dp"
                 android:background="#90C208"
@@ -434,7 +434,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.73"
                 app:layout_constraintStart_toEndOf="@+id/checkBox"
-                app:layout_constraintTop_toBottomOf="@+id/linear3"
+                app:layout_constraintTop_toBottomOf="@+id/aadharcontainer"
                 app:layout_constraintVertical_bias="0.0" />
 
 

@@ -86,14 +86,15 @@ public class CitySelectionActivity extends AppCompatActivity implements Navigati
     String finalResult ;
     ProgressDialog progressDialog;
     ProgressDialog progressDialog2;
+    ProgressDialog progressDialog3;
     JsonHttpParse jsonhttpParse = new JsonHttpParse();
 
     TextView username;
-//    Spinner select_city;String citySelected;
+
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     androidx.appcompat.widget.Toolbar toolbar;
-//
+
     Spinner spinner;
     String city;
     Calendar myEndCalendar;
@@ -101,7 +102,7 @@ public class CitySelectionActivity extends AppCompatActivity implements Navigati
     TextView startdate,enddate;String startdateSelected="",enddateSelected="";
     DatePickerDialog.OnDateSetListener startdatelistener;
     DatePickerDialog.OnDateSetListener enddatelistener;
-    //
+
    RecyclerView senitization_recycler;
     ArrayList<Guidlines_model> guidlines_models = new ArrayList<Guidlines_model>();
 Guidlines_adapter guidlines_adapter;
@@ -143,6 +144,20 @@ RecyclerView offer_recycler;
         carimagebooking=findViewById(R.id.carimage);
         bookinglinearLayout=findViewById(R.id.bookingstatus);
 
+
+
+        offer_recycler=findViewById(R.id.offer_recycler);
+
+        drawerLayout=findViewById(R.id.drawer_layout);
+        navigationView=findViewById(R.id.nav_view);
+        toolbar=findViewById(R.id.toolbar);
+
+
+
+        startdate=findViewById(R.id.startDate);
+        enddate=findViewById(R.id.endDate);
+
+
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
         }
@@ -154,7 +169,6 @@ RecyclerView offer_recycler;
         //
 
 
-     //  cityAdapter=new CityAdapter(CitySelectionActivity.this,modelcityss);
 
         boolean online=isOnline();
         if(!online){
@@ -196,31 +210,16 @@ RecyclerView offer_recycler;
 
         }
 
+        ServicesFunction("getAlllocation");//add service name
+        gettingOffersFunction("getAlloffer");
+        if(userid!=null){
+            final int res=0;
+            upCommingBookingInfo("upCommingBookingInfo",Integer.parseInt(userid),res);
+        }else{
+            bookinglinearLayout.setVisibility(View.GONE);
+        }
 
 
-       // Toast.makeText(this, ""+username, Toast.LENGTH_SHORT).show();
-
-
-        offer_recycler=findViewById(R.id.offer_recycler);
-
-        drawerLayout=findViewById(R.id.drawer_layout);
-        navigationView=findViewById(R.id.nav_view);
-        toolbar=findViewById(R.id.toolbar);
-
-        //select_city=findViewById(R.id.select_city);
-
-
-
-        startdate=findViewById(R.id.startDate);
-        enddate=findViewById(R.id.endDate);
-
-
-
-
-//        SharedPreferences sharedPreferences = CitySelectionActivity.this.getSharedPreferences("Date", MODE_PRIVATE);
-//        SharedPreferences.Editor myEdit = sharedPreferences.edit();
-//        myEdit.putString("city",""+city);
-//        myEdit.apply();
 
         setSupportActionBar(toolbar);
 
@@ -346,29 +345,18 @@ RecyclerView offer_recycler;
 
 
 
-//        guidlines_adapter=new Guidlines_adapter(guidlines_models,CitySelectionActivity.this);
-//        LinearLayoutManager linearLayoutManager=new LinearLayoutManager(CitySelectionActivity.this,RecyclerView.HORIZONTAL,false);
-//        senitization_recycler.setLayoutManager(linearLayoutManager);
-//        Guidlines_model senitizationmodel=new Guidlines_model(R.drawable.senitization);
-//        guidlines_models.add(senitizationmodel);
-//        ServicesFunction("getAllService");//add service name
-//      all for offer recycler
         offer_adapter=new Offer_adapter(offer_model_arraylist,CitySelectionActivity.this);
         offer_recycler.setAdapter(offer_adapter);
         LinearLayoutManager linearLayoutManager1=new LinearLayoutManager(CitySelectionActivity.this,RecyclerView.HORIZONTAL,false);
         offer_recycler.setLayoutManager(linearLayoutManager1);
-        Guidlines_model offer=new Guidlines_model(R.drawable.offertooros);
-        offer_model_arraylist.add(offer);
-        Guidlines_model offer2=new Guidlines_model(R.drawable.offertooros);
-        offer_model_arraylist.add(offer2);
-        ServicesFunction("getAlllocation");//add service name
 
-        if(userid!=null){
-            final int res=0;
-            upCommingBookingInfo("upCommingBookingInfo",Integer.parseInt(userid),res);
-        }else{
-            bookinglinearLayout.setVisibility(View.GONE);
-        }
+//        Guidlines_model offer2=new Guidlines_model(R.drawable.offertooros);
+//        offer_model_arraylist.add(offer2);
+
+
+
+
+
 
 
     }
@@ -482,7 +470,7 @@ RecyclerView offer_recycler;
                 super.onPreExecute();
 
 
-                progressDialog = ProgressDialog.show(CitySelectionActivity.this,"Loading...",null,true,true);
+                progressDialog = ProgressDialog.show(CitySelectionActivity.this,"Loading...",null,true,false);
                 progressDialog.setCancelable(false);
                 //progressDialog = ProgressDialog.show(CitySelectionActivity.this,"Loading Services",null,true,true);
 
@@ -558,7 +546,8 @@ RecyclerView offer_recycler;
 
         userLoginClass.execute(getAlllocation);
     }
-  /*  public void   gettingOffersFunction(String getAllOffers) {
+
+    public void   gettingOffersFunction(String getAllOffers) {
 //we have to fetch here
         class OfferClass  extends AsyncTask<String,Void,String> {
 
@@ -567,7 +556,7 @@ RecyclerView offer_recycler;
             protected void onPreExecute() {
                 super.onPreExecute();
 
-                progressDialog = ProgressDialog.show(CitySelectionActivity.this,"Loading Services",null,true,true);
+                progressDialog3 = ProgressDialog.show(CitySelectionActivity.this,"Loading..",null,true,false);
             }
 
             @Override
@@ -575,7 +564,7 @@ RecyclerView offer_recycler;
 
                 super.onPostExecute(httpResponseMsg);
 
-                progressDialog.dismiss();
+                progressDialog3.dismiss();
 
                 // Toast.makeText(getContext(), httpResponseMsg, Toast.LENGTH_SHORT).show();
 
@@ -587,12 +576,11 @@ RecyclerView offer_recycler;
                         JSONArray result = jsonObject.getJSONArray("result");
                         for (int i=0; i<result.length(); i++ ){
                             JSONObject ob=result.getJSONObject(i);
-//fetch image here and set to adapter
-                            // Toast.makeText(FirstActivity.this, ob.getString("name"), Toast.LENGTH_SHORT).show();
-                            // homemodel history=new homemodel(R.drawable.promocodecar2,ob.getString("img"),
-                            //   ob.getString("service_name"),ob.getString("sch_servie_id"));
 
-                            // androidFlavors.add(history);
+                            String offerimage=ob.getString("promo_image");
+                            Guidlines_model offer=new Guidlines_model(offerimage);
+                            offer_model_arraylist.add(offer);
+
                         }
 
 
@@ -639,7 +627,7 @@ RecyclerView offer_recycler;
         offerClass.execute(getAllOffers);
 
     }
-*/
+
 
 
     private void updateLabel() {
@@ -767,6 +755,28 @@ RecyclerView offer_recycler;
             drawerLayout.closeDrawer(GravityCompat.START);
         }else{
            // super.onBackPressed();
+            AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+            builder1.setMessage("Are you sure you want to exit?");
+            builder1.setCancelable(true);
+
+            builder1.setPositiveButton(
+                    "Yes",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            finish();
+                        }
+                    });
+
+            builder1.setNegativeButton(
+                    "No",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    });
+
+            AlertDialog alert11 = builder1.create();
+            alert11.show();
         }
 
     }
@@ -800,18 +810,40 @@ RecyclerView offer_recycler;
                 startActivity(new Intent(this,Signup.class));
                 break;
             case R.id.nav_logout:
-                Toast.makeText(this, "Logged Out Successfully", Toast.LENGTH_SHORT).show();
-                SharedPreferences sharedPreferences = this.getSharedPreferences("loginOrNot", MODE_PRIVATE);
-                final SharedPreferences.Editor myEdit = sharedPreferences.edit();
-                myEdit.putString("info","no");
-               // myEdit.putString("username","Guest_User");
-                myEdit.apply();
-                SharedPreferences preferences =getSharedPreferences("MySharedPref2",Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = preferences.edit();
-                editor.clear();
-                editor.apply();
-                finish();
-                startActivity(new Intent(this,CitySelectionActivity.class));
+                AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+                builder1.setMessage("Are you sure you want to logout?");
+                builder1.setCancelable(true);
+
+                builder1.setPositiveButton(
+                        "Yes",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                Toast.makeText(CitySelectionActivity.this, "Logged Out Successfully", Toast.LENGTH_SHORT).show();
+                                SharedPreferences sharedPreferences = CitySelectionActivity.this.getSharedPreferences("loginOrNot", MODE_PRIVATE);
+                                final SharedPreferences.Editor myEdit = sharedPreferences.edit();
+                                myEdit.putString("info","no");
+                                // myEdit.putString("username","Guest_User");
+                                myEdit.apply();
+                                SharedPreferences preferences =getSharedPreferences("MySharedPref2",Context.MODE_PRIVATE);
+                                SharedPreferences.Editor editor = preferences.edit();
+                                editor.clear();
+                                editor.apply();
+                                finish();
+                                startActivity(new Intent(CitySelectionActivity.this,CitySelectionActivity.class));
+                            }
+                        });
+
+                builder1.setNegativeButton(
+                        "No",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+
+                AlertDialog alert11 = builder1.create();
+                alert11.show();
+
         }
 
         drawerLayout.closeDrawer(GravityCompat.START);

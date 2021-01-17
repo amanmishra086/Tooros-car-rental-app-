@@ -34,9 +34,9 @@ public class Signup extends AppCompatActivity {
     EditText name , email , phone, password,confirmpassword,aadharcardno,dlno;
     TextView Dob;
 
-    TextView aadharSnap,dlSnap;
+   // TextView aadharSnap,dlSnap;
     Uri imageuri;
-    ImageView aadharpic,dlpic;
+    //ImageView aadharpic,dlpic;
 
     String strname, stremail, strphone, strpassword,strconfirmpassword,straadharcardno,strdlno,strdob;
     Button Register;
@@ -63,10 +63,10 @@ public class Signup extends AppCompatActivity {
         dlno=findViewById(R.id.dlnocontainer);
         Dob=findViewById(R.id.dobv);
 
-        aadharSnap=findViewById(R.id.aadharsnapcontainer);
-        dlSnap=findViewById(R.id.dlsnapcontainer);
-        aadharpic=findViewById(R.id.aadharpic);
-        dlpic=findViewById(R.id.dlpic);
+//        aadharSnap=findViewById(R.id.aadharsnapcontainer);
+//        dlSnap=findViewById(R.id.dlsnapcontainer);
+//        aadharpic=findViewById(R.id.aadharpic);
+//        dlpic=findViewById(R.id.dlpic);
 
 
         myEndCalendar = Calendar.getInstance();
@@ -92,59 +92,59 @@ public class Signup extends AppCompatActivity {
 
         };
 
-        aadharSnap.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent gallery=new Intent();
-                gallery.setType("image/*");
-                gallery.setAction(Intent.ACTION_GET_CONTENT);
-
-                startActivityForResult(Intent.createChooser(gallery,"select picture"),0);
-            }
-        });
-        dlSnap.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent gallery=new Intent();
-                gallery.setType("image/*");
-                gallery.setAction(Intent.ACTION_GET_CONTENT);
-
-                startActivityForResult(Intent.createChooser(gallery,"select picture"),1);
-            }
-        });
-
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if(requestCode==0 && resultCode==RESULT_OK){
-            imageuri=data.getData();
-            String path=imageuri.getPath();
-            aadharSnap.setText(path);
-            try{
-                Bitmap bitmap= MediaStore.Images.Media.getBitmap(getContentResolver(),imageuri);
-                aadharpic.setImageBitmap(bitmap);
-            }catch (IOException e){
-                e.printStackTrace();
-            }
-
-        }
-        if(requestCode==1 && resultCode==RESULT_OK){
-            imageuri=data.getData();
-            String path=imageuri.getPath();
-            dlSnap.setText(path);
-
-            try{
-                Bitmap bitmap= MediaStore.Images.Media.getBitmap(getContentResolver(),imageuri);
-                dlpic.setImageBitmap(bitmap);
-            }catch (IOException e){
-                e.printStackTrace();
-            }
-        }
+//        aadharSnap.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent gallery=new Intent();
+//                gallery.setType("image/*");
+//                gallery.setAction(Intent.ACTION_GET_CONTENT);
+//
+//                startActivityForResult(Intent.createChooser(gallery,"select picture"),0);
+//            }
+//        });
+//        dlSnap.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent gallery=new Intent();
+//                gallery.setType("image/*");
+//                gallery.setAction(Intent.ACTION_GET_CONTENT);
+//
+//                startActivityForResult(Intent.createChooser(gallery,"select picture"),1);
+//            }
+//        });
 
     }
+//
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//
+//        if(requestCode==0 && resultCode==RESULT_OK){
+//            imageuri=data.getData();
+//            String path=imageuri.getPath();
+//            aadharSnap.setText(path);
+//            try{
+//                Bitmap bitmap= MediaStore.Images.Media.getBitmap(getContentResolver(),imageuri);
+//                aadharpic.setImageBitmap(bitmap);
+//            }catch (IOException e){
+//                e.printStackTrace();
+//            }
+//
+//        }
+//        if(requestCode==1 && resultCode==RESULT_OK){
+//            imageuri=data.getData();
+//            String path=imageuri.getPath();
+//            dlSnap.setText(path);
+//
+//            try{
+//                Bitmap bitmap= MediaStore.Images.Media.getBitmap(getContentResolver(),imageuri);
+//                dlpic.setImageBitmap(bitmap);
+//            }catch (IOException e){
+//                e.printStackTrace();
+//            }
+//        }
+//
+//    }
 
     public void onClickSubmit(View view) {
         //startActivity(new Intent(Custom19.this,MobileVerification.class));

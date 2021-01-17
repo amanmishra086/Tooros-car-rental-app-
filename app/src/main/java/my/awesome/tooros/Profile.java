@@ -8,6 +8,7 @@ import androidx.core.content.ContextCompat;
 import android.Manifest;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -180,7 +181,6 @@ ProgressDialog progressDialog;
             aadharSnap.setText(aafile.getName());
             try{
                 aadharfile= MediaStore.Images.Media.getBitmap(getContentResolver(),imageuri);
-                //Toast.makeText(this, ""+BitMapToString(aadharfile), Toast.LENGTH_SHORT).show();
                 aadharpic.setImageBitmap(aadharfile);
             }catch (IOException e){
                 e.printStackTrace();
@@ -219,62 +219,10 @@ ProgressDialog progressDialog;
             UploadTask uploadTask=new UploadTask();
             uploadTask.execute(new String[]{"updateProfile",userid,strname,strdlno,straadharcardno,strdob,dpath,apath});
 
-//            if (apath==null && dpath!=null){
-//
-//                UploadTask uploadTask=new UploadTask();
-//                uploadTask.execute(new String[]{"updateProfile",userid,strname,strdlno,straadharcardno,strdob,dpath,""});
-//
-//
-//            }else if(dpath==null && apath!=null){
-//
-//               // afile=new File(apath);
-//                UploadTask uploadTask=new UploadTask();
-//                uploadTask.execute(new String[]{"updateProfile",userid,strname,strdlno,straadharcardno,strdob,"",apath});
-//
-////                new Thread(new Runnable() {
-////                    @Override
-////                    public void run() {
-////                        okhttpmethod1(afile);
-////                    }
-////                }).start();
-//
-//            }else if(dpath!=null && apath!=null){
-//
-//                UploadTask uploadTask=new UploadTask();
-//                uploadTask.execute(new String[]{dpath});
-//
-////                afile=new File(apath);
-////                dfile=new File(dpath);
-//
-////                new Thread(new Runnable() {
-////                    @Override
-////                    public void run() {
-////                        okhttpmethod3(afile,dfile);
-////                    }
-////                }).start();
-//
-//            }else{
-//
-//                UploadTask uploadTask=new UploadTask();
-//                uploadTask.execute(new String[]{dpath});
-//
-////            new Thread(new Runnable() {
-////                    @Override
-////                    public void run() {
-////                        okhttpmethod4();
-////                    }
-////                }).start();
-//
-//
-//
-//
-//            }
-
 
         }
         else {
 
-            // If EditText is empty then this block will execute .
             Toast.makeText(Profile.this, "Please fill all required form fields.", Toast.LENGTH_LONG).show();
 
         }
@@ -326,19 +274,33 @@ ProgressDialog progressDialog;
             progressDialog.dismiss();
                 if (s.equalsIgnoreCase("true")) {
 
-                         SharedPreferences sharedPreferences2 = Profile.this.getSharedPreferences("MySharedPref2", MODE_PRIVATE);
-                         SharedPreferences.Editor myEdit = sharedPreferences2.edit();
-                        myEdit.putString("Name",name.getText().toString());
-                        myEdit.putString("Mobile",phone.getText().toString());
-                        myEdit.putString("Email",email.getText().toString());
-                        myEdit.putString("Dob",""+Dob.getText().toString());
-                        myEdit.putString("Dlno",dlno.getText().toString());
-                        myEdit.putString("Aadharno",aadharcardno.getText().toString());
+//                         SharedPreferences sharedPreferences2 = Profile.this.getSharedPreferences("MySharedPref2", MODE_PRIVATE);
+//                         SharedPreferences.Editor myEdit = sharedPreferences2.edit();
+//                        myEdit.putString("Name",name.getText().toString());
+//                        myEdit.putString("Mobile",phone.getText().toString());
+//                        myEdit.putString("Email",email.getText().toString());
+//                        myEdit.putString("Dob",""+Dob.getText().toString());
+//                        myEdit.putString("Dlno",dlno.getText().toString());
+//                        myEdit.putString("Aadharno",aadharcardno.getText().toString());
 
-                        myEdit.apply();
+                      //  myEdit.apply();
+
+                Toast.makeText(Profile.this, "Profile Updated", Toast.LENGTH_LONG).show();
+                Toast.makeText(Profile.this, "Login again to continue !!", Toast.LENGTH_LONG).show();
+
+                    SharedPreferences sharedPreferences = Profile.this.getSharedPreferences("loginOrNot", MODE_PRIVATE);
+                    final SharedPreferences.Editor myEdit = sharedPreferences.edit();
+                    myEdit.putString("info","no");
+                    // myEdit.putString("username","Guest_User");
+                    myEdit.apply();
+                    SharedPreferences preferences =getSharedPreferences("MySharedPref2", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.clear();
+                    editor.apply();
+                    finish();
+                    startActivity(new Intent(Profile.this,Login.class));
 
 
-                Toast.makeText(Profile.this, "Profile Updated", Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(Profile.this, "profile update failed..!", Toast.LENGTH_SHORT).show();
             }

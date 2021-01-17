@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 public class Guidlines_adapter extends RecyclerView.Adapter<Guidlines_adapter.viewHolder> {
@@ -35,7 +37,7 @@ Context context;
     @Override
     public void onBindViewHolder(@NonNull Guidlines_adapter.viewHolder holder, int position) {
    Guidlines_model guidlines_model1=guidlines_models.get(position);
-       // Picasso.with(context).load(guidlines_model1.getImage_url().replace("http","https")).fit().into(holder.imageView);
+       // Picasso.with(context).load("https://i.imgur.com/tGbaZCY.jpg").fit().centerCrop().into(holder.imageView);
     }
 
     @Override
@@ -43,10 +45,10 @@ Context context;
         return guidlines_models.size();
     }
     public class viewHolder extends RecyclerView.ViewHolder{
-    ImageView imageView;
+        ImageView imageView;
         public viewHolder(@NonNull View itemView) {
             super(itemView);
-            imageView=itemView.findViewById(R.id.senitizationimage);
+            imageView=itemView.findViewById(R.id.offerimage);
         }
     }
 }
