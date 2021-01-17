@@ -386,56 +386,53 @@
 
 <!--            </LinearLayout>-->
 
-            <CheckBox
-                android:id="@+id/checkBox"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="334dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:layout_marginBottom="8dp"
-                android:textColor="#fff"
-                android:text="I have read all"
-                android:textSize="8sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.086"
+                android:orientation="horizontal"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/aadharcontainer"
-                app:layout_constraintVertical_bias="0.05" />
-
-            <TextView
-                android:id="@+id/textView5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:layout_marginBottom="8dp"
-                android:onClick="termsc"
-                android:text=" TERMS AND CONDITIONS"
-                android:textColor="#fff"
-                android:textSize="8sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/registerbtn"
-                app:layout_constraintHorizontal_bias="0.05"
-                app:layout_constraintStart_toEndOf="@+id/checkBox"
-                app:layout_constraintTop_toBottomOf="@+id/aadharcontainer" />
-
-            <Button
-                android:id="@+id/registerbtn"
-                android:layout_width="wrap_content"
-                android:layout_height="35dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="8dp"
-                android:background="#90C208"
-                android:onClick="onClickSubmit"
-                android:scaleType="fitXY"
-                android:text="Register"
-                android:textColor="#fff"
-                android:textSize="10sp"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.73"
-                app:layout_constraintStart_toEndOf="@+id/checkBox"
-                app:layout_constraintTop_toBottomOf="@+id/aadharcontainer"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintTop_toBottomOf="@+id/aadharcontainer">
+
+                <CheckBox
+                    android:layout_marginLeft="15dp"
+                    android:id="@+id/checkBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="8dp"
+                    android:textColor="#fff"
+                    android:text="I have read all"
+                    android:textSize="8sp" />
+
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="8dp"
+                    android:onClick="termsc"
+                    android:text=" TERMS AND CONDITIONS"
+                    android:textColor="#fff"
+                    android:textSize="8sp"></TextView>
+                <Button
+                    android:layout_marginLeft="40dp"
+                    android:id="@+id/registerbtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="#90C208"
+                    android:onClick="onClickSubmit"
+                    android:scaleType="fitXY"
+                    android:text="Register"
+                    android:textColor="#fff"
+                    android:textSize="10sp" />
+
+
+            </LinearLayout>
+
+
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

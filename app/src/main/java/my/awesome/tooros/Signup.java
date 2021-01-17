@@ -15,6 +15,7 @@ import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -33,7 +34,7 @@ import java.util.Locale;
 public class Signup extends AppCompatActivity {
     EditText name , email , phone, password,confirmpassword,aadharcardno,dlno;
     TextView Dob;
-
+    CheckBox checkBox;
    // TextView aadharSnap,dlSnap;
     Uri imageuri;
     //ImageView aadharpic,dlpic;
@@ -41,7 +42,8 @@ public class Signup extends AppCompatActivity {
     String strname, stremail, strphone, strpassword,strconfirmpassword,straadharcardno,strdlno,strdob;
     Button Register;
     String finalResult ;
-    String HttpURL = "https://www.cakiweb.com/tooros/api/api.php";
+//    String HttpURL = "https://www.cakiweb.com/tooros/api/api.php";
+String HttpURL = "https://tooros.in/api/api.php";
     Boolean CheckEditText ;
     ProgressDialog progressDialog;
     //HashMap<String,String> hashMap = new HashMap<>();
@@ -62,6 +64,7 @@ public class Signup extends AppCompatActivity {
         aadharcardno=findViewById(R.id.aadharcontainer);
         dlno=findViewById(R.id.dlnocontainer);
         Dob=findViewById(R.id.dobv);
+        checkBox=findViewById(R.id.checkBox);
 
 //        aadharSnap=findViewById(R.id.aadharsnapcontainer);
 //        dlSnap=findViewById(R.id.dlsnapcontainer);
@@ -151,6 +154,10 @@ public class Signup extends AppCompatActivity {
 
         // Checking whether EditText is Empty or Not
         CheckEditTextIsEmptyOrNot();
+        if(!checkBox.isChecked()){
+            Toast.makeText(this, "Please tick the checkbox first", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         if(CheckEditText){
 

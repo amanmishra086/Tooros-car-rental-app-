@@ -21,7 +21,8 @@ import org.json.JSONObject;
 public class ForgetPassword extends AppCompatActivity {
 
     EditText email;
-    String HttpURL = "https://www.cakiweb.com/tooros/api/api.php";
+//    String HttpURL = "https://www.cakiweb.com/tooros/api/api.php";
+String HttpURL = "https://tooros.in/api/api.php";
     Button signin;
     String stremail, strpassword;
     String finalResult ;

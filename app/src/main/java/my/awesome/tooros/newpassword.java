@@ -20,7 +20,8 @@ import org.json.JSONObject;
 public class newpassword extends AppCompatActivity {
 EditText newpassword,confirmpassword;
 String strnewp,strcnfp,phone;
-    String HttpURL = "https://www.cakiweb.com/tooros/api/api.php";
+//    String HttpURL = "https://www.cakiweb.com/tooros/api/api.php";
+String HttpURL = "https://tooros.in/api/api.php";
     String finalResult ;
     Boolean CheckEditText ;
     ProgressDialog progressDialog;

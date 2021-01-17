@@ -37,7 +37,8 @@ public class Adapter_bookinghistory  extends RecyclerView.Adapter<Adapter_bookin
 
     JsonHttpParse jsonhttpParse = new JsonHttpParse();
     String finalResult ;
-    String HttpURL = "https://www.cakiweb.com/tooros/api/api.php";
+    //String HttpURL = "https://www.cakiweb.com/tooros/api/api.php";
+    String HttpURL = "https://tooros.in/api/api.php";
 
     String booking_id;
 

@@ -32,6 +32,7 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -82,7 +83,8 @@ import okhttp3.Response;
 
 public class CitySelectionActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener  {
 
-    String HttpURL = "https://www.cakiweb.com/tooros/api/api.php";
+//    String HttpURL = "https://www.cakiweb.com/tooros/api/api.php";
+String HttpURL = "https://tooros.in/api/api.php";
     String finalResult ;
     ProgressDialog progressDialog;
     ProgressDialog progressDialog2;
@@ -574,15 +576,21 @@ RecyclerView offer_recycler;
                     try {
                         JSONObject jsonObject = new JSONObject(httpResponseMsg);
                         JSONArray result = jsonObject.getJSONArray("result");
+                        int count=0;
                         for (int i=0; i<result.length(); i++ ){
                             JSONObject ob=result.getJSONObject(i);
 
                             String offerimage=ob.getString("promo_image");
-                            Guidlines_model offer=new Guidlines_model(offerimage);
-                            offer_model_arraylist.add(offer);
 
-                        }
-
+                            if(!TextUtils.isEmpty(offerimage)){
+                                Guidlines_model offer=new Guidlines_model(offerimage);
+                                offer_model_arraylist.add(offer);
+                                count++;
+                            }
+                      }
+                     if(count==0){
+                         offer_recycler.setVisibility(View.GONE);
+                     }
 
 //
                     } catch (JSONException e) {

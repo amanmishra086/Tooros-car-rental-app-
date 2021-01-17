@@ -66,7 +66,8 @@ public class Profile extends AppCompatActivity {
     Calendar myEndCalendar;
     DatePickerDialog.OnDateSetListener enddatelistener;
 
-    String HttpURL = "https://www.cakiweb.com/tooros/api/api.php";
+//    String HttpURL = "https://www.cakiweb.com/tooros/api/api.php";
+String HttpURL = "https://tooros.in/api/api.php";
 
 
     Bitmap aadharfile,dlfile;

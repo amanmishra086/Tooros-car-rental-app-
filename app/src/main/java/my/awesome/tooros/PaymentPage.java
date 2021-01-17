@@ -40,7 +40,8 @@ public class PaymentPage extends AppCompatActivity implements PaymentResultListe
 
     JsonHttpParse jsonhttpParse = new JsonHttpParse();
     String finalResult ;
-    String HttpURL = "https://www.cakiweb.com/tooros/api/api.php";
+//    String HttpURL = "https://www.cakiweb.com/tooros/api/api.php";
+String HttpURL = "https://tooros.in/api/api.php";
 
     View view;
 

@@ -22,7 +22,8 @@ public class Resetpassword extends AppCompatActivity {
 TextView mobile;
 EditText otp;
 String strotp,strmobile;
-    String HttpURL = "https://www.cakiweb.com/tooros/api/api.php";
+//    String HttpURL = "https://www.cakiweb.com/tooros/api/api.php";
+String HttpURL = "https://tooros.in/api/api.php";
     String finalResult ;
     Boolean CheckEditText ;
     ProgressDialog progressDialog;

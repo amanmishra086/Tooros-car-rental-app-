@@ -41,7 +41,8 @@ public class CarBooking extends AppCompatActivity {
     ArrayList<CarBookingModel> carBookingModels = new ArrayList<CarBookingModel>();
     CarBookingAdapter carBookingAdapter;
     ProgressDialog progressDialog1;
-    String HttpURL = "https://www.cakiweb.com/tooros/api/api.php";
+    //String HttpURL = "https://www.cakiweb.com/tooros/api/api.php";
+    String HttpURL = "https://tooros.in/api/api.php";
     String finalResult1 ;
     JsonHttpParse jsonhttpParse = new JsonHttpParse();
     TextView cityname,start,end;

@@ -19,7 +19,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class OtpVerification extends AppCompatActivity {
-    String HttpURL = "https://www.cakiweb.com/tooros/api/api.php";
+//    String HttpURL = "https://www.cakiweb.com/tooros/api/api.php";
+String HttpURL = "https://tooros.in/api/api.php";
 TextView mobileno;
 EditText otp;
     String phone;

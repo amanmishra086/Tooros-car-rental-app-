@@ -1,6 +1,7 @@
 package my.awesome.tooros;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,7 +37,32 @@ public class Offer_adapter extends RecyclerView.Adapter<Offer_adapter.viewHolder
         Guidlines_model offer_model1=offer_model_arraylist.get(position);
 
         //holder.imageView.setImageResource(offer_model1.getImage());
-         Picasso.with(context).load(offer_model1.getImgurl()).fit().into(holder.imageView);
+        String imageurl=offer_model1.getImgurl();
+
+        if (TextUtils.isEmpty(imageurl)) {
+            // option 1: cancel Picasso request and clear ImageView
+//            Picasso
+//                    .with(context)
+//                    .cancelRequest(holder.imageView);
+//
+//            holder.imageView.setImageDrawable(null);
+
+            // option 2: load placeholder with Picasso
+
+        Picasso
+                .with(context)
+                .load(R.drawable.offertooros)
+                .into(holder.imageView);
+
+
+        }
+        else {
+            Picasso
+                    .with(context)
+                    .load(imageurl)
+                    .fit().centerCrop() // will explain later
+                    .into(holder.imageView);
+        }
     }
 
     @Override
