@@ -73,20 +73,31 @@ String HttpURL = "https://tooros.in/api/api.php";
         fuel=findViewById(R.id.textView10);
         apply=findViewById(R.id.apply);
         securitycharges=findViewById(R.id.security);
-       Intent intent=getIntent();
-       Bundle bundle=getIntent().getExtras();
-       if(bundle!=null){
-//           int resid=bundle.getInt("carimage");
-//           carimage.setImageResource(resid);
-           String url=bundle.getString("carimage");
-           Picasso.with(this).load(url.replace("http","https")).fit().centerInside().into(carimage);
-       }
-       String carn=intent.getExtras().getString("carname");
-       String  geart=intent.getExtras().getString("geartype");
-       String fuelt=intent.getExtras().getString("fuel");
-       String base_fare=intent.getExtras().getString("cost");
-       String weekendcost=intent.getExtras().getString("weekendcost");
-       final String car_id=intent.getExtras().getString("car_id");
+
+        SharedPreferences sharedPreferences3 = PaymentPage.this.getSharedPreferences("sharedpref3", MODE_PRIVATE);
+        String url=sharedPreferences3.getString("carimage",null);
+        Picasso.with(this).load(url.replace("http","https")).fit().centerInside().into(carimage);
+
+        String carn=sharedPreferences3.getString("carname",null);
+        String  geart=sharedPreferences3.getString("geartype",null);
+        String fuelt=sharedPreferences3.getString("fuel",null);
+
+        final String car_id=sharedPreferences3.getString("car_id",null);
+
+//        Intent intent=getIntent();
+//       Bundle bundle=getIntent().getExtras();
+//       if(bundle!=null){
+////           int resid=bundle.getInt("carimage");
+////           carimage.setImageResource(resid);
+//           String url=bundle.getString("carimage");
+//           Picasso.with(this).load(url.replace("http","https")).fit().centerInside().into(carimage);
+//       }
+//       String carn=intent.getExtras().getString("carname");
+//       String  geart=intent.getExtras().getString("geartype");
+//       String fuelt=intent.getExtras().getString("fuel");
+//       String base_fare=intent.getExtras().getString("cost");
+//       String weekendcost=intent.getExtras().getString("weekendcost");
+//       final String car_id=intent.getExtras().getString("car_id");
        carname.setText(""+carn);
        geartype.setText(""+geart);
        fuel.setText(""+fuelt);
@@ -95,9 +106,12 @@ String HttpURL = "https://tooros.in/api/api.php";
 
 
 
+
         SharedPreferences sharedPreferences = PaymentPage.this.getSharedPreferences("Date", MODE_PRIVATE);
         final String stdate= sharedPreferences.getString("startdate",null);
+        String stdate_show= sharedPreferences.getString("startdate_show",null);
         final String end= sharedPreferences.getString("Enddate",null);
+        String end_show= sharedPreferences.getString("Enddate_show",null);
         final String startime=sharedPreferences.getString("starttime",null);
         final String endtime=sharedPreferences.getString("endtime",null);
         int duration=sharedPreferences.getInt("dif",0);
@@ -125,8 +139,8 @@ String HttpURL = "https://tooros.in/api/api.php";
 
         }
         if(stdate!=" "&& end !=" "){
-            startdate.setText(stdate);
-            enddate.setText(end);
+            startdate.setText(stdate_show);
+            enddate.setText(end_show);
             startt.setText(startime);
             endt.setText(endtime);
 
@@ -138,6 +152,9 @@ String HttpURL = "https://tooros.in/api/api.php";
         final String concatDdate=end+" "+endtime;
 
         getPriceDetails("getPriceDetails",car_id,concatpdate,concatDdate,"","Online");
+//        Toast.makeText(this, "car_id"+car_id, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, "startdate"+concatpdate, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, "enddate"+concatDdate, Toast.LENGTH_SHORT).show();
 
 
         apply.setOnClickListener(new View.OnClickListener() {
@@ -159,35 +176,36 @@ String HttpURL = "https://tooros.in/api/api.php";
 
                 //take all input send to api and proceed for payment
 
-//                SharedPreferences sharedPreferences2 = PaymentPage.this.getSharedPreferences("MySharedPref2", MODE_PRIVATE);
-//                if (sharedPreferences2 == null) {
-//                    Intent intent=new Intent(PaymentPage.this,Login.class);
-//                    int pay=1;
-//                    intent.putExtra("val",pay);
-//                    startActivity(intent);
-//                }else{
-//                    bookCab("bookCab",userid,stdate,end,startime,endtime,car_id,total.getText().toString());
-//
-//                    startPayment(Float.parseFloat(total.getText().toString()));
-//                }
+                SharedPreferences sharedPreferences2 = PaymentPage.this.getSharedPreferences("MySharedPref2", MODE_PRIVATE);
+                if (sharedPreferences2.getString("Name", null) == null) {
+                    Toast.makeText(PaymentPage.this, "Please Login first !!", Toast.LENGTH_SHORT).show();
+                    Intent intent=new Intent(PaymentPage.this,Login.class);
+                    int pay=1;
+                    intent.putExtra("val",pay);
+                    startActivity(intent);
+                }else{
+                    bookCab("bookCab",userid,stdate,end,startime,endtime,car_id,total.getText().toString());
 
-
-                SharedPreferences sharedPreferences = PaymentPage.this.getSharedPreferences("loginOrNot", MODE_PRIVATE);
-
-                if(sharedPreferences!=null){
-                    String check=sharedPreferences.getString("info",null);
-                    if(check=="no"||check==null) {
-                        Toast.makeText(PaymentPage.this, "Please Login to continue..", Toast.LENGTH_SHORT).show();
-                        Intent intent=new Intent(PaymentPage.this,Login.class);
-                        int pay=1;
-                        intent.putExtra("val",pay);
-                        startActivity(intent);
-                    }else {
-                        bookCab("bookCab",userid,stdate,end,startime,endtime,car_id,total.getText().toString());
-
-                        startPayment(Float.parseFloat(total.getText().toString()));
-                    }
+                    startPayment(Float.parseFloat(total.getText().toString()));
                 }
+
+
+//                SharedPreferences sharedPreferences = PaymentPage.this.getSharedPreferences("loginOrNot", MODE_PRIVATE);
+//
+//                if(sharedPreferences!=null){
+//                    String check=sharedPreferences.getString("info",null);
+//                    if(check=="no"||check==null) {
+//                        Toast.makeText(PaymentPage.this, "Please Login to continue..", Toast.LENGTH_SHORT).show();
+//                        Intent intent=new Intent(PaymentPage.this,Login.class);
+//                        int pay=1;
+//                        intent.putExtra("val",pay);
+//                        startActivity(intent);
+//                    }else {
+//                        bookCab("bookCab",userid,stdate,end,startime,endtime,car_id,total.getText().toString());
+//
+//                        startPayment(Float.parseFloat(total.getText().toString()));
+//                    }
+//                }
 
 
 
@@ -196,7 +214,6 @@ String HttpURL = "https://tooros.in/api/api.php";
 
     }
     public void getPriceDetails(final String method, final String car_id, final String concatpdate, final String concatDdate, final String coupon, final String security) {
-
 
         class BookCabClass extends AsyncTask<String, Void, String> {
 
@@ -215,19 +232,22 @@ String HttpURL = "https://tooros.in/api/api.php";
                 progressDialog.dismiss();
                 boolean msg = httpResponseMsg.contains("200");
 
-                //  Toast.makeText(PaymentPage.this, ""+httpResponseMsg, Toast.LENGTH_SHORT).show();
+                  //Toast.makeText(PaymentPage.this, ""+httpResponseMsg, Toast.LENGTH_SHORT).show();
 
 
                 if (msg) {
 
                     // Toast.makeText(PaymentPage.this, "helloooooo", Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(PaymentPage.this, ""+httpResponseMsg, Toast.LENGTH_SHORT).show();
 
                     JSONObject jsonObject = null;
                     try {
                         jsonObject = new JSONObject(httpResponseMsg);
 
+                       // Toast.makeText(PaymentPage.this, ""+jsonObject.getString("result"), Toast.LENGTH_SHORT).show();
+
                         JSONObject ob = new JSONObject(jsonObject.getString("result"));
-                        String weekdays_hr = ob.getString("weekdays_hr");
+                        String weekdays_hr =ob.getString("weekdays_hr");
                         String weekend_hr = ob.getString("weekend_hr");
                         String weekdays_rs = ob.getString("weekdays_rs");
                         String weekend_rs = ob.getString("weekend_rs");
@@ -237,12 +257,22 @@ String HttpURL = "https://tooros.in/api/api.php";
                         String discountpercentage = ob.getString("discount");
                         String couponstatus = ob.getString("coupon_status");
 
+                       // Toast.makeText(PaymentPage.this, ""+weekdays_hr+"--"+weekdays_rs, Toast.LENGTH_SHORT).show();
+
+
                         if (couponstatus.equals("Invalid Coupon Code")) {
                             Snackbar.make(view, "Invalid Coupon Code !!", Snackbar.LENGTH_LONG)
                                     .setActionTextColor(getResources().getColor(android.R.color.holo_green_dark))
                                     .show();
                         } else if(Float.parseFloat(discountpercentage)>0) {
                             Snackbar.make(view, "" + discountpercentage + "% discount added..", Snackbar.LENGTH_LONG)
+                                    .setActionTextColor(getResources().getColor(android.R.color.holo_green_dark))
+                                    .show();
+                        }else if(couponstatus.equals("")){
+
+                        }
+                        else{
+                            Snackbar.make(view, couponstatus, Snackbar.LENGTH_LONG)
                                     .setActionTextColor(getResources().getColor(android.R.color.holo_green_dark))
                                     .show();
                         }
@@ -515,6 +545,11 @@ String HttpURL = "https://tooros.in/api/api.php";
 
 
     public void startPayment(Float total) {
+
+        if(name==null || email==null || mobile==null){
+            Toast.makeText(this, "Please login first !!", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         /**
          * Instantiate Checkout

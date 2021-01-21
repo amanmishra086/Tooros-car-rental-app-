@@ -38,7 +38,7 @@
                 android:layout_height="wrap_content"
                 android:text="Bhubaneshwar"
                 android:layout_gravity="center_vertical"
-                android:textColor="#000"
+                android:textColor="#fff"
                 android:textSize="20sp" />
         </LinearLayout>
 

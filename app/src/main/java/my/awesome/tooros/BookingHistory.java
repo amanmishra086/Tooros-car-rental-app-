@@ -12,6 +12,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.google.android.material.snackbar.Snackbar;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -108,8 +110,9 @@ public class BookingHistory extends AppCompatActivity {
                     }else{
 
                         String messege = jsonObject2.getString("msg");
-                        Toast.makeText(BookingHistory.this, messege, Toast.LENGTH_SHORT).show();
-
+                        Snackbar.make( findViewById(android.R.id.content), messege, Snackbar.LENGTH_INDEFINITE)
+                                .setActionTextColor(getResources().getColor(android.R.color.holo_green_dark))
+                                .show();
                     }
 
 

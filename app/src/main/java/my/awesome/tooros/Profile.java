@@ -35,6 +35,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -42,6 +43,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Hashtable;
 import java.util.Locale;
@@ -67,7 +69,7 @@ public class Profile extends AppCompatActivity {
     DatePickerDialog.OnDateSetListener enddatelistener;
 
 //    String HttpURL = "https://www.cakiweb.com/tooros/api/api.php";
-String HttpURL = "https://tooros.in/api/api.php";
+     String HttpURL = "https://tooros.in/api/api.php";
 
 
     Bitmap aadharfile,dlfile;
@@ -118,8 +120,8 @@ ProgressDialog progressDialog;
            String aadharno = sharedPreferences2.getString("Aadharno", null);
             aadharcardno.setText(aadharno);
             userid=sharedPreferences2.getString("userid",null);
-            strdldoc=sharedPreferences2.getString("Dldoc",null);
-            straadhardoc=sharedPreferences2.getString("Aadhardoc",null);
+//            strdldoc=sharedPreferences2.getString("Dldoc",null);
+//            straadhardoc=sharedPreferences2.getString("Aadhardoc",null);
 
         }
 
@@ -254,56 +256,95 @@ ProgressDialog progressDialog;
 
     public void aadharViewButtonclick(View view) {
 
-        Intent intent=new Intent(this,ProfiledocActivity.class);
-        intent.putExtra("url",straadhardoc);
-        startActivity(intent);
+        SharedPreferences sharedPreferences2 = Profile.this.getSharedPreferences("MySharedPref2", MODE_PRIVATE);
+        String straadhardoc = sharedPreferences2.getString("Aadhardoc", null);
+
+       // Toast.makeText(this, ""+straadhardoc, Toast.LENGTH_SHORT).show();
+
+        if (straadhardoc!=null || straadhardoc!=""){
+            Intent intent=new Intent(this,ProfiledocActivity.class);
+            intent.putExtra("url",straadhardoc);
+            startActivity(intent);
+        }else{
+            Toast.makeText(this, "Please upload it first!!", Toast.LENGTH_SHORT).show();
+        }
+
+
 
     }
 
     public void dlViewButtonclick(View view) {
-        Intent intent=new Intent(this,ProfiledocActivity.class);
-        intent.putExtra("url",strdldoc);
-        startActivity(intent);
+
+        SharedPreferences sharedPreferences2 = Profile.this.getSharedPreferences("MySharedPref2", MODE_PRIVATE);
+        String strdldoc = sharedPreferences2.getString("Dldoc", null);
+        if(strdldoc!=null || strdldoc!=""){
+            Intent intent=new Intent(this,ProfiledocActivity.class);
+            intent.putExtra("url",strdldoc);
+            startActivity(intent);
+        }else{
+            Toast.makeText(this, "Please upload it first!!", Toast.LENGTH_SHORT).show();
+
+        }
+
+
     }
 
     public class UploadTask extends AsyncTask<String,String,String> {
 
         @Override
-        protected void onPostExecute(String s) {
-            super.onPostExecute(s);
+        protected void onPostExecute(String httpResponseMsg) {
+            super.onPostExecute(httpResponseMsg);
             //progressBar.setVisibility(View.GONE);
             progressDialog.dismiss();
-                if (s.equalsIgnoreCase("true")) {
 
-//                         SharedPreferences sharedPreferences2 = Profile.this.getSharedPreferences("MySharedPref2", MODE_PRIVATE);
-//                         SharedPreferences.Editor myEdit = sharedPreferences2.edit();
-//                        myEdit.putString("Name",name.getText().toString());
-//                        myEdit.putString("Mobile",phone.getText().toString());
-//                        myEdit.putString("Email",email.getText().toString());
-//                        myEdit.putString("Dob",""+Dob.getText().toString());
-//                        myEdit.putString("Dlno",dlno.getText().toString());
-//                        myEdit.putString("Aadharno",aadharcardno.getText().toString());
+            JSONObject jsonObject2 = null;
+            try {
+                jsonObject2 = new JSONObject(httpResponseMsg);
+                String status = jsonObject2.getString("status");
+                String messege = jsonObject2.getString("msg");
+                Toast.makeText(Profile.this, messege, Toast.LENGTH_SHORT).show();
 
-                      //  myEdit.apply();
+                if(status.equals("200")){
 
-                Toast.makeText(Profile.this, "Profile Updated", Toast.LENGTH_LONG).show();
-                Toast.makeText(Profile.this, "Login again to continue !!", Toast.LENGTH_LONG).show();
+                    try {
 
-                    SharedPreferences sharedPreferences = Profile.this.getSharedPreferences("loginOrNot", MODE_PRIVATE);
-                    final SharedPreferences.Editor myEdit = sharedPreferences.edit();
-                    myEdit.putString("info","no");
-                    // myEdit.putString("username","Guest_User");
-                    myEdit.apply();
-                    SharedPreferences preferences =getSharedPreferences("MySharedPref2", Context.MODE_PRIVATE);
-                    SharedPreferences.Editor editor = preferences.edit();
-                    editor.clear();
-                    editor.apply();
-                    finish();
-                    startActivity(new Intent(Profile.this,Login.class));
+                        JSONArray result = jsonObject2.getJSONArray("result");
+                        for (int i=0; i<result.length(); i++ ){
+                            JSONObject ob=result.getJSONObject(i);
+
+                            SharedPreferences sharedPreferences2 = Profile.this.getSharedPreferences("MySharedPref2", MODE_PRIVATE);
+                            final SharedPreferences.Editor myEdit = sharedPreferences2.edit();
+                            myEdit.putString("Name",ob.getString("name"));
+                            myEdit.putString("Mobile",ob.getString("mobile"));
+                            myEdit.putString("Email",ob.getString("email"));
+                            myEdit.putString("Dob",ob.getString("dob"));
+                            myEdit.putString("Dlno",ob.getString("dl_no"));
+                            myEdit.putString("Aadharno",ob.getString("aadhar_no"));
+                            myEdit.putString("Aadhardoc",ob.getString("aadhar_doc"));
+                            myEdit.putString("Dldoc",ob.getString("dl_doc"));
+                            myEdit.putString("userid",ob.getString("user_id"));
+                            myEdit.apply();
+
+                        }
+//
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
 
 
-            } else {
-                Toast.makeText(Profile.this, "profile update failed..!", Toast.LENGTH_SHORT).show();
+
+
+                }else{
+
+                    String messege2 = jsonObject2.getString("msg");
+                    //Toast.makeText(Profile.this, messege2, Toast.LENGTH_SHORT).show();
+
+                }
+
+
+
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
         }
 
@@ -319,14 +360,17 @@ ProgressDialog progressDialog;
         protected String doInBackground(String... strings) {
 
 
-            if (uploadFile(strings[0], strings[1], strings[2], strings[3], strings[4], strings[5], strings[6], strings[7])) {
-                return "true";
-            } else {
-                return "failed";
-            }
+//            if (uploadFile(strings[0], strings[1], strings[2], strings[3], strings[4], strings[5], strings[6], strings[7])=="") {
+//                return "true";
+//            } else {
+//                return "failed";
+//            }
+
+            String str=uploadFile(strings[0], strings[1], strings[2], strings[3], strings[4], strings[5], strings[6], strings[7]);
+            return str;
         }
 
-        private boolean uploadFile(String method, String userid, String strname, String strdlno, String straadharcardno, String strdob, String dpath, String apath) {
+        private String uploadFile(String method, String userid, String strname, String strdlno, String straadharcardno, String strdob, String dpath, String apath) {
 
             if (apath == null && dpath != null) {
 
@@ -348,21 +392,23 @@ ProgressDialog progressDialog;
                             .build();
 
                     OkHttpClient client = new OkHttpClient();
-                    client.newCall(request).enqueue(new Callback() {
-                        @Override
-                        public void onFailure(Call call, IOException e) {
-                            e.printStackTrace();
-                        }
-
-                        @Override
-                        public void onResponse(Call call, Response response) throws IOException {
-
-                        }
-                    });
-                    return true;
+//                    client.newCall(request).enqueue(new Callback() {
+//                        @Override
+//                        public void onFailure(Call call, IOException e) {
+//                            e.printStackTrace();
+//                        }
+//
+//                        @Override
+//                        public void onResponse(Call call, Response response) throws IOException {
+//
+//                        }
+//                    });
+//                    return "true";
+                    Response response=client.newCall(request).execute();
+                    return response.body().string();
                 } catch (Exception e) {
                     e.printStackTrace();
-                    return false;
+                    return "exception";
                 }
 
             } else if (dpath == null && apath != null) {
@@ -385,21 +431,23 @@ ProgressDialog progressDialog;
                             .build();
 
                     OkHttpClient client = new OkHttpClient();
-                    client.newCall(request).enqueue(new Callback() {
-                        @Override
-                        public void onFailure(Call call, IOException e) {
-                            e.printStackTrace();
-                        }
-
-                        @Override
-                        public void onResponse(Call call, Response response) throws IOException {
-
-                        }
-                    });
-                    return true;
+//                    client.newCall(request).enqueue(new Callback() {
+//                        @Override
+//                        public void onFailure(Call call, IOException e) {
+//                            e.printStackTrace();
+//                        }
+//
+//                        @Override
+//                        public void onResponse(Call call, Response response) throws IOException {
+//
+//                        }
+//                    });
+//                    return "true";
+                    Response response=client.newCall(request).execute();
+                    return response.body().string();
                 } catch (Exception e) {
                     e.printStackTrace();
-                    return false;
+                    return "exception";
                 }
 
             } else if (dpath != null && apath != null) {
@@ -425,21 +473,23 @@ ProgressDialog progressDialog;
                             .build();
 
                     OkHttpClient client = new OkHttpClient();
-                    client.newCall(request).enqueue(new Callback() {
-                        @Override
-                        public void onFailure(Call call, IOException e) {
-                            e.printStackTrace();
-                        }
-
-                        @Override
-                        public void onResponse(Call call, Response response) throws IOException {
-
-                        }
-                    });
-                    return true;
+//                    client.newCall(request).enqueue(new Callback() {
+//                        @Override
+//                        public void onFailure(Call call, IOException e) {
+//                            e.printStackTrace();
+//                        }
+//
+//                        @Override
+//                        public void onResponse(Call call, Response response) throws IOException {
+//
+//                        }
+//                    });
+//                    return "true";
+                    Response response=client.newCall(request).execute();
+                    return response.body().string();
                 } catch (Exception e) {
                     e.printStackTrace();
-                    return false;
+                    return "exception";
                 }
 
             } else {
@@ -461,21 +511,25 @@ ProgressDialog progressDialog;
                             .build();
 
                     OkHttpClient client = new OkHttpClient();
-                    client.newCall(request).enqueue(new Callback() {
-                        @Override
-                        public void onFailure(Call call, IOException e) {
-                            e.printStackTrace();
-                        }
 
-                        @Override
-                        public void onResponse(Call call, Response response) throws IOException {
 
-                        }
-                    });
-                    return true;
+//                    client.newCall(request).enqueue(new Callback() {
+//                        @Override
+//                        public void onFailure(Call call, IOException e) {
+//                            e.printStackTrace();
+//                        }
+//
+//                        @Override
+//                        public void onResponse(Call call, Response response) throws IOException{
+//                            strresponse[0] =response.body().string();
+//                        }
+//                    });
+//                    return strresponse[0];
+                    Response response=client.newCall(request).execute();
+                    return response.body().string();
                 } catch (Exception e) {
                     e.printStackTrace();
-                    return false;
+                    return e.toString();
                 }
 
             }

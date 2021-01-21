@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="PROFILE"
+        android:text="Profile"
         android:textColor="#fff"
         android:textSize="35sp"
         android:textStyle="bold"
@@ -39,7 +39,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:text="NAME*"
+                android:text="Name*"
                 android:textColor="#fff"
                 android:textSize="13sp"
                 android:textStyle="bold"
@@ -67,7 +67,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:text="E-MAIL*"
+                android:text="E-mail*"
                 android:textColor="#fff"
                 android:textSize="13sp"
                 android:textStyle="bold"
@@ -78,6 +78,8 @@
                 app:layout_constraintTop_toBottomOf="@+id/namecontainer" />
 
             <TextView
+                android:gravity="center_vertical"
+                android:text="email"
                 android:textStyle="bold"
                 android:id="@+id/emailcontainer"
                 android:layout_width="334dp"
@@ -98,7 +100,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:text="MOBILE NO *"
+                android:text="Mobile no *"
                 android:textSize="13sp"
                 android:textStyle="bold"
                 android:textColor="#fff"
@@ -109,6 +111,8 @@
                 app:layout_constraintTop_toBottomOf="@+id/emailcontainer" />
 
             <TextView
+                android:gravity="center_vertical"
+                android:text="mobile"
                 android:textStyle="bold"
                 android:id="@+id/mobilenocontainer"
                 android:layout_width="334dp"
@@ -129,7 +133,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:text="DOB*"
+                android:text="Dob*"
                 android:textSize="13sp"
                 android:textStyle="bold"
                 android:textColor="#fff"
@@ -176,7 +180,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:text="DL No*"
+                android:text="Dl no*"
                 android:textSize="13sp"
                 android:textStyle="bold"
                 android:textColor="#fff"
@@ -353,13 +357,14 @@
             </LinearLayout>
 
             <Button
+
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:id="@+id/registerbtn"
                 android:layout_width="wrap_content"
                android:layout_marginTop="15dp"
                 android:layout_height="wrap_content"
-                android:background="#90C208"
+                android:background="@drawable/redbutton"
                 android:onClick="onClickSubmit"
                 android:scaleType="fitXY"
                 android:text="Update User"

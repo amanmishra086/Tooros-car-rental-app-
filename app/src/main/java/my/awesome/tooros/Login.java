@@ -36,7 +36,7 @@ String HttpURL = "https://tooros.in/api/api.php";
     String finalResult ;
     Boolean CheckEditText ;
     ProgressDialog progressDialog;
-    int pay1=0;
+    int pay=0;
     JsonHttpParse jsonhttpParse = new JsonHttpParse();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,12 +48,8 @@ String HttpURL = "https://tooros.in/api/api.php";
         signin=findViewById(R.id.loginbtn);
 
         Intent intent=getIntent();
-         pay1 = intent.getIntExtra("val",0);
-        // public static final String UserEmail = "";
+         pay = intent.getIntExtra("val",0);
 
-
-//        stremail=email.getText().toString();
-//        strpassword=password.getText().toString();
 
 
         }
@@ -131,11 +127,7 @@ String HttpURL = "https://tooros.in/api/api.php";
                             JSONArray result = jsonObject.getJSONArray("result");
                             for (int i=0; i<result.length(); i++ ){
                                 JSONObject ob=result.getJSONObject(i);
-                                //fetch image here and set to adapter
-                                // Toast.makeText(Login.this, ob.getString("name"), Toast.LENGTH_SHORT).show();
-                                // homemodel history=new homemodel(R.drawable.promocodecar2,ob.getString("img"),
-                                //ob.getString("service_name"),ob.getString("sch_servie_id"));
-                                // androidFlavors.add(history);
+
                                 SharedPreferences sharedPreferences2 = Login.this.getSharedPreferences("MySharedPref2", MODE_PRIVATE);
                                 final SharedPreferences.Editor myEdit = sharedPreferences2.edit();
                                 myEdit.putString("Name",ob.getString("name"));
@@ -153,20 +145,22 @@ String HttpURL = "https://tooros.in/api/api.php";
 
 
 
-                                //to check if user is already login or not
-                                SharedPreferences sharedPreferencesForLoginOrNot = Login.this.getSharedPreferences("loginOrNot", MODE_PRIVATE);
-                                final SharedPreferences.Editor loginedit = sharedPreferencesForLoginOrNot.edit();
-                                loginedit.putString("info","yes");
-                                // loginedit.putString("username","Aman");
-                                loginedit.apply();
+//                                //to check if user is already login or not
+//                                SharedPreferences sharedPreferencesForLoginOrNot = Login.this.getSharedPreferences("loginOrNot", MODE_PRIVATE);
+//                                final SharedPreferences.Editor loginedit = sharedPreferencesForLoginOrNot.edit();
+//                                loginedit.putString("info","yes");
+//                                // loginedit.putString("username","Aman");
+//                                loginedit.apply();
 
                                // Toast.makeText(Login.this, ""+pay1, Toast.LENGTH_SHORT).show();
-                                if(pay1==1) {
+                                if(pay==1) {
                                     finish();
                                     startActivity(new Intent(Login.this, PaymentPage.class));
-                                }else
+                                }else{
                                     finish();
                                     startActivity(new Intent(Login.this, CitySelectionActivity.class));
+                                }
+
 
 
 
@@ -221,9 +215,10 @@ String HttpURL = "https://tooros.in/api/api.php";
     }
     @Override
     public void onBackPressed(){
-
         finish();
-        startActivity(new Intent(Login.this,CitySelectionActivity.class));
+       super.onBackPressed();
+//        finish();
+//        startActivity(new Intent(Login.this,CitySelectionActivity.class));
 
         }
 

@@ -14,12 +14,13 @@
     android:orientation="vertical">
 
     <TextView
+        android:textAllCaps="false"
         android:layout_marginTop="40dp"
         android:gravity="center_horizontal"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:textStyle="bold"
-        android:textColor="#0AF316"
+        android:textColor="#fff"
         android:textSize="30dp"
         android:text="Our Privacy Policy"/>
 
@@ -29,6 +30,9 @@
 <!--        android:layout_height="match_parent"/>-->
 
     <TextView
+        android:gravity="center"
+        android:id="@+id/policyText"
+        android:textAllCaps="false"
         android:textColor="#fff"
         android:layout_marginTop="20dp"
         android:padding="10dp"

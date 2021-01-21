@@ -38,6 +38,11 @@
             android:id="@+id/nav_policy"
             android:icon="@drawable/ic_policies"
             android:title="Policies" />
+        <item
+
+            android:id="@+id/nav_terms"
+            android:icon="@drawable/ic_terms"
+            android:title="Terms and Condition" />
 
         <item
             android:id="@+id/nav_help"

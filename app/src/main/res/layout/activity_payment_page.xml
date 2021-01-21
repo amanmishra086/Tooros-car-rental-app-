@@ -41,7 +41,7 @@
                             android:layout_marginLeft="28dp"
                             android:layout_marginTop="16dp"
                             android:hint="Maruti Swift"
-                            android:textColor="#000000"
+                            android:textColor="#fff"
                             android:textSize="20sp" />
 
 
@@ -124,7 +124,7 @@
 
                             <TextView
                                 android:id="@+id/startdate"
-                                android:layout_width="80dp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
                                 android:layout_marginLeft="3dp"
@@ -132,8 +132,9 @@
                                 android:textColor="#fff" />
 
                             <TextView
+                                android:layout_marginLeft="2dp"
                                 android:id="@+id/starttime"
-                                android:layout_width="60dp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal|center_vertical"
                                 android:gravity="center"
@@ -169,7 +170,7 @@
 
                             <TextView
                                 android:id="@+id/enddate"
-                                android:layout_width="80dp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
                                 android:layout_marginLeft="3dp"
@@ -178,7 +179,7 @@
 
                             <TextView
                                 android:id="@+id/endtime"
-                                android:layout_width="60dp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal|center_vertical"
                                 android:layout_marginLeft="2dp"
@@ -211,7 +212,7 @@
                             android:layout_gravity="center_horizontal"
                             android:layout_marginTop="5dp"
                             android:layout_marginRight="3dp"
-                            android:text="TIME DURATION"
+                            android:text="Time Duration"
                             android:textColor="#fff"
                             android:textSize="12sp" />
 
@@ -221,10 +222,10 @@
                             android:layout_height="20dp"
                             android:layout_gravity="center_horizontal"
                             android:layout_marginRight="3dp"
-                            android:background="#fff"
+                            android:text="00 hrs"
                             android:gravity="center"
                             android:hint="49 hrs"
-                            android:textColor="#000000"
+                            android:textColor="#fff"
                             android:textSize="16sp" />
 
 
@@ -305,6 +306,7 @@
 
 
             <LinearLayout
+                android:paddingBottom="8dp"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -342,7 +344,7 @@
                         android:layout_height="37dp"
                         android:layout_marginLeft="10dp"
                         android:background="@drawable/redbutton"
-                        android:text="APPLY"
+                        android:text="Apply"
                         android:textColor="#fff"
                         android:textSize="16sp"
                         />
@@ -376,7 +378,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="30dp"
                         android:layout_marginTop="3dp"
-                        android:text="Base Fare."
+                        android:text="Base Fare"
 
                         android:textColor="#fff"
                         android:textSize="16sp" />
@@ -393,11 +395,11 @@
                     <TextView
                         android:id="@+id/basefare"
                         android:layout_width="0dp"
-                      android:layout_weight="1"
+                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="3dp"
                         android:layout_marginTop="4dp"
-                        android:hint="1000"
+                        android:text="0"
                         android:textColor="#fff"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -413,7 +415,7 @@
                         android:layout_marginLeft="30dp"
                         android:layout_marginTop="3dp"
                         android:layout_weight="3"
-                        android:text="Delivery and Pick Up Charges."
+                        android:text="Delivery and Pick Up Charges"
 
                         android:textColor="#fff"
                         android:textSize="16sp" />
@@ -450,7 +452,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="30dp"
                         android:layout_marginTop="3dp"
-                        android:text="Security."
+                        android:text="Security"
 
                         android:textColor="#fff"
                         android:textSize="16sp" />
@@ -473,7 +475,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="3dp"
                         android:layout_marginTop="4dp"
-                        android:hint="1000"
+                        android:text="0"
                         android:textColor="#fff"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -488,7 +490,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="30dp"
                         android:layout_marginTop="3dp"
-                        android:text="Discount."
+                        android:text="Discount"
 
                         android:textColor="#fff"
                         android:textSize="16sp" />
@@ -525,7 +527,7 @@
                         android:layout_height="26dp"
                         android:layout_marginLeft="30dp"
                         android:layout_marginTop="3dp"
-                        android:text="GST(5% included)."
+                        android:text="GST(5% included)"
 
                         android:textColor="#fff"
                         android:textSize="16sp" />
@@ -547,7 +549,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="3dp"
                         android:layout_marginTop="4dp"
-                        android:hint="1000"
+                        android:text="0"
                         android:textColor="#fff"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -595,7 +597,7 @@
                             android:layout_weight="1"
                             android:layout_height="wrap_content"
 
-                            android:text="1000"
+                            android:text="0"
                             android:paddingRight="9dp"
                             android:textColor="#88F30B"
                             android:textStyle="bold" />

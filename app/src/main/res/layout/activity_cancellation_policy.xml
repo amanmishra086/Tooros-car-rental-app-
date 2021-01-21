@@ -20,11 +20,11 @@
             android:textStyle="bold"
             android:textColor="#0AF316"
             android:textSize="30dp"
-            android:text="Cancellation Policy"/>
+            android:text="CANCELLATION POLICY"/>
 
         <TextView
             android:padding="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="40dp"
             android:gravity="left"
             android:layout_marginStart="12dp"
             android:layout_width="match_parent"

@@ -2,6 +2,7 @@ package my.awesome.tooros;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +19,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class CarBookingAdapter extends RecyclerView.Adapter<CarBookingAdapter.viewHolder> {
     ArrayList<CarBookingModel>carBookingModels;
@@ -91,6 +94,7 @@ public class CarBookingAdapter extends RecyclerView.Adapter<CarBookingAdapter.vi
 
         if(bookCount==0 && mtCount==0){
             holder.status.setText("Book Now");
+            holder.buttonlinearlayout.setBackgroundResource(R.drawable.redbutton);
 
             final String finalFuel = fuel;
             final String finalGear = gear;
@@ -99,14 +103,21 @@ public class CarBookingAdapter extends RecyclerView.Adapter<CarBookingAdapter.vi
                 public void onClick(View v) {
 
                     Intent intent=new Intent(context,PaymentPage.class);
-                    intent.putExtra("carimage",carBookingModel.getCarimage());
-                    intent.putExtra("carname",""+carBookingModel.getCarname().toString());
-                    intent.putExtra("geartype",""+ finalGear);
-                    intent.putExtra("fuel",""+finalFuel);
-                    intent.putExtra("totalprice",""+carBookingModel.getCarname().toString());
-                    intent.putExtra("cost",carBookingModel.getPrice().toString());
-                    intent.putExtra("weekendcost",carBookingModel.getWeekendcost());
-                    intent.putExtra("car_id",carBookingModel.getCar_id());
+
+//                    intent.putExtra("carimage",carBookingModel.getCarimage());
+//                    intent.putExtra("carname",""+carBookingModel.getCarname().toString());
+//                    intent.putExtra("geartype",""+ finalGear);
+//                    intent.putExtra("fuel",""+finalFuel);
+//                    intent.putExtra("car_id",carBookingModel.getCar_id());
+
+                    SharedPreferences sharedPreferences2 = context.getSharedPreferences("sharedpref3", MODE_PRIVATE);
+                    final SharedPreferences.Editor myEdit = sharedPreferences2.edit();
+                    myEdit.putString("carimage",carBookingModel.getCarimage());
+                    myEdit.putString("carname",""+carBookingModel.getCarname().toString());
+                    myEdit.putString("geartype",""+ finalGear);
+                    myEdit.putString("fuel",""+finalFuel);
+                    myEdit.putString("car_id",carBookingModel.getCar_id());
+                    myEdit.apply();
 
                     context.startActivity(intent);
 

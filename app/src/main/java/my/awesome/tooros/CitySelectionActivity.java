@@ -205,11 +205,22 @@ RecyclerView offer_recycler;
         View headerView = navigationView.getHeaderView(0);
         username= (TextView) headerView.findViewById((R.id.user_name));
         SharedPreferences sharedPreferences2 = CitySelectionActivity.this.getSharedPreferences("MySharedPref2", MODE_PRIVATE);
-        if (sharedPreferences2 != null) {
+        Menu menu = navigationView.getMenu();
+        if (sharedPreferences2.getString("Name", null) != null) {
+
+
             username.setText(sharedPreferences2.getString("Name", null));
             userid=sharedPreferences2.getString("userid",null);
 
+            menu.findItem(R.id.nav_login).setVisible(false);
+            menu.findItem(R.id.nav_SignUp).setVisible(false);
+           // menu.findItem(R.id.nav_logout).setVisible(true);
+           // menu.findItem(R.id.nav_profile).setVisible(true);
+        }else{
 
+            menu.findItem(R.id.nav_logout).setVisible(false);
+            menu.findItem(R.id.nav_profile).setVisible(false);
+            menu.findItem(R.id.nav_booking).setVisible(false);
         }
 
         ServicesFunction("getAlllocation");//add service name
@@ -226,23 +237,23 @@ RecyclerView offer_recycler;
         setSupportActionBar(toolbar);
 
         //hide or show items
-        SharedPreferences shared = getSharedPreferences("loginOrNot", MODE_PRIVATE);
-        String info = (shared.getString("info", ""));
-       // String name = (shared.getString("username", ""));
-        Menu menu2 = navigationView.getMenu();
-        if(info.equals("yes")){
-            //username.setText(name);
-            menu2.findItem(R.id.nav_login).setVisible(false);
-            menu2.findItem(R.id.nav_SignUp).setVisible(false);
-            menu2.findItem(R.id.nav_logout).setVisible(true);
-            menu2.findItem(R.id.nav_profile).setVisible(true);
-
-        }else{
-           // username.setText(name);
-            menu2.findItem(R.id.nav_logout).setVisible(false);
-            menu2.findItem(R.id.nav_profile).setVisible(false);
-            menu2.findItem(R.id.nav_booking).setVisible(false);
-        }
+//        SharedPreferences shared = getSharedPreferences("loginOrNot", MODE_PRIVATE);
+//        String info = (shared.getString("info", ""));
+//       // String name = (shared.getString("username", ""));
+//        Menu menu2 = navigationView.getMenu();
+//        if(info.equals("yes")){
+//            //username.setText(name);
+//            menu2.findItem(R.id.nav_login).setVisible(false);
+//            menu2.findItem(R.id.nav_SignUp).setVisible(false);
+//            menu2.findItem(R.id.nav_logout).setVisible(true);
+//            menu2.findItem(R.id.nav_profile).setVisible(true);
+//
+//        }else{
+//           // username.setText(name);
+//            menu2.findItem(R.id.nav_logout).setVisible(false);
+//            menu2.findItem(R.id.nav_profile).setVisible(false);
+//            menu2.findItem(R.id.nav_booking).setVisible(false);
+//        }
 
 
         navigationView.setItemIconTintList(null);
@@ -278,16 +289,20 @@ RecyclerView offer_recycler;
                 myStartCalendar.set(Calendar.MONTH, monthOfYear);
                 myStartCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
                 String myFormat = "yyyy-MM-dd";//In which you need put here
+                String toShowFormat="dd-MM-yyyy";
                 SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+                SimpleDateFormat sdf_show = new SimpleDateFormat(toShowFormat, Locale.US);
 
                  startdateSelected=sdf.format(myStartCalendar.getTime());
+                String startdateSelected_show=sdf_show.format(myStartCalendar.getTime());
 
-                startdate.setText(startdateSelected);
+                startdate.setText(startdateSelected_show);
 
                //  Toast.makeText(CitySelectionActivity.this, ""+dateSelected, Toast.LENGTH_SHORT).show();
                 SharedPreferences sharedPreferences = CitySelectionActivity.this.getSharedPreferences("Date", MODE_PRIVATE);
                 SharedPreferences.Editor myEdit = sharedPreferences.edit();
                 myEdit.putString("startdate",""+startdateSelected);
+                myEdit.putString("startdate_show",""+startdateSelected_show);
 
                 myEdit.apply();
 
@@ -312,10 +327,13 @@ RecyclerView offer_recycler;
 
 
                 String myFormat = "yyyy-MM-dd"; //In which you need put here
+                String myFormat_show = "dd-MM-yyyy"; //In which you need put here
                 SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+                SimpleDateFormat sdf_show = new SimpleDateFormat(myFormat_show, Locale.US);
 
 
                 enddateSelected=sdf.format(myEndCalendar.getTime());
+                String enddateSelected_show=sdf.format(myEndCalendar.getTime());
                 String getenddate=enddateSelected;
                 String getfrom2[]=getenddate.split("-");
                 int dayOfMonth2=Integer.parseInt(getfrom2[2]);
@@ -325,7 +343,7 @@ RecyclerView offer_recycler;
             monthdif=mont2-month1;
             yeardif=year2-year1;
               //  Toast.makeText(CitySelectionActivity.this, ""+daydif+""+monthdif+""+""+yeardif, Toast.LENGTH_SHORT).show();
-                    enddate.setText(enddateSelected);
+                    enddate.setText(enddateSelected_show);
 
                 //String dateSelected=sdf.format(myEndCalendar.getTime());
 
@@ -333,6 +351,7 @@ RecyclerView offer_recycler;
                 SharedPreferences sharedPreferences = CitySelectionActivity.this.getSharedPreferences("Date", MODE_PRIVATE);
                 SharedPreferences.Editor myEdit = sharedPreferences.edit();
                 myEdit.putString("Enddate",""+enddateSelected);
+                myEdit.putString("Enddate_show",""+enddateSelected_show);
                 myEdit.apply();
 
 
@@ -359,6 +378,30 @@ RecyclerView offer_recycler;
 
 
 
+
+
+    }
+    public void onClickStartDate(View view) {
+
+        DatePickerDialog datePickerDialog= new DatePickerDialog(CitySelectionActivity.this, startdatelistener, myStartCalendar
+                .get(Calendar.YEAR), myStartCalendar.get(Calendar.MONTH),
+                myStartCalendar.get(Calendar.DAY_OF_MONTH));
+        datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis()-1000);
+       // datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        datePickerDialog.show();
+
+
+
+
+    }
+
+    public void onClickEndDate(View view) {
+        DatePickerDialog datePickerDialog= new DatePickerDialog(CitySelectionActivity.this, enddatelistener, myEndCalendar
+                .get(Calendar.YEAR), myEndCalendar.get(Calendar.MONTH),
+                myEndCalendar.get(Calendar.DAY_OF_MONTH));
+        datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis()-1000);
+        datePickerDialog.show();
 
 
     }
@@ -646,28 +689,7 @@ RecyclerView offer_recycler;
         //Toast.makeText(this,sdf.format(myCalendar.getTime()) , Toast.LENGTH_SHORT).show();
 
     }
-    public void onClickStartDate(View view) {
 
-       DatePickerDialog datePickerDialog= new DatePickerDialog(CitySelectionActivity.this, startdatelistener, myStartCalendar
-                .get(Calendar.YEAR), myStartCalendar.get(Calendar.MONTH),
-                myStartCalendar.get(Calendar.DAY_OF_MONTH));
-       datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis()-1000);
-       datePickerDialog.show();
-
-
-
-
-    }
-
-    public void onClickEndDate(View view) {
-        DatePickerDialog datePickerDialog= new DatePickerDialog(CitySelectionActivity.this, enddatelistener, myEndCalendar
-                .get(Calendar.YEAR), myEndCalendar.get(Calendar.MONTH),
-                myEndCalendar.get(Calendar.DAY_OF_MONTH));
-        datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis()-1000);
-        datePickerDialog.show();
-
-
-    }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void onClickFindCarButton(View view) throws IOException {
@@ -809,6 +831,9 @@ RecyclerView offer_recycler;
             case R.id.nav_policy:
                 startActivity(new Intent(this,PolicyActivity.class));
                 break;
+            case R.id.nav_terms:
+                startActivity(new Intent(this,TermsAndCondition.class));
+                break;
             case R.id.nav_profile:
                 startActivity(new Intent(this,Profile.class));
                 break;
@@ -828,11 +853,11 @@ RecyclerView offer_recycler;
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 Toast.makeText(CitySelectionActivity.this, "Logged Out Successfully", Toast.LENGTH_SHORT).show();
-                                SharedPreferences sharedPreferences = CitySelectionActivity.this.getSharedPreferences("loginOrNot", MODE_PRIVATE);
-                                final SharedPreferences.Editor myEdit = sharedPreferences.edit();
-                                myEdit.putString("info","no");
-                                // myEdit.putString("username","Guest_User");
-                                myEdit.apply();
+//                                SharedPreferences sharedPreferences = CitySelectionActivity.this.getSharedPreferences("loginOrNot", MODE_PRIVATE);
+//                                final SharedPreferences.Editor myEdit = sharedPreferences.edit();
+//                                myEdit.putString("info","no");
+//                                // myEdit.putString("username","Guest_User");
+//                                myEdit.apply();
                                 SharedPreferences preferences =getSharedPreferences("MySharedPref2",Context.MODE_PRIVATE);
                                 SharedPreferences.Editor editor = preferences.edit();
                                 editor.clear();
