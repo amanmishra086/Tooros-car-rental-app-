@@ -18,9 +18,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textStyle="bold"
-            android:textColor="#0AF316"
+            android:textColor="#fff"
             android:textSize="30dp"
-            android:text="CANCELLATION POLICY"/>
+            android:text="Cancellation Policy"/>
 
         <TextView
             android:padding="10dp"

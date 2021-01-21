@@ -358,6 +358,7 @@
 
             <Button
 
+                android:textAllCaps="false"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:id="@+id/registerbtn"

@@ -20,7 +20,7 @@
         android:id="@+id/invoice"
         android:layout_marginTop="20dp"
         android:layout_gravity="center_horizontal"
-        android:text="INVOICE NO :-  "
+        android:text="Invoice No :-  "
         android:textSize="20sp"
         android:textColor="#fff"
         android:layout_width="wrap_content"
@@ -168,7 +168,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="4dp"
 
-        android:text=" FOR BOOKING WITH US "
+        android:text=" For Booking with us "
         android:textColor="#9CCC65"
         android:textSize="15sp"
         android:textStyle="bold" />
@@ -185,7 +185,7 @@
         android:textSize="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="DOWNLOAD INVOICE"
+        android:text="Download Invoice"
         android:layout_gravity="center_horizontal"
         android:textColor="#fff"
         android:textStyle="bold"/>

@@ -77,7 +77,6 @@ String HttpURL = "https://tooros.in/api/api.php";
         SharedPreferences sharedPreferences3 = PaymentPage.this.getSharedPreferences("sharedpref3", MODE_PRIVATE);
         String url=sharedPreferences3.getString("carimage",null);
         Picasso.with(this).load(url.replace("http","https")).fit().centerInside().into(carimage);
-
         String carn=sharedPreferences3.getString("carname",null);
         String  geart=sharedPreferences3.getString("geartype",null);
         String fuelt=sharedPreferences3.getString("fuel",null);

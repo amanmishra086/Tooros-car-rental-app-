@@ -317,7 +317,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="18dp"
                     android:layout_marginTop="2dp"
-                    android:text="COUPON DISCOUNT"
+                    android:text="Coupon Discount"
                     android:textColor="#fff"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -339,6 +339,7 @@
                         />
 
                     <Button
+                        android:textAllCaps="false"
                         android:id="@+id/apply"
                         android:layout_width="124dp"
                         android:layout_height="37dp"
@@ -644,6 +645,8 @@
             </LinearLayout>
 
             <Button
+                android:textAllCaps="false"
+                android:textColor="@color/white"
                 android:id="@+id/book"
                 android:layout_width="173dp"
                 android:layout_height="45dp"
@@ -655,7 +658,7 @@
                 android:paddingTop="2dp"
                 android:paddingRight="4dp"
                 android:paddingBottom="2dp"
-                android:text="BOOK NOW"
+                android:text="Book Now"
                 android:textSize="25sp" />
 
         </LinearLayout>

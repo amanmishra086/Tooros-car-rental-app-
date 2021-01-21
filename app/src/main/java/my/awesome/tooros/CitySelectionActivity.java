@@ -33,6 +33,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -43,6 +44,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.NumberPicker;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 import android.widget.Switch;
@@ -65,6 +67,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -381,6 +384,7 @@ RecyclerView offer_recycler;
 
 
     }
+    @RequiresApi(api = Build.VERSION_CODES.P)
     public void onClickStartDate(View view) {
 
         DatePickerDialog datePickerDialog= new DatePickerDialog(CitySelectionActivity.this, startdatelistener, myStartCalendar
@@ -388,7 +392,7 @@ RecyclerView offer_recycler;
                 myStartCalendar.get(Calendar.DAY_OF_MONTH));
         datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis()-1000);
        // datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
+       // datePickerDialog.getWindow().setNavigationBarDividerColor(getResources().getColor(R.color.green));
         datePickerDialog.show();
 
 
@@ -885,6 +889,7 @@ RecyclerView offer_recycler;
         return true;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.P)
     public void endTime(View view) {
 
         TimePickerDialog timePickerDialog=new TimePickerDialog(CitySelectionActivity.this, android.R.style.Theme_Holo_Light_Dialog_MinWidth, new TimePickerDialog.OnTimeSetListener() {
@@ -922,7 +927,6 @@ RecyclerView offer_recycler;
         timePickerDialog.show();
 
     }
-
 
     public void starttime(View view) {
      final   TimePickerDialog timePickerDialog=new TimePickerDialog(CitySelectionActivity.this, android.R.style.Theme_Holo_Light_Dialog_MinWidth, new TimePickerDialog.OnTimeSetListener() {
