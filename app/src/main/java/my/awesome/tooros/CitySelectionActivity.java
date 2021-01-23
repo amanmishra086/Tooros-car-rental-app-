@@ -336,7 +336,7 @@ RecyclerView offer_recycler;
 
 
                 enddateSelected=sdf.format(myEndCalendar.getTime());
-                String enddateSelected_show=sdf.format(myEndCalendar.getTime());
+                String enddateSelected_show=sdf_show.format(myEndCalendar.getTime());
                 String getenddate=enddateSelected;
                 String getfrom2[]=getenddate.split("-");
                 int dayOfMonth2=Integer.parseInt(getfrom2[2]);

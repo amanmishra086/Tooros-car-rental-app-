@@ -104,11 +104,6 @@ public class CarBookingAdapter extends RecyclerView.Adapter<CarBookingAdapter.vi
 
                     Intent intent=new Intent(context,PaymentPage.class);
 
-//                    intent.putExtra("carimage",carBookingModel.getCarimage());
-//                    intent.putExtra("carname",""+carBookingModel.getCarname().toString());
-//                    intent.putExtra("geartype",""+ finalGear);
-//                    intent.putExtra("fuel",""+finalFuel);
-//                    intent.putExtra("car_id",carBookingModel.getCar_id());
 
                     SharedPreferences sharedPreferences2 = context.getSharedPreferences("sharedpref3", MODE_PRIVATE);
                     final SharedPreferences.Editor myEdit = sharedPreferences2.edit();

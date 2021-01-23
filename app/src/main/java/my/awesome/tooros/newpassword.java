@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -25,6 +27,7 @@ String HttpURL = "https://tooros.in/api/api.php";
     String finalResult ;
     Boolean CheckEditText ;
     ProgressDialog progressDialog;
+    int pay=0;
     JsonHttpParse jsonhttpParse = new JsonHttpParse();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +39,7 @@ String HttpURL = "https://tooros.in/api/api.php";
         strcnfp=confirmpassword.getText().toString().trim();
         Intent intent=getIntent();
        phone= intent.getStringExtra("mobile");
+        pay = intent.getIntExtra("val",0);
     }
     public boolean check(){
         if(strnewp.equals(strcnfp)){
@@ -80,7 +84,7 @@ String HttpURL = "https://tooros.in/api/api.php";
             protected void onPostExecute(String httpResponseMsg) {
 
                 super.onPostExecute(httpResponseMsg);
-                Toast.makeText(newpassword.this, ""+httpResponseMsg, Toast.LENGTH_SHORT).show();
+               // Toast.makeText(newpassword.this, ""+httpResponseMsg, Toast.LENGTH_SHORT).show();
                 progressDialog.dismiss();
 
                 JSONObject jsonObject2 = null;
@@ -92,10 +96,50 @@ String HttpURL = "https://tooros.in/api/api.php";
 
                         String msg=jsonObject2.getString("msg");
 
+                        JSONArray result = jsonObject2.getJSONArray("result");
+                        for (int i=0; i<result.length(); i++ ){
+                            JSONObject ob=result.getJSONObject(i);
+
+                            SharedPreferences sharedPreferences2 = newpassword.this.getSharedPreferences("MySharedPref2", MODE_PRIVATE);
+                            final SharedPreferences.Editor myEdit = sharedPreferences2.edit();
+                            myEdit.putString("Name",ob.getString("name"));
+                            myEdit.putString("Mobile",ob.getString("mobile"));
+                            myEdit.putString("Email",ob.getString("email"));
+                            myEdit.putString("Dob",ob.getString("dob"));
+                            myEdit.putString("Dlno",ob.getString("dl_no"));
+                            myEdit.putString("Aadharno",ob.getString("aadhar_no"));
+                            myEdit.putString("Aadhardoc",ob.getString("aadhar_doc"));
+                            myEdit.putString("Dldoc",ob.getString("dl_doc"));
+                            myEdit.putString("userid",ob.getString("user_id"));
+
+                            myEdit.apply();
+
+
+//                                //to check if user is already login or not
+//                                SharedPreferences sharedPreferencesForLoginOrNot = Login.this.getSharedPreferences("loginOrNot", MODE_PRIVATE);
+//                                final SharedPreferences.Editor loginedit = sharedPreferencesForLoginOrNot.edit();
+//                                loginedit.putString("info","yes");
+//                                // loginedit.putString("username","Aman");
+//                                loginedit.apply();
+
+                            // Toast.makeText(Login.this, ""+pay1, Toast.LENGTH_SHORT).show();
+                            if(pay==1) {
+                                finish();
+                                startActivity(new Intent(newpassword.this, PaymentPage.class));
+                            }else{
+                                finish();
+                                startActivity(new Intent(newpassword.this, CitySelectionActivity.class));
+                            }
+
+
+
+
+                        }
+
                         Toast.makeText(newpassword.this, ""+msg, Toast.LENGTH_LONG).show();
 
-                        Intent intent =new Intent(newpassword.this,Login.class);
-                        startActivity(intent);
+//                        Intent intent =new Intent(newpassword.this,Login.class);
+//                        startActivity(intent);
 
                     }else{
 

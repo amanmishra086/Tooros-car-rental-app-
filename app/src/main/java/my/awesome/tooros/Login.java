@@ -55,11 +55,20 @@ String HttpURL = "https://tooros.in/api/api.php";
         }
 
         public void SignUpPageClick(View view) {
-            startActivity(new Intent(Login.this,Signup.class));
 
+            Intent intent=new Intent(Login.this,Signup.class);
+            intent.putExtra("val",pay);
+            startActivity(intent);
 
 
         }
+    public void forgetPasswordClick(View view) {
+
+        Intent intent=new Intent(Login.this,ForgetPassword.class);
+        intent.putExtra("val",pay);
+        startActivity(intent);
+
+    }
 
         public void onClickSignInBtn2(View view){
 
@@ -208,11 +217,7 @@ String HttpURL = "https://tooros.in/api/api.php";
             userLoginClass.execute(method,Email,Password);
         }
 
-    public void forgetPasswordClick(View view) {
 
-        startActivity(new Intent(this,ForgetPassword.class));
-
-    }
     @Override
     public void onBackPressed(){
         finish();

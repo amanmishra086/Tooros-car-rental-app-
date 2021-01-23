@@ -157,7 +157,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="40dp"
 
-        android:text="THANK YOU"
+        android:text="Thank You"
         android:textColor="#9CCC65"
         android:textSize="30sp"
         android:textStyle="bold" />
@@ -168,7 +168,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="4dp"
 
-        android:text=" For Booking with us "
+        android:text=" For Booking With Us "
         android:textColor="#9CCC65"
         android:textSize="15sp"
         android:textStyle="bold" />

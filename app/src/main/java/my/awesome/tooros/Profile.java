@@ -261,7 +261,7 @@ ProgressDialog progressDialog;
 
        // Toast.makeText(this, ""+straadhardoc, Toast.LENGTH_SHORT).show();
 
-        if (straadhardoc!=null || straadhardoc!=""){
+        if (straadhardoc.contains("http")){
             Intent intent=new Intent(this,ProfiledocActivity.class);
             intent.putExtra("url",straadhardoc);
             startActivity(intent);
@@ -277,7 +277,7 @@ ProgressDialog progressDialog;
 
         SharedPreferences sharedPreferences2 = Profile.this.getSharedPreferences("MySharedPref2", MODE_PRIVATE);
         String strdldoc = sharedPreferences2.getString("Dldoc", null);
-        if(strdldoc!=null || strdldoc!=""){
+        if(strdldoc.contains("http")){
             Intent intent=new Intent(this,ProfiledocActivity.class);
             intent.putExtra("url",strdldoc);
             startActivity(intent);

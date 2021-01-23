@@ -46,6 +46,7 @@ public class Signup extends AppCompatActivity {
 String HttpURL = "https://tooros.in/api/api.php";
     Boolean CheckEditText ;
     ProgressDialog progressDialog;
+    int pay=0;
     //HashMap<String,String> hashMap = new HashMap<>();
     //HttpParse httpParse = new HttpParse();
     JsonHttpParse jsonhttpParse = new JsonHttpParse();
@@ -65,6 +66,9 @@ String HttpURL = "https://tooros.in/api/api.php";
         dlno=findViewById(R.id.dlnocontainer);
         Dob=findViewById(R.id.dobv);
         checkBox=findViewById(R.id.checkBox);
+
+        Intent intent=getIntent();
+        pay = intent.getIntExtra("val",0);
 
 //        aadharSnap=findViewById(R.id.aadharsnapcontainer);
 //        dlSnap=findViewById(R.id.dlsnapcontainer);
@@ -235,10 +239,10 @@ String HttpURL = "https://tooros.in/api/api.php";
                         jsonObject = new JSONObject(httpResponseMsg);
                       //  String messege= jsonObject.getString("otp");
                         //String messege= jsonObject.getString("msg");
-
+                        finish();
                        Intent intent=new Intent(Signup.this,OtpVerification.class);
                         intent.putExtra("phone",strphone);
-                      //  intent.putExtra("otp",messege);
+                        intent.putExtra("val",pay);
                         startActivity(intent);
 
                         //Toast.makeText(Signup.this, messege, Toast.LENGTH_SHORT).show();

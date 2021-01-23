@@ -133,7 +133,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:text="Dob*"
+                android:text="DOB*"
                 android:textSize="13sp"
                 android:textStyle="bold"
                 android:textColor="#fff"
@@ -261,13 +261,14 @@
 
 
                 <ImageView
+                    android:tint="@android:color/black"
                     android:id="@+id/aadharpic"
                     android:layout_width="40dp"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="8dp"
-                    android:src="@drawable/calender" />
+                    android:src="@drawable/ic_file_upload" />
 
                 <TextView
                     android:id="@+id/aadharsnapcontainer"
@@ -324,13 +325,14 @@
 
 
                 <ImageView
+                    android:tint="@android:color/black"
                     android:id="@+id/dlpic"
                     android:layout_width="40dp"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="8dp"
-                    android:src="@drawable/calender" />
+                    android:src="@drawable/ic_file_upload" />
 
                 <TextView
                     android:id="@+id/dlsnapcontainer"

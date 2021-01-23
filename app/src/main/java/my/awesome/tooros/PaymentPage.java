@@ -62,7 +62,7 @@ String HttpURL = "https://tooros.in/api/api.php";
         basefair=findViewById(R.id.basefare);
         startt=findViewById(R.id.starttime);
         endt=findViewById(R.id.endtime);
-        picupcharges=findViewById(R.id.delivery);
+       // picupcharges=findViewById(R.id.delivery);
         coupondiscount=findViewById(R.id.discount);
         gst=findViewById(R.id.gst);
         total=findViewById(R.id.totalamount);
@@ -560,7 +560,9 @@ String HttpURL = "https://tooros.in/api/api.php";
         /**
          * Set your logo here
          */
-        checkout.setImage(R.drawable.splashlogo);
+
+        checkout.setImage(R.drawable.tooroslogo);
+       // checkout.setFullScreenDisable(true);
 
         /**
          * Reference to current activity
@@ -577,7 +579,7 @@ String HttpURL = "https://tooros.in/api/api.php";
             options.put("description", "Confirm Booking..");
             options.put("image", "https://s3.amazonaws.com/rzp-mobile/images/rzp.png");
             //options.put("order_id", "order_DBJOWzybf0sJbb");//from response of step 3.
-            options.put("theme.color", "#FF0000");
+            options.put("theme.color", "#98C119");
             options.put("currency", "INR");
             options.put("amount", ""+total*100);//pass amount in currency subunits
             options.put("prefill.email",""+email);

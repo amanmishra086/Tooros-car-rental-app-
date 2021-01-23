@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -25,7 +26,7 @@ TextView mobileno;
 EditText otp;
     String phone;
     String finalResult ;
-
+    int pay=0;
     ProgressDialog progressDialog;
 
     JsonHttpParse jsonhttpParse = new JsonHttpParse();
@@ -38,7 +39,7 @@ EditText otp;
 
         Intent intent=getIntent();
          phone=intent.getExtras().getString("phone");
-
+        pay = intent.getIntExtra("val",0);
         mobileno.setText(phone);
 
 
@@ -85,8 +86,55 @@ EditText otp;
                 if(httpResponseMsg.contains("200")){
 
                     Toast.makeText(OtpVerification.this, "Account activated successfully...", Toast.LENGTH_SHORT).show();
-                    Intent intent=new Intent(OtpVerification.this,Login.class);
-                    startActivity(intent);
+
+
+
+                    try {
+                        JSONObject jsonObject = new JSONObject(httpResponseMsg);
+                        JSONArray result = jsonObject.getJSONArray("result");
+                        for (int i=0; i<result.length(); i++ ){
+                            JSONObject ob=result.getJSONObject(i);
+
+                            SharedPreferences sharedPreferences2 = OtpVerification.this.getSharedPreferences("MySharedPref2", MODE_PRIVATE);
+                            final SharedPreferences.Editor myEdit = sharedPreferences2.edit();
+                            myEdit.putString("Name",ob.getString("name"));
+                            myEdit.putString("Mobile",ob.getString("mobile"));
+                            myEdit.putString("Email",ob.getString("email"));
+                            myEdit.putString("Dob",ob.getString("dob"));
+                            myEdit.putString("Dlno",ob.getString("dl_no"));
+                            myEdit.putString("Aadharno",ob.getString("aadhar_no"));
+                            myEdit.putString("Aadhardoc",ob.getString("aadhar_doc"));
+                            myEdit.putString("Dldoc",ob.getString("dl_doc"));
+                            myEdit.putString("userid",ob.getString("user_id"));
+
+                            myEdit.apply();
+
+
+//                                //to check if user is already login or not
+//                                SharedPreferences sharedPreferencesForLoginOrNot = Login.this.getSharedPreferences("loginOrNot", MODE_PRIVATE);
+//                                final SharedPreferences.Editor loginedit = sharedPreferencesForLoginOrNot.edit();
+//                                loginedit.putString("info","yes");
+//                                // loginedit.putString("username","Aman");
+//                                loginedit.apply();
+
+                            // Toast.makeText(Login.this, ""+pay1, Toast.LENGTH_SHORT).show();
+                            if(pay==1) {
+                                finish();
+                                startActivity(new Intent(OtpVerification.this, PaymentPage.class));
+                            }else{
+                                finish();
+                                startActivity(new Intent(OtpVerification.this, CitySelectionActivity.class));
+                            }
+
+
+
+
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+
 
 
 

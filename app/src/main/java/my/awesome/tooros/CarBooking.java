@@ -73,9 +73,7 @@ String cityid;
         final String endtime=sharedPreferences.getString("endtime",null);
         final String startimee=sharedPreferences.getString("startimee",null);
         final String endtimee=sharedPreferences.getString("endtimee",null);
-       //Toast.makeText(CarBooking.this, ""+startime+""+endtime, Toast.LENGTH_SHORT).show();
-     //   String concatPdate1=""+stdate+" "+startime;
-     //   Toast.makeText(CarBooking.this, ""+concatPdate1, Toast.LENGTH_SHORT).show();
+
         if(stdate!=" "&& end !=" "&& City!=" "&& startime!=" " && endtime!=" "){
             startdate.setText(stdate_show);
             enddate.setText(end_show);
@@ -85,15 +83,7 @@ String cityid;
         }
 
 
-//        Intent intent=getIntent();
-//       String city= intent.getStringExtra("city");
-//       String startdate= intent.getStringExtra("startdate");
-//       String enddate= intent.getStringExtra("enddate");
 
-
-//       cityname=findViewById(R.id.cityname);cityname.setText(city);
-//       start=findViewById(R.id.textView4);start.setText(startdate);
-//       end=findViewById(R.id.textView7);end.setText(enddate);
 
 
 
@@ -108,12 +98,7 @@ String cityid;
         getSubSerivices("getAllavailCabs",City,stdate,end,startimee,endtimee);
 
 
-//        CarBookingModel carBookingModel=new CarBookingModel(R.drawable.hundaiimage,"Renault Kwid","Petrol","₹1500","5 seat","Automatic","5 baggage","BOOKED");
-//        carBookingModels.add(carBookingModel);
 
-
-//        CarBookingModel carBookingModel1=new CarBookingModel(R.drawable.hundaiimage,"Renault Kwid","Petrol","₹1500","5 seat","Automatic","5 baggage","BOOKED");
-//       carBookingModels.add(carBookingModel1);
 
     }
 
@@ -146,13 +131,6 @@ String cityid;
                         JSONArray result = jsonObject.getJSONArray("result");
                         for (int i=0; i<result.length(); i++ ){
                             JSONObject ob=result.getJSONObject(i);
-
-                            // Toast.makeText(FirstActivity.this, ob.getString("name"), Toast.LENGTH_SHORT).show();
-//                            CarBookingModel history1=new CarBookingModel(R.drawable.hundaii,ob.getString("sub_service"),
-//                                    ob.getString("sch_servie_id"),ob.getString("service_id"),ob.getString("service_price"),
-//                                    ob.getString("img"));
-//                            CarBookingModel carBookingModel=new CarBookingModel(R.drawable.hundaiimage,"Renault Kwid","Petrol",ob.getString("id"),"5 seat","Automatic","5 baggage","BOOKED");
-//                            carBookingModels.add(carBookingModel);
 
                             CarBookingModel carBookingModel=new CarBookingModel(ob.getString("car_image"),ob.getString("car_nme")
                                     ,ob.getString("fuelType"),ob.getString("cost"),ob.getString("no_of_seat"),
@@ -199,10 +177,8 @@ String cityid;
                 String concatPdate=""+startdate+" "+starttime;
                 String concatDdate=""+enddate+" "+endtime;
 
-                //String jsonInputString="{\"method\":\"getAllavailCabs\",\"concatPdate\":\""+startdate+" 09:00"+"\",\"concatDdate\":\""+enddate+" 21:00"+"\",\"city\":1}";
                 String jsonInputString="{\"method\":\"getAllavailCabs\",\"concatPdate\":\""+concatPdate+"\",\"concatDdate\":\""+concatDdate+"\",\"city\":"+cityid+"}";
                // String jsonInputString={"method":"getAllavailCabs","concatPdate":"2021-01-15 09:00","concatDdate":"2021-01-16 21:00","city":1};
-                //String jsonInputString1="{\"method\":\"getAllsubService\",\"service_id\":\""+id+"\"}";
 
                 finalResult1 = jsonhttpParse.postRequest(jsonInputString, HttpURL);
 

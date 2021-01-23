@@ -28,13 +28,16 @@ String HttpURL = "https://tooros.in/api/api.php";
     String finalResult ;
     Boolean CheckEditText ;
     ProgressDialog progressDialog;
-    int pay1=0;
+    int pay=0;
     JsonHttpParse jsonhttpParse = new JsonHttpParse();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forget_password);
+
+        Intent intent=getIntent();
+        pay = intent.getIntExtra("val",0);
 
         email=findViewById(R.id.emailcontainer);
 
@@ -83,6 +86,7 @@ String HttpURL = "https://tooros.in/api/api.php";
                     if(status.equals("200")){
                         Intent intent =new Intent(ForgetPassword.this,Resetpassword.class);
                         intent.putExtra("mobile",""+email);
+                        intent.putExtra("val",pay);
                         startActivity(intent);
 
                         String msg=jsonObject2.getString("msg");
